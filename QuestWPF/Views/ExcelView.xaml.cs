@@ -1,4 +1,6 @@
-﻿namespace Quest.Views;
+﻿using Syncfusion.XlsIO;
+
+namespace Quest.Views;
 
 /// <summary>
 /// Interaction logic for ExcelView.xaml
@@ -12,6 +14,7 @@ public partial class ExcelView : UserControl
   /// Ensure that the required dependencies are properly configured before using this class.</remarks>
   public ExcelView()
   {
+    SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZfdXRQQmlYWUB+WERWYEg=");
     InitializeComponent();
   }
 
@@ -47,5 +50,11 @@ public partial class ExcelView : UserControl
     // Update filename property and load the new file
     SpreadsheetControl.FileName = fileName;
     SpreadsheetControl.Open(fileName);
+    IWorkbook workbook = SpreadsheetControl.Workbook;
+    var xmlImporter = new XlsImporter();
+    xmlImporter.OpenWorkbook(fileName);
+    var worksheets = new WorksheetInfoCollection(xmlImporter.GetWorksheets());
+    WorksheetListView.ItemsSource = worksheets;
+
   }
 }

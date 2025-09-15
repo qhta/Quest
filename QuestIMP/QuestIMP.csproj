@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Quest</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>docs\QuestIMP.xls</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="31.1.19" />
+    <Folder Include="docs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Qhta.MVVM" Version="4.15.0" />
+    <PackageReference Include="Qhta.ObservableObjects" Version="4.3.0" />
+    <PackageReference Include="Syncfusion.XlsIO.Wpf" Version="31.1.19" />
   </ItemGroup>
 
 </Project>

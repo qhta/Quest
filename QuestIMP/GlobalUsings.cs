@@ -1,3 +1,4 @@
 // Global using directives
 
-global using Syncfusion.XlsIO;
+global using Qhta.MVVM;
+global using Qhta.ObservableObjects;

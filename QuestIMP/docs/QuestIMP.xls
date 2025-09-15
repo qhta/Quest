@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuestIMP</name>
+    </assembly>
+    <members>
+        <member name="T:Quest.WorksheetInfo">
+            <summary>
+            Info about a worksheet in an Excel workbook.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfo.Name">
+            <summary>
+            Name of the worksheet.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfo.HasQuest">
+            <summary>
+            Specifies whether the worksheet contains a questionnaire.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfo.QuestStart">
+            <summary>
+            Address of the cell where the questionnaire starts, e.g. "A1".
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfo.QuestEnd">
+            <summary>
+            Address of the cell where the questionnaire ends, e.g. "D20".
+            </summary>
+        </member>
+        <member name="T:Quest.XlsImporter">
+            <summary>
+            Commander class for handling Excel operations.
+            </summary>
+        </member>
+        <member name="P:Quest.XlsImporter.Workbook">
+            <summary>
+            Working workbook instance.
+            </summary>
+        </member>
+        <member name="M:Quest.XlsImporter.OpenWorkbook(System.String)">
+            <summary>
+            Opens an Excel workbook from the specified file and returns the IWorkbook instance.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Quest.XlsImporter.GetWorksheets">
+            <summary>
+            Gets the list of worksheets. Specifies if their contain questionnaires.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:Quest.WorksheetInfoCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.WorksheetInfo"/> objects.
+            </summary>
+        </member>
+        <member name="M:Quest.WorksheetInfoCollection.#ctor(System.Collections.Generic.IEnumerable{Quest.WorksheetInfo})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.WorksheetInfoCollection"/> class with a list of <see cref="T:Quest.WorksheetInfo"/>.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="T:Quest.WorksheetInfoVM">
+            <summary>
+            Represents a view model for the <see cref="T:Quest.WorksheetInfo"/> model, providing a binding layer between the model and
+            the user interface.
+            </summary>
+            <remarks>This class inherits from <see cref="T:Qhta.MVVM.ViewModel"/> and is specifically tailored for the <see
+            cref="T:Quest.WorksheetInfo"/> type. It facilitates data binding and encapsulates the logic required to interact with the
+            <see cref="T:Quest.WorksheetInfo"/> model.</remarks>
+        </member>
+        <member name="M:Quest.WorksheetInfoVM.#ctor(Quest.WorksheetInfo)">
+            <summary>
+            Required constructor that initializes a new instance of the <see cref="T:Quest.WorksheetInfoVM"/> class with the specified model.
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.WorksheetInfoVM.Name">
+            <summary>
+            Nameof the worksheet.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfoVM.HasQuest">
+            <summary>
+            Specifies whether the worksheet contains a questionnaire.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfoVM.QuestRange">
+            <summary>
+            Address range of the questionnaire in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfoVM.NameAndRange">
+            <summary>
+            Text to display.
+            </summary>
+        </member>
+    </members>
+</doc>

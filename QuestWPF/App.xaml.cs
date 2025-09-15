@@ -12,6 +12,7 @@ public partial class App : Application
   {
     // Register the Syncfusion license key
     SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZfdXRQQmlYWUB+WERWYEg=");
+    //Syncfusion.Diagnostics.DebugLogger.EnableLogging = true;
   }
 
   //protected override void OnStartup(StartupEventArgs e)
