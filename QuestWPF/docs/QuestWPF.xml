@@ -12,6 +12,11 @@
             App
             </summary>
         </member>
+        <member name="M:QuestWPF.App.#ctor">
+            <summary>
+            Sets up the application and registers the Syncfusion license key.
+            </summary>
+        </member>
         <member name="M:QuestWPF.App.InitializeComponent">
             <summary>
             InitializeComponent
@@ -34,7 +39,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:QuestWPF.MainWindow"/> class.
             </summary>
-            <remarks>This constructor registers the Syncfusion license key and initializes the components of the
+            <remarks>This constructor initializes the components of the
             main window. Ensure that the Syncfusion license key is valid and properly configured before using this
             application.</remarks>
         </member>
@@ -94,36 +99,6 @@
         <member name="M:Quest.Views.ProjectView.InitializeComponent">
             <summary>
             InitializeComponent
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>
