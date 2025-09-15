@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Quest</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>docs\QuestWPF.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuestENG\QuestENG.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="docs\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="31.1.19" />
+    <PackageReference Include="Syncfusion.SfSpreadsheet.WPF" Version="31.1.19" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="31.1.19" />
+    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="31.1.19" />
+  </ItemGroup>
+
+</Project>

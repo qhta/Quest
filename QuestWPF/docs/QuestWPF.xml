@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuestWPF</name>
+    </assembly>
+    <members>
+        <member name="T:QuestWPF.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:QuestWPF.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:QuestWPF.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:QuestWPF.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:QuestWPF.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:QuestWPF.MainWindow"/> class.
+            </summary>
+            <remarks>This constructor registers the Syncfusion license key and initializes the components of the
+            main window. Ensure that the Syncfusion license key is valid and properly configured before using this
+            application.</remarks>
+        </member>
+        <member name="P:QuestWPF.MainWindow.OpenSpreadsheetCommand">
+            <summary>
+            Command to open and Excel spreadsheet file.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quest.Views.ExcelView">
+            <summary>
+            Interaction logic for ExcelView.xaml
+            </summary>
+            <summary>
+            ExcelView
+            </summary>
+        </member>
+        <member name="M:Quest.Views.ExcelView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.Views.ExcelView"/> class.
+            </summary>
+            <remarks>This constructor sets up the necessary components for the <see cref="T:Quest.Views.ExcelView"/> instance.
+            Ensure that the required dependencies are properly configured before using this class.</remarks>
+        </member>
+        <member name="F:Quest.Views.ExcelView.FileNameProperty">
+            <summary>
+            DependencyProperty for the <see cref="P:Quest.Views.ExcelView.FileName"/> property.
+            </summary>
+        </member>
+        <member name="P:Quest.Views.ExcelView.FileName">
+            <summary>
+            Name of the Excel file to be displayed.
+            </summary>
+        </member>
+        <member name="M:Quest.Views.ExcelView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quest.Views.ProjectView">
+            <summary>
+            Interaction logic for ProjectView.xaml
+            </summary>
+            <summary>
+            ProjectView
+            </summary>
+        </member>
+        <member name="M:Quest.Views.ProjectView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.Views.ProjectView"/> class.
+            </summary>
+        </member>
+        <member name="M:Quest.Views.ProjectView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

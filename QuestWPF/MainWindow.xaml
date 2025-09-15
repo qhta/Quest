@@ -1,0 +1,33 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuestWPF"
+        xmlns:Views="clr-namespace:Quest.Views" x:Class="QuestWPF.MainWindow"
+        mc:Ignorable="d"
+        Title="QuestAPP" Height="450" Width="800">
+  <Grid Background="Silver">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Menu>
+      <MenuItem Header="File">
+        <MenuItem 
+          Header="Open Excel workbook" 
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=OpenSpreadsheetCommand}"          />
+      </MenuItem>
+      <MenuItem Header="Edit"/>
+      <MenuItem Header="Tools"/>
+      <MenuItem Header="Windows"/>
+      <MenuItem Header="Help"/>
+    </Menu>
+    <TabControl
+      x:Name="MainTabControl"
+      Grid.Row="1"
+      Background="Transparent"
+      >
+    </TabControl>
+  </Grid>
+</Window>
