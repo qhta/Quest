@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using System.Diagnostics;
+
+namespace Quest;
 using Syncfusion.XlsIO;
 
 /// <summary>
@@ -47,6 +49,7 @@ public class XlsImporter
         QuestEnd = null
       };
       // Scan for "QUEST" marker in the first column
+      int maxCellNdx = 0;
       for (int r=0; r<worksheet.Rows.Count(); r++)
       {
         var row = worksheet.Rows[r];
@@ -62,13 +65,14 @@ public class XlsImporter
         if (info.HasQuest)
         {
           var isRowEmpty = true;
-          int maxCellNdx = 0;
           for (int c = 0; c < row.Count; c++)
           {
             var nextCell = row.Cells[c];
             var s = nextCell?.Value?.ToString();
             if (!string.IsNullOrWhiteSpace(s))
             {
+              //if (s.StartsWith("Problemy"))
+              //  Debug.Assert(true);
               isRowEmpty = false;
               if (c>maxCellNdx) 
                 maxCellNdx = c;

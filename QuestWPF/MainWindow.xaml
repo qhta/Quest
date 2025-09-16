@@ -15,7 +15,7 @@
     <Menu>
       <MenuItem Header="File">
         <MenuItem 
-          Header="Open Excel workbook" 
+          Header="Import Excel workbook" 
           Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=OpenSpreadsheetCommand}"          />
       </MenuItem>
       <MenuItem Header="Edit"/>

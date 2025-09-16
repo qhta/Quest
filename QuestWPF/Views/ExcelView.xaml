@@ -14,7 +14,11 @@
     </Grid.ColumnDefinitions>
     <ListView 
       x:Name="WorksheetListView"
-      ItemsSource="{Binding WorksheetInfoCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      ItemsSource="{Binding WorksheetInfoCollection}" 
+      HorizontalAlignment="Stretch" 
+      VerticalAlignment="Stretch"
+      SelectionChanged="WorksheetListView_OnSelectionChanged"
+      >
       <ListView.View>
         <GridView>
           <GridViewColumn Width="40">
@@ -40,7 +44,8 @@
       />-->
       <syncfusion:SfSpreadsheet 
       x:Name="SpreadsheetControl"
-
+      ShowSheetTabs="False"
+      FormulaBarVisibility="Collapsed"
       Grid.Row="1" />
     </Grid>
   </Grid>
