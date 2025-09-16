@@ -29,6 +29,21 @@
             Address of the cell where the questionnaire ends, e.g. "D20".
             </summary>
         </member>
+        <member name="P:Quest.WorksheetInfo.HasWeights">
+            <summary>
+            Specifies whether the worksheet contains weights table for the top level metrics.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfo.WeightsStart">
+            <summary>
+            Address of the cell where the weights table for the top level metrics starts.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfo.WeightsEnd">
+            <summary>
+            Address of the cell where the weights table for the top level metrics ends.
+            </summary>
+        </member>
         <member name="T:Quest.XlsImporter">
             <summary>
             Commander class for handling Excel operations.
@@ -93,7 +108,17 @@
             Address range of the questionnaire in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
             </summary>
         </member>
-        <member name="P:Quest.WorksheetInfoVM.NameAndRange">
+        <member name="P:Quest.WorksheetInfoVM.HasWeights">
+            <summary>
+            Specifies whether the worksheet contains a weights table.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfoVM.WeightsRange">
+            <summary>
+            Address range of the weights table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
+            </summary>
+        </member>
+        <member name="P:Quest.WorksheetInfoVM.Text">
             <summary>
             Text to display.
             </summary>

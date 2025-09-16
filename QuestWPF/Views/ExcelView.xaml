@@ -21,15 +21,23 @@
       >
       <ListView.View>
         <GridView>
-          <GridViewColumn Width="40">
+          <GridViewColumn Header="Worksheet" DisplayMemberBinding="{Binding Name}" />
+          <GridViewColumn Header="Quest">
             <GridViewColumn.CellTemplate>
               <DataTemplate>
-                <CheckBox IsChecked="{Binding HasQuest, Mode=OneWay}" IsEnabled="False" />
+                <TextBlock Text="{Binding QuestRange}"
+                        MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
               </DataTemplate>
             </GridViewColumn.CellTemplate>
           </GridViewColumn>
-          <GridViewColumn Header="Worksheet" Width="200" DisplayMemberBinding="{Binding NameAndRange}" />
-
+          <GridViewColumn Header="Weights">
+            <GridViewColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding WeightsRange}"
+                           MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
+              </DataTemplate>
+            </GridViewColumn.CellTemplate>
+          </GridViewColumn>
         </GridView>
       </ListView.View>
     </ListView>

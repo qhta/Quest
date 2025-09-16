@@ -8,6 +8,7 @@ using Syncfusion.XlsIO;
 /// </summary>
 public class XlsImporter
 {
+  const string WeightsFirstCellMarker = "L.p.";
   const string QuestFirstCellMarker = "Cechy";
 
   /// <summary>
@@ -44,54 +45,66 @@ public class XlsImporter
       var info = new WorksheetInfo
       {
         Name = worksheet.Name,
-        HasQuest = false,
-        QuestStart = null,
-        QuestEnd = null
       };
-      // Scan for "QUEST" marker in the first column
-      int maxCellNdx = 0;
-      for (int r=0; r<worksheet.Rows.Count(); r++)
-      {
-        var row = worksheet.Rows[r];
-        if (!row.Cells.Any()) continue; // Skip rows without cells
 
-        var cell = row.Cells[0]; // First column (A)
-        if (cell != null && cell.Value != null && cell.Value.ToString() == QuestFirstCellMarker)
+      (info.HasQuest, info.QuestStart, info.QuestEnd) = ScanForTable(worksheet, QuestFirstCellMarker);
+      (info.HasWeights, info.WeightsStart, info.WeightsEnd) = ScanForTable(worksheet, WeightsFirstCellMarker);
+      resultList.Add(info);
+    }
+    return resultList;
+  }
+
+  private static (bool, string?, string?) ScanForTable(IWorksheet worksheet, string marker)
+  {
+    var found = false;
+    string? rangeStart = null;
+    string? rangeEnd = null;
+    int maxCellNdx = 0;
+    for (int r = 0; r < worksheet.Rows.Count(); r++)
+    {
+      var row = worksheet.Rows[r];
+      if (!row.Cells.Any()) continue; // Skip rows without cells
+      if (!found)
+      {
+        for (int c = 0; c < row.Count; c++)
         {
-          info.HasQuest = true;
-          info.QuestStart = cell.AddressLocal;
-          info.QuestEnd = cell.AddressLocal;
-        }
-        if (info.HasQuest)
-        {
-          var isRowEmpty = true;
-          for (int c = 0; c < row.Count; c++)
+          var cell = row.Cells[c];
+          var s = cell?.Value?.ToString();
+          if (s == marker)
           {
-            var nextCell = row.Cells[c];
-            var s = nextCell?.Value?.ToString();
-            if (!string.IsNullOrWhiteSpace(s))
-            {
-              //if (s.StartsWith("Problemy"))
-              //  Debug.Assert(true);
-              isRowEmpty = false;
-              if (c>maxCellNdx) 
-                maxCellNdx = c;
-            }
-          }
-          if (!isRowEmpty)
-          {
-            // Update the end cell address
-            info.QuestEnd = row.Cells[maxCellNdx].AddressLocal;
-          }
-          else
-          {
-            // Stop scanning on the first empty row after finding the start
+            found = true;
+            rangeStart = cell!.AddressLocal;
+            rangeEnd = cell.AddressLocal;
             break;
           }
         }
       }
-      resultList.Add(info);
+      if (found)
+      {
+        var isRowEmpty = true;
+        for (int c = 0; c < row.Count; c++)
+        {
+          var cell = row.Cells[c];
+          var s = cell?.Value?.ToString();
+          if (!string.IsNullOrWhiteSpace(s))
+          {
+            isRowEmpty = false;
+            if (c > maxCellNdx)
+              maxCellNdx = c;
+          }
+        }
+        if (!isRowEmpty)
+        {
+          // Update the end cell address
+          rangeEnd = row.Cells[maxCellNdx].AddressLocal;
+        }
+        else
+        {
+          // Stop scanning on the first empty row after finding the start
+          break;
+        }
+      }
     }
-    return resultList;
+    return (found, rangeStart, rangeEnd);
   }
 }

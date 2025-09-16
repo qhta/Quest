@@ -33,7 +33,32 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   public string? QuestRange => (Model.QuestStart != null && Model.QuestEnd != null) ? $"{Model.QuestStart}:{Model.QuestEnd}" : null;
 
   /// <summary>
+  /// Specifies whether the worksheet contains a weights table.
+  /// </summary>
+  public bool? HasWeights => Model.HasWeights;
+
+  /// <summary>
+  /// Address range of the weights table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
+  /// </summary>
+  public string? WeightsRange => (Model.WeightsStart != null && Model.WeightsEnd != null) ? $"{Model.WeightsStart}:{Model.WeightsEnd}" : null;
+
+  /// <summary>
   /// Text to display.
   /// </summary>
-  public string? NameAndRange => Model.HasQuest ? $"{Model.Name} ({QuestRange})" : Model.Name;
+  public string? Text
+  {
+    get
+    {
+      var result = Name;
+      if (HasQuest == true)
+      {
+        result += $" q:({QuestRange})";
+      }
+      if (HasWeights == true)
+      {
+        result += $" w:({WeightsRange})";
+      }
+      return result;
+    }
+  }
 }

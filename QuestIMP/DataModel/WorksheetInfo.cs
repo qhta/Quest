@@ -24,4 +24,19 @@ public class WorksheetInfo
   /// Address of the cell where the questionnaire ends, e.g. "D20".
   /// </summary>
   public string? QuestEnd { get; set; }
+
+  /// <summary>
+  /// Specifies whether the worksheet contains weights table for the top level metrics.
+  /// </summary>
+  public bool HasWeights { get; set; }
+
+  /// <summary>
+  /// Address of the cell where the weights table for the top level metrics starts.
+  /// </summary>
+  public string? WeightsStart { get; set; }
+
+  /// <summary>
+  /// Address of the cell where the weights table for the top level metrics ends.
+  /// </summary>
+  public string? WeightsEnd { get; set; }
 }
