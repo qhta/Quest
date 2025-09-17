@@ -1,4 +1,4 @@
-﻿namespace Quest;
+﻿namespace QuestIMP;
 
 /// <summary>
 /// Information about a workbook, including its file name, project title, and associated worksheets.

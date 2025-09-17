@@ -11,4 +11,13 @@
     <Folder Include="ExecutiveLogic\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Qhta.MVVM" Version="4.15.0" />
+    <PackageReference Include="Qhta.ObservableObjects" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuestRDM\QuestRDM.csproj" />
+  </ItemGroup>
+
 </Project>

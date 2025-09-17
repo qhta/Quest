@@ -1,4 +1,4 @@
-﻿namespace Quest;
+﻿namespace QuestIMP;
 
 /// <summary>
 /// Represents a view model for the <see cref="WorksheetInfo"/> model, providing a binding layer between the model and

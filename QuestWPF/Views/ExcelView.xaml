@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:Quest.Views"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:reflection="clr-namespace:Syncfusion.Reflection;assembly=Syncfusion.Shared.Base"
-             xmlns:quest="clr-namespace:Quest;assembly=QuestIMP"
+             xmlns:questImp="clr-namespace:QuestIMP;assembly=QuestIMP"
              x:Class="Quest.Views.ExcelView"
-             d:DataContext="{d:DesignInstance quest:WorkbookInfoVM}"
+             d:DataContext="{d:DesignInstance questImp:WorkbookInfoVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
   <Grid>
@@ -36,7 +36,7 @@
                             DisplayMemberBinding="{Binding Name}" />
             <GridViewColumn Header="Quest">
               <GridViewColumn.CellTemplate>
-                <DataTemplate DataType="{x:Type quest:WorksheetInfoVM}">
+                <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock Text="{Binding QuestRange}"
                         MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
@@ -44,7 +44,7 @@
             </GridViewColumn>
             <GridViewColumn Header="Weights">
               <GridViewColumn.CellTemplate>
-                <DataTemplate DataType="{x:Type quest:WorksheetInfoVM}">
+                <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock Text="{Binding WeightsRange}"
                            MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>

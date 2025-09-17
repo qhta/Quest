@@ -53,6 +53,31 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:QuestWPF.MDIViewModel">
+            <summary>
+            ViewModel for Multi Document Interface
+            </summary>
+        </member>
+        <member name="P:QuestWPF.MDIViewModel.SwitchMode">
+            <summary>
+            This property enables you to control how tabs behave, with different SwitchMode values like Immediate, List, None, Quick Tabs, VS2005, and VistaFlip to provide different switching experiences. 
+            </summary>
+        </member>
+        <member name="P:QuestWPF.MDIViewModel.MDILayoutChangedCommand">
+            <summary>
+            Command to change MDI layout (Cascade, Horizontal, Vertical)
+            </summary>
+        </member>
+        <member name="M:QuestWPF.MDIViewModel.#ctor">
+            <summary>
+            Initializing constructor,
+            </summary>
+        </member>
+        <member name="P:QuestWPF.MDIViewModel.DockCollections">
+            <summary>
+            Collection of DockItems for managing dockable panels in the UI.
+            </summary>
+        </member>
         <member name="T:Quest.Views.ExcelView">
             <summary>
             Interaction logic for ExcelView.xaml
@@ -79,6 +104,24 @@
             </summary>
         </member>
         <member name="M:Quest.Views.ExcelView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quest.Views.ProjectsView">
+            <summary>
+            Interaction logic for ProjectsView.xaml
+            </summary>
+            <summary>
+            ProjectsView
+            </summary>
+        </member>
+        <member name="M:Quest.Views.ProjectsView.#ctor">
+            <summary>
+            Initializing constructor
+            </summary>
+        </member>
+        <member name="M:Quest.Views.ProjectsView.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>

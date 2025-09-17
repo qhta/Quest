@@ -2,6 +2,7 @@
 
 global using System;
 global using System.Collections.Generic;
+global using System.Diagnostics;
 global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
@@ -16,8 +17,11 @@ global using System.Windows.Navigation;
 global using System.Windows.Shapes;
 global using Microsoft.Win32;
 global using Qhta.MVVM;
+global using QuestIMP;
 global using Syncfusion.Licensing;
 global using Syncfusion.UI.Xaml.CellGrid;
 global using Syncfusion.UI.Xaml.Spreadsheet;
+global using Syncfusion.Windows.Shared;
+global using Syncfusion.Windows.Tools.Controls;
 global using Syncfusion.XlsIO;
 global using SelectionChangedEventArgs = System.Windows.Controls.SelectionChangedEventArgs;

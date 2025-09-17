@@ -1,7 +1,7 @@
-﻿namespace Quest;
+﻿namespace QuestIMP;
 
 /// <summary>
-/// Observable collection of <see cref="WorksheetInfo"/> objects.
+/// Observable collection of <see cref="WorksheetInfoVM"/> objects.
 /// </summary>
 public class WorksheetInfoCollection : ObservableList<WorksheetInfoVM>
 {

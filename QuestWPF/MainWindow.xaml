@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuestWPF"
-        xmlns:Views="clr-namespace:Quest.Views" x:Class="QuestWPF.MainWindow"
+        xmlns:Views="clr-namespace:Quest.Views"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        x:Class="QuestWPF.MainWindow"
         mc:Ignorable="d"
         Title="QuestAPP" Height="450" Width="800">
+  <Window.DataContext>
+    <local:MDIViewModel/>
+  </Window.DataContext>
   <Grid Background="Silver">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -23,11 +28,33 @@
       <MenuItem Header="Windows"/>
       <MenuItem Header="Help"/>
     </Menu>
-    <TabControl
-      x:Name="MainTabControl"
+    <syncfusion:DockingManager 
+      x:Name="dockingManager"
       Grid.Row="1"
-      Background="Transparent"
+      Height="Auto"
+      syncfusion:DockingManager.AnimationDelay="00:00:00.200"
+      EnableMouseHoverBackground="False"
+      IsVS2010DraggingEnabled="True"
+      PersistState="False"
+      SwitchMode="{Binding SwitchMode, Mode=TwoWay}"
+      ItemsSource="{Binding DockCollections }" 
+      ContainerMode="MDI"
+      UseNativeFloatWindow="True"
+      UseDocumentContainer="False"
       >
-    </TabControl>
+
+      <!--  Customized Header Template  -->
+      <syncfusion:DockingManager.HeaderTemplate>
+        <DataTemplate>
+          <DockPanel LastChildFill="True">
+            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding}"
+                                TextTrimming="CharacterEllipsis" />
+          </DockPanel>
+        </DataTemplate>
+      </syncfusion:DockingManager.HeaderTemplate>
+    </syncfusion:DockingManager>
   </Grid>
 </Window>

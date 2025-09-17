@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuestRDM</name>
+    </assembly>
+    <members>
+        <member name="T:QuestRDM.Project">
+            <summary>
+            Information about a project.
+            </summary>
+        </member>
+        <member name="P:QuestRDM.Project.ID">
+            <summary>
+            The ID of the project.
+            </summary>
+        </member>
+        <member name="P:QuestRDM.Project.Guid">
+            <summary>
+            Global Unique Identifier for the project. Enables linking from QuestQDM.
+            </summary>
+        </member>
+        <member name="P:QuestRDM.Project.Title">
+            <summary>
+            Title of the project.
+            </summary>
+        </member>
+        <member name="T:QuestRDM.QuestRdmDbContext">
+            <summary>
+            DbContext for QuestRDM project.
+            </summary>
+        </member>
+        <member name="P:QuestRDM.QuestRdmDbContext.Projects">
+            <summary>
+            Set of projects registered in the database.
+            </summary>
+        </member>
+        <member name="M:QuestRDM.QuestRdmDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Configures the database provider and other options for the current <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> instance.
+            </summary>
+            <remarks>This method is called by the Entity Framework runtime and is typically overridden to configure
+            the database provider  and other context-specific options. In this implementation, SQLite is configured as the
+            database provider.</remarks>
+            <param name="optionsBuilder">A builder used to configure the options for the <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>. This parameter cannot be null.</param>
+        </member>
+        <member name="M:QuestRDM.QuestRdmDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the schema needed for the context before the model is locked down.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:Quest.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Quest.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Quest.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Quest.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

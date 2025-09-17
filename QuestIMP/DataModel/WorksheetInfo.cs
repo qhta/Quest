@@ -1,4 +1,4 @@
-﻿namespace Quest;
+﻿namespace QuestIMP;
 
 /// <summary>
 /// Information about a worksheet in an Excel workbook with details about questionnaires and weights.

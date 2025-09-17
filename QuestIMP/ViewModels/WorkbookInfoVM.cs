@@ -1,4 +1,4 @@
-﻿namespace Quest;
+﻿namespace QuestIMP;
 
 /// <summary>
 /// ViewModel for <see cref="WorkbookInfo"/>.
