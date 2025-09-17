@@ -4,7 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Quest.Views"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Quest.Views.ExcelView"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:reflection="clr-namespace:Syncfusion.Reflection;assembly=Syncfusion.Shared.Base"
+             xmlns:quest="clr-namespace:Quest;assembly=QuestIMP"
+             x:Class="Quest.Views.ExcelView"
+             d:DataContext="{d:DesignInstance quest:WorkbookInfoVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
   <Grid>
@@ -12,35 +16,44 @@
       <ColumnDefinition Width="Auto"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <ListView 
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <TextBox Text="{Binding ProjectTitle}"/>
+      <ListView 
       x:Name="WorksheetListView"
-      ItemsSource="{Binding WorksheetInfoCollection}" 
+      Grid.Row="1"
+      ItemsSource="{Binding Worksheets}" 
       HorizontalAlignment="Stretch" 
       VerticalAlignment="Stretch"
       SelectionChanged="WorksheetListView_OnSelectionChanged"
       >
-      <ListView.View>
-        <GridView>
-          <GridViewColumn Header="Worksheet" DisplayMemberBinding="{Binding Name}" />
-          <GridViewColumn Header="Quest">
-            <GridViewColumn.CellTemplate>
-              <DataTemplate>
-                <TextBlock Text="{Binding QuestRange}"
+        <ListView.View>
+          <GridView>
+            <GridViewColumn Header="Worksheet" 
+                            DisplayMemberBinding="{Binding Name}" />
+            <GridViewColumn Header="Quest">
+              <GridViewColumn.CellTemplate>
+                <DataTemplate DataType="{x:Type quest:WorksheetInfoVM}">
+                  <TextBlock Text="{Binding QuestRange}"
                         MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
-              </DataTemplate>
-            </GridViewColumn.CellTemplate>
-          </GridViewColumn>
-          <GridViewColumn Header="Weights">
-            <GridViewColumn.CellTemplate>
-              <DataTemplate>
-                <TextBlock Text="{Binding WeightsRange}"
+                </DataTemplate>
+              </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Header="Weights">
+              <GridViewColumn.CellTemplate>
+                <DataTemplate DataType="{x:Type quest:WorksheetInfoVM}">
+                  <TextBlock Text="{Binding WeightsRange}"
                            MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
-              </DataTemplate>
-            </GridViewColumn.CellTemplate>
-          </GridViewColumn>
-        </GridView>
-      </ListView.View>
-    </ListView>
+                </DataTemplate>
+              </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+          </GridView>
+        </ListView.View>
+      </ListView>
+    </Grid>
     <Grid Grid.Column="1">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>

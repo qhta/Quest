@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Qhta.MVVM" Version="4.15.0" />
     <PackageReference Include="Qhta.ObservableObjects" Version="4.3.0" />
     <PackageReference Include="Syncfusion.XlsIO.Wpf" Version="31.1.19" />

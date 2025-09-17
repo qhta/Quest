@@ -4,9 +4,29 @@
         <name>QuestIMP</name>
     </assembly>
     <members>
+        <member name="T:Quest.WorkbookInfo">
+            <summary>
+            Information about a workbook, including its file name, project title, and associated worksheets.
+            </summary>
+        </member>
+        <member name="P:Quest.WorkbookInfo.FileName">
+            <summary>
+            File name of the workbook.
+            </summary>
+        </member>
+        <member name="P:Quest.WorkbookInfo.ProjectTitle">
+            <summary>
+            Project title associated with the workbook.
+            </summary>
+        </member>
+        <member name="P:Quest.WorkbookInfo.Worksheets">
+            <summary>
+            Information about the worksheets contained in the workbook.
+            </summary>
+        </member>
         <member name="T:Quest.WorksheetInfo">
             <summary>
-            Info about a worksheet in an Excel workbook.
+            Information about a worksheet in an Excel workbook with details about questionnaires and weights.
             </summary>
         </member>
         <member name="P:Quest.WorksheetInfo.Name">
@@ -60,12 +80,46 @@
             </summary>
             <param name="fileName"></param>
         </member>
-        <member name="M:Quest.XlsImporter.GetWorksheets">
+        <member name="M:Quest.XlsImporter.GetWorkbookInfo(System.String)">
             <summary>
-            Gets the list of worksheets. Specifies if their contain questionnaires.
+            Gets information about the opened workbook, including its file name, project title, and associated worksheets.
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Quest.XlsImporter.GetWorksheets(Syncfusion.XlsIO.IWorkbook)">
+            <summary>
+            Gets the list of worksheets. Specifies if they contain questionnaires.
             </summary>
             <returns></returns>
             <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:Quest.WorkbookInfoVM">
+            <summary>
+            ViewModel for <see cref="T:Quest.WorkbookInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Quest.WorkbookInfoVM.#ctor(Quest.WorkbookInfo)">
+            <summary>
+            Mandatory constructor with model parameter.
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.WorkbookInfoVM.FileName">
+            <summary>
+            Represents the file name of the workbook.
+            </summary>
+        </member>
+        <member name="P:Quest.WorkbookInfoVM.ProjectTitle">
+            <summary>
+            Represents the project title of the workbook.
+            </summary>
+        </member>
+        <member name="P:Quest.WorkbookInfoVM.Worksheets">
+            <summary>
+            Collection of worksheet information associated with the workbook.
+            </summary>
         </member>
         <member name="T:Quest.WorksheetInfoCollection">
             <summary>

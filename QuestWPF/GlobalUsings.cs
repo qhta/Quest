@@ -17,5 +17,7 @@ global using System.Windows.Shapes;
 global using Microsoft.Win32;
 global using Qhta.MVVM;
 global using Syncfusion.Licensing;
+global using Syncfusion.UI.Xaml.CellGrid;
 global using Syncfusion.UI.Xaml.Spreadsheet;
 global using Syncfusion.XlsIO;
+global using SelectionChangedEventArgs = System.Windows.Controls.SelectionChangedEventArgs;

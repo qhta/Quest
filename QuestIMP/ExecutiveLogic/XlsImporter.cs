@@ -8,8 +8,9 @@ using Syncfusion.XlsIO;
 /// </summary>
 public class XlsImporter
 {
-  const string WeightsFirstCellMarker = "L.p.";
-  const string QuestFirstCellMarker = "Cechy";
+  private const string ProjectTitleLabel = "Ocena projektu";
+  private const string WeightsFirstCellMarker = "L.p.";
+  private const string QuestFirstCellMarker = "Cechy";
 
   /// <summary>
   /// Working workbook instance.
@@ -29,18 +30,37 @@ public class XlsImporter
   }
 
   /// <summary>
-  /// Gets the list of worksheets. Specifies if their contain questionnaires.
+  /// Gets information about the opened workbook, including its file name, project title, and associated worksheets.
   /// </summary>
+  /// <param name="fileName"></param>
   /// <returns></returns>
   /// <exception cref="InvalidOperationException"></exception>
-  public IEnumerable<WorksheetInfo> GetWorksheets()
+  public WorkbookInfo GetWorkbookInfo(string fileName)
   {
     if (Workbook == null)
     {
       throw new InvalidOperationException("Workbook is not opened.");
     }
+    var info = new WorkbookInfo
+    {
+      FileName = fileName,
+      ProjectTitle = ScanForProjectTitle(Workbook),
+      Worksheets = GetWorksheets().ToArray()
+    };
+    return info;
+  }
+
+  /// <summary>
+  /// Gets the list of worksheets. Specifies if they contain questionnaires.
+  /// </summary>
+  /// <returns></returns>
+  /// <exception cref="InvalidOperationException"></exception>
+  private IEnumerable<WorksheetInfo> GetWorksheets(IWorkbook? workbook = null)
+  {
+    workbook ??= Workbook ?? throw new InvalidOperationException("Workbook is not opened.");
+
     var resultList = new List<WorksheetInfo>();
-    foreach (var worksheet in Workbook.Worksheets)
+    foreach (var worksheet in workbook.Worksheets)
     {
       var info = new WorksheetInfo
       {
@@ -106,5 +126,45 @@ public class XlsImporter
       }
     }
     return (found, rangeStart, rangeEnd);
+  }
+
+  private string? ScanForProjectTitle(IWorkbook workbook)
+  {
+    foreach (var worksheet in workbook.Worksheets)
+    {
+      var projectTitle = ScanForProjectTitle(worksheet);
+      if (projectTitle!=null)
+        return projectTitle;
+    }
+    return null;
+  }
+
+  private string? ScanForProjectTitle(IWorksheet worksheet)
+  {
+    var labelFound = false;
+    for (int r = 0; r < worksheet.Rows.Count(); r++)
+    {
+      var row = worksheet.Rows[r];
+      if (!row.Cells.Any()) continue; // Skip rows without cells
+
+      for (int c = 0; c < row.Count; c++)
+      {
+        var cell = row.Cells[c];
+        var s = cell?.Value?.ToString();
+        if (s == ProjectTitleLabel)
+        {
+          labelFound = true;
+          continue;
+        }
+        if (labelFound)
+        {
+          if (!String.IsNullOrWhiteSpace(s))
+            return s;
+        }
+      }
+      if (labelFound)
+        break;
+    }
+    return null;
   }
 }

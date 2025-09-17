@@ -1,12 +1,4 @@
-﻿using System.Diagnostics;
-using Syncfusion.UI.Xaml.CellGrid;
-using Syncfusion.UI.Xaml.Grid.ScrollAxis;
-using Syncfusion.UI.Xaml.Spreadsheet;
-using Syncfusion.Windows.Tools.Controls;
-
-using SelectionChangedEventArgs = System.Windows.Controls.SelectionChangedEventArgs;
-
-namespace Quest.Views;
+﻿namespace Quest.Views;
 
 /// <summary>
 /// Interaction logic for ExcelView.xaml
@@ -58,8 +50,10 @@ public partial class ExcelView : UserControl
     var xmlImporter = new XlsImporter();
     xmlImporter.OpenWorkbook(fileName);
     SpreadsheetControl.Open(xmlImporter.Workbook);
-    var worksheets = new WorksheetInfoCollection(xmlImporter.GetWorksheets());
-    WorksheetListView.ItemsSource = worksheets;
+    var workbookInfo = xmlImporter.GetWorkbookInfo(fileName);
+    var workbookVM = new WorkbookInfoVM(workbookInfo);
+    workbookVM.ProjectTitle ??= "<Tytuł projektu>";
+    DataContext = workbookVM;
   }
 
   private void WorksheetListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -1,9 +1,9 @@
 ﻿namespace Quest;
 
 /// <summary>
-/// Info about a worksheet in an Excel workbook.
+/// Information about a worksheet in an Excel workbook with details about questionnaires and weights.
 /// </summary>
-public class WorksheetInfo
+public record WorksheetInfo
 {
   /// <summary>
   /// Name of the worksheet.
