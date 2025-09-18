@@ -1,9 +1,13 @@
-﻿namespace Quest.Views;
+﻿using Visibility = System.Windows.Visibility;
+
+namespace Quest.Views;
 /// <summary>
 /// Interaction logic for ProjectsView.xaml
 /// </summary>
 public partial class ProjectsView : UserControl
 {
+  private ScrollViewer? _listScrollViewer;
+
   /// <summary>
   /// Initializing constructor
   /// </summary>
@@ -18,6 +22,53 @@ public partial class ProjectsView : UserControl
 
     // Bind the Projects property to a UI control
     DataContext = viewModel;
+  }
+  private void ProjectsListView_Loaded(object sender, RoutedEventArgs e)
+  {
+    // Hook into the internal ScrollViewer to react when scrollbar appears/disappears
+    _listScrollViewer = FindVisualChild<ScrollViewer>(ProjectsListView);
+    if (_listScrollViewer is not null)
+    {
+      _listScrollViewer.ScrollChanged += (_, __) => ResizeListColumnToFill();
+    }
+    ResizeListColumnToFill();
+  }
+
+  private void ProjectsListView_SizeChanged(object sender, SizeChangedEventArgs e)
+  {
+    ResizeListColumnToFill();
+  }
+
+  private void ResizeListColumnToFill()
+  {
+    if (ProjectsListView.View is not GridView gv || gv.Columns.Count == 0) return;
+
+    // Subtract vertical scrollbar width only when visible
+    double vbar = (_listScrollViewer?.ComputedVerticalScrollBarVisibility == (Visibility.Visible))
+      ? SystemParameters.VerticalScrollBarWidth
+      : 0;
+
+    // Small padding fudge to avoid horizontal scrollbar
+    double padding = 8;
+
+    double newWidth = Math.Max(0, ProjectsListView.ActualWidth - vbar - padding);
+    if (!Double.IsNaN(newWidth) && !Double.IsInfinity(newWidth))
+    {
+      gv.Columns[0].Width = newWidth;
+    }
+  }
+
+  private static TChild? FindVisualChild<TChild>(DependencyObject? parent) where TChild : DependencyObject
+  {
+    if (parent is null) return null;
+    for (int i = 0, n = VisualTreeHelper.GetChildrenCount(parent); i < n; i++)
+    {
+      var child = VisualTreeHelper.GetChild(parent, i);
+      if (child is TChild typed) return typed;
+      var nested = FindVisualChild<TChild>(child);
+      if (nested is not null) return nested;
+    }
+    return null;
   }
 
   private void ProjectsListView_KeyDown(object sender, KeyEventArgs e)

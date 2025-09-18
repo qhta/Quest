@@ -22,7 +22,14 @@
       x:Name="ProjectsListView"
       SelectedItem="{Binding SelectedProject}"
       KeyDown="ProjectsListView_KeyDown"
-      ItemsSource="{Binding Projects }">
+      ItemsSource="{Binding Projects }"
+      Loaded="ProjectsListView_Loaded"
+      SizeChanged="ProjectsListView_SizeChanged">
+      <ListView.ItemContainerStyle>
+        <Style TargetType="ListViewItem">
+          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+      </ListView.ItemContainerStyle>
       <ListView.View>
         <GridView>
           <GridView.ColumnHeaderContainerStyle>
