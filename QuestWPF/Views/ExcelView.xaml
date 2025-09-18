@@ -7,6 +7,7 @@
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:reflection="clr-namespace:Syncfusion.Reflection;assembly=Syncfusion.Shared.Base"
              xmlns:questImp="clr-namespace:QuestIMP;assembly=QuestIMP"
+             xmlns:quest="clr-namespace:Quest;assembly=QuestEXP"
              x:Class="Quest.Views.ExcelView"
              d:DataContext="{d:DesignInstance questImp:WorkbookInfoVM}"
              mc:Ignorable="d" 
@@ -21,7 +22,12 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
-      <TextBox Text="{Binding ProjectTitle}"/>
+      <ComboBox 
+        Text="{Binding ProjectTitle}"
+        ItemsSource="{Binding Source={x:Static quest:ProjectsViewModel.Instance}, Path=Projects}"
+        DisplayMemberPath="Title" 
+        IsEditable="True"
+        />
       <ListView 
       x:Name="WorksheetListView"
       Grid.Row="1"
