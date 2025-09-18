@@ -1,4 +1,6 @@
-﻿namespace QuestRDM;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace QuestRDM;
 
 /// <summary>
 /// Information about a project.
@@ -8,6 +10,7 @@ public class Project
   /// <summary>
   /// The ID of the project.
   /// </summary>
+  [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
   public int ID { get; set; }
 
   /// <summary>

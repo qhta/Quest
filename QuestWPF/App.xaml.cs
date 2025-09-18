@@ -15,8 +15,14 @@ public partial class App : Application
     //Syncfusion.Diagnostics.DebugLogger.EnableLogging = true;
   }
 
-  //protected override void OnStartup(StartupEventArgs e)
-  //{
-  //  base.OnStartup(e);
-  //}
+  /// <summary>
+  /// Initializes the application on startup.
+  /// </summary>
+  /// <param name="e"></param>
+  protected override void OnStartup(StartupEventArgs e)
+  {
+    base.OnStartup(e);
+    // Initialize QuestRDM database and seed Projects table if needed
+    QuestRDM.QuestRdmDbInitializer.Initialize();
+  }
 }

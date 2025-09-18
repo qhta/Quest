@@ -4,17 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Quest.Views"
+             xmlns:quest="clr-namespace:Quest;assembly=QuestEXP"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DataContext="{d:DesignInstance quest:ProjectsViewModel}"
+             d:DesignHeight="450" d:DesignWidth="300">
   <Grid>
-    <Syncfusion:SfDataGrid x:Name="ProjectsDataGrid" 
+    <!--<Syncfusion:SfDataGrid x:Name="ProjectsDataGrid" 
                            AutoGenerateColumns="False" 
-                           ItemsSource="{Binding}">
+                           ItemsSource="{Binding}"
+                           HeaderRowHeight="0"
+                           Background="White">
       <Syncfusion:SfDataGrid.Columns>
-        <Syncfusion:GridTextColumn MappingName="ID" HeaderText="ID" />
-        <Syncfusion:GridTextColumn MappingName="Guid" HeaderText="GUID" />
         <Syncfusion:GridTextColumn MappingName="Title" HeaderText="Title" />
       </Syncfusion:SfDataGrid.Columns>
-    </Syncfusion:SfDataGrid>
+    </Syncfusion:SfDataGrid>-->
+    <ListView 
+      x:Name="ProjectsListView"
+      SelectedItem="{Binding SelectedProject}"
+      KeyDown="ProjectsListView_KeyDown"
+      ItemsSource="{Binding Projects }">
+      <ListView.View>
+        <GridView>
+          <GridView.ColumnHeaderContainerStyle>
+            <Style TargetType="GridViewColumnHeader">
+              <Setter Property="Height" Value="0" />
+              <Setter Property="Visibility" Value="Collapsed" />
+            </Style>
+          </GridView.ColumnHeaderContainerStyle>
+          <GridViewColumn  DisplayMemberBinding="{Binding Title}" />
+        </GridView>
+      </ListView.View>
+    </ListView>
+    <TextBox 
+      x:Name="EditTextBox"
+      Text="{Binding SelectedProject.Title, UpdateSourceTrigger=PropertyChanged, FallbackValue=''}"
+      Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
+      KeyDown="EditTextBox_KeyDown"
+      VerticalAlignment="Top"
+      HorizontalAlignment="Stretch"
+      Margin="6,2" />
   </Grid>
 </UserControl>

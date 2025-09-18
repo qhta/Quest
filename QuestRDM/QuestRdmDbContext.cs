@@ -35,12 +35,11 @@ public class QuestRdmDbContext : DbContext
     modelBuilder.Entity<Project>(entity =>
     {
       entity.HasKey(p => p.ID); // Set ID as the primary key
-      entity.Property(p => p.Guid)
-        .IsRequired(); // Ensure Guid is required
-      entity.Property(p => p.Title)
-        .HasMaxLength(255); // Set max length for Title
+      entity.Property(p => p.Guid).IsRequired(); // Ensure Guid is required
+      entity.Property(p => p.Title).HasMaxLength(255); // Set max length for Title
     });
 
     // Add additional configurations here if needed
+
   }
 }

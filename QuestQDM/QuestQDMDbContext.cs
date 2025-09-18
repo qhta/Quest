@@ -1,6 +1,6 @@
 ﻿namespace Quest.Data.QDM
 {
-  public class QuestDbContext : DbContext
+  public class QuestQDMDbContext : DbContext
   {
     public DbSet<ProjectQuality> ProjectQualities { get; set; }
     public DbSet<DocumentQuality> DocumentQualities { get; set; }

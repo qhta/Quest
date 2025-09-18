@@ -17,6 +17,12 @@
             Sets up the application and registers the Syncfusion license key.
             </summary>
         </member>
+        <member name="M:QuestWPF.App.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>
+            Initializes the application on startup.
+            </summary>
+            <param name="e"></param>
+        </member>
         <member name="M:QuestWPF.App.InitializeComponent">
             <summary>
             InitializeComponent
@@ -47,6 +53,13 @@
             <summary>
             Command to open and Excel spreadsheet file.
             </summary>
+        </member>
+        <member name="M:QuestWPF.MainWindow.AddFloatingView(System.Windows.Controls.Control,System.String)">
+            <summary>
+            Add a view to the docking manager.
+            </summary>
+            <param name="view"></param>
+            <param name="header"></param>
         </member>
         <member name="M:QuestWPF.MainWindow.InitializeComponent">
             <summary>

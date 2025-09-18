@@ -5,22 +5,8 @@ namespace Quest;
 /// <summary>
 /// Singleton ViewModel that holds a ProjectsCollection.
 /// </summary>
-public class ProjectsViewModel
+public class ProjectsViewModel : ViewModel
 {
-
-  readonly QuestRdmDbContext dbContext = new QuestRdmDbContext();
-  private static readonly Lazy<ProjectsViewModel> _instance = new(() => new ProjectsViewModel());
-
-  /// <summary>
-  /// Gets the singleton instance of the ProjectsViewModel.
-  /// </summary>
-  public static ProjectsViewModel Instance => _instance.Value;
-
-  /// <summary>
-  /// The ProjectsCollection managed by this ViewModel.
-  /// </summary>
-  public ProjectsCollection Projects { get; private set; }
-
   /// <summary>
   /// Private constructor to enforce singleton pattern.
   /// </summary>
@@ -29,6 +15,29 @@ public class ProjectsViewModel
     // Initialize the ProjectsCollection with an empty list or fetch from a data source.
     Projects = new ProjectsCollection(new List<Project>());
   }
+
+  readonly QuestRdmDbContext dbContext = new QuestRdmDbContext();
+
+  /// <summary>
+  /// Gets the singleton instance of the ProjectsViewModel.
+  /// </summary>
+  public static ProjectsViewModel Instance => _instance.Value;
+  private static readonly Lazy<ProjectsViewModel> _instance = new(() => new ProjectsViewModel());
+
+  public ProjectsCollection Projects
+  {
+    [DebuggerStepThrough]
+    get => _Projects;
+    set
+    {
+      if (_Projects != value)
+      {
+        _Projects = value;
+        NotifyPropertyChanged(nameof(Projects));
+      }
+    }
+  }
+  private ProjectsCollection _Projects = new ProjectsCollection([]);
 
   /// <summary>
   /// Method to load projects from the QuestRDM.
@@ -40,4 +49,35 @@ public class ProjectsViewModel
     Projects = new ProjectsCollection(projects);
   }
 
+  public ProjectVM? SelectedProject
+  {
+    get => _selectedProject;
+    set
+    {
+      _selectedProject = value;
+      NotifyPropertyChanged(nameof(SelectedProject));
+    }
+  }
+  private ProjectVM? _selectedProject;
+  public bool IsEditing
+  {
+    get => _isEditing;
+    set
+    {
+      _isEditing = value;
+      NotifyPropertyChanged(nameof(IsEditing));
+    }
+  }
+  private bool _isEditing;
+
+  public void UpdateProject(ProjectVM project)
+  {
+    // Save changes to the database
+    var dbProject = dbContext.Projects.Find(project.ID);
+    if (dbProject != null)
+    {
+      dbProject.Title = project.Title;
+      dbContext.SaveChanges();
+    }
+  }
 }

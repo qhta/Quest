@@ -55,6 +55,21 @@
           </DockPanel>
         </DataTemplate>
       </syncfusion:DockingManager.HeaderTemplate>
+      <Views:ProjectsView
+        x:Name="ProjectsView"
+        syncfusion:DockingManager.CanClose="True"
+        syncfusion:DockingManager.DesiredHeightInDockedMode="600"
+        syncfusion:DockingManager.DesiredWidthInDockedMode="200"
+        syncfusion:DockingManager.DesiredWidthInFloatingMode="200"
+        syncfusion:DockingManager.Header="Projects"
+        syncfusion:DockingManager.SideInDockedMode="Right"
+        syncfusion:DocumentContainer.MDIBounds="30,30,300,300"
+        syncfusion:DocumentContainer.TabCaptionToolTip="check the result">
+        <!--  Customized Header Template  -->
+        <syncfusion:DockingManager.Icon>
+          <ImageBrush ImageSource= "Assets/DockingManager/MDI/Sample.gif"/>
+        </syncfusion:DockingManager.Icon>
+      </Views:ProjectsView>
     </syncfusion:DockingManager>
   </Grid>
 </Window>

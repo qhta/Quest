@@ -12,6 +12,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\**" />
+    <EmbeddedResource Remove="Assets\**" />
+    <None Remove="Assets\**" />
+    <Page Remove="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\DockingManager\MDI\Sample.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\DockingManager\MDI\DocIO.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\QuestENG\QuestENG.csproj" />
     <ProjectReference Include="..\QuestIMP\QuestIMP.csproj" />
   </ItemGroup>
