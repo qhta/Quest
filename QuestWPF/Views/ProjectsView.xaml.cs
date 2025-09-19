@@ -1,6 +1,4 @@
-﻿using Visibility = System.Windows.Visibility;
-
-namespace Quest.Views;
+﻿namespace QuestWPF.Views;
 /// <summary>
 /// Interaction logic for ProjectsView.xaml
 /// </summary>

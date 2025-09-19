@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="ExecutiveLogic\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

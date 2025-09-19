@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Quest;
 
 /// <summary>
@@ -24,6 +22,9 @@ public class ProjectsViewModel : ViewModel
   public static ProjectsViewModel Instance => _instance.Value;
   private static readonly Lazy<ProjectsViewModel> _instance = new(() => new ProjectsViewModel());
 
+  /// <summary>
+  /// Collection of all projects.
+  /// </summary>
   public ProjectsCollection Projects
   {
     [DebuggerStepThrough]
@@ -49,6 +50,9 @@ public class ProjectsViewModel : ViewModel
     Projects = new ProjectsCollection(projects);
   }
 
+  /// <summary>
+  /// Selected project in projects list.
+  /// </summary>
   public ProjectVM? SelectedProject
   {
     get => _selectedProject;

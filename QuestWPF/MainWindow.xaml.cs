@@ -1,10 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-using Quest.Views;
-
-using Syncfusion.Windows.Tools.Controls;
-
-namespace QuestWPF;
+﻿namespace QuestWPF;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -19,21 +13,21 @@ public partial class MainWindow : Window
   /// application.</remarks>
   public MainWindow()
   {
-
-    // Initialize the OpenSpreadsheet command
     OpenSpreadsheetCommand = new RelayCommand<Object>(OpenSpreadsheet);
+    StartImportCommand = new RelayCommand<Object>(StartImport);
     InitializeComponent();
   }
 
+  #region Open Spreadsheet Command
   /// <summary>
-  /// Command to open and Excel spreadsheet file.
+  /// Command to open an Excel spreadsheet file.
   /// </summary>
   public ICommand OpenSpreadsheetCommand { get; }
 
   private void OpenSpreadsheet(object? parameter)
   {
     // Open a file dialog to select an Excel file
-    OpenFileDialog openFileDialog = new OpenFileDialog
+    var openFileDialog = new OpenFileDialog
     {
       Filter = "Excel Files|*.xlsx;*.xlsm;*.xls",
       Title = "Open Spreadsheet"
@@ -46,6 +40,31 @@ public partial class MainWindow : Window
       AddFloatingView(excelView, filePath);
     }
   }
+  #endregion
+
+  #region Start Import Command
+  /// <summary>
+  /// Command to open an Excel spreadsheet file.
+  /// </summary>
+  public ICommand StartImportCommand { get; }
+
+  private void StartImport(object? parameter)
+  {
+    // Open a file dialog to select an Excel file
+    var openFileDialog = new SaveFileDialog
+    {
+      Filter = "SqLite database|*.db",
+      Title = "Output database"
+    };
+
+    if (openFileDialog.ShowDialog() == true)
+    {
+      string filePath = openFileDialog.FileName;
+      var questView = new QuestView { FileName = filePath };
+      AddFloatingView(questView, filePath);
+    }
+  }
+  #endregion
 
   /// <summary>
   /// Add a view to the docking manager.

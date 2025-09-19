@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Start.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\DockingManager\MDI\Sample.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -46,6 +50,7 @@
     <PackageReference Include="Syncfusion.SfSpreadsheet.WPF" Version="31.1.20" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="31.1.20" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="31.1.20" />
+    <PackageReference Include="syncfusion.ui.wpf.net" Version="31.1.17" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Quest.Views;
+﻿namespace QuestWPF.Views;
 
 /// <summary>
 /// Interaction logic for ExcelView.xaml

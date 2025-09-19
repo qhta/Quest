@@ -4,5 +4,72 @@
         <name>QuestENG</name>
     </assembly>
     <members>
+        <member name="T:Quest.ProjectsCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.ProjectVM"/> objects.
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectsCollection.#ctor(System.Collections.Generic.IEnumerable{QuestRDM.Project})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.ProjectsCollection"/> class with a list of <see cref="T:QuestRDM.Project"/>.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="T:Quest.ProjectsViewModel">
+            <summary>
+            Singleton ViewModel that holds a ProjectsCollection.
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectsViewModel.#ctor">
+            <summary>
+            Private constructor to enforce singleton pattern.
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectsViewModel.Instance">
+            <summary>
+            Gets the singleton instance of the ProjectsViewModel.
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectsViewModel.Projects">
+            <summary>
+            Collection of all projects.
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectsViewModel.LoadProjects">
+            <summary>
+            Method to load projects from the QuestRDM.
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectsViewModel.SelectedProject">
+            <summary>
+            Selected project in projects list.
+            </summary>
+        </member>
+        <member name="T:Quest.ProjectVM">
+            <summary>
+            ViewModel for an assessed Project
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectVM.#ctor(QuestRDM.Project)">
+            <summary>
+            Mandatory constructor
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.ProjectVM.ID">
+            <summary>
+            Entity identifier
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectVM.Guid">
+            <summary>
+            Global Unique Identifier of the project
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectVM.Title">
+            <summary>
+            A title of the project
+            </summary>
+        </member>
     </members>
 </doc>

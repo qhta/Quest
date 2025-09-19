@@ -51,7 +51,12 @@
         </member>
         <member name="P:QuestWPF.MainWindow.OpenSpreadsheetCommand">
             <summary>
-            Command to open and Excel spreadsheet file.
+            Command to open an Excel spreadsheet file.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.MainWindow.StartImportCommand">
+            <summary>
+            Command to open an Excel spreadsheet file.
             </summary>
         </member>
         <member name="M:QuestWPF.MainWindow.AddFloatingView(System.Windows.Controls.Control,System.String)">
@@ -91,7 +96,7 @@
             Collection of DockItems for managing dockable panels in the UI.
             </summary>
         </member>
-        <member name="T:Quest.Views.ExcelView">
+        <member name="T:QuestWPF.Views.ExcelView">
             <summary>
             Interaction logic for ExcelView.xaml
             </summary>
@@ -99,29 +104,47 @@
             ExcelView
             </summary>
         </member>
-        <member name="M:Quest.Views.ExcelView.#ctor">
+        <member name="M:QuestWPF.Views.ExcelView.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Quest.Views.ExcelView"/> class.
+            Initializes a new instance of the <see cref="T:QuestWPF.Views.ExcelView"/> class.
             </summary>
-            <remarks>This constructor sets up the necessary components for the <see cref="T:Quest.Views.ExcelView"/> instance.
+            <remarks>This constructor sets up the necessary components for the <see cref="T:QuestWPF.Views.ExcelView"/> instance.
             Ensure that the required dependencies are properly configured before using this class.</remarks>
         </member>
-        <member name="F:Quest.Views.ExcelView.FileNameProperty">
+        <member name="F:QuestWPF.Views.ExcelView.FileNameProperty">
             <summary>
-            DependencyProperty for the <see cref="P:Quest.Views.ExcelView.FileName"/> property.
+            DependencyProperty for the <see cref="P:QuestWPF.Views.ExcelView.FileName"/> property.
             </summary>
         </member>
-        <member name="P:Quest.Views.ExcelView.FileName">
+        <member name="P:QuestWPF.Views.ExcelView.FileName">
             <summary>
             Name of the Excel file to be displayed.
             </summary>
         </member>
-        <member name="M:Quest.Views.ExcelView.InitializeComponent">
+        <member name="M:QuestWPF.Views.ExcelView.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Quest.Views.ProjectsView">
+        <member name="T:QuestWPF.Views.ImportControl">
+            <summary>
+            Import control for handling data import operations.
+            </summary>
+            <summary>
+            ImportControl
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.ImportControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:QuestWPF.Views.ImportControl"/> class.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.ImportControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:QuestWPF.Views.ProjectsView">
             <summary>
             Interaction logic for ProjectsView.xaml
             </summary>
@@ -129,30 +152,40 @@
             ProjectsView
             </summary>
         </member>
-        <member name="M:Quest.Views.ProjectsView.#ctor">
+        <member name="M:QuestWPF.Views.ProjectsView.#ctor">
             <summary>
             Initializing constructor
             </summary>
         </member>
-        <member name="M:Quest.Views.ProjectsView.InitializeComponent">
+        <member name="M:QuestWPF.Views.ProjectsView.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Quest.Views.ProjectView">
+        <member name="T:QuestWPF.Views.QuestView">
             <summary>
-            Interaction logic for ProjectView.xaml
+            View for displaying and interacting with questionnaires.
             </summary>
             <summary>
-            ProjectView
-            </summary>
-        </member>
-        <member name="M:Quest.Views.ProjectView.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quest.Views.ProjectView"/> class.
+            QuestView
             </summary>
         </member>
-        <member name="M:Quest.Views.ProjectView.InitializeComponent">
+        <member name="M:QuestWPF.Views.QuestView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:QuestWPF.Views.QuestView"/> class.
+            </summary>
+        </member>
+        <member name="F:QuestWPF.Views.QuestView.FileNameProperty">
+            <summary>
+            DependencyProperty for the <see cref="P:QuestWPF.Views.QuestView.FileName"/> property.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Views.QuestView.FileName">
+            <summary>
+            Name of the Quest file to be displayed.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.QuestView.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
