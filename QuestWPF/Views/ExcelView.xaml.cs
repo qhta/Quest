@@ -48,11 +48,10 @@ public partial class ExcelView : UserControl
   {
     try
     {
-      //SpreadsheetControl.FileName = fileName;
       SpreadsheetControl.Open(fileName);
       var workbookInfo = GetWorkbookInfo(fileName);
       var workbookVM = new WorkbookInfoVM(workbookInfo);
-      workbookVM.ProjectTitle ??= "<Tytuł projektu>";
+      workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
       DataContext = workbookVM;
     }
     catch (Exception e)
@@ -66,12 +65,13 @@ public partial class ExcelView : UserControl
   {
     try
     {
-      //SpreadsheetControl.FileName = fileName;
       SpreadsheetControl.Open(fileName);
-      var workbookInfo = await GetWorkbookInfoAsync(fileName);
-      var workbookVM = new WorkbookInfoVM(workbookInfo);
-      workbookVM.ProjectTitle ??= "<Tytuł projektu>";
+      var workbookVM = new WorkbookInfoVM{ FileName = fileName };
       DataContext = workbookVM;
+      var xlsImporter = new XlsImporter();
+      xlsImporter.OpenWorkbook(fileName);
+      await GetWorkbookInfoAsync(xlsImporter, workbookVM);
+      workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
     }
     catch (Exception e)
     {
@@ -81,21 +81,22 @@ public partial class ExcelView : UserControl
 
   private WorkbookInfo GetWorkbookInfo(string fileName)
   {
-      var xmlImporter = new XlsImporter();
-      xmlImporter.OpenWorkbook(fileName);
-      var workbookInfo = xmlImporter.GetWorkbookInfo(fileName);
+      var xlsImporter = new XlsImporter();
+      xlsImporter.OpenWorkbook(fileName);
+      var workbookInfo = xlsImporter.GetWorkbookInfo(fileName);
       return workbookInfo;
   }
 
-  private async Task<WorkbookInfo> GetWorkbookInfoAsync(string fileName)
+  private async Task GetWorkbookInfoAsync(XlsImporter xlsImporter, WorkbookInfoVM workbookVM)
   {
-    return await Task.Run(() =>
+    workbookVM.ProjectTitle = await xlsImporter.ScanForProjectTitleAsync();
+    var worksheetInfos = xlsImporter.GetWorksheetsAsync();
+
+    await foreach (var worksheetInfo in worksheetInfos)
     {
-      var xmlImporter = new XlsImporter();
-      xmlImporter.OpenWorkbook(fileName);
-      var workbookInfo = xmlImporter.GetWorkbookInfo(fileName);
-      return workbookInfo;
-    });
+      //Debug.WriteLine($"Add {worksheetInfo.Name}");
+      workbookVM.Worksheets.Add(new WorksheetInfoVM(worksheetInfo));
+    }
   }
 
   private void WorksheetListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -104,8 +104,16 @@
             <summary>
             Gets the list of worksheets. Specifies if they contain questionnaires.
             </summary>
-            <returns></returns>
-            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="workbook">Interface for the Excel worksheet. If null, then previously opened Workbook is used.</param>
+            <returns>List of <see cref="T:QuestIMP.WorksheetInfo"/>. Can be empty.</returns>
+            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
+        </member>
+        <member name="M:QuestIMP.XlsImporter.GetWorksheetsAsync">
+            <summary>
+            Asynchronously gets the list of worksheets from previously opened workbook. Fills the provided collection.
+            </summary>
+            <returns>Asynchronously filled list of <see cref="T:QuestIMP.WorksheetInfo"/>. Can be empty.</returns>
+            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
         </member>
         <member name="M:QuestIMP.XlsImporter.GetWorksheetInfo(Syncfusion.XlsIO.IWorksheet)">
             <summary>
@@ -114,9 +122,53 @@
             <returns></returns>
             <exception cref="T:System.InvalidOperationException"></exception>
         </member>
+        <member name="M:QuestIMP.XlsImporter.GetWorksheetInfoAsync(Syncfusion.XlsIO.IWorksheet)">
+            <summary>
+            Gets a single worksheet info.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:QuestIMP.XlsImporter.ScanForProjectTitle(Syncfusion.XlsIO.IWorkbook)">
+            <summary>
+            Scans all worksheets for the project title.
+            </summary>
+            <param name="workbook">Interface for the Excel worksheet. If null, then previously opened Workbook is used.</param>
+            <returns>The project title as a string if found; otherwise null</returns>
+            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
+        </member>
+        <member name="M:QuestIMP.XlsImporter.ScanForProjectTitleAsync(Syncfusion.XlsIO.IWorkbook)">
+            <summary>
+            Asynchronously scans all worksheets for the project title.
+            </summary>
+            <param name="workbook">Interface for the Excel worksheet.  If null, then previously opened Workbook is used.</param>
+            <returns>The project title as a string if found; otherwise null</returns>
+            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>  
+        </member>
+        <member name="M:QuestIMP.XlsImporter.ScanForProjectTitle(Syncfusion.XlsIO.IWorksheet)">
+            <summary>
+            Scans the specified worksheet for a project title following a predefined label.
+            </summary>
+            <param name="worksheet">Interface for the Excel worksheet</param>
+            <returns>The project title as a string if found; otherwise null</returns>
+        </member>
+        <member name="M:QuestIMP.XlsImporter.CheckForGrades(Syncfusion.XlsIO.IWorksheet,System.String,System.String)">
+            <summary>
+            Checks the worksheet for the presence of grades in the specified range.
+            </summary>
+            <param name="worksheet">Interface for the Excel worksheet</param>
+            <param name="questStart">Local address of the top left cell with questionnaire</param>
+            <param name="questEnd">Local address of the top left cell with questionnaire</param>
+            <returns>True if any grade is found, otherwise false</returns>
+        </member>
         <member name="T:QuestIMP.WorkbookInfoVM">
             <summary>
             ViewModel for <see cref="T:QuestIMP.WorkbookInfo"/>.
+            </summary>
+        </member>
+        <member name="M:QuestIMP.WorkbookInfoVM.#ctor">
+            <summary>
+            Default constructor creating an empty model.
             </summary>
         </member>
         <member name="M:QuestIMP.WorkbookInfoVM.#ctor(QuestIMP.WorkbookInfo)">

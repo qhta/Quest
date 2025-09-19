@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestENG", "QuestENG\QuestE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestWASM", "QuestWASM\QuestWASM.csproj", "{A18A0EB6-9582-4A3B-BA6E-B78834ED8A09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRSX", "QuestRSX\QuestRSX.csproj", "{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A18A0EB6-9582-4A3B-BA6E-B78834ED8A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18A0EB6-9582-4A3B-BA6E-B78834ED8A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A18A0EB6-9582-4A3B-BA6E-B78834ED8A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

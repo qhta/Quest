@@ -6,6 +6,14 @@
 public class WorkbookInfoVM: ViewModel<WorkbookInfo>
 {
   /// <summary>
+  /// Default constructor creating an empty model.
+  /// </summary>
+  public WorkbookInfoVM() : this(new WorkbookInfo())
+  {
+
+  }
+
+  /// <summary>
   /// Mandatory constructor with model parameter.
   /// </summary>
   /// <param name="model"></param>

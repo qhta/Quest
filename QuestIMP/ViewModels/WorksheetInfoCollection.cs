@@ -1,9 +1,11 @@
-﻿namespace QuestIMP;
+﻿using System.Collections.ObjectModel;
+
+namespace QuestIMP;
 
 /// <summary>
 /// Observable collection of <see cref="WorksheetInfoVM"/> objects.
 /// </summary>
-public class WorksheetInfoCollection : ObservableList<WorksheetInfoVM>
+public class WorksheetInfoCollection : ObservableCollection<WorksheetInfoVM>
 {
   /// <summary>
   /// Initializes a new instance of the <see cref="WorksheetInfoCollection"/> class with a list of <see cref="WorksheetInfo"/>.

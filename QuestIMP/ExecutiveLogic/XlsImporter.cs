@@ -1,6 +1,8 @@
 ﻿using Quest;
 
 namespace QuestIMP;
+using System.Collections.Generic;
+
 using Syncfusion.XlsIO;
 
 /// <summary>
@@ -82,12 +84,12 @@ public class XlsImporter
   /// <summary>
   /// Gets the list of worksheets. Specifies if they contain questionnaires.
   /// </summary>
-  /// <returns></returns>
-  /// <exception cref="InvalidOperationException"></exception>
-  private IEnumerable<WorksheetInfo> GetWorksheets(IWorkbook? workbook = null)
+  /// <param name="workbook">Interface for the Excel worksheet. If null, then previously opened Workbook is used.</param>
+  /// <returns>List of <see cref="WorksheetInfo"/>. Can be empty.</returns>
+  /// <exception cref="InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
+  private List<WorksheetInfo> GetWorksheets(IWorkbook? workbook = null)
   {
     workbook ??= Workbook ?? throw new InvalidOperationException("Workbook is not opened.");
-
     var resultList = new List<WorksheetInfo>();
     foreach (var worksheet in workbook.Worksheets)
     {
@@ -98,11 +100,27 @@ public class XlsImporter
   }
 
   /// <summary>
+  /// Asynchronously gets the list of worksheets from previously opened workbook. Fills the provided collection.
+  /// </summary>
+  /// <returns>Asynchronously filled list of <see cref="WorksheetInfo"/>. Can be empty.</returns>
+  /// <exception cref="InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
+  public async IAsyncEnumerable<WorksheetInfo> GetWorksheetsAsync()
+  {
+    var workbook = Workbook ?? throw new InvalidOperationException("Workbook is not opened.");
+    foreach (var worksheet in workbook.Worksheets)
+    {
+      var info = await GetWorksheetInfoAsync(worksheet);
+      //Thread.Sleep(1000);
+      yield return info;
+    }
+  }
+
+  /// <summary>
   /// Gets a single worksheet info.
   /// </summary>
   /// <returns></returns>
   /// <exception cref="InvalidOperationException"></exception>
-  private WorksheetInfo GetWorksheetInfo(IWorksheet worksheet)
+  public WorksheetInfo GetWorksheetInfo(IWorksheet worksheet)
   {
     var info = new WorksheetInfo
     {
@@ -116,6 +134,16 @@ public class XlsImporter
       info.IsSelected = CheckForGrades(worksheet, info.QuestStart!, info.QuestEnd!);
     }
     return info;
+  }
+
+  /// <summary>
+  /// Gets a single worksheet info.
+  /// </summary>
+  /// <returns></returns>
+  /// <exception cref="InvalidOperationException"></exception>
+  public async Task<WorksheetInfo> GetWorksheetInfoAsync(IWorksheet worksheet)
+  {
+    return await Task.Run(() => GetWorksheetInfo(worksheet));
   }
 
   private static (bool, string?, string?) ScanForTable(IWorksheet worksheet, string marker)
@@ -172,8 +200,15 @@ public class XlsImporter
     return (found, rangeStart, rangeEnd);
   }
 
-  private string? ScanForProjectTitle(IWorkbook workbook)
+  /// <summary>
+  /// Scans all worksheets for the project title.
+  /// </summary>
+  /// <param name="workbook">Interface for the Excel worksheet. If null, then previously opened Workbook is used.</param>
+  /// <returns>The project title as a string if found; otherwise null</returns>
+  /// <exception cref="InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
+  public string? ScanForProjectTitle(IWorkbook? workbook = null)
   {
+    workbook ??= Workbook ?? throw new InvalidOperationException("Workbook is not opened.");
     foreach (var worksheet in workbook.Worksheets)
     {
       var projectTitle = ScanForProjectTitle(worksheet);
@@ -183,7 +218,33 @@ public class XlsImporter
     return null;
   }
 
-  private string? ScanForProjectTitle(IWorksheet worksheet)
+  /// <summary>
+  /// Asynchronously scans all worksheets for the project title.
+  /// </summary>
+  /// <param name="workbook">Interface for the Excel worksheet.  If null, then previously opened Workbook is used.</param>
+  /// <returns>The project title as a string if found; otherwise null</returns>
+  /// <exception cref="InvalidOperationException">Raised when workbook is null and not opened previously.</exception>  
+  public async Task<string?> ScanForProjectTitleAsync(IWorkbook? workbook = null)
+  {
+    workbook ??= Workbook ?? throw new InvalidOperationException("Workbook is not opened.");
+    return await Task.Run(() =>
+    {
+      foreach (var worksheet in workbook.Worksheets)
+      {
+        var projectTitle = ScanForProjectTitle(worksheet);
+        if (projectTitle != null)
+          return projectTitle;
+      }
+      return null;
+    });
+  }
+
+  /// <summary>
+  /// Scans the specified worksheet for a project title following a predefined label.
+  /// </summary>
+  /// <param name="worksheet">Interface for the Excel worksheet</param>
+  /// <returns>The project title as a string if found; otherwise null</returns>
+  public string? ScanForProjectTitle(IWorksheet worksheet)
   {
     var labelFound = false;
     for (int r = 0; r < worksheet.Rows.Count(); r++)
@@ -212,7 +273,14 @@ public class XlsImporter
     return null;
   }
 
-  private bool CheckForGrades(IWorksheet worksheet, string questStart, string questEnd)
+  /// <summary>
+  /// Checks the worksheet for the presence of grades in the specified range.
+  /// </summary>
+  /// <param name="worksheet">Interface for the Excel worksheet</param>
+  /// <param name="questStart">Local address of the top left cell with questionnaire</param>
+  /// <param name="questEnd">Local address of the top left cell with questionnaire</param>
+  /// <returns>True if any grade is found, otherwise false</returns>
+  public bool CheckForGrades(IWorksheet worksheet, string questStart, string questEnd)
   {
     var gradesColumn = -1;
     var gradesFound = false;

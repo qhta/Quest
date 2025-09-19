@@ -37,12 +37,14 @@
   <ItemGroup>
     <ProjectReference Include="..\QuestENG\QuestENG.csproj" />
     <ProjectReference Include="..\QuestIMP\QuestIMP.csproj" />
+    <ProjectReference Include="..\QuestRSX\QuestRSX.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="docs\" />
     <Folder Include="Properties\" />
     <Folder Include="Resources\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
