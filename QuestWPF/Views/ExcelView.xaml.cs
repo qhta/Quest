@@ -1,4 +1,6 @@
-﻿namespace QuestWPF.Views;
+﻿using QuestIMP;
+
+namespace QuestWPF.Views;
 
 /// <summary>
 /// Interaction logic for ExcelView.xaml
@@ -38,22 +40,62 @@ public partial class ExcelView : UserControl
     if (d is ExcelView excelView && e.NewValue is string newFileName)
     {
       // Assuming SpreadsheetControl is a part of ExcelView
-      excelView.UpdateSpreadsheetFileName(newFileName);
+      excelView.UpdateSpreadsheetFileNameAsync(newFileName);
+    }
+  }
+
+  private void UpdateSpreadsheetFileName(string fileName)
+  {
+    try
+    {
+      //SpreadsheetControl.FileName = fileName;
+      SpreadsheetControl.Open(fileName);
+      var workbookInfo = GetWorkbookInfo(fileName);
+      var workbookVM = new WorkbookInfoVM(workbookInfo);
+      workbookVM.ProjectTitle ??= "<Tytuł projektu>";
+      DataContext = workbookVM;
+    }
+    catch (Exception e)
+    {
+      Debug.WriteLine(e);
     }
   }
 
   // Method to update the SpreadsheetControl's filename
-  private void UpdateSpreadsheetFileName(string fileName)
+  private async void UpdateSpreadsheetFileNameAsync(string fileName)
   {
-    SpreadsheetControl.FileName = fileName;
-    IWorkbook workbook = SpreadsheetControl.Workbook;
-    var xmlImporter = new XlsImporter();
-    xmlImporter.OpenWorkbook(fileName);
-    SpreadsheetControl.Open(xmlImporter.Workbook);
-    var workbookInfo = xmlImporter.GetWorkbookInfo(fileName);
-    var workbookVM = new WorkbookInfoVM(workbookInfo);
-    workbookVM.ProjectTitle ??= "<Tytuł projektu>";
-    DataContext = workbookVM;
+    try
+    {
+      //SpreadsheetControl.FileName = fileName;
+      SpreadsheetControl.Open(fileName);
+      var workbookInfo = await GetWorkbookInfoAsync(fileName);
+      var workbookVM = new WorkbookInfoVM(workbookInfo);
+      workbookVM.ProjectTitle ??= "<Tytuł projektu>";
+      DataContext = workbookVM;
+    }
+    catch (Exception e)
+    {
+      Debug.WriteLine(e);
+    }
+  }
+
+  private WorkbookInfo GetWorkbookInfo(string fileName)
+  {
+      var xmlImporter = new XlsImporter();
+      xmlImporter.OpenWorkbook(fileName);
+      var workbookInfo = xmlImporter.GetWorkbookInfo(fileName);
+      return workbookInfo;
+  }
+
+  private async Task<WorkbookInfo> GetWorkbookInfoAsync(string fileName)
+  {
+    return await Task.Run(() =>
+    {
+      var xmlImporter = new XlsImporter();
+      xmlImporter.OpenWorkbook(fileName);
+      var workbookInfo = xmlImporter.GetWorkbookInfo(fileName);
+      return workbookInfo;
+    });
   }
 
   private void WorksheetListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

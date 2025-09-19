@@ -64,6 +64,11 @@
             Address of the cell where the weights table for the top level metrics ends.
             </summary>
         </member>
+        <member name="P:QuestIMP.WorksheetInfo.IsSelected">
+            <summary>
+            Specifies whether the worksheet should be processed.
+            </summary>
+        </member>
         <member name="T:QuestIMP.XlsImporter">
             <summary>
             Commander class for handling Excel operations.
@@ -88,9 +93,23 @@
             <returns></returns>
             <exception cref="T:System.InvalidOperationException"></exception>
         </member>
+        <member name="M:QuestIMP.XlsImporter.ImportProjectQuality(QuestIMP.WorkbookInfo)">
+            <summary>
+            Imports project quality data from the provided workbook information.
+            </summary>
+            <param name="workbookInfo"></param>
+            <returns></returns>
+        </member>
         <member name="M:QuestIMP.XlsImporter.GetWorksheets(Syncfusion.XlsIO.IWorkbook)">
             <summary>
             Gets the list of worksheets. Specifies if they contain questionnaires.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:QuestIMP.XlsImporter.GetWorksheetInfo(Syncfusion.XlsIO.IWorksheet)">
+            <summary>
+            Gets a single worksheet info.
             </summary>
             <returns></returns>
             <exception cref="T:System.InvalidOperationException"></exception>
@@ -150,6 +169,11 @@
         <member name="P:QuestIMP.WorksheetInfoVM.Name">
             <summary>
             Nameof the worksheet.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.WorksheetInfoVM.IsSelected">
+            <summary>
+            Specifies whether the worksheet is selected for processing.
             </summary>
         </member>
         <member name="P:QuestIMP.WorksheetInfoVM.HasQuest">

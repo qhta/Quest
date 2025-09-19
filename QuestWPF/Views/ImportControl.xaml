@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:QuestWPF.Views"
+             xmlns:views="clr-namespace:QuestWPF.Views"
+             xmlns:questWpf="clr-namespace:QuestWPF"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
   <Grid>
@@ -11,9 +12,11 @@
       <Button x:Name="StartImportButton"
               Padding="6,4"
               HorizontalAlignment="Left"
-              Command="StartImport">
+              Command="{Binding RelativeSource={RelativeSource AncestorType=questWpf:MainWindow}, Path=StartImportCommand}"
+              CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=views:ExcelView}}"
+              >
         <StackPanel Orientation="Horizontal">
-          <Image Source="/QuestWPF;component/Assets/Start.png"
+          <Image Source="/Assets/Start.png"
                  Width="16" Height="16"
                  Stretch="Uniform"
                  Margin="0,0,6,0"/>

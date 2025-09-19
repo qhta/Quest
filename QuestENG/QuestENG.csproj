@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="docs\" />
     <Folder Include="ExecutiveLogic\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

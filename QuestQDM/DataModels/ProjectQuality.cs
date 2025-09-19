@@ -24,10 +24,10 @@ public class ProjectQuality
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public IEnumerable<QualityFactorAggregate>? Factors { get; set; }
+  public List<QualityFactorAggregate>? QUalityFactors { get; set; }
 
   /// <summary>
   /// A collection of document qualities within the project.
   /// </summary>
-  public IEnumerable<DocumentQuality>? DocumentQualities { get; set; }
+  public List<DocumentQuality>? DocumentQualities { get; set; }
 }

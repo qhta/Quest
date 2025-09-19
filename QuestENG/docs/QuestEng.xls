@@ -4,6 +4,59 @@
         <name>QuestENG</name>
     </assembly>
     <members>
+        <member name="T:Quest.DocumentQualityCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.DocumentQualityVM"/> objects.
+            </summary>
+        </member>
+        <member name="M:Quest.DocumentQualityCollection.#ctor(System.Collections.Generic.IEnumerable{Quest.DocumentQuality})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.DocumentQualityCollection"/> class with a list of <see cref="T:Quest.DocumentQuality"/>.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="T:Quest.DocumentQualityVM">
+            <summary>
+            ViewModel for a single document quality assessment
+            </summary>
+        </member>
+        <member name="M:Quest.DocumentQualityVM.#ctor(Quest.DocumentQuality)">
+            <summary>
+            Mandatory constructor
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.DocumentQualityVM.DocumentName">
+            <summary>
+            Document name from the model
+            </summary>
+        </member>
+        <member name="T:Quest.ProjectQualityVM">
+            <summary>
+            ViewModel for a project quality assessment
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectQualityVM.#ctor(Quest.ProjectQuality)">
+            <summary>
+            Mandatory constructor
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.RootNode">
+            <summary>
+            Root node for the quality tree (always this instance)
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.ProjectName">
+            <summary>
+            Project name from the model
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.DocumentQualities">
+            <summary>
+            Individual document qualities within the project
+            </summary>
+        </member>
         <member name="T:Quest.ProjectsCollection">
             <summary>
             Observable collection of <see cref="T:Quest.ProjectVM"/> objects.

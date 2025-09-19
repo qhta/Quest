@@ -1,4 +1,6 @@
-﻿namespace QuestWPF;
+﻿using QuestWPF.Views;
+
+namespace QuestWPF;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -50,10 +52,18 @@ public partial class MainWindow : Window
 
   private void StartImport(object? parameter)
   {
+    if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
+    {
+      MessageBox.Show("No workbook to import from.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+      return;
+    }
+
+    var fileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".db"));
     // Open a file dialog to select an Excel file
     var openFileDialog = new SaveFileDialog
     {
       Filter = "SqLite database|*.db",
+      FileName = fileName,
       Title = "Output database"
     };
 
@@ -61,7 +71,19 @@ public partial class MainWindow : Window
     {
       string filePath = openFileDialog.FileName;
       var questView = new QuestView { FileName = filePath };
+      //var projectQuality = new ProjectQuality
+      //{
+      //  ProjectName = workbookInfoVM.ProjectTitle,
+      //  ProjectId = Guid.NewGuid(),
+      //  DocumentQualities = []
+      //};
+      var importer = new XlsImporter();
+      importer.OpenWorkbook(excelView.FileName);
+      var projectQuality = importer.ImportProjectQuality(workbookInfoVM.Model);
+      projectQuality.ProjectName = workbookInfoVM.ProjectTitle;
+      questView.DataContext = new ProjectQualityVM(projectQuality);
       AddFloatingView(questView, filePath);
+
     }
   }
   #endregion

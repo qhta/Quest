@@ -139,6 +139,23 @@
             Initializes a new instance of the <see cref="T:QuestWPF.Views.ImportControl"/> class.
             </summary>
         </member>
+        <member name="F:QuestWPF.Views.ImportControl.WorkbookInfoProperty">
+            <summary>
+            Dependency property for binding the <see cref="P:QuestWPF.Views.ImportControl.WorkbookInfo"/> to the control.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Views.ImportControl.WorkbookInfo">
+            <summary>
+            Reference to the workbook information view model.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.ImportControl.OnWorkbookInfoChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Callback method invoked when the <see cref="P:QuestWPF.Views.ImportControl.WorkbookInfo"/> property changes.
+            </summary>
+            <param name="d">The dependency object where the property changed.</param>
+            <param name="e">Details about the property change.</param>
+        </member>
         <member name="M:QuestWPF.Views.ImportControl.InitializeComponent">
             <summary>
             InitializeComponent
@@ -181,6 +198,16 @@
             </summary>
         </member>
         <member name="P:QuestWPF.Views.QuestView.FileName">
+            <summary>
+            Name of the Quest file to be displayed.
+            </summary>
+        </member>
+        <member name="F:QuestWPF.Views.QuestView.ProjectNameProperty">
+            <summary>
+            DependencyProperty for the <see cref="P:QuestWPF.Views.QuestView.ProjectName"/> property.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Views.QuestView.ProjectName">
             <summary>
             Name of the Quest file to be displayed.
             </summary>

@@ -3,10 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:QuestWPF.Views"
+             xmlns:views="clr-namespace:QuestWPF.Views"
+             xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance quest:ProjectQualityVM}"
              d:DesignHeight="450" d:DesignWidth="800">
   <Grid>
-    <syncfusion:SfTreeGrid />
+    <syncfusion:SfTreeGrid 
+      AutoGenerateColumns="False"
+      ItemsSource="{Binding RootNode}"
+      ChildPropertyName="DocumentQualities">
+      <syncfusion:SfTreeGrid.Columns>
+        <!-- Display ProjectName for the root node -->
+        <syncfusion:TreeGridTextColumn MappingName="ProjectName" HeaderText="Project Name" />
+        <!-- Display DocumentName for child nodes -->
+        <syncfusion:TreeGridTextColumn MappingName="DocumentName" HeaderText="Document Name" />
+      </syncfusion:SfTreeGrid.Columns>
+    </syncfusion:SfTreeGrid>
   </Grid>
 </UserControl>

@@ -39,4 +39,9 @@ public record WorksheetInfo
   /// Address of the cell where the weights table for the top level metrics ends.
   /// </summary>
   public string? WeightsEnd { get; set; }
+
+  /// <summary>
+  /// Specifies whether the worksheet should be processed.
+  /// </summary>
+  public bool IsSelected { get; set; }
 }

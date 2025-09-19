@@ -15,6 +15,8 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   /// <param name="model"></param>
   public WorksheetInfoVM(WorksheetInfo model) : base(model)
   {
+    // By default, select only those worksheets that have associated grades.
+    IsSelected = model.IsSelected;
   }
 
   /// <summary>
@@ -22,10 +24,28 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   /// </summary>
   public string? Name => Model.Name;
 
+
+  /// <summary>
+  /// Specifies whether the worksheet is selected for processing.
+  /// </summary>
+  public bool IsSelected
+  {
+    [DebuggerStepThrough]
+    get => Model.IsSelected;
+    set
+    {
+      if (Model.IsSelected != value)
+      {
+        Model.IsSelected = value;
+        NotifyPropertyChanged(nameof(IsSelected));
+      }
+    }
+  }
+
   /// <summary>
   /// Specifies whether the worksheet contains a questionnaire.
   /// </summary>
-  public bool? HasQuest => Model.HasQuest;
+  public bool HasQuest => Model.HasQuest;
 
   /// <summary>
   /// Address range of the questionnaire in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
@@ -35,7 +55,7 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   /// <summary>
   /// Specifies whether the worksheet contains a weights table.
   /// </summary>
-  public bool? HasWeights => Model.HasWeights;
+  public bool HasWeights => Model.HasWeights;
 
   /// <summary>
   /// Address range of the weights table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.

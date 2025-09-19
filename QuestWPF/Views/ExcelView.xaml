@@ -6,6 +6,7 @@
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:questImp="clr-namespace:QuestIMP;assembly=QuestIMP"
              xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
+             xmlns:views="clr-namespace:QuestWPF.Views"
              x:Class="QuestWPF.Views.ExcelView"
              d:DataContext="{d:DesignInstance questImp:WorkbookInfoVM}"
              mc:Ignorable="d" 
@@ -15,6 +16,7 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
+    <views:ImportControl/>
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
@@ -41,9 +43,18 @@
           >
           <ListView.View>
             <GridView>
+              <GridViewColumn Header="Import"
+                              Width="40">
+                <GridViewColumn.CellTemplate>
+                  <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
+                    <CheckBox IsChecked="{Binding IsSelected}"
+                              />
+                  </DataTemplate>
+                </GridViewColumn.CellTemplate>
+              </GridViewColumn>
               <GridViewColumn Header="Worksheet" 
                               Width="80"
-                            DisplayMemberBinding="{Binding Name}" />
+                              DisplayMemberBinding="{Binding Name}" />
               <GridViewColumn Header="Quest"
                               Width="80">
                 <GridViewColumn.CellTemplate>
