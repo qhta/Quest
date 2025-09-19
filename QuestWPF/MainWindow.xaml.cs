@@ -38,7 +38,8 @@ public partial class MainWindow : Window
     if (openFileDialog.ShowDialog() == true)
     {
       string filePath = openFileDialog.FileName;
-      var excelView = new ExcelView { FileName = filePath };
+      var excelView = new ExcelView {  FileName = filePath };
+      excelView.OpenSpreadsheetAsync(filePath);
       AddFloatingView(excelView, filePath);
     }
   }

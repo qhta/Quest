@@ -21,7 +21,7 @@ public partial class ExcelView : UserControl
   /// </summary>
   public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register
     (nameof(FileName), typeof(string), typeof(ExcelView),
-      new PropertyMetadata(null, OnFileNameChanged));
+      new PropertyMetadata(null));
 
   /// <summary>
   /// Name of the Excel file to be displayed.
@@ -33,27 +33,14 @@ public partial class ExcelView : UserControl
   }
 
   /// <summary>
-  /// Callback method invoked when the <see cref="FileName"/> property changes.
-  /// </summary>
-  /// <param name="d"></param>
-  /// <param name="e"></param>
-  private static void OnFileNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-  {
-    if (d is ExcelView excelView && e.NewValue is string newFileName)
-    {
-      // Assuming SpreadsheetControl is a part of ExcelView
-      excelView.OpenSpreadsheetAsync(newFileName);
-    }
-  }
-
-  /// <summary>
   /// Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
   /// </summary>
   /// <param name="fileName"></param>
-  private void OpenSpreadsheet(string fileName)
+  public void OpenSpreadsheet(string fileName)
   {
     try
     {
+      FileName = fileName;
       SpreadsheetControl.Open(fileName);
       var workbookInfo = GetWorkbookInfo(fileName);
       var workbookVM = new WorkbookInfoVM(workbookInfo);
@@ -70,17 +57,21 @@ public partial class ExcelView : UserControl
   /// Opens the specified Excel file asynchronously and updates the SpreadsheetControl and DataContext accordingly.
   /// </summary>
   /// <param name="fileName"></param>
-  private async void OpenSpreadsheetAsync(string fileName)
+  public async void OpenSpreadsheetAsync(string fileName)
   {
     try
     {
+      FileName = fileName;
       SpreadsheetControl.Open(fileName);
       var workbookVM = new WorkbookInfoVM{ FileName = fileName };
+      workbookVM.IsLoading = true;
       DataContext = workbookVM;
       var xlsImporter = new XlsImporter();
       xlsImporter.OpenWorkbook(fileName);
+      workbookVM.WorksheetsCount = xlsImporter.Workbook!.Worksheets.Count;
       await GetWorkbookInfoAsync(xlsImporter, workbookVM);
       workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
+      workbookVM.IsLoading = false;
     }
     catch (Exception e)
     {
@@ -116,6 +107,7 @@ public partial class ExcelView : UserControl
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");
       workbookVM.Worksheets.Add(new WorksheetInfoVM(worksheetInfo));
+      workbookVM.LoadedCount++;
     }
   }
 

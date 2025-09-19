@@ -192,6 +192,21 @@
             Collection of worksheet information associated with the workbook.
             </summary>
         </member>
+        <member name="P:QuestIMP.WorkbookInfoVM.IsLoading">
+            <summary>
+            Determines whether the workbook is currently in a loading state.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.WorkbookInfoVM.WorksheetsCount">
+            <summary>
+            Determines the count of worksheets to load.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.WorkbookInfoVM.LoadedCount">
+            <summary>
+            Currently loaded worksheets count
+            </summary>
+        </member>
         <member name="T:QuestIMP.WorksheetInfoCollection">
             <summary>
             Observable collection of <see cref="T:QuestIMP.WorksheetInfoVM"/> objects.

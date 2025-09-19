@@ -58,4 +58,59 @@ public class WorkbookInfoVM: ViewModel<WorkbookInfo>
   /// Collection of worksheet information associated with the workbook.
   /// </summary>
   public WorksheetInfoCollection Worksheets { get; private set; }
+
+
+  /// <summary>
+  /// Determines whether the workbook is currently in a loading state.
+  /// </summary>
+  public bool IsLoading
+  {
+    [DebuggerStepThrough]
+    get => _IsLoading;
+    set
+    {
+      if (_IsLoading != value)
+      {
+        _IsLoading = value;
+        NotifyPropertyChanged(nameof(IsLoading));
+      }
+    }
+  }
+  private bool _IsLoading;
+
+  /// <summary>
+  /// Determines the count of worksheets to load.
+  /// </summary>
+  public int WorksheetsCount
+  {
+    [DebuggerStepThrough]
+    get => _WorksheetsCount;
+    set
+    {
+      if (_WorksheetsCount != value)
+      {
+        _WorksheetsCount = value;
+        NotifyPropertyChanged(nameof(WorksheetsCount));
+      }
+    }
+  }
+  private int _WorksheetsCount;
+
+  /// <summary>
+  /// Currently loaded worksheets count
+  /// </summary>
+  public int LoadedCount
+  {
+    [DebuggerStepThrough]
+    get => _LoadedCount;
+    set
+    {
+      if (_LoadedCount != value)
+      {
+        _LoadedCount = value;
+        NotifyPropertyChanged(nameof(LoadedCount));
+      }
+    }
+  }
+  private int _LoadedCount;
 }

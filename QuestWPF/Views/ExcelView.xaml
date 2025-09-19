@@ -33,9 +33,19 @@
         DisplayMemberPath="Title" 
         IsEditable="True"
         />
+        <ProgressBar 
+          Grid.Row="1"
+          VerticalAlignment="Top"
+          Height="5"
+          Minimum="0"
+          Maximum="{Binding WorksheetsCount}"
+          Value="{Binding LoadedCount}"
+          Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+          />
         <ListView 
           x:Name="WorksheetListView"
           Grid.Row="1"
+          Margin="0,5,0,0"
           ItemsSource="{Binding Worksheets}" 
           HorizontalAlignment="Stretch" 
           VerticalAlignment="Stretch"
