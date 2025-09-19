@@ -1,6 +1,4 @@
-﻿using QuestIMP;
-
-namespace QuestWPF.Views;
+﻿namespace QuestWPF.Views;
 
 /// <summary>
 /// Interaction logic for ExcelView.xaml
@@ -34,17 +32,25 @@ public partial class ExcelView : UserControl
     set => SetValue(FileNameProperty, value);
   }
 
-  // Callback method for when the FileName property changes
+  /// <summary>
+  /// Callback method invoked when the <see cref="FileName"/> property changes.
+  /// </summary>
+  /// <param name="d"></param>
+  /// <param name="e"></param>
   private static void OnFileNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
   {
     if (d is ExcelView excelView && e.NewValue is string newFileName)
     {
       // Assuming SpreadsheetControl is a part of ExcelView
-      excelView.UpdateSpreadsheetFileNameAsync(newFileName);
+      excelView.OpenSpreadsheetAsync(newFileName);
     }
   }
 
-  private void UpdateSpreadsheetFileName(string fileName)
+  /// <summary>
+  /// Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
+  /// </summary>
+  /// <param name="fileName"></param>
+  private void OpenSpreadsheet(string fileName)
   {
     try
     {
@@ -60,8 +66,11 @@ public partial class ExcelView : UserControl
     }
   }
 
-  // Method to update the SpreadsheetControl's filename
-  private async void UpdateSpreadsheetFileNameAsync(string fileName)
+  /// <summary>
+  /// Opens the specified Excel file asynchronously and updates the SpreadsheetControl and DataContext accordingly.
+  /// </summary>
+  /// <param name="fileName"></param>
+  private async void OpenSpreadsheetAsync(string fileName)
   {
     try
     {
@@ -79,6 +88,11 @@ public partial class ExcelView : UserControl
     }
   }
 
+  /// <summary>
+  /// Retrieves information about the specified workbook file.
+  /// </summary>
+  /// <param name="fileName">The full path to the workbook file to be analyzed. This cannot be null or empty.</param>
+  /// <returns>A <see cref="WorkbookInfo"/> object containing metadata and details about the workbook.</returns>
   private WorkbookInfo GetWorkbookInfo(string fileName)
   {
       var xlsImporter = new XlsImporter();
@@ -87,6 +101,12 @@ public partial class ExcelView : UserControl
       return workbookInfo;
   }
 
+  /// <summary>
+  /// Retrieves and populates the workbook information asynchronously.
+  /// </summary>
+  /// <param name="xlsImporter"></param>
+  /// <param name="workbookVM"></param>
+  /// <returns></returns>
   private async Task GetWorkbookInfoAsync(XlsImporter xlsImporter, WorkbookInfoVM workbookVM)
   {
     workbookVM.ProjectTitle = await xlsImporter.ScanForProjectTitleAsync();
@@ -99,6 +119,11 @@ public partial class ExcelView : UserControl
     }
   }
 
+  /// <summary>
+  /// Method to handle selection changes in the worksheet list view.
+  /// </summary>
+  /// <param name="sender"></param>
+  /// <param name="e"></param>
   private void WorksheetListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
   {
     if (sender is ListView listView)
@@ -111,6 +136,11 @@ public partial class ExcelView : UserControl
     }
   }
 
+  /// <summary>
+  /// Method to handle mouse left button down event on the range text block.
+  /// </summary>
+  /// <param name="sender"></param>
+  /// <param name="e"></param>
   private void RangeTextBlock_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
   {
     if (WorksheetListView.SelectedItem is WorksheetInfoVM worksheetInfo)
@@ -126,6 +156,10 @@ public partial class ExcelView : UserControl
     }
   }
 
+  /// <summary>
+  /// Helper method to select a range in the active sheet based on the given IRange object.
+  /// </summary>
+  /// <param name="range"></param>
   private void SelectRange(IRange range)
   {
     var parts = range.AddressR1C1Local.Split(':');
