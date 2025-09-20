@@ -11,6 +11,12 @@ public class DocumentQuality
   public int Id { get; set; }
 
   /// <summary>
+  /// Type of the document.
+  /// </summary>
+  [MaxLength(255)]
+  public string? DocumentType { get; set; }
+
+  /// <summary>
   /// Name or path of the document.
   /// </summary>
   [MaxLength(255)]

@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CreateDatabaseFileTitle" xml:space="preserve">
+    <value>Utwórz plik bazy danych</value>
+  </data>
+  <data name="DatabaseFilesTitle" xml:space="preserve">
+    <value>Pliki bazy danych SQLite|*.db|Wszystkie pliki|*.*</value>
+  </data>
   <data name="EmptyProjectTitle" xml:space="preserve">
     <value>&lt;Tytuł projektu&gt;</value>
+  </data>
+  <data name="ExcelFilesFilter" xml:space="preserve">
+    <value>Pliki programu Excel|*.xlsx;*.xlsm;*.xls|Wszystkie pliki|*.*</value>
+  </data>
+  <data name="OpenExcelFileTitle" xml:space="preserve">
+    <value>Otwórz plik programu Excel</value>
   </data>
 </root>

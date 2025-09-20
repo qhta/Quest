@@ -35,7 +35,7 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
   /// </summary>
-  /// <param name="fileName"></param>
+  /// <param name="fileName">Full path to Excel file</param>
   public void OpenSpreadsheet(string fileName)
   {
     try
@@ -56,7 +56,7 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// Opens the specified Excel file asynchronously and updates the SpreadsheetControl and DataContext accordingly.
   /// </summary>
-  /// <param name="fileName"></param>
+  /// <param name="fileName">Full path to Excel file</param>
   public async void OpenSpreadsheetAsync(string fileName)
   {
     try
@@ -66,10 +66,9 @@ public partial class ExcelView : UserControl
       var workbookVM = new WorkbookInfoVM{ FileName = fileName };
       workbookVM.IsLoading = true;
       DataContext = workbookVM;
-      var xlsImporter = new XlsImporter();
-      xlsImporter.OpenWorkbook(fileName);
-      workbookVM.WorksheetsCount = xlsImporter.Workbook!.Worksheets.Count;
-      await GetWorkbookInfoAsync(xlsImporter, workbookVM);
+      var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
+      workbookVM.TotalCount = workbook.Worksheets.Count;
+      await GetWorkbookInfoAsync(workbook, workbookVM);
       workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
       workbookVM.IsLoading = false;
     }
@@ -82,26 +81,25 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// Retrieves information about the specified workbook file.
   /// </summary>
-  /// <param name="fileName">The full path to the workbook file to be analyzed. This cannot be null or empty.</param>
+  /// <param name="fileName">The full path to the workbook file to be analyzed.</param>
   /// <returns>A <see cref="WorkbookInfo"/> object containing metadata and details about the workbook.</returns>
   private WorkbookInfo GetWorkbookInfo(string fileName)
   {
-      var xlsImporter = new XlsImporter();
-      xlsImporter.OpenWorkbook(fileName);
-      var workbookInfo = xlsImporter.GetWorkbookInfo(fileName);
+      var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
+      var workbookInfo = WorkbookRecognizer.GetWorkbookInfo(workbook, fileName);
       return workbookInfo;
   }
 
   /// <summary>
   /// Retrieves and populates the workbook information asynchronously.
   /// </summary>
-  /// <param name="xlsImporter"></param>
-  /// <param name="workbookVM"></param>
+  /// <param name="workbook">Opened Excel workbook interface</param>
+  /// <param name="workbookVM">View model of workbook information</param>
   /// <returns></returns>
-  private async Task GetWorkbookInfoAsync(XlsImporter xlsImporter, WorkbookInfoVM workbookVM)
+  private async Task GetWorkbookInfoAsync(IWorkbook workbook, WorkbookInfoVM workbookVM)
   {
-    workbookVM.ProjectTitle = await xlsImporter.ScanForProjectTitleAsync();
-    var worksheetInfos = xlsImporter.GetWorksheetsAsync();
+    workbookVM.ProjectTitle = await WorkbookRecognizer.ScanForProjectTitleAsync(workbook);
+    var worksheetInfos = WorkbookRecognizer.GetWorksheetsAsync(workbook);
 
     await foreach (var worksheetInfo in worksheetInfos)
     {
@@ -114,8 +112,8 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// Method to handle selection changes in the worksheet list view.
   /// </summary>
-  /// <param name="sender"></param>
-  /// <param name="e"></param>
+  /// <param name="sender">Sender object</param>
+  /// <param name="e">Even arguments</param>
   private void WorksheetListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
   {
     if (sender is ListView listView)
@@ -131,8 +129,8 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// Method to handle mouse left button down event on the range text block.
   /// </summary>
-  /// <param name="sender"></param>
-  /// <param name="e"></param>
+  /// <param name="sender">Sender object</param>
+  /// <param name="e">Even arguments</param>
   private void RangeTextBlock_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
   {
     if (WorksheetListView.SelectedItem is WorksheetInfoVM worksheetInfo)
@@ -151,7 +149,7 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// Helper method to select a range in the active sheet based on the given IRange object.
   /// </summary>
-  /// <param name="range"></param>
+  /// <param name="range">Range in a worksheet</param>
   private void SelectRange(IRange range)
   {
     var parts = range.AddressR1C1Local.Split(':');

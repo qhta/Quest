@@ -47,14 +47,29 @@
             Root node for the quality tree (always this instance)
             </summary>
         </member>
-        <member name="P:Quest.ProjectQualityVM.ProjectName">
+        <member name="P:Quest.ProjectQualityVM.ProjectTitle">
             <summary>
-            Project name from the model
+            Project title from the model
             </summary>
         </member>
         <member name="P:Quest.ProjectQualityVM.DocumentQualities">
             <summary>
             Individual document qualities within the project
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.IsLoading">
+            <summary>
+            Determines whether the workbook is currently in a loading state.
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.TotalCount">
+            <summary>
+            Determines the count of worksheets to load.
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.LoadedCount">
+            <summary>
+            Currently loaded worksheets count
             </summary>
         </member>
         <member name="T:Quest.ProjectsCollection">

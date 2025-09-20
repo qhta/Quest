@@ -21,9 +21,9 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   public IEnumerable<ProjectQualityVM> RootNode { get; }
 
   /// <summary>
-  /// Project name from the model
+  /// Project title from the model
   /// </summary>
-  public string? ProjectName
+  public string? ProjectTitle
   {
     [DebuggerStepThrough]
     get => Model.ProjectName;
@@ -32,7 +32,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
       if (Model.ProjectName != value)
       {
         Model.ProjectName = value;
-        NotifyPropertyChanged(nameof(ProjectName));
+        NotifyPropertyChanged(nameof(ProjectTitle));
       }
     }
   }
@@ -41,4 +41,60 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   /// Individual document qualities within the project
   /// </summary>
   public DocumentQualityCollection DocumentQualities { get; set; }
+
+  #region Loading State Properties
+  /// <summary>
+  /// Determines whether the workbook is currently in a loading state.
+  /// </summary>
+  public bool IsLoading
+  {
+    [DebuggerStepThrough]
+    get => _IsLoading;
+    set
+    {
+      if (_IsLoading != value)
+      {
+        _IsLoading = value;
+        NotifyPropertyChanged(nameof(IsLoading));
+      }
+    }
+  }
+  private bool _IsLoading;
+
+  /// <summary>
+  /// Determines the count of worksheets to load.
+  /// </summary>
+  public int TotalCount
+  {
+    [DebuggerStepThrough]
+    get => _totalCount;
+    set
+    {
+      if (_totalCount != value)
+      {
+        _totalCount = value;
+        NotifyPropertyChanged(nameof(TotalCount));
+      }
+    }
+  }
+  private int _totalCount;
+
+  /// <summary>
+  /// Currently loaded worksheets count
+  /// </summary>
+  public int LoadedCount
+  {
+    [DebuggerStepThrough]
+    get => _LoadedCount;
+    set
+    {
+      if (_LoadedCount != value)
+      {
+        _LoadedCount = value;
+        NotifyPropertyChanged(nameof(LoadedCount));
+      }
+    }
+  }
+  private int _LoadedCount;
+  #endregion
 };

@@ -41,6 +41,11 @@ public record WorksheetInfo
   public string? WeightsEnd { get; set; }
 
   /// <summary>
+  /// Specifies whether the has grades associated with the questionnaire.
+  /// </summary>
+  public bool HasGrades { get; set; }
+
+  /// <summary>
   /// Specifies whether the worksheet should be processed.
   /// </summary>
   public bool IsSelected { get; set; }

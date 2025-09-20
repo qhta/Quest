@@ -1,4 +1,5 @@
-﻿using QuestWPF.Views;
+﻿using QuestRSX;
+using QuestWPF.Views;
 
 namespace QuestWPF;
 
@@ -31,16 +32,16 @@ public partial class MainWindow : Window
     // Open a file dialog to select an Excel file
     var openFileDialog = new OpenFileDialog
     {
-      Filter = "Excel Files|*.xlsx;*.xlsm;*.xls",
-      Title = "Open Spreadsheet"
+      Filter = Strings.ExcelFilesFilter,
+      Title = Strings.OpenExcelFileTitle
     };
 
     if (openFileDialog.ShowDialog() == true)
     {
-      string filePath = openFileDialog.FileName;
-      var excelView = new ExcelView {  FileName = filePath };
-      excelView.OpenSpreadsheetAsync(filePath);
-      AddFloatingView(excelView, filePath);
+      string newFilename = openFileDialog.FileName;
+      var excelView = new ExcelView {  FileName = newFilename };
+      excelView.OpenSpreadsheetAsync(newFilename);
+      AddFloatingView(excelView, newFilename);
     }
   }
   #endregion
@@ -59,32 +60,20 @@ public partial class MainWindow : Window
       return;
     }
 
-    var fileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".db"));
     // Open a file dialog to select an Excel file
     var openFileDialog = new SaveFileDialog
     {
-      Filter = "SqLite database|*.db",
-      FileName = fileName,
-      Title = "Output database"
+      FileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".db")),
+      Filter = Strings.DatabaseFilesTitle,
+      Title = Strings.CreateDatabaseFileTitle
     };
 
     if (openFileDialog.ShowDialog() == true)
     {
-      string filePath = openFileDialog.FileName;
-      var questView = new QuestView { FileName = filePath };
-      //var projectQuality = new ProjectQuality
-      //{
-      //  ProjectName = workbookInfoVM.ProjectTitle,
-      //  ProjectId = Guid.NewGuid(),
-      //  DocumentQualities = []
-      //};
-      var importer = new XlsImporter();
-      importer.OpenWorkbook(excelView.FileName);
-      var projectQuality = importer.ImportProjectQuality(workbookInfoVM.Model);
-      projectQuality.ProjectName = workbookInfoVM.ProjectTitle;
-      questView.DataContext = new ProjectQualityVM(projectQuality);
-      AddFloatingView(questView, filePath);
-
+      string newFilename = openFileDialog.FileName;
+      var questView = new QuestView { FileName = newFilename };
+      questView.ImportSpreadsheetAsync(workbookInfoVM.Model, newFilename);
+      AddFloatingView(excelView, newFilename);
     }
   }
   #endregion

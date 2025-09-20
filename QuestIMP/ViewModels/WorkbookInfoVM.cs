@@ -59,7 +59,7 @@ public class WorkbookInfoVM: ViewModel<WorkbookInfo>
   /// </summary>
   public WorksheetInfoCollection Worksheets { get; private set; }
 
-
+  #region Loading State Properties
   /// <summary>
   /// Determines whether the workbook is currently in a loading state.
   /// </summary>
@@ -81,20 +81,20 @@ public class WorkbookInfoVM: ViewModel<WorkbookInfo>
   /// <summary>
   /// Determines the count of worksheets to load.
   /// </summary>
-  public int WorksheetsCount
+  public int TotalCount
   {
     [DebuggerStepThrough]
-    get => _WorksheetsCount;
+    get => _totalCount;
     set
     {
-      if (_WorksheetsCount != value)
+      if (_totalCount != value)
       {
-        _WorksheetsCount = value;
-        NotifyPropertyChanged(nameof(WorksheetsCount));
+        _totalCount = value;
+        NotifyPropertyChanged(nameof(TotalCount));
       }
     }
   }
-  private int _WorksheetsCount;
+  private int _totalCount;
 
   /// <summary>
   /// Currently loaded worksheets count
@@ -113,4 +113,5 @@ public class WorkbookInfoVM: ViewModel<WorkbookInfo>
     }
   }
   private int _LoadedCount;
+  #endregion
 }

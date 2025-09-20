@@ -64,95 +64,145 @@
             Address of the cell where the weights table for the top level metrics ends.
             </summary>
         </member>
+        <member name="P:QuestIMP.WorksheetInfo.HasGrades">
+            <summary>
+            Specifies whether the has grades associated with the questionnaire.
+            </summary>
+        </member>
         <member name="P:QuestIMP.WorksheetInfo.IsSelected">
             <summary>
             Specifies whether the worksheet should be processed.
             </summary>
         </member>
-        <member name="T:QuestIMP.XlsImporter">
+        <member name="T:QuestIMP.WorkbookImporter">
             <summary>
-            Commander class for handling Excel operations.
+            Class for import Excel Workbooks.
             </summary>
         </member>
-        <member name="P:QuestIMP.XlsImporter.Workbook">
-            <summary>
-            Working workbook instance.
-            </summary>
-        </member>
-        <member name="M:QuestIMP.XlsImporter.OpenWorkbook(System.String)">
+        <member name="M:QuestIMP.WorkbookImporter.OpenWorkbook(System.String)">
             <summary>
             Opens an Excel workbook from the specified file and returns the IWorkbook instance.
             </summary>
-            <param name="fileName"></param>
+            <param name="fileName">Filename of the workbook</param>
         </member>
-        <member name="M:QuestIMP.XlsImporter.GetWorkbookInfo(System.String)">
+        <member name="M:QuestIMP.WorkbookImporter.ImportProjectQuality(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
             <summary>
-            Gets information about the opened workbook, including its file name, project title, and associated worksheets.
+            Imports project quality data from the provided workbook information. Workbook must be opened prior to calling this method.
             </summary>
-            <param name="fileName"></param>
-            <returns></returns>
-            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="workbook">Opened Excel workbook interface</param>
+            <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
+            <returns>Project quality object</returns>
         </member>
-        <member name="M:QuestIMP.XlsImporter.ImportProjectQuality(QuestIMP.WorkbookInfo)">
-            <summary>
-            Imports project quality data from the provided workbook information.
-            </summary>
-            <param name="workbookInfo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:QuestIMP.XlsImporter.GetWorksheets(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheets(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
             <summary>
             Gets the list of worksheets. Specifies if they contain questionnaires.
             </summary>
-            <param name="workbook">Interface for the Excel worksheet. If null, then previously opened Workbook is used.</param>
+            <param name="workbook">Opened Excel workbook interface</param>  
+            <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
+            <returns>List of <see cref="T:Quest.DocumentQuality"/>. Can be empty.</returns>
+            <exception cref="T:System.InvalidOperationException">Raised when workbook is null or is not opened previously.</exception>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheetsAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
+            <summary>
+            Asynchronously gets the list of worksheets from previously opened workbook. 
+            </summary>
+            <param name="workbook">Opened Excel workbook interface</param>  
+            <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
+            <returns>Asynchronously filled list of <see cref="T:Quest.DocumentQuality"/>. Can be empty.</returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheetInfo(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
+            <summary>
+            Gets a single document quality object.
+            </summary>
+            <param name="worksheet">Interface for opened Excel worksheet</param>
+            <param name="worksheetInfo">Info about worksheet info.</param>
+            <returns><see cref="T:Quest.DocumentQuality"/> object.</returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheetInfoAsync(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
+            <summary>
+            Asynchronously gets a single document quality object.
+            </summary>
+            <param name="worksheet">Interface for opened Excel worksheet</param>
+            <param name="worksheetInfo">Info about worksheet info.</param>
+            <returns>Task with <see cref="T:Quest.DocumentQuality"/> result.</returns>
+        </member>
+        <member name="T:QuestIMP.WorkbookRecognizer">
+            <summary>
+            Class for import Excel Workbooks.
+            </summary>
+        </member>
+        <member name="M:QuestIMP.WorkbookRecognizer.OpenWorkbook(System.String)">
+            <summary>
+            Opens an Excel workbook from the specified file and returns the IWorkbook instance.
+            </summary>
+            <param name="fileName">Filename of the workbook</param>
+        </member>
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorkbookInfo(Syncfusion.XlsIO.IWorkbook,System.String)">
+            <summary>
+            Gets information about the opened workbook, including its file name, project title, and associated worksheets.
+            </summary>
+            <param name="workbook">Opened Excel workbook interface</param>
+            <param name="fileName">Filename of the workbook</param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheets(Syncfusion.XlsIO.IWorkbook)">
+            <summary>
+            Gets the list of worksheets. Specifies if they contain questionnaires.
+            </summary>
+            <param name="workbook">Opened Excel workbook interface</param>
             <returns>List of <see cref="T:QuestIMP.WorksheetInfo"/>. Can be empty.</returns>
-            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
         </member>
-        <member name="M:QuestIMP.XlsImporter.GetWorksheetsAsync">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetsAsync(Syncfusion.XlsIO.IWorkbook)">
             <summary>
-            Asynchronously gets the list of worksheets from previously opened workbook. Fills the provided collection.
+            Asynchronously gets the list of worksheets from previously opened workbook.
             </summary>
+            <param name="workbook">Opened Excel workbook interface</param>
             <returns>Asynchronously filled list of <see cref="T:QuestIMP.WorksheetInfo"/>. Can be empty.</returns>
-            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
         </member>
-        <member name="M:QuestIMP.XlsImporter.GetWorksheetInfo(Syncfusion.XlsIO.IWorksheet)">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetInfo(Syncfusion.XlsIO.IWorksheet)">
             <summary>
             Gets a single worksheet info.
             </summary>
-            <returns></returns>
-            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="worksheet">Opened Excel worksheet interface</param>
+            <returns>Object of <see cref="T:QuestIMP.WorksheetInfo"/></returns>
         </member>
-        <member name="M:QuestIMP.XlsImporter.GetWorksheetInfoAsync(Syncfusion.XlsIO.IWorksheet)">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetInfoAsync(Syncfusion.XlsIO.IWorksheet)">
             <summary>
-            Gets a single worksheet info.
+            Asynchronously gets a single worksheet info.
             </summary>
-            <returns></returns>
-            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="worksheet">Opened Excel worksheet interface</param>
+            <returns>Task with the result of <see cref="T:QuestIMP.WorksheetInfo"/> object</returns>
         </member>
-        <member name="M:QuestIMP.XlsImporter.ScanForProjectTitle(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForTable(Syncfusion.XlsIO.IWorksheet,System.String)">
+            <summary>
+            Scans the specified worksheet for a table starting with the given marker.
+            </summary>
+            <param name="worksheet">Excel worksheet interface</param>
+            <param name="marker">string content of left-top cell of the table</param>
+            <returns>(found, left-top cell address, right-bottom cell address</returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle(Syncfusion.XlsIO.IWorkbook)">
             <summary>
             Scans all worksheets for the project title.
             </summary>
-            <param name="workbook">Interface for the Excel worksheet. If null, then previously opened Workbook is used.</param>
+            <param name="workbook">Interface for the Excel worksheet.</param>
             <returns>The project title as a string if found; otherwise null</returns>
-            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>
         </member>
-        <member name="M:QuestIMP.XlsImporter.ScanForProjectTitleAsync(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitleAsync(Syncfusion.XlsIO.IWorkbook)">
             <summary>
             Asynchronously scans all worksheets for the project title.
             </summary>
-            <param name="workbook">Interface for the Excel worksheet.  If null, then previously opened Workbook is used.</param>
-            <returns>The project title as a string if found; otherwise null</returns>
-            <exception cref="T:System.InvalidOperationException">Raised when workbook is null and not opened previously.</exception>  
+            <param name="workbook">Interface for the Excel worksheet.</param>
+            <returns>Task with whe project title as a string result, null if not found</returns>
         </member>
-        <member name="M:QuestIMP.XlsImporter.ScanForProjectTitle(Syncfusion.XlsIO.IWorksheet)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle(Syncfusion.XlsIO.IWorksheet)">
             <summary>
             Scans the specified worksheet for a project title following a predefined label.
             </summary>
             <param name="worksheet">Interface for the Excel worksheet</param>
             <returns>The project title as a string if found; otherwise null</returns>
         </member>
-        <member name="M:QuestIMP.XlsImporter.CheckForGrades(Syncfusion.XlsIO.IWorksheet,System.String,System.String)">
+        <member name="M:QuestIMP.WorkbookRecognizer.CheckForGrades(Syncfusion.XlsIO.IWorksheet,System.String,System.String)">
             <summary>
             Checks the worksheet for the presence of grades in the specified range.
             </summary>
@@ -197,7 +247,7 @@
             Determines whether the workbook is currently in a loading state.
             </summary>
         </member>
-        <member name="P:QuestIMP.WorkbookInfoVM.WorksheetsCount">
+        <member name="P:QuestIMP.WorkbookInfoVM.TotalCount">
             <summary>
             Determines the count of worksheets to load.
             </summary>

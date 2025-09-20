@@ -29,4 +29,5 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
       }
     }
   }
+
 }

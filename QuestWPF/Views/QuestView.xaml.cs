@@ -44,7 +44,7 @@ public partial class QuestView : UserControl
   /// </summary>
   public static readonly DependencyProperty ProjectNameProperty = DependencyProperty.Register
   (nameof(ProjectName), typeof(string), typeof(QuestView),
-    new PropertyMetadata(null, OnProjectNameChanged));
+    new PropertyMetadata(null));
 
   /// <summary>
   /// Name of the Quest file to be displayed.
@@ -54,17 +54,73 @@ public partial class QuestView : UserControl
     get => (string?)GetValue(ProjectNameProperty);
     set => SetValue(ProjectNameProperty, value);
   }
+  #endregion
 
-  // Callback method for when the ProjectName property changes
-  private static void OnProjectNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+  ///// <summary>
+  ///// Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
+  ///// </summary>
+  ///// <param name="fileName">Full path to Excel file</param>
+  //public void ImportSpreadsheet(string fileName)
+  //{
+  //  try
+  //  {
+  //    FileName = fileName;
+  //    SpreadsheetControl.Open(fileName);
+  //    var workbookInfo = GetWorkbookInfo(fileName);
+  //    var workbookVM = new WorkbookInfoVM(workbookInfo);
+  //    workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
+  //    DataContext = workbookVM;
+  //  }
+  //  catch (Exception e)
+  //  {
+  //    Debug.WriteLine(e);
+  //  }
+  //}
+
+  /// <summary>
+  /// Opens the specified Excel file and asynchronously updates the QualityView and DataContext accordingly.
+  /// </summary>
+  /// <param name="workbookInfo">Info about Excel file to import. Contains recognized ranges of questionnaires and aggregation weights</param>
+  /// <param name="fileName">Full path to database file to create</param>
+  public async void ImportSpreadsheetAsync(WorkbookInfo workbookInfo, string fileName)
   {
-    if (d is QuestView questView)
+    try
     {
-      if (questView.DataContext is ProjectQualityVM vm)
-      {
-        vm.ProjectName = e.NewValue as string;
-      }
+      FileName = fileName;
+      var qualityVM = new ProjectQualityVM(new ProjectQuality());
+      DataContext = qualityVM;
+      qualityVM.IsLoading = true;
+      qualityVM.TotalCount = workbookInfo.Worksheets.Count(item => item.IsSelected);
+      var workbook = WorkbookImporter.OpenWorkbook(fileName);
+
+      await ImportWorkbookAsync(workbook, workbookInfo, qualityVM);
+      qualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
+      qualityVM.IsLoading = false;
+    }
+    catch (Exception e)
+    {
+      Debug.WriteLine(e);
     }
   }
-  #endregion
+
+  /// <summary>
+  /// Retrieves data from workbook and populates the quality view model asynchronously.
+  /// </summary>
+  /// <param name="workbook">Opened Excel workbook</param>
+  /// <param name="workbookInfo">Workbook info object</param>
+  /// <param name="qualityVM">Project quality view model</param>
+  /// <returns></returns>
+  private async Task ImportWorkbookAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQualityVM qualityVM)
+  {
+    qualityVM.ProjectTitle = workbookInfo.ProjectTitle;
+    var worksheetInfos = WorkbookImporter.ImportWorksheetsAsync(workbook, workbookInfo);
+
+    await foreach (var worksheetInfo in worksheetInfos)
+    {
+      //Debug.WriteLine($"Add {worksheetInfo.Name}");
+      qualityVM.DocumentQualities.Add(new DocumentQualityVM(worksheetInfo));
+      qualityVM.LoadedCount++;
+    }
+  }
+
 }

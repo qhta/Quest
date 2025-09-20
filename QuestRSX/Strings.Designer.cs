@@ -61,11 +61,47 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create database file.
+        /// </summary>
+        public static string CreateDatabaseFileTitle {
+            get {
+                return ResourceManager.GetString("CreateDatabaseFileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQLite database files|*.db|All files|*.*.
+        /// </summary>
+        public static string DatabaseFilesTitle {
+            get {
+                return ResourceManager.GetString("DatabaseFilesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;Project Title&gt;.
         /// </summary>
         public static string EmptyProjectTitle {
             get {
                 return ResourceManager.GetString("EmptyProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls|All files|*.*.
+        /// </summary>
+        public static string ExcelFilesFilter {
+            get {
+                return ResourceManager.GetString("ExcelFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Excel file.
+        /// </summary>
+        public static string OpenExcelFileTitle {
+            get {
+                return ResourceManager.GetString("OpenExcelFileTitle", resourceCulture);
             }
         }
     }

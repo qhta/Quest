@@ -38,7 +38,7 @@
           VerticalAlignment="Top"
           Height="5"
           Minimum="0"
-          Maximum="{Binding WorksheetsCount}"
+          Maximum="{Binding TotalCount}"
           Value="{Binding LoadedCount}"
           Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
           />
@@ -86,6 +86,12 @@
             </GridView>
           </ListView.View>
         </ListView>
+        <syncfusion:SfBusyIndicator 
+          Grid.Row="1"
+          AnimationType="DotCircle"
+          AnimationSpeed="30"
+          Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+          />
       </Grid>
       <syncfusion:SfGridSplitter 
         Grid.Column="1" 
