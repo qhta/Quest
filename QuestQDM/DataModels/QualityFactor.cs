@@ -3,7 +3,7 @@
 /// <summary>
 /// Top level quality factor with weight and grade value.
 /// </summary>
-public class QualityFactor: Metrics
+public class QualityFactor: QualityMetrics
 {
   /// <summary>
   /// Unique identifier for the quality factor.

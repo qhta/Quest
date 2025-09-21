@@ -259,12 +259,13 @@
             Name of the Quest file to be displayed.
             </summary>
         </member>
-        <member name="M:QuestWPF.Views.QuestView.ImportSpreadsheetAsync(QuestIMP.WorkbookInfo,System.String)">
+        <member name="M:QuestWPF.Views.QuestView.ImportSpreadsheetAsync(System.String,QuestIMP.WorkbookInfo,System.String)">
             <summary>
             Opens the specified Excel file and asynchronously updates the QualityView and DataContext accordingly.
             </summary>
+            <param name="excelFileName">Full path to excel file to import</param>
             <param name="workbookInfo">Info about Excel file to import. Contains recognized ranges of questionnaires and aggregation weights</param>
-            <param name="fileName">Full path to database file to create</param>
+            <param name="dbFileName">Full path to database file to create</param>
         </member>
         <member name="M:QuestWPF.Views.QuestView.ImportWorkbookAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo,Quest.ProjectQualityVM)">
             <summary>

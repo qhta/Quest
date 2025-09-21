@@ -46,6 +46,11 @@ public record WorksheetInfo
   public bool HasGrades { get; set; }
 
   /// <summary>
+  /// Index of the column with grades in the questionnaire. Null if column not found.
+  /// </summary>
+  public int? GradesColumn { get; set; }
+
+  /// <summary>
   /// Specifies whether the worksheet should be processed.
   /// </summary>
   public bool IsSelected { get; set; }

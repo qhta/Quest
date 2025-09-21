@@ -61,19 +61,19 @@ public partial class MainWindow : Window
     }
 
     // Open a file dialog to select an Excel file
-    var openFileDialog = new SaveFileDialog
+    var saveFileDialog = new SaveFileDialog
     {
       FileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".db")),
       Filter = Strings.DatabaseFilesTitle,
       Title = Strings.CreateDatabaseFileTitle
     };
 
-    if (openFileDialog.ShowDialog() == true)
+    if (saveFileDialog.ShowDialog() == true)
     {
-      string newFilename = openFileDialog.FileName;
+      string newFilename = saveFileDialog.FileName;
       var questView = new QuestView { FileName = newFilename };
-      questView.ImportSpreadsheetAsync(workbookInfoVM.Model, newFilename);
-      AddFloatingView(excelView, newFilename);
+      questView.ImportSpreadsheetAsync(excelView.FileName, workbookInfoVM.Model, newFilename);
+      AddFloatingView(questView, newFilename);
     }
   }
   #endregion

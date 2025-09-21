@@ -1,4 +1,6 @@
-﻿namespace QuestWPF.Views;
+﻿using Quest.Data.QDM;
+
+namespace QuestWPF.Views;
 
 /// <summary>
 /// View for displaying and interacting with questionnaires.
@@ -80,18 +82,19 @@ public partial class QuestView : UserControl
   /// <summary>
   /// Opens the specified Excel file and asynchronously updates the QualityView and DataContext accordingly.
   /// </summary>
+  /// <param name="excelFileName">Full path to excel file to import</param>
   /// <param name="workbookInfo">Info about Excel file to import. Contains recognized ranges of questionnaires and aggregation weights</param>
-  /// <param name="fileName">Full path to database file to create</param>
-  public async void ImportSpreadsheetAsync(WorkbookInfo workbookInfo, string fileName)
+  /// <param name="dbFileName">Full path to database file to create</param>
+  public async void ImportSpreadsheetAsync(string excelFileName, WorkbookInfo workbookInfo, string dbFileName)
   {
     try
     {
-      FileName = fileName;
+      FileName = dbFileName;
       var qualityVM = new ProjectQualityVM(new ProjectQuality());
       DataContext = qualityVM;
       qualityVM.IsLoading = true;
       qualityVM.TotalCount = workbookInfo.Worksheets.Count(item => item.IsSelected);
-      var workbook = WorkbookImporter.OpenWorkbook(fileName);
+      var workbook = WorkbookImporter.OpenWorkbook(excelFileName);
 
       await ImportWorkbookAsync(workbook, workbookInfo, qualityVM);
       qualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;

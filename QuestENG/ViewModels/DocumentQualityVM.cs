@@ -19,12 +19,12 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
   public string? DocumentName
   {
     [DebuggerStepThrough]
-    get => Model.DocumentName;
+    get => Model.DocumentTitle;
     set
     {
-      if (Model.DocumentName != value)
+      if (Model.DocumentTitle != value)
       {
-        Model.DocumentName = value;
+        Model.DocumentTitle = value;
         NotifyPropertyChanged(nameof(DocumentName));
       }
     }

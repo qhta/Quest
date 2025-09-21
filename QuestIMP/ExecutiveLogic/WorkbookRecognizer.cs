@@ -86,7 +86,7 @@ public static class WorkbookRecognizer
     (info.HasWeights, info.WeightsStart, info.WeightsEnd) = ScanForTable(worksheet, WeightsFirstCellMarker);
     if (info.HasQuest)
     {
-      info.HasGrades = CheckForGrades(worksheet, info.QuestStart!, info.QuestEnd!);
+      (info.HasGrades, info.GradesColumn) = CheckForGrades(worksheet, info.QuestStart!, info.QuestEnd!);
     }
     return info;
   }
@@ -236,19 +236,19 @@ public static class WorkbookRecognizer
   /// <param name="worksheet">Interface for the Excel worksheet</param>
   /// <param name="questStart">Local address of the top left cell with questionnaire</param>
   /// <param name="questEnd">Local address of the top left cell with questionnaire</param>
-  /// <returns>True if any grade is found, otherwise false</returns>
-  public static bool CheckForGrades(IWorksheet worksheet, string questStart, string questEnd)
+  /// <returns>A pair of: 1. bool - true if any grade is found, otherwise false, 2. int - recognized grades column or null if not found.</returns>
+  public static (bool, int?) CheckForGrades(IWorksheet worksheet, string questStart, string questEnd)
   {
-    var gradesColumn = -1;
+    int? gradesColumn = null;
     var gradesFound = false;
-    var startRow = int.Parse(new String(questStart.Where(Char.IsDigit).ToArray())) - 1;
-    var endRow = int.Parse(new String(questEnd.Where(Char.IsDigit).ToArray())) - 1;
-    for (int r = startRow; r < endRow; r++)
+    var startRowIndex = WorkbookHelper.GetCellRowIndex(questStart);
+    var endRowIndex = WorkbookHelper.GetCellRowIndex(questEnd);
+    for (int r = startRowIndex; r < endRowIndex; r++)
     {
       var row = worksheet.Rows[r];
       if (!row.Cells.Any()) continue; // Skip rows without cells
 
-      if (gradesColumn < 0)
+      if (gradesColumn == null)
       {
         for (int c = 0; c < row.Count; c++)
         {
@@ -263,7 +263,7 @@ public static class WorkbookRecognizer
       }
       else
       {
-        var cell = row.Cells[gradesColumn];
+        var cell = row.Cells[(int)gradesColumn];
         var s = cell?.Value?.ToString();
         if (!String.IsNullOrWhiteSpace(s) && !s.StartsWith("="))
         {
@@ -272,7 +272,7 @@ public static class WorkbookRecognizer
         }
       }
     }
-    return gradesFound;
+    return (gradesFound, gradesColumn);
   }
 
 }

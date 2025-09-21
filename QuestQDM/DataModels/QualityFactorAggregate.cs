@@ -3,13 +3,8 @@
 /// <summary>
 /// Aggregated value of quality factors.
 /// </summary>
-public class QualityFactorAggregate
+public class QualityFactorAggregate: QualityNode
 {
-  /// <summary>
-  /// Unique identifier for the entity.
-  /// </summary>
-  public int Id { get; set; }
-
   /// <summary>
   /// Aggregated factor type.
   /// </summary>

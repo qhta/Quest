@@ -20,7 +20,7 @@ public class DocumentQuality
   /// Name or path of the document.
   /// </summary>
   [MaxLength(255)]
-  public string? DocumentName { get; set; }
+  public string? DocumentTitle { get; set; }
 
   /// <summary>
   /// Foreign key referencing the associated ProjectQuality.
@@ -36,5 +36,5 @@ public class DocumentQuality
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public QualityFactor[]? Factors { get; set; }
+  public List<QualityFactor> Factors { get; set; } = new List<QualityFactor>();
 }

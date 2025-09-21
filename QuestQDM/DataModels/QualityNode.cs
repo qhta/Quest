@@ -15,7 +15,7 @@ public abstract class QualityNode
   public int Id { get; set; }
   
   /// <summary>
-  ///  Level of the quality node in the tree (0 for root).
+  ///  Level of the quality node in the tree (0 for root, 1 for factor).
   /// </summary>
   public int Level { get; set; }
   

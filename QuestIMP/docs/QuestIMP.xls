@@ -69,10 +69,27 @@
             Specifies whether the has grades associated with the questionnaire.
             </summary>
         </member>
+        <member name="P:QuestIMP.WorksheetInfo.GradesColumn">
+            <summary>
+            Index of the column with grades in the questionnaire. Null if column not found.
+            </summary>
+        </member>
         <member name="P:QuestIMP.WorksheetInfo.IsSelected">
             <summary>
             Specifies whether the worksheet should be processed.
             </summary>
+        </member>
+        <member name="T:QuestIMP.WorkbookHelper">
+            <summary>
+            Class with helper methods for workbook processing.
+            </summary>
+        </member>
+        <member name="M:QuestIMP.WorkbookHelper.GetCellRowIndex(System.String)">
+            <summary>
+            GetCellColumnIndex - returns zero based column index for the given cell address.
+            </summary>
+            <param name="cellAddress"></param>
+            <returns></returns>
         </member>
         <member name="T:QuestIMP.WorkbookImporter">
             <summary>
@@ -209,7 +226,7 @@
             <param name="worksheet">Interface for the Excel worksheet</param>
             <param name="questStart">Local address of the top left cell with questionnaire</param>
             <param name="questEnd">Local address of the top left cell with questionnaire</param>
-            <returns>True if any grade is found, otherwise false</returns>
+            <returns>A pair of: 1. bool - true if any grade is found, otherwise false, 2. int - recognized grades column or null if not found.</returns>
         </member>
         <member name="T:QuestIMP.WorkbookInfoVM">
             <summary>
