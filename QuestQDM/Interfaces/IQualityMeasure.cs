@@ -3,7 +3,7 @@
 /// <summary>
 /// Quality measure containing assessments. Its value is computed from the assessments.
 /// </summary>
-public class QualityMeasure: QualityMetricsNode
+public interface IQualityMeasure: IQualityMetricsNode
 {
   /// <summary>
   /// Agreed grade value.
@@ -13,5 +13,5 @@ public class QualityMeasure: QualityMetricsNode
   /// <summary>
   /// Collection of assessments contributing to this quality measure value.
   /// </summary>
-  public List<QualityAssessment>? Assessments { get; set; }
+  public ICollection<IQualityAssessment>? Assessments { get; set; }
 }

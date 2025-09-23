@@ -9,11 +9,12 @@
             Observable collection of <see cref="T:Quest.DocumentQualityVM"/> objects.
             </summary>
         </member>
-        <member name="M:Quest.DocumentQualityCollection.#ctor(System.Collections.Generic.IEnumerable{Quest.DocumentQuality})">
+        <member name="M:Quest.DocumentQualityCollection.#ctor(Quest.ProjectQualityVM,System.Collections.Generic.IEnumerable{Quest.DocumentQuality})">
             <summary>
             Initializes a new instance of the <see cref="T:Quest.DocumentQualityCollection"/> class with a list of <see cref="T:Quest.DocumentQuality"/>.
             </summary>
-            <param name="items"></param>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
         </member>
         <member name="T:Quest.DocumentQualityVM">
             <summary>
@@ -26,9 +27,14 @@
             </summary>
             <param name="model"></param>
         </member>
-        <member name="P:Quest.DocumentQualityVM.DocumentName">
+        <member name="P:Quest.DocumentQualityVM.DocumentTitle">
             <summary>
-            Document name from the model
+            Document title from the model
+            </summary>
+        </member>
+        <member name="P:Quest.DocumentQualityVM.Factors">
+            <summary>
+            Individual document qualities within the project
             </summary>
         </member>
         <member name="T:Quest.ProjectQualityVM">
@@ -50,6 +56,11 @@
         <member name="P:Quest.ProjectQualityVM.ProjectTitle">
             <summary>
             Project title from the model
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.IsExpanded">
+            <summary>
+            Determines whether the project quality is expanded (when used in TreeView).
             </summary>
         </member>
         <member name="P:Quest.ProjectQualityVM.DocumentQualities">
@@ -113,6 +124,17 @@
             Selected project in projects list.
             </summary>
         </member>
+        <member name="P:Quest.ProjectsViewModel.IsEditing">
+            <summary>
+            Editing mode for the selected project.
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectsViewModel.UpdateProject(Quest.ProjectVM)">
+            <summary>
+            Update the project in the database.
+            </summary>
+            <param name="project"></param>
+        </member>
         <member name="T:Quest.ProjectVM">
             <summary>
             ViewModel for an assessed Project
@@ -137,6 +159,54 @@
         <member name="P:Quest.ProjectVM.Title">
             <summary>
             A title of the project
+            </summary>
+        </member>
+        <member name="T:Quest.QualityFactorCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.QualityFactorVM"/> objects.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorCollection.Parent">
+            <summary>
+            Parent view model
+            </summary>
+        </member>
+        <member name="M:Quest.QualityFactorCollection.#ctor(Quest.DocumentQualityVM,System.Collections.Generic.IEnumerable{Quest.QualityFactor})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.QualityFactorCollection"/> class with a list of <see cref="T:Quest.QualityFactor"/>.
+            </summary>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
+        </member>
+        <member name="T:Quest.QualityFactorVM">
+            <summary>
+            ViewModel for a quality factor assessment
+            </summary>
+        </member>
+        <member name="M:Quest.QualityFactorVM.#ctor(Quest.QualityFactor)">
+            <summary>
+            Mandatory constructor
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Text">
+            <summary>
+            Factor text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.IsLoading">
+            <summary>
+            Determines whether the workbook is currently in a loading state.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.TotalCount">
+            <summary>
+            Determines the count of worksheets to load.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.LoadedCount">
+            <summary>
+            Currently loaded worksheets count
             </summary>
         </member>
     </members>

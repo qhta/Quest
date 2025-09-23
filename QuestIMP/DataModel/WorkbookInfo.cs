@@ -18,5 +18,5 @@ public record WorkbookInfo
   /// <summary>
   /// Information about the worksheets contained in the workbook.
   /// </summary>
-  public WorksheetInfo[] Worksheets { get; set; } = [];
+  public List<WorksheetInfo> Worksheets { get; set; } = new List<WorksheetInfo>();
 }

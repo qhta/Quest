@@ -3,7 +3,7 @@
 /// <summary>
 /// Quality of the entire project.
 /// </summary>
-public class ProjectQuality
+public interface IProjectQuality
 {
   /// <summary>
   /// Unique identifier for the entity.
@@ -24,7 +24,7 @@ public class ProjectQuality
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public List<QualityFactorAggregate>? Factors { get; set; }
+  public List<IQualityFactorAggregate>? Factors { get; set; }
 
   /// <summary>
   /// A collection of document qualities within the project.

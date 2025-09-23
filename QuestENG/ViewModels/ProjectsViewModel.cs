@@ -63,6 +63,10 @@ public class ProjectsViewModel : ViewModel
     }
   }
   private ProjectVM? _selectedProject;
+
+  /// <summary>
+  /// Editing mode for the selected project.
+  /// </summary>
   public bool IsEditing
   {
     get => _isEditing;
@@ -74,6 +78,10 @@ public class ProjectsViewModel : ViewModel
   }
   private bool _isEditing;
 
+  /// <summary>
+  /// Update the project in the database.
+  /// </summary>
+  /// <param name="project"></param>
   public void UpdateProject(ProjectVM project)
   {
     // Save changes to the database

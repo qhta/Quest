@@ -99,6 +99,10 @@ public partial class QuestView : UserControl
       await ImportWorkbookAsync(workbook, workbookInfo, qualityVM);
       qualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
       qualityVM.IsLoading = false;
+      qualityVM.IsLoaded = true;
+      qualityVM.IsExpanded = true;
+
+      ExpandTreeViewItem(qualityVM);
     }
     catch (Exception e)
     {
@@ -126,4 +130,24 @@ public partial class QuestView : UserControl
     }
   }
 
+  private void ExpandTreeViewItem(ProjectQualityVM projectQualityVM)
+  {
+    if (ModelTreeView.ItemContainerGenerator.ContainerFromItem(projectQualityVM) is TreeViewItem container)
+    {
+      container.IsExpanded = projectQualityVM.IsExpanded;
+    }
+    else
+    {
+      ModelTreeView.ItemContainerGenerator.StatusChanged += (s, e) =>
+      {
+        if (ModelTreeView.ItemContainerGenerator.Status == System.Windows.Controls.Primitives.GeneratorStatus.ContainersGenerated)
+        {
+          if (ModelTreeView.ItemContainerGenerator.ContainerFromItem(projectQualityVM) is TreeViewItem generatedContainer)
+          {
+            generatedContainer.IsExpanded = projectQualityVM.IsExpanded;
+          }
+        }
+      };
+    }
+  }
 }

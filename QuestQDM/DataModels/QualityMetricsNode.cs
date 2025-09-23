@@ -6,9 +6,10 @@
 public class QualityMetricsNode: QualityNode
 {
   /// <summary>
-  /// Navigation property to the parent node. Null for Factor node.
+  /// Gets or sets the parent node associated with this quality metrics node.
   /// </summary>
-  public QualityMetricsNode? Parent { get; set; }
+  public QualityMetricsNode Parent { get; set; } = null!;
+
   /// <summary>
   /// Gets or sets the collection of child nodes associated with this node.
   /// </summary>

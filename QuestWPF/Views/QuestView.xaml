@@ -13,7 +13,7 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-    <views:ImportControl/>
+    <!--<views:ImportControl/>-->
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
@@ -47,7 +47,25 @@
           ItemsSource="{Binding RootNode}" 
           HorizontalAlignment="Stretch" 
           VerticalAlignment="Stretch"
-          >
+          Width="250"
+          VirtualizingStackPanel.IsVirtualizing="false">
+          <TreeView.Resources>
+            <HierarchicalDataTemplate 
+              DataType="{x:Type quest:ProjectQualityVM}" 
+              ItemsSource="{Binding DocumentQualities}" >
+              <TreeViewItem 
+                IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
+                <TreeViewItem.Header>
+                  <TextBlock Text="{Binding ProjectTitle}" />
+                </TreeViewItem.Header>
+              </TreeViewItem>
+            </HierarchicalDataTemplate>
+            <DataTemplate 
+              DataType="{x:Type quest:DocumentQualityVM}" >
+              <TextBlock Text="{Binding DocumentTitle}" />
+            </DataTemplate>
+
+          </TreeView.Resources>
         </TreeView>
       </Grid>
       <syncfusion:SfGridSplitter 
@@ -62,10 +80,6 @@
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--<syncfusion:SfSpreadsheetRibbon 
-      Grid.Row="0"
-      DataContext= "{Binding ElementName=spreadsheet}" 
-      />-->
       </Grid>
     </Grid>
   </Grid>

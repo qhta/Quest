@@ -1,4 +1,7 @@
-﻿using QuestRSX;
+﻿using System.ComponentModel;
+
+using QuestRSX;
+
 using QuestWPF.Views;
 
 namespace QuestWPF;
@@ -11,13 +14,14 @@ public partial class MainWindow : Window
   /// <summary>
   /// Initializes a new instance of the <see cref="MainWindow"/> class.
   /// </summary>
-  /// <remarks>This constructor initializes the components of the
-  /// main window. Ensure that the Syncfusion license key is valid and properly configured before using this
-  /// application.</remarks>
+  /// <remarks>
+  /// This constructor initializes the components of the main window.
+  /// Ensure that the Syncfusion license key is valid and properly configured before using this application.
+  /// </remarks>
   public MainWindow()
   {
     OpenSpreadsheetCommand = new RelayCommand<Object>(OpenSpreadsheet);
-    StartImportCommand = new RelayCommand<Object>(StartImport);
+    StartImportCommand = new RelayCommand<Object>(StartImport, CanStartImport);
     InitializeComponent();
   }
 
@@ -41,16 +45,35 @@ public partial class MainWindow : Window
       string newFilename = openFileDialog.FileName;
       var excelView = new ExcelView {  FileName = newFilename };
       excelView.OpenSpreadsheetAsync(newFilename);
+      if (excelView.DataContext is WorkbookInfoVM workbookInfoVM)
+        workbookInfoVM.PropertyChanged += WorkbookInfoVM_PropertyChanged;
       AddFloatingView(excelView, newFilename);
     }
   }
   #endregion
 
+  private void WorkbookInfoVM_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+  {
+    if (e.PropertyName == nameof(WorkbookInfoVM.IsLoaded))
+    {
+      // Notify that CanExecute status has changed
+      (StartImportCommand as RelayCommand<object>)?.NotifyCanExecuteChanged();
+    }
+  }
   #region Start Import Command
   /// <summary>
   /// Command to open an Excel spreadsheet file.
   /// </summary>
   public ICommand StartImportCommand { get; }
+
+  private bool CanStartImport(object? parameter)
+  {
+    if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
+    {
+      return false;
+    }
+    return workbookInfoVM.IsLoaded && workbookInfoVM.Model.Worksheets.Any(item => item.IsSelected);
+  }
 
   private void StartImport(object? parameter)
   {
@@ -59,7 +82,6 @@ public partial class MainWindow : Window
       MessageBox.Show("No workbook to import from.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
       return;
     }
-
     // Open a file dialog to select an Excel file
     var saveFileDialog = new SaveFileDialog
     {

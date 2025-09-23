@@ -71,6 +71,7 @@ public partial class ExcelView : UserControl
       await GetWorkbookInfoAsync(workbook, workbookVM);
       workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
       workbookVM.IsLoading = false;
+      workbookVM.IsLoaded = true;
     }
     catch (Exception e)
     {
@@ -104,6 +105,7 @@ public partial class ExcelView : UserControl
     await foreach (var worksheetInfo in worksheetInfos)
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");
+      workbookVM.Model.Worksheets.Add(worksheetInfo);
       workbookVM.Worksheets.Add(new WorksheetInfoVM(worksheetInfo));
       workbookVM.LoadedCount++;
     }

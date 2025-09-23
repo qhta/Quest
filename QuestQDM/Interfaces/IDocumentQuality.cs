@@ -1,19 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Quality of a single document.
 /// </summary>
-public class DocumentQuality
+public interface IDocumentQuality
 {
-  /// <summary>
-  /// Unique identifier for the quality.
-  /// </summary>
-  [Key]
-  [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-  public int Id { get; set; }
-
   /// <summary>
   /// Type of the document.
   /// </summary>
@@ -25,11 +16,6 @@ public class DocumentQuality
   /// </summary>
   [MaxLength(255)]
   public string? DocumentTitle { get; set; }
-
-  /// <summary>
-  /// Foreign key referencing the associated ProjectQuality.
-  /// </summary>
-  public int ProjectQualityId { get; set; }
 
   /// <summary>
   /// Is the document required for the project?
@@ -49,5 +35,5 @@ public class DocumentQuality
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public List<QualityFactor> Factors { get; set; } = new List<QualityFactor>();
+  public ICollection<IQualityFactor> Factors { get; set; }
 }

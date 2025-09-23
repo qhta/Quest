@@ -3,7 +3,7 @@
 /// <summary>
 /// Top level quality factor with weight and grade value.
 /// </summary>
-public class QualityFactor: QualityMetricsNode
+public interface IQualityFactor: IQualityMetricsNode
 {
   /// <summary>
   /// Unique identifier for the quality factor.
@@ -13,5 +13,5 @@ public class QualityFactor: QualityMetricsNode
   /// <summary>
   /// Navigation property to the associated DocumentQuality.
   /// </summary>
-  public DocumentQuality DocumentQuality { get; set; } = null!;
+  public DocumentQuality DocumentQuality { get; set; }
 }

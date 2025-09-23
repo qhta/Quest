@@ -5,21 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:views="clr-namespace:QuestWPF.Views"
              xmlns:questWpf="clr-namespace:QuestWPF"
+             xmlns:global="clr-namespace:"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
+  <UserControl.Resources>
+    <global:ImageToGrayConverter x:Key="ImageToGrayConverter" />
+  </UserControl.Resources>
   <Grid>
     <StackPanel Orientation="Horizontal" Margin="10">
       <Button x:Name="StartImportButton"
               Padding="6,4"
               HorizontalAlignment="Left"
               Command="{Binding RelativeSource={RelativeSource AncestorType=questWpf:MainWindow}, Path=StartImportCommand}"
-              CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=views:ExcelView}}"
+              CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=views:ExcelView}, BindsDirectlyToSource=True}"
               >
         <StackPanel Orientation="Horizontal">
-          <Image Source="/Assets/Start.png"
-                 Width="16" Height="16"
-                 Stretch="Uniform"
-                 Margin="0,0,6,0"/>
+          <Image 
+            x:Name="ButtonImage"
+            Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}, Path=IsEnabled, Converter={StaticResource ImageToGrayConverter}, ConverterParameter='Assets/Start.png'}"
+            Width="16" Height="16"
+            Stretch="Uniform"
+            Margin="0,0,6,0"/>
           <TextBlock Text="Start Import"
                      VerticalAlignment="Center"
                      FontWeight="SemiBold"/>

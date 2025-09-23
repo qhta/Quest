@@ -1,63 +1,40 @@
 ﻿namespace Quest;
 
 /// <summary>
-/// ViewModel for a project quality assessment
+/// ViewModel for a quality factor assessment
 /// </summary>
-public class ProjectQualityVM : ViewModel<ProjectQuality>
+public class QualityFactorVM : ViewModel<QualityFactor>
 {
   /// <summary>
   /// Mandatory constructor
   /// </summary>
   /// <param name="model"></param>
-  public ProjectQualityVM(ProjectQuality model) : base(model)
+  public QualityFactorVM(QualityFactor model) : base(model)
   {
-    RootNode = [this];
-    DocumentQualities = new DocumentQualityCollection(this, model.DocumentQualities ?? []);
+    //DocumentQualities = new DocumentQualityCollection(this, model.DocumentQualities ?? []);
   }
 
   /// <summary>
-  /// Root node for the quality tree (always this instance)
+  /// Factor text from the model
   /// </summary>
-  public IEnumerable<ProjectQualityVM> RootNode { get; }
-
-  /// <summary>
-  /// Project title from the model
-  /// </summary>
-  public string? ProjectTitle
+  public string? Text
   {
     [DebuggerStepThrough]
-    get => Model.ProjectName;
+    get => Model.Text;
     set
     {
-      if (Model.ProjectName != value)
+      if (Model.Text != value)
       {
-        Model.ProjectName = value;
-        NotifyPropertyChanged(nameof(ProjectTitle));
+        Model.Text = value;
+        NotifyPropertyChanged(nameof(Text));
       }
     }
   }
 
-  /// <summary>
-  /// Determines whether the project quality is expanded (when used in TreeView).
-  /// </summary>
-  public bool IsExpanded
-  {
-    [DebuggerStepThrough]
-    get => _IsExpanded;
-    set
-    {
-      if (_IsExpanded != value)
-      {
-        _IsExpanded = value;
-        NotifyPropertyChanged(nameof(IsExpanded));
-      }
-    }
-  }
-  private bool _IsExpanded;
-  /// <summary>
-  /// Individual document qualities within the project
-  /// </summary>
-  public DocumentQualityCollection DocumentQualities { get; set; }
+  ///// <summary>
+  ///// Individual document qualities within the project
+  ///// </summary>
+  //public DocumentQualityCollection DocumentQualities { get; set; }
 
   #region Loading State Properties
   /// <summary>

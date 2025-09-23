@@ -1,6 +1,4 @@
-﻿using Syncfusion.Office;
-
-namespace QuestIMP;
+﻿namespace QuestIMP;
 
 /// <summary>
 /// Class for import Excel Workbooks.
@@ -75,7 +73,7 @@ public static class WorkbookImporter
   /// <returns>Asynchronously filled list of <see cref="DocumentQuality"/>. Can be empty.</returns>
   public static async IAsyncEnumerable<DocumentQuality> ImportWorksheetsAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
-    foreach (var worksheetInfo in workbookInfo.Worksheets)
+    foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item=>item.IsSelected))
     {
       var worksheet = workbook.Worksheets[worksheetInfo.Name];
       var documentQuality = await ImportWorksheetInfoAsync(worksheet, worksheetInfo);
@@ -142,7 +140,7 @@ public static class WorkbookImporter
               int level = ss.Length;
               if (level == 1)
               {
-                QualityFactor qualityFactor = new QualityFactor { Level = level };
+                QualityFactor qualityFactor = new QualityFactor { Level = level};
                 qualityNode = qualityFactor;
                 documentQuality.Factors.Add(qualityFactor);
                 qualityFactor.DocumentQuality = documentQuality;
@@ -157,19 +155,19 @@ public static class WorkbookImporter
                   lastFactor.Children.Add(qualityMetrics);
                   qualityMetrics.Parent = lastFactor;
                 }
-                if (lastNode is QualityMetricsNode lastMetrics)
+                if (lastNode is QualityMetricsNode lastMetricsNode)
                 {
-                  if (lastMetrics.Level<level)
+                  if (lastMetricsNode.Level<level)
                   {
-                    lastMetrics.Children.Add(qualityMetrics);
-                    qualityMetrics.Parent = lastMetrics;
+                    lastMetricsNode.Children.Add(qualityMetrics);
+                    qualityMetrics.Parent = lastMetricsNode;
                   }
                   else
                   {
-                    while (lastMetrics.Level >= level && lastMetrics.Parent != null)
-                      lastMetrics = lastMetrics.Parent;
-                    lastMetrics.Children.Add(qualityMetrics);
-                    qualityMetrics.Parent = lastMetrics;
+                    while (lastMetricsNode.Level >= level && lastMetricsNode.Parent!=null)
+                      lastMetricsNode = lastMetricsNode.Parent;
+                    lastMetricsNode.Children.Add(qualityMetrics);
+                    qualityMetrics.Parent = lastMetricsNode;
                     lastNode = qualityMetrics;
                   }
                 }

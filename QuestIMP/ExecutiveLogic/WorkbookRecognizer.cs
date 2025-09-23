@@ -35,7 +35,7 @@ public static class WorkbookRecognizer
     {
       FileName = fileName,
       ProjectTitle = ScanForProjectTitle(workbook),
-      Worksheets = GetWorksheets(workbook).ToArray()
+      Worksheets = GetWorksheets(workbook)
     };
     return info;
   }

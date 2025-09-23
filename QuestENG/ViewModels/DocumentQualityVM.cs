@@ -11,12 +11,13 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
   /// <param name="model"></param>
   public DocumentQualityVM(DocumentQuality model) : base(model)
   {
+    Factors = new QualityFactorCollection(this, model.Factors ?? []);
   }
 
   /// <summary>
-  /// Document name from the model
+  /// Document title from the model
   /// </summary>
-  public string? DocumentName
+  public string? DocumentTitle
   {
     [DebuggerStepThrough]
     get => Model.DocumentTitle;
@@ -25,9 +26,13 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
       if (Model.DocumentTitle != value)
       {
         Model.DocumentTitle = value;
-        NotifyPropertyChanged(nameof(DocumentName));
+        NotifyPropertyChanged(nameof(DocumentTitle));
       }
     }
   }
 
+  /// <summary>
+  /// Individual document qualities within the project
+  /// </summary>
+  public QualityFactorCollection Factors { get; set; }
 }

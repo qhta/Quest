@@ -20,6 +20,6 @@ public abstract class Quality
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public QualityFactor[]? Factors { get; set; }
+  public List<QualityFactor> Factors { get; set; } = new List<QualityFactor> ();
 
 }
