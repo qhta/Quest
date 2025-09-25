@@ -1,7 +1,5 @@
 ﻿using Quest;
 
-using Syncfusion.XlsIO.Parser.Biff_Records.PivotTable;
-
 namespace QuestIMP;
 
 /// <summary>
@@ -34,96 +32,128 @@ public static class WorkbookImporter
       ProjectName = workbookInfo.ProjectTitle,
       DocumentQualities = new List<DocumentQuality>()
     };
-    foreach (var worksheetInfo in workbookInfo.Worksheets)
+    var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
+    if (worksheetWithScale != null)
     {
-      if (worksheetInfo.HasGrades && worksheetInfo.QuestRange != null)
-      {
-        var documentQuality = new DocumentQuality
-        {
-          DocumentTitle = worksheetInfo.Name,
-        };
-        // Here you would add logic to read the actual questionnaire data
-        // and populate the QualityFactors list.
-        projectQuality.DocumentQualities.Add(documentQuality);
-      }
+      projectQuality.Scale = WorkbookImporter.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+    }
+    projectQuality.DocumentQualities = new List<DocumentQuality>();
+    foreach (var documentQuality in ImportDocumentQualities(workbook, workbookInfo))
+    {
+      projectQuality.DocumentQualities.Add(documentQuality);
     }
     return projectQuality;
   }
 
   /// <summary>
-  /// Gets the list of worksheets. Specifies if they contain questionnaires.
+  /// Get the grade scale from the given worksheet.
+  /// </summary>
+  /// <param name="worksheet">Excel worksheet with scale table</param>  
+  /// <param name="worksheetInfo">Info about worksheet with scale range recognized.</param>
+  /// <returns>List of <see cref="DocumentQuality"/>. Can be empty.</returns>
+  public static List<QualityGrade>? ImportScaleTable(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  {
+    if (worksheetInfo.ScaleRange == null) return null;
+    var resultList = new List<QualityGrade>();
+    var (scaleStart, scaleEnd) = WorkbookHelper.SplitRange(worksheetInfo.ScaleRange!);
+    var startRowIndex = WorkbookHelper.GetCellRowIndex(scaleStart);
+    var endRowIndex = WorkbookHelper.GetCellRowIndex(scaleEnd);
+    var startCellIndex = WorkbookHelper.GetCellColumnIndex(scaleStart);
+    for (int r = startRowIndex + 1; r < endRowIndex; r++)
+    {
+      var row = worksheet.Rows[r];
+      if (!row.Cells.Any()) continue; // Skip rows without cells
+      if (row.Cells.Count() <= startCellIndex + 2) continue; // Skip rows without not enough cells
+      var gradeId = row.Cells[startCellIndex + 0].Value;
+      var gradeValueStr = row.Cells[startCellIndex + 1].Value;
+      var gradeValue = (gradeValueStr == "-") ? 0 : int.Parse(gradeValueStr ?? "0");
+      var gradeMeaning = row.Cells[startCellIndex + 2].Value;
+      var qualityGrade = new QualityGrade { Text = gradeId, Value = gradeValue, Meaning = gradeMeaning };
+      resultList.Add(qualityGrade);
+    }
+    return resultList;
+  }
+
+  /// <summary>
+  /// Imports the list of worksheets containing questionnaires.
   /// </summary>
   /// <param name="workbook">Opened Excel workbook interface</param>  
   /// <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
   /// <returns>List of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  /// <exception cref="InvalidOperationException">Raised when workbook is null or is not opened previously.</exception>
-  private static List<DocumentQuality> ImportWorksheets(IWorkbook workbook, WorkbookInfo workbookInfo)
+  private static IEnumerable<DocumentQuality> ImportDocumentQualities(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
     var resultList = new List<DocumentQuality>();
-    foreach (var worksheetInfo in workbookInfo.Worksheets)
+    foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item => item.IsSelected && item.QuestRange != null))
     {
       var worksheet = workbook.Worksheets[worksheetInfo.Name];
-      var documentQuality = ImportWorksheetInfo(worksheet, worksheetInfo);
+      var documentQuality = ImportDocumentQuality(worksheet, worksheetInfo);
       resultList.Add(documentQuality);
     }
     return resultList;
   }
 
   /// <summary>
-  /// Asynchronously gets the list of worksheets from previously opened workbook. 
+  /// Asynchronously imports the list of worksheets containing questionnaires. 
   /// </summary>
   /// <param name="workbook">Opened Excel workbook interface</param>  
   /// <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
   /// <returns>Asynchronously filled list of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  public static async IAsyncEnumerable<DocumentQuality> ImportWorksheetsAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
+  public static async IAsyncEnumerable<DocumentQuality> ImportDocumentQualitiesAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
-    foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item=>item.IsSelected))
+    foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item => item.IsSelected && item.QuestRange != null))
     {
       var worksheet = workbook.Worksheets[worksheetInfo.Name];
-      var documentQuality = await ImportWorksheetInfoAsync(worksheet, worksheetInfo);
+      var documentQuality = await ImportDocumentQualityAsync(worksheet, worksheetInfo);
       yield return documentQuality;
     }
   }
 
   /// <summary>
-  /// Gets a single document quality object.
+  /// Imports a single document quality object from a worksheet containing questionnaire.
   /// </summary>
   /// <param name="worksheet">Interface for opened Excel worksheet</param>
   /// <param name="worksheetInfo">Info about worksheet info.</param>
   /// <returns><see cref="DocumentQuality"/> object.</returns>
-  public static DocumentQuality ImportWorksheetInfo(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  public static DocumentQuality ImportDocumentQuality(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     var documentQuality = new DocumentQuality
     {
       DocumentType = worksheet.Name,
     };
-    if (worksheetInfo.WeightsRange!=null)
+    if (worksheetInfo.WeightsRange != null)
       documentQuality.DocumentTitle = GetDocumentTitle(worksheet, worksheetInfo);
-    if (worksheetInfo.QuestRange!=null) 
-      ImportQuestTable(worksheet, worksheetInfo, documentQuality);
+    if (worksheetInfo.QuestRange != null)
+      ImportQuestionnaire(worksheet, worksheetInfo, documentQuality);
     return documentQuality;
   }
 
   /// <summary>
-  /// Asynchronously gets a single document quality object.
+  /// Asynchronously imports a single document quality object from a worksheet containing questionnaire.
   /// </summary>
   /// <param name="worksheet">Interface for opened Excel worksheet</param>
   /// <param name="worksheetInfo">Info about worksheet info.</param>
   /// <returns>Task with <see cref="DocumentQuality"/> result.</returns>
-  public static async Task<DocumentQuality> ImportWorksheetInfoAsync(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  public static async Task<DocumentQuality> ImportDocumentQualityAsync(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
-    return await Task.Run(() => ImportWorksheetInfo(worksheet, worksheetInfo));
+    return await Task.Run(() => ImportDocumentQuality(worksheet, worksheetInfo));
   }
 
-  private static bool ImportQuestTable(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
+  /// <summary>
+  /// Imports the questionnaire table from the given worksheet into the provided document quality object.
+  /// The worksheet must have a defined questionnaire range.
+  /// </summary>
+  /// <param name="worksheet"></param>
+  /// <param name="worksheetInfo"></param>
+  /// <param name="documentQuality"></param>
+  /// <returns></returns>
+  private static bool ImportQuestionnaire(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
   {
-    if (worksheetInfo.QuestRange==null) return false;
-    var gradesColumn = worksheetInfo.GradesColumn;
-    if (gradesColumn == null || gradesColumn < 0) return false;
+    if (worksheetInfo.QuestRange == null) return false;
     var hasGrades = worksheetInfo.HasGrades;
     var (questStart, questEnd) = WorkbookHelper.SplitRange(worksheetInfo.QuestRange!);
     var startRowIndex = WorkbookHelper.GetCellRowIndex(questStart);
     var endRowIndex = WorkbookHelper.GetCellRowIndex(questEnd);
+    var gradesColumn = worksheetInfo.GradesColumn ?? -1;
     QualityNode? lastNode = null;
     for (int r = startRowIndex + 1; r < endRowIndex; r++)
     {
@@ -131,7 +161,7 @@ public static class WorkbookImporter
       if (!row.Cells.Any()) continue; // Skip rows without cells
 
       QualityNode? qualityNode = null;
-      for (int c = 0; c < int.Min(row.Count, (int)gradesColumn); c++)
+      for (int c = 0; c < row.Count; c++)
       {
         var cell = row.Cells[c];
         var s = cell?.Value?.ToString();
@@ -145,7 +175,7 @@ public static class WorkbookImporter
               int level = ss.Length;
               if (level == 1)
               {
-                QualityFactor qualityFactor = new QualityFactor { Level = level};
+                QualityFactor qualityFactor = new QualityFactor { Level = level };
                 qualityNode = qualityFactor;
                 documentQuality.Factors.Add(qualityFactor);
                 qualityFactor.DocumentQuality = documentQuality;
@@ -162,14 +192,14 @@ public static class WorkbookImporter
                 }
                 if (lastNode is QualityMetricsNode lastMetricsNode)
                 {
-                  if (lastMetricsNode.Level<level)
+                  if (lastMetricsNode.Level < level)
                   {
                     lastMetricsNode.Children.Add(qualityMetrics);
                     qualityMetrics.Parent = lastMetricsNode;
                   }
                   else
                   {
-                    while (lastMetricsNode.Level >= level && lastMetricsNode.Parent!=null)
+                    while (lastMetricsNode.Level >= level && lastMetricsNode.Parent != null)
                       lastMetricsNode = lastMetricsNode.Parent;
                     lastMetricsNode.Children.Add(qualityMetrics);
                     qualityMetrics.Parent = lastMetricsNode;
@@ -198,12 +228,12 @@ public static class WorkbookImporter
     var weightsTableRow = WorkbookHelper.GetCellRowIndex(weightsStart);
     var weightsTableCellStart = WorkbookHelper.GetCellColumnIndex(weightsStart);
     var weightsTableCellEnd = WorkbookHelper.GetCellColumnIndex(weightsEnd);
-    for (int r = weightsTableRow -1; r >= 0; r--)
+    for (int r = weightsTableRow - 1; r >= 0; r--)
     {
       var row = worksheet.Rows[r];
       if (!row.Cells.Any()) continue; // Skip rows without cells
 
-      for (int c = weightsTableCellStart; c < int.Min(row.Count, (int)weightsTableCellEnd+1); c++)
+      for (int c = weightsTableCellStart; c < int.Min(row.Count, (int)weightsTableCellEnd + 1); c++)
       {
         var cell = row.Cells[c];
         var s = cell?.Value?.ToString();

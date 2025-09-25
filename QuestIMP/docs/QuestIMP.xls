@@ -112,38 +112,55 @@
             <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
             <returns>Project quality object</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheets(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
+        <member name="M:QuestIMP.WorkbookImporter.ImportScaleTable(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
             <summary>
-            Gets the list of worksheets. Specifies if they contain questionnaires.
+            Get the grade scale from the given worksheet.
+            </summary>
+            <param name="worksheet">Excel worksheet with scale table</param>  
+            <param name="worksheetInfo">Info about worksheet with scale range recognized.</param>
+            <returns>List of <see cref="T:Quest.DocumentQuality"/>. Can be empty.</returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.ImportDocumentQualities(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
+            <summary>
+            Imports the list of worksheets containing questionnaires.
             </summary>
             <param name="workbook">Opened Excel workbook interface</param>  
             <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
             <returns>List of <see cref="T:Quest.DocumentQuality"/>. Can be empty.</returns>
-            <exception cref="T:System.InvalidOperationException">Raised when workbook is null or is not opened previously.</exception>
         </member>
-        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheetsAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
+        <member name="M:QuestIMP.WorkbookImporter.ImportDocumentQualitiesAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo)">
             <summary>
-            Asynchronously gets the list of worksheets from previously opened workbook. 
+            Asynchronously imports the list of worksheets containing questionnaires. 
             </summary>
             <param name="workbook">Opened Excel workbook interface</param>  
             <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
             <returns>Asynchronously filled list of <see cref="T:Quest.DocumentQuality"/>. Can be empty.</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheetInfo(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
+        <member name="M:QuestIMP.WorkbookImporter.ImportDocumentQuality(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
             <summary>
-            Gets a single document quality object.
+            Imports a single document quality object from a worksheet containing questionnaire.
             </summary>
             <param name="worksheet">Interface for opened Excel worksheet</param>
             <param name="worksheetInfo">Info about worksheet info.</param>
             <returns><see cref="T:Quest.DocumentQuality"/> object.</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookImporter.ImportWorksheetInfoAsync(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
+        <member name="M:QuestIMP.WorkbookImporter.ImportDocumentQualityAsync(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
             <summary>
-            Asynchronously gets a single document quality object.
+            Asynchronously imports a single document quality object from a worksheet containing questionnaire.
             </summary>
             <param name="worksheet">Interface for opened Excel worksheet</param>
             <param name="worksheetInfo">Info about worksheet info.</param>
             <returns>Task with <see cref="T:Quest.DocumentQuality"/> result.</returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.ImportQuestionnaire(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo,Quest.DocumentQuality)">
+            <summary>
+            Imports the questionnaire table from the given worksheet into the provided document quality object.
+            The worksheet must have a defined questionnaire range.
+            </summary>
+            <param name="worksheet"></param>
+            <param name="worksheetInfo"></param>
+            <param name="documentQuality"></param>
+            <returns></returns>
         </member>
         <member name="T:QuestIMP.WorkbookRecognizer">
             <summary>

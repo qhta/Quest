@@ -99,8 +99,14 @@ public partial class QuestView : UserControl
   private async Task ImportWorkbookAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQualityVM qualityVM)
   {
     qualityVM.ProjectTitle = workbookInfo.ProjectTitle;
-    var worksheetInfos = WorkbookImporter.ImportWorksheetsAsync(workbook, workbookInfo);
+    var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
+    if (worksheetWithScale != null)
+    {
+      qualityVM.Model.Scale = WorkbookImporter.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+      qualityVM.Scale = new QualityScaleVM(qualityVM, qualityVM.Model.Scale!);
+    }
 
+    var worksheetInfos = WorkbookImporter.ImportDocumentQualitiesAsync(workbook, workbookInfo);
     await foreach (var worksheetInfo in worksheetInfos)
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");

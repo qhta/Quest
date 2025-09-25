@@ -3,32 +3,26 @@
 namespace Quest;
 
 /// <summary>
-/// Quality of a single document.
+/// Quality of a project phase.
 /// </summary>
-public class DocumentQuality: Quality
+public class PhaseQuality: Quality
 {
   /// <summary>
-  /// Type of the document.
+  /// Phase Id.
   /// </summary>
   [MaxLength(10)]
-  public string? DocumentType { get; set; }
+  public string? PhaseId { get; set; }
 
   /// <summary>
   /// Name or path of the document.
   /// </summary>
   [MaxLength(255)]
-  public string? DocumentTitle { get; set; }
+  public string? PhaseName { get; set; }
 
   /// <summary>
   /// Foreign key referencing the associated ProjectQuality.
   /// </summary>
   public int ProjectQualityId { get; set; }
-
-  /// <summary>
-  /// Foreign key referencing the associated PhaseQuality.
-  /// </summary>
-  [MaxLength(10)]
-  public string? QualityId { get; set; }
 
   /// <summary>
   /// Is the document required for the project?
@@ -48,5 +42,11 @@ public class DocumentQuality: Quality
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public List<QualityFactor> Factors { get; set; } = new List<QualityFactor>();
+  public List<QualityFactorAggregate> Factors { get; set; } = new List<QualityFactorAggregate>();
+
+
+  /// <summary>
+  /// A collection of document qualities within the project.
+  /// </summary>
+  public List<DocumentQuality>? DocumentQualities { get; set; }
 }

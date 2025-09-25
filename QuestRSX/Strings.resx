@@ -129,7 +129,19 @@
   <data name="ExcelFilesFilter" xml:space="preserve">
     <value>Excel Files|*.xlsx;*.xlsm;*.xls|All files|*.*</value>
   </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
   <data name="OpenExcelFileTitle" xml:space="preserve">
     <value>Open Excel file</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Meaning" xml:space="preserve">
+    <value>Meaning</value>
+  </data>
+  <data name="GradeScale" xml:space="preserve">
+    <value>Grade scale</value>
   </data>
 </root>

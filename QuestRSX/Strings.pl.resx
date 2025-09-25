@@ -129,7 +129,19 @@
   <data name="ExcelFilesFilter" xml:space="preserve">
     <value>Pliki programu Excel|*.xlsx;*.xlsm;*.xls|Wszystkie pliki|*.*</value>
   </data>
+  <data name="Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
   <data name="OpenExcelFileTitle" xml:space="preserve">
     <value>Otwórz plik programu Excel</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Wartość</value>
+  </data>
+  <data name="Meaning" xml:space="preserve">
+    <value>Znaczenie</value>
+  </data>
+  <data name="GradeScale" xml:space="preserve">
+    <value>Skala ocen</value>
   </data>
 </root>

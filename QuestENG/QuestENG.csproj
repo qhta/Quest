@@ -24,4 +24,8 @@
     <Folder Include="ExecutiveLogic\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="ViewModels\QualityScaleVM.cs" />
+  </ItemGroup>
+
 </Project>

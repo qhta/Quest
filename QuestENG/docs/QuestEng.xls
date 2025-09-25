@@ -63,14 +63,19 @@
             Project title from the model
             </summary>
         </member>
-        <member name="P:Quest.ProjectQualityVM.IsExpanded">
+        <member name="P:Quest.ProjectQualityVM.Scale">
             <summary>
-            Determines whether the project quality is expanded (when used in TreeView).
+            Individual grade scale definition within the project
             </summary>
         </member>
         <member name="P:Quest.ProjectQualityVM.DocumentQualities">
             <summary>
             Individual document qualities within the project
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.IsExpanded">
+            <summary>
+            Determines whether the project quality is expanded (when used in TreeView).
             </summary>
         </member>
         <member name="P:Quest.ProjectQualityVM.IsLoading">
@@ -213,6 +218,54 @@
             <summary>
             Currently loaded worksheets count
             </summary>
+        </member>
+        <member name="T:Quest.QualityGradeVM">
+            <summary>
+            Grade definition with text, numeric value, and optional meaning.
+            </summary>
+        </member>
+        <member name="M:Quest.QualityGradeVM.#ctor">
+            <summary>
+            Default constructor creating a new underlying model.
+            </summary>
+        </member>
+        <member name="M:Quest.QualityGradeVM.#ctor(Quest.QualityGrade)">
+            <summary>
+            Required initialization constructor with an existing model.
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.QualityGradeVM.Text">
+            <summary>
+            Text representation of the grade, e.g. "1", "2", "b.o."
+            </summary>
+        </member>
+        <member name="P:Quest.QualityGradeVM.Value">
+            <summary>
+            Numeric value of the grade, e.g. 1, 2, 0 (for "b.o.")
+            </summary>
+        </member>
+        <member name="P:Quest.QualityGradeVM.Meaning">
+            <summary>
+            Textual meaning of the grade.
+            </summary>
+        </member>
+        <member name="T:Quest.QualityScaleVM">
+            <summary>
+            Observable collection of <see cref="T:Quest.QualityGradeVM"/> objects.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityScaleVM.Parent">
+            <summary>
+            Parent view model
+            </summary>
+        </member>
+        <member name="M:Quest.QualityScaleVM.#ctor(Quest.ProjectQualityVM,System.Collections.Generic.IEnumerable{Quest.QualityGrade})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.QualityScaleVM"/> class with a list of <see cref="T:Quest.QualityGrade"/>.
+            </summary>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
         </member>
     </members>
 </doc>

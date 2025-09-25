@@ -28,5 +28,6 @@ public class QualityAssessment
   /// <summary>
   /// Assessed grade value.
   /// </summary>
-  public Grade? Value { get; set; }
+  [MaxLength(10)]
+  public string? Grade { get; set; }
 }

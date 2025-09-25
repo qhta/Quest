@@ -1,0 +1,44 @@
+﻿<UserControl xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  x:Class="QuestWPF.Views.GradeScaleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
+             xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance quest:ProjectQualityVM}"
+             d:DesignHeight="450" d:DesignWidth="410">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Border Background="Silver">
+      <TextBlock Text="{x:Static questRsx:Strings.GradeScale}" FontWeight="Bold" Margin="5"/>
+    </Border>
+    <syncfusion:SfDataGrid
+      Grid.Row="1"
+      ItemsSource="{Binding Path=Scale}"
+      AutoGenerateColumns="False">
+      <syncfusion:SfDataGrid.Columns>
+        <syncfusion:GridTextColumn
+          HeaderText="{x:Static questRsx:Strings.Text}"
+          MappingName="Text"
+          Width="100"
+        />
+        <syncfusion:GridNumericColumn
+          HeaderText="{x:Static questRsx:Strings.Value}"
+          MappingName="Value"
+          Width="100"
+          NullValue="0"
+          NumberDecimalDigits="0"
+        />
+        <syncfusion:GridTextColumn
+          HeaderText="{x:Static questRsx:Strings.Meaning}"
+          MappingName="Meaning"
+          Width="200"
+        />
+      </syncfusion:SfDataGrid.Columns>
+    </syncfusion:SfDataGrid>
+  </Grid>
+</UserControl>

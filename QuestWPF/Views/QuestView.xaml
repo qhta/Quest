@@ -89,7 +89,8 @@
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions> 
+        <views:GradeScaleView/>
       </Grid>
     </Grid>
   </Grid>

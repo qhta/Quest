@@ -38,26 +38,57 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   }
 
   /// <summary>
+  /// Individual grade scale definition within the project
+  /// </summary>
+  public QualityScaleVM Scale
+  {
+    [DebuggerStepThrough]
+    get => _scale;
+    set
+    {
+      if (_scale != value)
+      {
+        _scale = value;
+        NotifyPropertyChanged(nameof(Scale));
+      }
+    }
+  }
+  private QualityScaleVM _scale = null!;
+
+  /// <summary>
+  /// Individual document qualities within the project
+  /// </summary>
+  public DocumentQualityCollection DocumentQualities
+  {
+    [DebuggerStepThrough]
+    get => _documentQualities;
+    set
+    {
+      if (_documentQualities != value)
+      {
+        _documentQualities = value;
+        NotifyPropertyChanged(nameof(DocumentQualities));
+      }
+    }
+  }
+  private DocumentQualityCollection _documentQualities = null!;
+  /// <summary>
   /// Determines whether the project quality is expanded (when used in TreeView).
   /// </summary>
   public bool IsExpanded
   {
     [DebuggerStepThrough]
-    get => _IsExpanded;
+    get => _isExpanded;
     set
     {
-      if (_IsExpanded != value)
+      if (_isExpanded != value)
       {
-        _IsExpanded = value;
+        _isExpanded = value;
         NotifyPropertyChanged(nameof(IsExpanded));
       }
     }
   }
-  private bool _IsExpanded;
-  /// <summary>
-  /// Individual document qualities within the project
-  /// </summary>
-  public DocumentQualityCollection DocumentQualities { get; set; }
+  private bool _isExpanded;
 
   #region Loading State Properties
   /// <summary>
@@ -66,17 +97,17 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   public bool IsLoading
   {
     [DebuggerStepThrough]
-    get => _IsLoading;
+    get => _isLoading;
     set
     {
-      if (_IsLoading != value)
+      if (_isLoading != value)
       {
-        _IsLoading = value;
+        _isLoading = value;
         NotifyPropertyChanged(nameof(IsLoading));
       }
     }
   }
-  private bool _IsLoading;
+  private bool _isLoading;
 
   /// <summary>
   /// Determines the count of worksheets to load.
@@ -102,16 +133,16 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   public int LoadedCount
   {
     [DebuggerStepThrough]
-    get => _LoadedCount;
+    get => _loadedCount;
     set
     {
-      if (_LoadedCount != value)
+      if (_loadedCount != value)
       {
-        _LoadedCount = value;
+        _loadedCount = value;
         NotifyPropertyChanged(nameof(LoadedCount));
       }
     }
   }
-  private int _LoadedCount;
+  private int _loadedCount;
   #endregion
 };

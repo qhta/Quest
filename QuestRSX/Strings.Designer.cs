@@ -97,11 +97,47 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grade scale.
+        /// </summary>
+        public static string GradeScale {
+            get {
+                return ResourceManager.GetString("GradeScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meaning.
+        /// </summary>
+        public static string Meaning {
+            get {
+                return ResourceManager.GetString("Meaning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Excel file.
         /// </summary>
         public static string OpenExcelFileTitle {
             get {
                 return ResourceManager.GetString("OpenExcelFileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
     }

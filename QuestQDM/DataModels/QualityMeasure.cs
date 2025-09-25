@@ -8,7 +8,8 @@ public class QualityMeasure: QualityMetricsNode
   /// <summary>
   /// Agreed grade value.
   /// </summary>
-  public Grade? Value { get; set; }
+  [MaxLength(10)]
+  public string? Grade { get; set; }
 
   /// <summary>
   /// Collection of assessments contributing to this quality measure value.

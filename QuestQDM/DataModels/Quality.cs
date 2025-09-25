@@ -10,16 +10,7 @@ public abstract class Quality
   /// <summary>
   /// Unique identifier for the quality.
   /// </summary>
+  [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
   public int Id { get; set; }
-
-  /// <summary>
-  /// Identifies the name of the quality context (e.g., project name, document name).
-  /// </summary>
-  public string? Name { get; set; }
-
-  /// <summary>
-  /// Gets or sets the collection of quality factors associated with the current context.
-  /// </summary>
-  public List<QualityFactor> Factors { get; set; } = new List<QualityFactor> ();
 
 }
