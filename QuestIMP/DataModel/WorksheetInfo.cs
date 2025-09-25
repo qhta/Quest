@@ -11,34 +11,19 @@ public record WorksheetInfo
   public string? Name { get; set; }
 
   /// <summary>
-  /// Specifies whether the worksheet contains a questionnaire.
+  /// Range of the questionnaire, e.g. "A20:L200".
   /// </summary>
-  public bool HasQuest { get; set; }
+  public string? QuestRange { get; set; }
 
   /// <summary>
-  /// Address of the cell where the questionnaire starts, e.g. "A1".
+  /// Range of the weights table for the top level metrics, e.g. "D7:H15".
   /// </summary>
-  public string? QuestStart { get; set; }
+  public string? WeightsRange { get; set; }
 
   /// <summary>
-  /// Address of the cell where the questionnaire ends, e.g. "D20".
+  /// Index of the column with grades in the questionnaire. Null if column not found.
   /// </summary>
-  public string? QuestEnd { get; set; }
-
-  /// <summary>
-  /// Specifies whether the worksheet contains weights table for the top level metrics.
-  /// </summary>
-  public bool HasWeights { get; set; }
-
-  /// <summary>
-  /// Address of the cell where the weights table for the top level metrics starts.
-  /// </summary>
-  public string? WeightsStart { get; set; }
-
-  /// <summary>
-  /// Address of the cell where the weights table for the top level metrics ends.
-  /// </summary>
-  public string? WeightsEnd { get; set; }
+  public int? GradesColumn { get; set; }
 
   /// <summary>
   /// Specifies whether the has grades associated with the questionnaire.
@@ -46,9 +31,9 @@ public record WorksheetInfo
   public bool HasGrades { get; set; }
 
   /// <summary>
-  /// Index of the column with grades in the questionnaire. Null if column not found.
+  /// Range of the scale table, e.g. "B21:D32".
   /// </summary>
-  public int? GradesColumn { get; set; }
+  public string? ScaleRange { get; set; }
 
   /// <summary>
   /// Specifies whether the worksheet should be processed.

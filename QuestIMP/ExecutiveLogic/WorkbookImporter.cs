@@ -1,4 +1,8 @@
-﻿namespace QuestIMP;
+﻿using Quest;
+
+using Syncfusion.XlsIO.Parser.Biff_Records.PivotTable;
+
+namespace QuestIMP;
 
 /// <summary>
 /// Class for import Excel Workbooks.
@@ -32,7 +36,7 @@ public static class WorkbookImporter
     };
     foreach (var worksheetInfo in workbookInfo.Worksheets)
     {
-      if (worksheetInfo.HasGrades && worksheetInfo.QuestStart != null && worksheetInfo.QuestEnd != null)
+      if (worksheetInfo.HasGrades && worksheetInfo.QuestRange != null)
       {
         var documentQuality = new DocumentQuality
         {
@@ -91,13 +95,12 @@ public static class WorkbookImporter
   {
     var documentQuality = new DocumentQuality
     {
-      DocumentTitle = worksheet.Name,
+      DocumentType = worksheet.Name,
     };
-
-    if (worksheetInfo.HasQuest)
-    {
+    if (worksheetInfo.WeightsRange!=null)
+      documentQuality.DocumentTitle = GetDocumentTitle(worksheet, worksheetInfo);
+    if (worksheetInfo.QuestRange!=null) 
       ImportQuestTable(worksheet, worksheetInfo, documentQuality);
-    }
     return documentQuality;
   }
 
@@ -114,11 +117,13 @@ public static class WorkbookImporter
 
   private static bool ImportQuestTable(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
   {
+    if (worksheetInfo.QuestRange==null) return false;
     var gradesColumn = worksheetInfo.GradesColumn;
     if (gradesColumn == null || gradesColumn < 0) return false;
     var hasGrades = worksheetInfo.HasGrades;
-    var startRowIndex = WorkbookHelper.GetCellRowIndex(worksheetInfo.QuestStart!);
-    var endRowIndex = WorkbookHelper.GetCellRowIndex(worksheetInfo.QuestEnd!);
+    var (questStart, questEnd) = WorkbookHelper.SplitRange(worksheetInfo.QuestRange!);
+    var startRowIndex = WorkbookHelper.GetCellRowIndex(questStart);
+    var endRowIndex = WorkbookHelper.GetCellRowIndex(questEnd);
     QualityNode? lastNode = null;
     for (int r = startRowIndex + 1; r < endRowIndex; r++)
     {
@@ -184,8 +189,29 @@ public static class WorkbookImporter
       }
     }
     return hasGrades;
-
   }
 
+  private static string? GetDocumentTitle(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  {
+    if (worksheetInfo.WeightsRange == null) return null;
+    var (weightsStart, weightsEnd) = WorkbookHelper.SplitRange(worksheetInfo.WeightsRange!);
+    var weightsTableRow = WorkbookHelper.GetCellRowIndex(weightsStart);
+    var weightsTableCellStart = WorkbookHelper.GetCellColumnIndex(weightsStart);
+    var weightsTableCellEnd = WorkbookHelper.GetCellColumnIndex(weightsEnd);
+    for (int r = weightsTableRow -1; r >= 0; r--)
+    {
+      var row = worksheet.Rows[r];
+      if (!row.Cells.Any()) continue; // Skip rows without cells
 
+      for (int c = weightsTableCellStart; c < int.Min(row.Count, (int)weightsTableCellEnd+1); c++)
+      {
+        var cell = row.Cells[c];
+        var s = cell?.Value?.ToString();
+        if (!String.IsNullOrWhiteSpace(s))
+          return s;
+      }
+    }
+    return null;
+
+  }
 }

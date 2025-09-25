@@ -34,34 +34,19 @@
             Name of the worksheet.
             </summary>
         </member>
-        <member name="P:QuestIMP.WorksheetInfo.HasQuest">
+        <member name="P:QuestIMP.WorksheetInfo.QuestRange">
             <summary>
-            Specifies whether the worksheet contains a questionnaire.
+            Range of the questionnaire, e.g. "A20:L200".
             </summary>
         </member>
-        <member name="P:QuestIMP.WorksheetInfo.QuestStart">
+        <member name="P:QuestIMP.WorksheetInfo.WeightsRange">
             <summary>
-            Address of the cell where the questionnaire starts, e.g. "A1".
+            Range of the weights table for the top level metrics, e.g. "D7:H15".
             </summary>
         </member>
-        <member name="P:QuestIMP.WorksheetInfo.QuestEnd">
+        <member name="P:QuestIMP.WorksheetInfo.GradesColumn">
             <summary>
-            Address of the cell where the questionnaire ends, e.g. "D20".
-            </summary>
-        </member>
-        <member name="P:QuestIMP.WorksheetInfo.HasWeights">
-            <summary>
-            Specifies whether the worksheet contains weights table for the top level metrics.
-            </summary>
-        </member>
-        <member name="P:QuestIMP.WorksheetInfo.WeightsStart">
-            <summary>
-            Address of the cell where the weights table for the top level metrics starts.
-            </summary>
-        </member>
-        <member name="P:QuestIMP.WorksheetInfo.WeightsEnd">
-            <summary>
-            Address of the cell where the weights table for the top level metrics ends.
+            Index of the column with grades in the questionnaire. Null if column not found.
             </summary>
         </member>
         <member name="P:QuestIMP.WorksheetInfo.HasGrades">
@@ -69,9 +54,9 @@
             Specifies whether the has grades associated with the questionnaire.
             </summary>
         </member>
-        <member name="P:QuestIMP.WorksheetInfo.GradesColumn">
+        <member name="P:QuestIMP.WorksheetInfo.ScaleRange">
             <summary>
-            Index of the column with grades in the questionnaire. Null if column not found.
+            Range of the scale table, e.g. "B21:D32".
             </summary>
         </member>
         <member name="P:QuestIMP.WorksheetInfo.IsSelected">
@@ -84,9 +69,26 @@
             Class with helper methods for workbook processing.
             </summary>
         </member>
+        <member name="M:QuestIMP.WorkbookHelper.SplitRange(System.String)">
+            <summary>
+            Splits a range string into its start and end address.
+            </summary>
+            <remarks>This method assumes that the input string is properly formatted as "start:end". If the input does
+            not meet this format, the behavior may be undefined or an exception may be thrown.</remarks>
+            <param name="range">A string representing a range, formatted as "start:end", where "start" and "end" are substrings separated by a
+            colon (:).</param>
+            <returns>A tuple containing the start and end cell address of the range.</returns>
+        </member>
         <member name="M:QuestIMP.WorkbookHelper.GetCellRowIndex(System.String)">
             <summary>
-            GetCellColumnIndex - returns zero based column index for the given cell address.
+            Returns zero based row index for the given cell address.
+            </summary>
+            <param name="cellAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookHelper.GetCellColumnIndex(System.String)">
+            <summary>
+            Returns zero based column index for the given cell address.
             </summary>
             <param name="cellAddress"></param>
             <returns></returns>
@@ -196,7 +198,15 @@
             </summary>
             <param name="worksheet">Excel worksheet interface</param>
             <param name="marker">string content of left-top cell of the table</param>
-            <returns>(found, left-top cell address, right-bottom cell address</returns>
+            <returns>Range string or null if not found</returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForTable(Syncfusion.XlsIO.IWorksheet,System.String[])">
+            <summary>
+            Scans the specified worksheet for a table starting with the given marker.
+            </summary>
+            <param name="worksheet">Excel worksheet interface</param>
+            <param name="headers">string content of the header row</param>
+            <returns>Range string or null if not found</returns>
         </member>
         <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle(Syncfusion.XlsIO.IWorkbook)">
             <summary>
@@ -219,13 +229,12 @@
             <param name="worksheet">Interface for the Excel worksheet</param>
             <returns>The project title as a string if found; otherwise null</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.CheckForGrades(Syncfusion.XlsIO.IWorksheet,System.String,System.String)">
+        <member name="M:QuestIMP.WorkbookRecognizer.CheckForGrades(Syncfusion.XlsIO.IWorksheet,System.String)">
             <summary>
             Checks the worksheet for the presence of grades in the specified range.
             </summary>
             <param name="worksheet">Interface for the Excel worksheet</param>
-            <param name="questStart">Local address of the top left cell with questionnaire</param>
-            <param name="questEnd">Local address of the top left cell with questionnaire</param>
+            <param name="questRange">Range of the top left cell with questionnaire</param>
             <returns>A pair of: 1. bool - true if any grade is found, otherwise false, 2. int - recognized grades column or null if not found.</returns>
         </member>
         <member name="T:QuestIMP.WorkbookInfoVM">
@@ -310,24 +319,19 @@
             Specifies whether the worksheet is selected for processing.
             </summary>
         </member>
-        <member name="P:QuestIMP.WorksheetInfoVM.HasQuest">
-            <summary>
-            Specifies whether the worksheet contains a questionnaire.
-            </summary>
-        </member>
         <member name="P:QuestIMP.WorksheetInfoVM.QuestRange">
             <summary>
             Address range of the questionnaire in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
             </summary>
         </member>
-        <member name="P:QuestIMP.WorksheetInfoVM.HasWeights">
-            <summary>
-            Specifies whether the worksheet contains a weights table.
-            </summary>
-        </member>
         <member name="P:QuestIMP.WorksheetInfoVM.WeightsRange">
             <summary>
             Address range of the weights table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.WorksheetInfoVM.ScaleRange">
+            <summary>
+            Address range of the scale table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
             </summary>
         </member>
         <member name="P:QuestIMP.WorksheetInfoVM.Text">

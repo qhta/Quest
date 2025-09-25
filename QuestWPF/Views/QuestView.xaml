@@ -16,7 +16,7 @@
     <!--<views:ImportControl/>-->
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="250"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
       <Grid>
@@ -47,22 +47,32 @@
           ItemsSource="{Binding RootNode}" 
           HorizontalAlignment="Stretch" 
           VerticalAlignment="Stretch"
-          Width="250"
+
           VirtualizingStackPanel.IsVirtualizing="false">
           <TreeView.Resources>
             <HierarchicalDataTemplate 
               DataType="{x:Type quest:ProjectQualityVM}" 
               ItemsSource="{Binding DocumentQualities}" >
-              <TreeViewItem 
+              <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="{Binding ProjectTitle}" />
+              </StackPanel>
+              <!--<TreeViewItem 
                 IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
                 <TreeViewItem.Header>
-                  <TextBlock Text="{Binding ProjectTitle}" />
+
                 </TreeViewItem.Header>
-              </TreeViewItem>
+              </TreeViewItem>-->
             </HierarchicalDataTemplate>
             <DataTemplate 
-              DataType="{x:Type quest:DocumentQualityVM}" >
-              <TextBlock Text="{Binding DocumentTitle}" />
+              DataType="{x:Type quest:DocumentQualityVM}">
+              <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                  Text="{Binding DocumentType}" 
+                  FontWeight="Bold"/>
+                <TextBlock 
+                  Text="{Binding DocumentTitle}" 
+                  Margin="5,0,0,0"/>
+              </StackPanel>
             </DataTemplate>
 
           </TreeView.Resources>

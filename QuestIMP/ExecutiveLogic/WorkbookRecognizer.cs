@@ -6,6 +6,7 @@
 public static class WorkbookRecognizer
 {
   private const string ProjectTitleLabel = "Ocena projektu";
+  private static readonly string[] ScaleTableHeaders = ["Ocena", "Wartość", "Znaczenie"];
   private const string WeightsFirstCellMarker = "L.p.";
   private const string QuestFirstCellMarker = "Cechy";
   private const string GradesColumnHeader = "Ocena";
@@ -81,13 +82,10 @@ public static class WorkbookRecognizer
     {
       Name = worksheet.Name,
     };
-
-    (info.HasQuest, info.QuestStart, info.QuestEnd) = ScanForTable(worksheet, QuestFirstCellMarker);
-    (info.HasWeights, info.WeightsStart, info.WeightsEnd) = ScanForTable(worksheet, WeightsFirstCellMarker);
-    if (info.HasQuest)
-    {
-      (info.HasGrades, info.GradesColumn) = CheckForGrades(worksheet, info.QuestStart!, info.QuestEnd!);
-    }
+    info.QuestRange = ScanForTable(worksheet, QuestFirstCellMarker);
+    info.WeightsRange = ScanForTable(worksheet, WeightsFirstCellMarker);
+    if (info.QuestRange != null) (info.HasGrades, info.GradesColumn) = CheckForGrades(worksheet, info.QuestRange!);
+    info.ScaleRange = ScanForTable(worksheet, ScaleTableHeaders);
     return info;
   }
 
@@ -106,8 +104,17 @@ public static class WorkbookRecognizer
   /// </summary>
   /// <param name="worksheet">Excel worksheet interface</param>
   /// <param name="marker">string content of left-top cell of the table</param>
-  /// <returns>(found, left-top cell address, right-bottom cell address</returns>
-  private static (bool, string?, string?) ScanForTable(IWorksheet worksheet, string marker)
+  /// <returns>Range string or null if not found</returns>
+  private static string? ScanForTable(IWorksheet worksheet, string marker)
+  => ScanForTable(worksheet, [marker]);
+
+  /// <summary>
+  /// Scans the specified worksheet for a table starting with the given marker.
+  /// </summary>
+  /// <param name="worksheet">Excel worksheet interface</param>
+  /// <param name="headers">string content of the header row</param>
+  /// <returns>Range string or null if not found</returns>
+  private static string? ScanForTable(IWorksheet worksheet, string[] headers)
   {
     var found = false;
     string? rangeStart = null;
@@ -122,12 +129,23 @@ public static class WorkbookRecognizer
         for (int c = 0; c < row.Count; c++)
         {
           var cell = row.Cells[c];
-          var s = cell?.Value?.ToString();
-          if (s == marker)
+          var s = cell.Value;
+          if (s == headers[0])
           {
             found = true;
-            rangeStart = cell!.AddressLocal;
-            rangeEnd = cell.AddressLocal;
+            for (int h = 1; h < headers.Length; h++)
+            {
+              if (c+h >= row.Count || row.Cells[c + h].Value != headers[h] )
+              {
+                found = false;
+                break;
+              }
+            }
+            if (found)
+            {
+              rangeStart = cell.AddressLocal;
+              rangeEnd = cell.AddressLocal;
+            }
             break;
           }
         }
@@ -158,7 +176,10 @@ public static class WorkbookRecognizer
         }
       }
     }
-    return (found, rangeStart, rangeEnd);
+    if (found)
+      return rangeStart + ":" + rangeEnd;
+    else
+      return null;
   }
 
   /// <summary>
@@ -234,13 +255,13 @@ public static class WorkbookRecognizer
   /// Checks the worksheet for the presence of grades in the specified range.
   /// </summary>
   /// <param name="worksheet">Interface for the Excel worksheet</param>
-  /// <param name="questStart">Local address of the top left cell with questionnaire</param>
-  /// <param name="questEnd">Local address of the top left cell with questionnaire</param>
+  /// <param name="questRange">Range of the top left cell with questionnaire</param>
   /// <returns>A pair of: 1. bool - true if any grade is found, otherwise false, 2. int - recognized grades column or null if not found.</returns>
-  public static (bool, int?) CheckForGrades(IWorksheet worksheet, string questStart, string questEnd)
+  public static (bool, int?) CheckForGrades(IWorksheet worksheet, string questRange)
   {
     int? gradesColumn = null;
     var gradesFound = false;
+    var (questStart, questEnd) = WorkbookHelper.SplitRange(questRange);
     var startRowIndex = WorkbookHelper.GetCellRowIndex(questStart);
     var endRowIndex = WorkbookHelper.GetCellRowIndex(questEnd);
     for (int r = startRowIndex; r < endRowIndex; r++)

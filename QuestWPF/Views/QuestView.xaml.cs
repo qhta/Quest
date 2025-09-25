@@ -58,27 +58,6 @@ public partial class QuestView : UserControl
   }
   #endregion
 
-  ///// <summary>
-  ///// Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
-  ///// </summary>
-  ///// <param name="fileName">Full path to Excel file</param>
-  //public void ImportSpreadsheet(string fileName)
-  //{
-  //  try
-  //  {
-  //    FileName = fileName;
-  //    SpreadsheetControl.Open(fileName);
-  //    var workbookInfo = GetWorkbookInfo(fileName);
-  //    var workbookVM = new WorkbookInfoVM(workbookInfo);
-  //    workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
-  //    DataContext = workbookVM;
-  //  }
-  //  catch (Exception e)
-  //  {
-  //    Debug.WriteLine(e);
-  //  }
-  //}
-
   /// <summary>
   /// Opens the specified Excel file and asynchronously updates the QualityView and DataContext accordingly.
   /// </summary>

@@ -43,24 +43,19 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   }
 
   /// <summary>
-  /// Specifies whether the worksheet contains a questionnaire.
-  /// </summary>
-  public bool HasQuest => Model.HasQuest;
-
-  /// <summary>
   /// Address range of the questionnaire in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
   /// </summary>
-  public string? QuestRange => (Model.QuestStart != null && Model.QuestEnd != null) ? $"{Model.QuestStart}:{Model.QuestEnd}" : null;
-
-  /// <summary>
-  /// Specifies whether the worksheet contains a weights table.
-  /// </summary>
-  public bool HasWeights => Model.HasWeights;
+  public string? QuestRange => Model.QuestRange;
 
   /// <summary>
   /// Address range of the weights table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
   /// </summary>
-  public string? WeightsRange => (Model.WeightsStart != null && Model.WeightsEnd != null) ? $"{Model.WeightsStart}:{Model.WeightsEnd}" : null;
+  public string? WeightsRange => Model.WeightsRange;
+
+  /// <summary>
+  /// Address range of the scale table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
+  /// </summary>
+  public string? ScaleRange => Model.ScaleRange;
 
   /// <summary>
   /// Text to display.
@@ -70,11 +65,11 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
     get
     {
       var result = Name;
-      if (HasQuest == true)
+      if (QuestRange != null)
       {
         result += $" q:({QuestRange})";
       }
-      if (HasWeights == true)
+      if (WeightsRange != null)
       {
         result += $" w:({WeightsRange})";
       }

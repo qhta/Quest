@@ -27,6 +27,11 @@
             </summary>
             <param name="model"></param>
         </member>
+        <member name="P:Quest.DocumentQualityVM.DocumentType">
+            <summary>
+            Document Type from the model
+            </summary>
+        </member>
         <member name="P:Quest.DocumentQualityVM.DocumentTitle">
             <summary>
             Document title from the model

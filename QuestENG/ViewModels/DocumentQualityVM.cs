@@ -15,6 +15,23 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
   }
 
   /// <summary>
+  /// Document Type from the model
+  /// </summary>
+  public string? DocumentType
+  {
+    [DebuggerStepThrough]
+    get => Model.DocumentType;
+    set
+    {
+      if (Model.DocumentType != value)
+      {
+        Model.DocumentType = value;
+        NotifyPropertyChanged(nameof(DocumentType));
+      }
+    }
+  }
+
+  /// <summary>
   /// Document title from the model
   /// </summary>
   public string? DocumentTitle

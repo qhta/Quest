@@ -83,6 +83,15 @@
                   </DataTemplate>
                 </GridViewColumn.CellTemplate>
               </GridViewColumn>
+              <GridViewColumn Header="Scale"
+                              Width="80">
+                <GridViewColumn.CellTemplate>
+                  <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
+                    <TextBlock Text="{Binding ScaleRange}"
+                               MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
+                  </DataTemplate>
+                </GridViewColumn.CellTemplate>
+              </GridViewColumn>
             </GridView>
           </ListView.View>
         </ListView>
