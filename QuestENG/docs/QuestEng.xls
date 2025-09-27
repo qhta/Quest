@@ -93,6 +93,11 @@
             Currently loaded worksheets count
             </summary>
         </member>
+        <member name="P:Quest.ProjectQualityVM.ViewItems">
+            <summary>
+            Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
+            </summary>
+        </member>
         <member name="T:Quest.ProjectsCollection">
             <summary>
             Observable collection of <see cref="T:Quest.ProjectVM"/> objects.
@@ -266,6 +271,32 @@
             </summary>
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
+        </member>
+        <member name="T:Quest.QuestItemsCollection">
+            <summary>
+            Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
+            </summary>
+        </member>
+        <member name="M:Quest.QuestItemsCollection.#ctor(Quest.ProjectQualityVM)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.QuestItemsCollection"/> class with parent.
+            </summary>
+            <param name="parent">Parent view model</param>
+        </member>
+        <member name="T:Quest.QuestItemViewModel">
+            <summary>
+            ViewModel for a quest item in a collection
+            </summary>
+        </member>
+        <member name="P:Quest.QuestItemViewModel.Header">
+            <summary>
+            Header text for the quest item
+            </summary>
+        </member>
+        <member name="P:Quest.QuestItemViewModel.Content">
+            <summary>
+            Any content associated with the quest item
+            </summary>
         </member>
     </members>
 </doc>

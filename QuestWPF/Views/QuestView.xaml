@@ -89,8 +89,25 @@
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="*"/>
-        </Grid.RowDefinitions> 
-        <views:GradeScaleView/>
+        </Grid.RowDefinitions>
+        <TabControl 
+          ItemsSource="{Binding Path=ViewItems}"
+          ContentTemplateSelector="{StaticResource QuestViewContentTemplateSelector}"
+          >
+          <!-- Define the appearance of the tab headers -->
+          <TabControl.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Header}" />
+            </DataTemplate>
+          </TabControl.ItemTemplate>
+
+          <!-- Define the content of each tab -->
+          <TabControl.ContentTemplate>
+            <DataTemplate DataType="{x:Type quest:QualityScaleVM}">
+              <views:GradeScaleView></views:GradeScaleView>
+            </DataTemplate>
+          </TabControl.ContentTemplate>
+        </TabControl>
       </Grid>
     </Grid>
   </Grid>

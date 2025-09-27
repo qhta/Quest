@@ -33,6 +33,19 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:QuestWPF.Helpers.QuestViewContentTemplateSelector">
+            <summary>
+            Selector for choosing the appropriate DataTemplate for quest view content.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Helpers.QuestViewContentTemplateSelector.SelectTemplate(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            Method to select the appropriate DataTemplate based on the item and container.
+            </summary>
+            <param name="item"></param>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
         <member name="T:QuestWPF.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml

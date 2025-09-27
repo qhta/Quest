@@ -153,16 +153,19 @@ public static class WorkbookImporter
     var (questStart, questEnd) = WorkbookHelper.SplitRange(worksheetInfo.QuestRange!);
     var startRowIndex = WorkbookHelper.GetCellRowIndex(questStart);
     var endRowIndex = WorkbookHelper.GetCellRowIndex(questEnd);
+    var startCellIndex = WorkbookHelper.GetCellColumnIndex(questStart);
+    var endCellIndex = WorkbookHelper.GetCellColumnIndex(questEnd);
     var gradesColumn = worksheetInfo.GradesColumn ?? -1;
     QualityNode? lastNode = null;
-    for (int r = startRowIndex + 1; r < endRowIndex; r++)
+    for (int r = startRowIndex + 1; r < endRowIndex+1; r++)
     {
       var row = worksheet.Rows[r];
       if (!row.Cells.Any()) continue; // Skip rows without cells
 
       QualityNode? qualityNode = null;
-      for (int c = 0; c < row.Count; c++)
+      for (int c = startCellIndex; c <= endCellIndex; c++)
       {
+        if (c>=row.Count) break; // Skip cells outside the row range
         var cell = row.Cells[c];
         var s = cell?.Value?.ToString();
         if (!String.IsNullOrWhiteSpace(s))
@@ -210,6 +213,11 @@ public static class WorkbookImporter
             }
             else
               qualityNode = new QualityMeasure();
+          }
+          else if (c==gradesColumn && hasGrades)
+          {
+            if (qualityNode is QualityMeasure qualityMeasure)
+              qualityMeasure.Grade = s;
           }
           else if (int.TryParse(s, out int weight))
             qualityNode.Weight = weight;

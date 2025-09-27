@@ -2,6 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:QuestWPF"
+             xmlns:views="clr-namespace:QuestWPF.Views"
+             xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
+             xmlns:helpers="clr-namespace:QuestWPF.Helpers"
              StartupUri="MainWindow.xaml">
   <Application.Resources>
     <ResourceDictionary>
@@ -9,6 +12,10 @@
         <ResourceDictionary Source="pack://application:,,,/Qhta.SF.WPF.Tools;component/Resources/SfDataGridTools.xaml" />
       </ResourceDictionary.MergedDictionaries>
       <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+      <helpers:QuestViewContentTemplateSelector x:Key="QuestViewContentTemplateSelector"/>
+      <DataTemplate x:Key="GradeScaleViewTemplate" DataType="{x:Type quest:QualityScaleVM}">
+        <views:GradeScaleView />
+      </DataTemplate>
     </ResourceDictionary>
   </Application.Resources>
 </Application>

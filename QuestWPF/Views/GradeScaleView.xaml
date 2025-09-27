@@ -6,7 +6,7 @@
              xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
              xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance quest:ProjectQualityVM}"
+             d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
              d:DesignHeight="450" d:DesignWidth="410">
   <Grid>
     <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
     </Border>
     <syncfusion:SfDataGrid
       Grid.Row="1"
-      ItemsSource="{Binding Path=Scale}"
+      ItemsSource="{Binding Content}"
       AutoGenerateColumns="False"
       ColumnSizer="AutoWithLastColumnFill">
       <syncfusion:SfDataGrid.Columns>

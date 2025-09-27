@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using System.Collections.ObjectModel;
+
+namespace Quest;
 
 /// <summary>
 /// ViewModel for a project quality assessment
@@ -13,6 +15,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   {
     RootNode = [this];
     DocumentQualities = new DocumentQualityCollection(this, model.DocumentQualities ?? []);
+    ViewItems = new QuestItemsCollection(this);
   }
 
   /// <summary>
@@ -50,6 +53,9 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
       {
         _scale = value;
         NotifyPropertyChanged(nameof(Scale));
+        if (ViewItems.FirstOrDefault()?.Content is QualityScaleVM)
+          ViewItems.RemoveAt(0);
+        ViewItems.Add(new QuestItemViewModel{Header="Scale", Content=value});
       }
     }
   }
@@ -145,4 +151,10 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   }
   private int _loadedCount;
   #endregion
+
+  /// <summary>
+  /// Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
+  /// </summary>
+  public QuestItemsCollection ViewItems { get; private set; }
+
 };

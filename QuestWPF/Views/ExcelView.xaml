@@ -68,32 +68,38 @@
             <syncfusion:GridTextColumn 
               HeaderText="Quest"
               MappingName="QuestRange">
-              <!--<syncfusion:GridTextColumn.CellTemplate>
+              <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
-                  <TextBlock Text="{Binding QuestRange}"
-                        MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
+                  <TextBlock 
+                    Text="{Binding QuestRange}"
+                    Style="{StaticResource GridTextColumnStyle}"
+                    MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
-              </syncfusion:GridTextColumn.CellTemplate>-->
+              </syncfusion:GridTextColumn.CellTemplate>
             </syncfusion:GridTextColumn>
             <syncfusion:GridTextColumn 
               HeaderText="Weights"
               MappingName="WeightsRange">
-              <!--<syncfusion:GridTextColumn.CellTemplate>
+              <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
-                  <TextBlock Text="{Binding WeightsRange}"
-                           MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
+                  <TextBlock 
+                    Text="{Binding WeightsRange}"
+                    Style="{StaticResource GridTextColumnStyle}"
+                    MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
-              </syncfusion:GridTextColumn.CellTemplate>-->
+              </syncfusion:GridTextColumn.CellTemplate>
             </syncfusion:GridTextColumn>
             <syncfusion:GridTextColumn  
               HeaderText="Scale"
               MappingName="ScaleRange">
-              <!--<syncfusion:GridTextColumn.CellTemplate>
+              <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
-                  <TextBlock Text="{Binding ScaleRange}"
-                               MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
+                  <TextBlock 
+                    Text="{Binding ScaleRange}"
+                    Style="{StaticResource GridTextColumnStyle}"
+                    MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
-              </syncfusion:GridTextColumn.CellTemplate>-->
+              </syncfusion:GridTextColumn.CellTemplate>
             </syncfusion:GridTextColumn>
           </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
