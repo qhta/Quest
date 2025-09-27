@@ -1,4 +1,6 @@
-﻿namespace QuestWPF.Views;
+﻿using Syncfusion.UI.Xaml.Grid;
+
+namespace QuestWPF.Views;
 
 /// <summary>
 /// Interaction logic for ExcelView.xaml
@@ -63,7 +65,7 @@ public partial class ExcelView : UserControl
     {
       FileName = fileName;
       SpreadsheetControl.Open(fileName);
-      var workbookVM = new WorkbookInfoVM{ FileName = fileName };
+      var workbookVM = new WorkbookInfoVM { FileName = fileName };
       workbookVM.IsLoading = true;
       DataContext = workbookVM;
       var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
@@ -86,9 +88,9 @@ public partial class ExcelView : UserControl
   /// <returns>A <see cref="WorkbookInfo"/> object containing metadata and details about the workbook.</returns>
   private WorkbookInfo GetWorkbookInfo(string fileName)
   {
-      var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
-      var workbookInfo = WorkbookRecognizer.GetWorkbookInfo(workbook, fileName);
-      return workbookInfo;
+    var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
+    var workbookInfo = WorkbookRecognizer.GetWorkbookInfo(workbook, fileName);
+    return workbookInfo;
   }
 
   /// <summary>
@@ -116,7 +118,9 @@ public partial class ExcelView : UserControl
   /// </summary>
   /// <param name="sender">Sender object</param>
   /// <param name="e">Even arguments</param>
-  private void WorksheetListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+  /// 
+  private void WorksheetListView_OnSelectionChanged(object? sender, GridSelectionChangedEventArgs e)
+
   {
     if (sender is ListView listView)
     {

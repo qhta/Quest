@@ -49,6 +49,7 @@
   <ItemGroup>
     <PackageReference Include="Qhta.MVVM" Version="4.15.0" />
     <PackageReference Include="Qhta.ObservableObjects" Version="4.3.0" />
+    <PackageReference Include="Qhta.SF.WPF.Tools" Version="1.1.0" />
     <PackageReference Include="Syncfusion.SfGrid.WPF" Version="31.1.21" />
     <PackageReference Include="Syncfusion.SfSpreadsheet.WPF" Version="31.1.21" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="31.1.21" />

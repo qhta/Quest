@@ -149,12 +149,13 @@
             <param name="workbookVM">View model of workbook information</param>
             <returns></returns>
         </member>
-        <member name="M:QuestWPF.Views.ExcelView.WorksheetListView_OnSelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+        <member name="M:QuestWPF.Views.ExcelView.WorksheetListView_OnSelectionChanged(System.Object,Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs)">
             <summary>
             Method to handle selection changes in the worksheet list view.
             </summary>
             <param name="sender">Sender object</param>
             <param name="e">Even arguments</param>
+            
         </member>
         <member name="M:QuestWPF.Views.ExcelView.RangeTextBlock_OnMouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
             <summary>

@@ -13,30 +13,28 @@
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <Border Background="Silver">
+    <Border Background="DodgerBlue">
       <TextBlock Text="{x:Static questRsx:Strings.GradeScale}" FontWeight="Bold" Margin="5"/>
     </Border>
     <syncfusion:SfDataGrid
       Grid.Row="1"
       ItemsSource="{Binding Path=Scale}"
-      AutoGenerateColumns="False">
+      AutoGenerateColumns="False"
+      ColumnSizer="AutoWithLastColumnFill">
       <syncfusion:SfDataGrid.Columns>
         <syncfusion:GridTextColumn
           HeaderText="{x:Static questRsx:Strings.Text}"
           MappingName="Text"
-          Width="100"
         />
         <syncfusion:GridNumericColumn
           HeaderText="{x:Static questRsx:Strings.Value}"
           MappingName="Value"
-          Width="100"
           NullValue="0"
           NumberDecimalDigits="0"
         />
         <syncfusion:GridTextColumn
           HeaderText="{x:Static questRsx:Strings.Meaning}"
           MappingName="Meaning"
-          Width="200"
         />
       </syncfusion:SfDataGrid.Columns>
     </syncfusion:SfDataGrid>

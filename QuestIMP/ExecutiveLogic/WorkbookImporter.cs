@@ -59,7 +59,7 @@ public static class WorkbookImporter
     var startRowIndex = WorkbookHelper.GetCellRowIndex(scaleStart);
     var endRowIndex = WorkbookHelper.GetCellRowIndex(scaleEnd);
     var startCellIndex = WorkbookHelper.GetCellColumnIndex(scaleStart);
-    for (int r = startRowIndex + 1; r < endRowIndex; r++)
+    for (int r = startRowIndex + 1; r <= endRowIndex; r++)
     {
       var row = worksheet.Rows[r];
       if (!row.Cells.Any()) continue; // Skip rows without cells
