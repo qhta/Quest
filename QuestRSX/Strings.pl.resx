@@ -144,4 +144,13 @@
   <data name="GradeScale" xml:space="preserve">
     <value>Skala ocen</value>
   </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Waga</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Poziom</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Komentarz</value>
+  </data>
 </root>

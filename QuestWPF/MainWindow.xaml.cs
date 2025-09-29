@@ -134,8 +134,8 @@ public partial class MainWindow : Window
       double offset = 20 * n;
 
       // Desired size
-      double width = 800;
-      double height = 600;
+      double width = 1210;
+      double height = 830;
 
       // Final rect in screen coordinates (DIPs)
       dockItem.FloatingWindowRect = new Rect(

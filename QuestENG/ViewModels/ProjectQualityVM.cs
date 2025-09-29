@@ -16,6 +16,19 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
     RootNode = [this];
     DocumentQualities = new DocumentQualityCollection(this, model.DocumentQualities ?? []);
     ViewItems = new QuestItemsCollection(this);
+    DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
+  }
+
+  private void DocumentQualities_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+  {
+    if (sender == DocumentQualities)
+    {
+      if (e.Action == NotifyCollectionChangedAction.Add)
+        foreach (var documentQualityVM in e.NewItems?.OfType<DocumentQualityVM>() ?? [])
+        {
+          ViewItems.Add(new QuestItemViewModel{Header = documentQualityVM.DocumentType, Content=documentQualityVM});
+        }
+    }
   }
 
   /// <summary>
@@ -55,7 +68,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
         NotifyPropertyChanged(nameof(Scale));
         if (ViewItems.FirstOrDefault()?.Content is QualityScaleVM)
           ViewItems.RemoveAt(0);
-        ViewItems.Add(new QuestItemViewModel{Header="Scale", Content=value});
+        ViewItems.Add(new QuestItemViewModel { Header = "Scale", Content = value });
       }
     }
   }

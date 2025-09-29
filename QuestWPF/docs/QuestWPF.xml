@@ -33,6 +33,35 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:QuestWPF.Converters.ImageToGrayConverter">
+            <summary>
+            Converts an image file path to a grayscale image representation.
+            </summary>
+            <remarks>This converter takes a file path to an image as input and returns a grayscale version of the image.
+            The input value must be a string representing the image file path. If the input is not a valid string or the file
+            path is invalid, the original value is returned unchanged.</remarks>
+        </member>
+        <member name="M:QuestWPF.Converters.ImageToGrayConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts an image file path to a grayscale image.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestWPF.Converters.ImageToGrayConverter.ConvertToGrayscaleWithAlpha(System.Windows.Media.Imaging.BitmapSource)">
+            <summary>
+            Converts a BitmapSource to grayscale while preserving the alpha channel.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Converters.ImageToGrayConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Not implemented - conversion back is not supported.
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
         <member name="T:QuestWPF.Helpers.QuestViewContentTemplateSelector">
             <summary>
             Selector for choosing the appropriate DataTemplate for quest view content.
@@ -45,6 +74,16 @@
             <param name="item"></param>
             <param name="container"></param>
             <returns></returns>
+        </member>
+        <member name="P:QuestWPF.Helpers.QuestViewContentTemplateSelector.QualityScaleTemplate">
+            <summary>
+            Template for displaying a quality scale.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Helpers.QuestViewContentTemplateSelector.DocumentQualityTemplate">
+            <summary>
+            Template for displaying document quality details.
+            </summary>
         </member>
         <member name="T:QuestWPF.MainWindow">
             <summary>
@@ -108,6 +147,24 @@
         <member name="P:QuestWPF.MDIViewModel.DockCollections">
             <summary>
             Collection of DockItems for managing dockable panels in the UI.
+            </summary>
+        </member>
+        <member name="T:QuestWPF.Views.DocumentQualityView">
+            <summary>
+            Interaction logic for DocumentQualityView.xaml
+            </summary>
+            <summary>
+            DocumentQualityView
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQualityView.#ctor">
+            <summary>
+            Initializing constructor
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQualityView.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="T:QuestWPF.Views.ExcelView">
@@ -313,35 +370,6 @@
             <summary>
             InitializeComponent
             </summary>
-        </member>
-        <member name="T:ImageToGrayConverter">
-            <summary>
-            Converts an image file path to a grayscale image representation.
-            </summary>
-            <remarks>This converter takes a file path to an image as input and returns a grayscale version of the image.
-            The input value must be a string representing the image file path. If the input is not a valid string or the file
-            path is invalid, the original value is returned unchanged.</remarks>
-        </member>
-        <member name="M:ImageToGrayConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Converts an image file path to a grayscale image.
-            </summary>
-            <param name="value"></param>
-            <param name="targetType"></param>
-            <param name="parameter"></param>
-            <param name="culture"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ImageToGrayConverter.ConvertToGrayscaleWithAlpha(System.Windows.Media.Imaging.BitmapSource)">
-            <summary>
-            Converts a BitmapSource to grayscale while preserving the alpha channel.
-            </summary>
-        </member>
-        <member name="M:ImageToGrayConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Not implemented - conversion back is not supported.
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
             <summary>

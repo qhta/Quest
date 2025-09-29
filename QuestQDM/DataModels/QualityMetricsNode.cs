@@ -14,4 +14,9 @@ public class QualityMetricsNode: QualityNode
   /// Gets or sets the collection of child nodes associated with this node.
   /// </summary>
   public List<QualityNode> Children { get; set; } = new List<QualityNode>();
+
+  /// <summary>
+  /// Evaluated value computed from child nodes.
+  /// </summary>
+  public double? Value { get; set; }
 }

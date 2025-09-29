@@ -204,9 +204,29 @@
             </summary>
             <param name="model"></param>
         </member>
+        <member name="P:Quest.QualityFactorVM.Level">
+            <summary>
+            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
         <member name="P:Quest.QualityFactorVM.Text">
             <summary>
             Factor text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Weight">
+            <summary>
+            Weight of the factor  
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Value">
+            <summary>
+            Value of the assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Comment">
+            <summary>
+            Comment added to assessment
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.IsLoading">

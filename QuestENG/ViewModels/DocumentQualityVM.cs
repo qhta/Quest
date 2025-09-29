@@ -14,6 +14,7 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
     Factors = new QualityFactorCollection(this, model.Factors ?? []);
   }
 
+
   /// <summary>
   /// Document Type from the model
   /// </summary>

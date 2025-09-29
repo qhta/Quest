@@ -12,10 +12,6 @@
         <ResourceDictionary Source="pack://application:,,,/Qhta.SF.WPF.Tools;component/Resources/SfDataGridTools.xaml" />
       </ResourceDictionary.MergedDictionaries>
       <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-      <helpers:QuestViewContentTemplateSelector x:Key="QuestViewContentTemplateSelector"/>
-      <DataTemplate x:Key="GradeScaleViewTemplate" DataType="{x:Type quest:QualityScaleVM}">
-        <views:GradeScaleView />
-      </DataTemplate>
     </ResourceDictionary>
   </Application.Resources>
 </Application>

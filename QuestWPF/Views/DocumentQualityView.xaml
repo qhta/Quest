@@ -1,6 +1,6 @@
 ﻿<UserControl 
+  x:Class="QuestWPF.Views.DocumentQualityView"
   xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  
-  x:Class="QuestWPF.Views.GradeScaleView"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,34 +9,44 @@
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
-  d:DesignHeight="450" d:DesignWidth="410">
-  <Grid>
+  d:DesignHeight="450" d:DesignWidth="810">
+  <Grid 
+    DataContext="{Binding Content}" 
+    d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <Border Background="Azure">
-      <TextBlock Text="{Binding Header}" FontWeight="Bold" Margin="5"/>
+      <TextBlock Text="{Binding Path=DocumentTitle}" FontWeight="Bold" Margin="5"/>
     </Border>
     <syncfusion:SfDataGrid
       Grid.Row="1"
-      ItemsSource="{Binding Content}"
+      ItemsSource="{Binding Factors}"
       AutoGenerateColumns="False"
       ColumnSizer="AutoWithLastColumnFill">
       <syncfusion:SfDataGrid.Columns>
+        <syncfusion:GridTextColumn
+          HeaderText="{x:Static questRsx:Strings.Level}"
+          MappingName="Level"
+        />
         <syncfusion:GridTextColumn
           HeaderText="{x:Static questRsx:Strings.Text}"
           MappingName="Text"
         />
         <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:Strings.Value}"
-          MappingName="Value"
+          HeaderText="{x:Static questRsx:Strings.Weight}"
+          MappingName="Weight"
           NullValue="0"
           NumberDecimalDigits="0"
         />
         <syncfusion:GridTextColumn
-          HeaderText="{x:Static questRsx:Strings.Meaning}"
-          MappingName="Meaning"
+          HeaderText="{x:Static questRsx:Strings.Value}"
+          MappingName="Value"
+        />
+        <syncfusion:GridTextColumn
+          HeaderText="{x:Static questRsx:Strings.Comment}"
+          MappingName="Comment"
         />
       </syncfusion:SfDataGrid.Columns>
     </syncfusion:SfDataGrid>

@@ -57,4 +57,10 @@
     <PackageReference Include="syncfusion.ui.wpf.net" Version="31.1.21" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Views\DocumentQualityView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

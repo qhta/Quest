@@ -13,11 +13,23 @@ public class QuestViewContentTemplateSelector: DataTemplateSelector
   /// <returns></returns>
   public override DataTemplate? SelectTemplate(object? item, DependencyObject container)
   {
-    if (item is QualityScaleVM)
+    if (item is QuestItemViewModel questItemView)
     {
-      return Application.Current.Resources["QualityScaleTemplate"] as DataTemplate;
+      if (questItemView.Content is QualityScaleVM)
+        return QualityScaleTemplate;
+      if (questItemView.Content is DocumentQualityVM)
+        return DocumentQualityTemplate;
     }
-
     return base.SelectTemplate(item, container);
   }
+
+  /// <summary>
+  /// Template for displaying a quality scale.
+  /// </summary>
+  public DataTemplate? QualityScaleTemplate { get; set; }
+
+  /// <summary>
+  /// Template for displaying document quality details.
+  /// </summary>
+  public DataTemplate? DocumentQualityTemplate { get; set; }
 }

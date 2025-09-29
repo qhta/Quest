@@ -1,3 +1,5 @@
+namespace QuestWPF.Converters;
+
 /// <summary>
 /// Converts an image file path to a grayscale image representation.
 /// </summary>

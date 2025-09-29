@@ -11,8 +11,12 @@ public class QualityFactorVM : ViewModel<QualityFactor>
   /// <param name="model"></param>
   public QualityFactorVM(QualityFactor model) : base(model)
   {
-    //DocumentQualities = new DocumentQualityCollection(this, model.DocumentQualities ?? []);
   }
+
+  /// <summary>
+  /// Level of the factor in the hierarchy (0 for root, 1 for factor)
+  /// </summary>
+  public int Level => Model.Level;
 
   /// <summary>
   /// Factor text from the model
@@ -31,11 +35,56 @@ public class QualityFactorVM : ViewModel<QualityFactor>
     }
   }
 
-  ///// <summary>
-  ///// Individual document qualities within the project
-  ///// </summary>
-  //public DocumentQualityCollection DocumentQualities { get; set; }
+  /// <summary>
+  /// Weight of the factor  
+  /// </summary>
+  public int Weight
+  {
+    [DebuggerStepThrough]
+    get => Model.Weight;
+    set
+    {
+      if (Model.Weight != value)
+      {
+        Model.Weight = value;
+        NotifyPropertyChanged(nameof(Weight));
+      }
+    }
+  }
 
+  /// <summary>
+  /// Value of the assessment
+  /// </summary>
+  public double? Value
+  {
+    [DebuggerStepThrough]
+    get => Model.Value;
+    set
+    {
+      if (Model.Value != value)
+      {
+        Model.Value = value;
+        NotifyPropertyChanged(nameof(Value));
+      }
+    }
+  }
+
+  /// <summary>
+  /// Comment added to assessment
+  /// </summary>
+  public string? Comment
+  {
+    [DebuggerStepThrough]
+    get => Model.Comment;
+    set
+    {
+      if (Model.Comment != value)
+      {
+        Model.Comment = value;
+        NotifyPropertyChanged(nameof(Comment));
+      }
+    }
+  }
   #region Loading State Properties
   /// <summary>
   /// Determines whether the workbook is currently in a loading state.

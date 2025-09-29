@@ -11,7 +11,7 @@
              x:Class="QuestWPF.Views.ExcelView"
              d:DataContext="{d:DesignInstance questImp:WorkbookInfoVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="810">
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>

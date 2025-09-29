@@ -1,14 +1,30 @@
-﻿<UserControl xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  x:Class="QuestWPF.Views.QuestView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:views="clr-namespace:QuestWPF.Views"
-             xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
-             mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance quest:ProjectQualityVM}"
-             d:DesignHeight="450" d:DesignWidth="800">
-  <Grid>
+﻿<UserControl 
+  x:Class="QuestWPF.Views.QuestView"
+  xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:views="clr-namespace:QuestWPF.Views"
+  xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
+  xmlns:helpers="clr-namespace:QuestWPF.Helpers"
+  mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance quest:ProjectQualityVM}"
+  d:DesignHeight="450" d:DesignWidth="800">
+  <UserControl.Resources>
+    <DataTemplate x:Key="QualityScaleTemplate" DataType="{x:Type quest:QualityScaleVM}">
+      <views:GradeScaleView/>
+    </DataTemplate>
+    <DataTemplate x:Key="DocumentQualityTemplate" DataType="{x:Type quest:DocumentQualityVM}">
+      <views:DocumentQualityView/>
+    </DataTemplate>
+    <helpers:QuestViewContentTemplateSelector 
+      x:Key="QuestViewContentTemplateSelector"
+      QualityScaleTemplate="{StaticResource QualityScaleTemplate}"
+      DocumentQualityTemplate="{StaticResource DocumentQualityTemplate}"
+      />
+    </UserControl.Resources>
+    <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
@@ -102,11 +118,11 @@
           </TabControl.ItemTemplate>
 
           <!-- Define the content of each tab -->
-          <TabControl.ContentTemplate>
+          <!--<TabControl.ContentTemplate>
             <DataTemplate DataType="{x:Type quest:QualityScaleVM}">
               <views:GradeScaleView></views:GradeScaleView>
             </DataTemplate>
-          </TabControl.ContentTemplate>
+          </TabControl.ContentTemplate>-->
         </TabControl>
       </Grid>
     </Grid>
