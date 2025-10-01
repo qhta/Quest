@@ -20,35 +20,37 @@
     <Border Background="Azure">
       <TextBlock Text="{Binding Path=DocumentTitle}" FontWeight="Bold" Margin="5"/>
     </Border>
-    <syncfusion:SfDataGrid
+    <syncfusion:SfTreeGrid
       Grid.Row="1"
+      ChildPropertyName = "Children"
+      AutoExpandMode = "RootNodesExpanded"
       ItemsSource="{Binding Factors}"
       AutoGenerateColumns="False"
-      ColumnSizer="AutoWithLastColumnFill">
-      <syncfusion:SfDataGrid.Columns>
-        <syncfusion:GridTextColumn
-          HeaderText="{x:Static questRsx:Strings.Level}"
-          MappingName="Level"
-        />
-        <syncfusion:GridTextColumn
+      ColumnSizer="AutoFillColumn">
+      <syncfusion:SfTreeGrid.Columns>
+        <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Text}"
           MappingName="Text"
         />
-        <syncfusion:GridNumericColumn
+        <syncfusion:TreeGridTextColumn
+          HeaderText="{x:Static questRsx:Strings.Level}"
+          MappingName="Level"
+        />
+        <syncfusion:TreeGridNumericColumn
           HeaderText="{x:Static questRsx:Strings.Weight}"
           MappingName="Weight"
           NullValue="0"
           NumberDecimalDigits="0"
         />
-        <syncfusion:GridTextColumn
+        <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Value}"
           MappingName="Value"
         />
-        <syncfusion:GridTextColumn
+        <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Comment}"
           MappingName="Comment"
         />
-      </syncfusion:SfDataGrid.Columns>
-    </syncfusion:SfDataGrid>
+      </syncfusion:SfTreeGrid.Columns>
+    </syncfusion:SfTreeGrid>
   </Grid>
 </UserControl>

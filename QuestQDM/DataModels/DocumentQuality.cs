@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Quality of a single document.
 /// </summary>
-public class DocumentQuality: Quality
+public class DocumentQuality: QualityObject
 {
   /// <summary>
   /// Type of the document.

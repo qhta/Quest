@@ -1,18 +1,18 @@
 ﻿namespace Quest;
 
 /// <summary>
-/// Observable collection of <see cref="DocumentQualityVM"/> objects.
+/// Observable collection of <see cref="DocumentQuality"/> objects.
 /// </summary>
-public class DocumentQualityCollection : ObservableList<DocumentQualityVM>
+public class DocumentQualityCollection : ObservableList<DocumentQuality>
 {
-  private ProjectQualityVM Parent { get; }
+  private ProjectQuality Parent { get; }
 
   /// <summary>
   /// Initializes a new instance of the <see cref="DocumentQualityCollection"/> class with a list of <see cref="DocumentQuality"/>.
   /// </summary>
   /// <param name="parent">Parent view model</param>
   /// <param name="items">Collection of entities to add their view models.</param>
-  public DocumentQualityCollection(ProjectQualityVM parent,IEnumerable<DocumentQuality> items) : base(items.Select(item => new DocumentQualityVM(item)))
+  public DocumentQualityCollection(ProjectQuality parent,IEnumerable<DocumentQuality> items) : base(items)
   {
     Parent = parent;
   }

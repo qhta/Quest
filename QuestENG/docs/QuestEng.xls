@@ -4,18 +4,6 @@
         <name>QuestENG</name>
     </assembly>
     <members>
-        <member name="T:Quest.DocumentQualityCollection">
-            <summary>
-            Observable collection of <see cref="T:Quest.DocumentQualityVM"/> objects.
-            </summary>
-        </member>
-        <member name="M:Quest.DocumentQualityCollection.#ctor(Quest.ProjectQualityVM,System.Collections.Generic.IEnumerable{Quest.DocumentQuality})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quest.DocumentQualityCollection"/> class with a list of <see cref="T:Quest.DocumentQuality"/>.
-            </summary>
-            <param name="parent">Parent view model</param>
-            <param name="items">Collection of entities to add their view models.</param>
-        </member>
         <member name="T:Quest.DocumentQualityVM">
             <summary>
             ViewModel for a single document quality assessment
@@ -40,6 +28,78 @@
         <member name="P:Quest.DocumentQualityVM.Factors">
             <summary>
             Individual document qualities within the project
+            </summary>
+        </member>
+        <member name="T:Quest.DocumentQualityVMCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.DocumentQualityVM"/> objects.
+            </summary>
+        </member>
+        <member name="M:Quest.DocumentQualityVMCollection.#ctor(Quest.ProjectQualityVM,System.Collections.Generic.IEnumerable{Quest.DocumentQuality})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.DocumentQualityVMCollection"/> class with a list of <see cref="T:Quest.DocumentQuality"/>.
+            </summary>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
+        </member>
+        <member name="T:Quest.IQualityNodeVM">
+            <summary>
+            ViewModel for a quality metrics node
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Level">
+            <summary>
+            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Text">
+            <summary>
+            Factor text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Weight">
+            <summary>
+            Weight of the factor  
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Value">
+            <summary>
+            Value of the assessment
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Comment">
+            <summary>
+            Comment added to assessment
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Children">
+            <summary>
+            Gets the collection of child nodes associated with this node.
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.IsLoading">
+            <summary>
+            Determines whether the workbook is currently in a loading state.
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.TotalCount">
+            <summary>
+            Determines the count of worksheets to load.
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.LoadedCount">
+            <summary>
+            Currently loaded worksheets count
+            </summary>
+        </member>
+        <member name="T:Quest.IQualityObjectVM">
+            <summary>
+            Interface of view model for a quality object (project, document, etc.)
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityObjectVM.QualityObject">
+            <summary>
+            Gets the underlying quality object model.
             </summary>
         </member>
         <member name="T:Quest.ProjectQualityVM">
@@ -97,17 +157,6 @@
             <summary>
             Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
             </summary>
-        </member>
-        <member name="T:Quest.ProjectsCollection">
-            <summary>
-            Observable collection of <see cref="T:Quest.ProjectVM"/> objects.
-            </summary>
-        </member>
-        <member name="M:Quest.ProjectsCollection.#ctor(System.Collections.Generic.IEnumerable{QuestRDM.Project})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quest.ProjectsCollection"/> class with a list of <see cref="T:QuestRDM.Project"/>.
-            </summary>
-            <param name="items"></param>
         </member>
         <member name="T:Quest.ProjectsViewModel">
             <summary>
@@ -176,22 +225,16 @@
             A title of the project
             </summary>
         </member>
-        <member name="T:Quest.QualityFactorCollection">
+        <member name="T:Quest.ProjectVMCollection">
             <summary>
-            Observable collection of <see cref="T:Quest.QualityFactorVM"/> objects.
+            Observable collection of <see cref="T:Quest.ProjectVM"/> objects.
             </summary>
         </member>
-        <member name="P:Quest.QualityFactorCollection.Parent">
+        <member name="M:Quest.ProjectVMCollection.#ctor(System.Collections.Generic.IEnumerable{QuestRDM.Project})">
             <summary>
-            Parent view model
+            Initializes a new instance of the <see cref="T:Quest.ProjectVMCollection"/> class with a list of <see cref="T:QuestRDM.Project"/>.
             </summary>
-        </member>
-        <member name="M:Quest.QualityFactorCollection.#ctor(Quest.DocumentQualityVM,System.Collections.Generic.IEnumerable{Quest.QualityFactor})">
-            <summary>
-            Initializes a new instance of the <see cref="T:Quest.QualityFactorCollection"/> class with a list of <see cref="T:Quest.QualityFactor"/>.
-            </summary>
-            <param name="parent">Parent view model</param>
-            <param name="items">Collection of entities to add their view models.</param>
+            <param name="items"></param>
         </member>
         <member name="T:Quest.QualityFactorVM">
             <summary>
@@ -203,6 +246,11 @@
             Mandatory constructor
             </summary>
             <param name="model"></param>
+        </member>
+        <member name="P:Quest.QualityFactorVM.QualityObject">
+            <summary>
+            Gets the quality object associated with the model.
+            </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Level">
             <summary>
@@ -229,6 +277,13 @@
             Comment added to assessment
             </summary>
         </member>
+        <member name="P:Quest.QualityFactorVM.Children">
+            <summary>
+            Gets the collection of child nodes associated with this node.
+            </summary>
+            <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
+            be null.</remarks>
+        </member>
         <member name="P:Quest.QualityFactorVM.IsLoading">
             <summary>
             Determines whether the workbook is currently in a loading state.
@@ -243,6 +298,23 @@
             <summary>
             Currently loaded worksheets count
             </summary>
+        </member>
+        <member name="T:Quest.QualityFactorVMCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.QualityFactorVM"/> objects.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVMCollection.Parent">
+            <summary>
+            Parent view model
+            </summary>
+        </member>
+        <member name="M:Quest.QualityFactorVMCollection.#ctor(Quest.DocumentQualityVM,System.Collections.Generic.IEnumerable{Quest.QualityFactor})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.QualityFactorVMCollection"/> class with a list of <see cref="T:Quest.QualityFactor"/>.
+            </summary>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
         </member>
         <member name="T:Quest.QualityGradeVM">
             <summary>
@@ -274,6 +346,149 @@
             <summary>
             Textual meaning of the grade.
             </summary>
+        </member>
+        <member name="T:Quest.QualityMeasureVM">
+            <summary>
+            ViewModel for a quality factor assessment
+            </summary>
+        </member>
+        <member name="M:Quest.QualityMeasureVM.#ctor(Quest.QualityMeasure)">
+            <summary>
+            Mandatory constructor
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.QualityObject">
+            <summary>
+            Gets the quality object associated with the model.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Level">
+            <summary>
+            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Text">
+            <summary>
+            Factor text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Weight">
+            <summary>
+            Weight of the factor  
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Value">
+            <summary>
+            Value of the assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Comment">
+            <summary>
+            Comment added to assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Children">
+            <summary>
+            Gets the collection of child nodes associated with this node.
+            </summary>
+            <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
+            be null.</remarks>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.IsLoading">
+            <summary>
+            Determines whether the workbook is currently in a loading state.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.TotalCount">
+            <summary>
+            Determines the count of worksheets to load.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.LoadedCount">
+            <summary>
+            Currently loaded worksheets count
+            </summary>
+        </member>
+        <member name="T:Quest.QualityMetricsVM">
+            <summary>
+            ViewModel for a quality factor assessment
+            </summary>
+        </member>
+        <member name="M:Quest.QualityMetricsVM.#ctor(Quest.QualityMetrics)">
+            <summary>
+            Mandatory constructor
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.QualityObject">
+            <summary>
+            Gets the quality object associated with the model.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Level">
+            <summary>
+            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Text">
+            <summary>
+            Factor text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Weight">
+            <summary>
+            Weight of the factor  
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Value">
+            <summary>
+            Value of the assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Comment">
+            <summary>
+            Comment added to assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Children">
+            <summary>
+            Gets the collection of child nodes associated with this node.
+            </summary>
+            <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
+            be null.</remarks>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.IsLoading">
+            <summary>
+            Determines whether the workbook is currently in a loading state.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.TotalCount">
+            <summary>
+            Determines the count of worksheets to load.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.LoadedCount">
+            <summary>
+            Currently loaded worksheets count
+            </summary>
+        </member>
+        <member name="T:Quest.QualityNodeVMCollection">
+            <summary>
+            Observable collection of <see cref="T:Quest.IQualityNodeVM"/> objects.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVMCollection.Parent">
+            <summary>
+            Parent view model
+            </summary>
+        </member>
+        <member name="M:Quest.QualityNodeVMCollection.#ctor(Quest.IQualityObjectVM,System.Collections.Generic.IEnumerable{Quest.QualityNode})">
+            <summary>
+            Initializing constructor.
+            </summary>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
         </member>
         <member name="T:Quest.QualityScaleVM">
             <summary>

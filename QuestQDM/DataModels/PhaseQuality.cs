@@ -5,7 +5,7 @@ namespace Quest;
 /// <summary>
 /// Quality of a project phase.
 /// </summary>
-public class PhaseQuality: Quality
+public class PhaseQuality: QualityObject
 {
   /// <summary>
   /// Phase Id.

@@ -11,7 +11,7 @@ public class ProjectsViewModel : ViewModel
   private ProjectsViewModel()
   {
     // Initialize the ProjectsCollection with an empty list or fetch from a data source.
-    Projects = new ProjectsCollection(new List<Project>());
+    Projects = new ProjectVMCollection(new List<Project>());
   }
 
   readonly QuestRdmDbContext dbContext = new QuestRdmDbContext();
@@ -25,7 +25,7 @@ public class ProjectsViewModel : ViewModel
   /// <summary>
   /// Collection of all projects.
   /// </summary>
-  public ProjectsCollection Projects
+  public ProjectVMCollection Projects
   {
     [DebuggerStepThrough]
     get => _Projects;
@@ -38,7 +38,7 @@ public class ProjectsViewModel : ViewModel
       }
     }
   }
-  private ProjectsCollection _Projects = new ProjectsCollection([]);
+  private ProjectVMCollection _Projects = new ProjectVMCollection([]);
 
   /// <summary>
   /// Method to load projects from the QuestRDM.
@@ -47,7 +47,7 @@ public class ProjectsViewModel : ViewModel
   {
     // Fetch projects from the database and populate the ProjectsCollection.
     var projects = dbContext.Projects.ToList();
-    Projects = new ProjectsCollection(projects);
+    Projects = new ProjectVMCollection(projects);
   }
 
   /// <summary>

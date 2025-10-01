@@ -11,7 +11,7 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
   /// <param name="model"></param>
   public DocumentQualityVM(DocumentQuality model) : base(model)
   {
-    Factors = new QualityFactorCollection(this, model.Factors ?? []);
+    Factors = new QualityFactorVMCollection(this, model.Factors ?? []);
   }
 
 
@@ -52,5 +52,5 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>
   /// <summary>
   /// Individual document qualities within the project
   /// </summary>
-  public QualityFactorCollection Factors { get; set; }
+  public QualityFactorVMCollection Factors { get; set; }
 }

@@ -3,12 +3,12 @@
 /// <summary>
 /// Quality of the entire project.
 /// </summary>
-public class ProjectQuality
+public class ProjectQuality: QualityObject
 {
-  /// <summary>
-  /// Unique identifier for the entity.
-  /// </summary>
-  public int Id { get; set; }
+  ///// <summary>
+  ///// Unique identifier for the entity.
+  ///// </summary>
+  //public int Id { get; set; }
 
   /// <summary>
   /// Identifies the name of the assessed project name.

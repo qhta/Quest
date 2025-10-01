@@ -14,7 +14,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   public ProjectQualityVM(ProjectQuality model) : base(model)
   {
     RootNode = [this];
-    DocumentQualities = new DocumentQualityCollection(this, model.DocumentQualities ?? []);
+    DocumentQualities = new DocumentQualityVMCollection(this, model.DocumentQualities ?? []);
     ViewItems = new QuestItemsCollection(this);
     DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
   }
@@ -77,7 +77,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
   /// <summary>
   /// Individual document qualities within the project
   /// </summary>
-  public DocumentQualityCollection DocumentQualities
+  public DocumentQualityVMCollection DocumentQualities
   {
     [DebuggerStepThrough]
     get => _documentQualities;
@@ -90,7 +90,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
       }
     }
   }
-  private DocumentQualityCollection _documentQualities = null!;
+  private DocumentQualityVMCollection _documentQualities = null!;
   /// <summary>
   /// Determines whether the project quality is expanded (when used in TreeView).
   /// </summary>

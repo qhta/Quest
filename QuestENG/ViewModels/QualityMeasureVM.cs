@@ -3,13 +3,13 @@
 /// <summary>
 /// ViewModel for a quality factor assessment
 /// </summary>
-public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
+public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
 {
   /// <summary>
   /// Mandatory constructor
   /// </summary>
   /// <param name="model"></param>
-  public QualityFactorVM(QualityFactor model) : base(model)
+  public QualityMeasureVM(QualityMeasure model) : base(model)
   {
     Children = new QualityNodeVMCollection(this, model.Children ?? []);
   }
@@ -100,7 +100,6 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   public QualityNodeVMCollection Children { get; }
 
   #region Loading State Properties
-  
   /// <summary>
   /// Determines whether the workbook is currently in a loading state.
   /// </summary>

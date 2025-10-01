@@ -5,7 +5,7 @@ namespace Quest;
 /// <summary>
 /// Base class for quality assessment.
 /// </summary>
-public abstract class Quality
+public abstract class QualityObject
 {
   /// <summary>
   /// Unique identifier for the quality.
