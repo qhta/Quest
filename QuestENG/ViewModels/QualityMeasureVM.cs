@@ -8,11 +8,43 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   /// <summary>
   /// Mandatory constructor
   /// </summary>
-  /// <param name="model"></param>
-  public QualityMeasureVM(QualityMeasure model) : base(model)
+  /// <param name="parent">Required parent View Model</param>
+  /// <param name="model">Required data entity</param>
+  public QualityMeasureVM(IQualityObjectVM parent, QualityMeasure model) : base(model)
   {
+    Parent = parent;
     Children = new QualityNodeVMCollection(this, model.Children ?? []);
   }
+
+  /// <summary>
+  /// Required parent view model
+  /// </summary>
+  public IQualityObjectVM Parent { get; set; }
+
+  /// <summary>
+  /// Gets the quality scale from the grandparent ProjectQualityVM
+  /// </summary>
+  public QualityScaleVM Scale
+  {
+    get
+    {
+      IQualityObjectVM? current = Parent;
+      while (current != null)
+      {
+        if (current is ProjectQualityVM projectQualityVM)
+          return projectQualityVM.Scale;
+        if (current is DocumentQualityVM documentQualityVM)
+          current = documentQualityVM.Parent;
+        else if (current is QualityFactorVM qualityFactorVM)
+          current = qualityFactorVM.Parent;
+        else if (current is QualityMetricsVM qualityMetricsVM)
+          current = qualityMetricsVM.Parent;
+        else
+          current = null;
+      }
+      throw new InvalidOperationException("Parent ProjectQualityVM not found in hierarchy.");
+    }
+  } 
 
   /// <summary>
   /// Gets the quality object associated with the model.
@@ -71,6 +103,23 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
       {
         Model.Value = value;
         NotifyPropertyChanged(nameof(Value));
+      }
+    }
+  }
+
+  /// <summary>
+  /// Grade of the assessment
+  /// </summary>
+  public string? Grade
+  {
+    [DebuggerStepThrough]
+    get => Model.Grade;
+    set
+    {
+      if (Model.Grade != value)
+      {
+        Model.Grade = value;
+        NotifyPropertyChanged(nameof(Grade));
       }
     }
   }

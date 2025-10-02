@@ -62,6 +62,49 @@
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
+        <member name="T:QuestWPF.Helpers.GradeValuesProvider">
+            <summary>
+            Data source provider for retrieving grade values from a ProjectQualityVM instance.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Helpers.GradeValuesProvider.ProjectQualityVM">
+            <summary>
+            The ProjectQualityVM instance from which the grades will be retrieved.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Helpers.GradeValuesProvider.BeginQuery">
+            <summary>
+            Starts the process of retrieving data.
+            </summary>
+        </member>
+        <member name="T:QuestWPF.Helpers.QualityNodeValueTemplateSelector">
+            <summary>
+            Selector for choosing the appropriate DataTemplate for quality node value.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Helpers.QualityNodeValueTemplateSelector.SelectTemplate(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            Method to select the appropriate DataTemplate based on the item and container.
+            </summary>
+            <param name="item"></param>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="P:QuestWPF.Helpers.QualityNodeValueTemplateSelector.QualityMeasureTemplate">
+            <summary>
+            Template for displaying a quality measure grade.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Helpers.QualityNodeValueTemplateSelector.QualityMetricsTemplate">
+            <summary>
+            Template for displaying document metrics value.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Helpers.QualityNodeValueTemplateSelector.QualityFactorTemplate">
+            <summary>
+            Template for displaying document Factor value.
+            </summary>
+        </member>
         <member name="T:QuestWPF.Helpers.QuestViewContentTemplateSelector">
             <summary>
             Selector for choosing the appropriate DataTemplate for quest view content.
@@ -147,6 +190,16 @@
         <member name="P:QuestWPF.MDIViewModel.DockCollections">
             <summary>
             Collection of DockItems for managing dockable panels in the UI.
+            </summary>
+        </member>
+        <member name="T:QuestWPF._ViewModels">
+            <summary>
+            Static class to hold all ViewModel instances for easy access.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._ViewModels.All">
+            <summary>
+            An observable list containing all ViewModel instances.
             </summary>
         </member>
         <member name="T:QuestWPF.Views.DocumentQualityView">
@@ -363,12 +416,42 @@
             </summary>
             <param name="workbook">Opened Excel workbook</param>
             <param name="workbookInfo">Workbook info object</param>
-            <param name="qualityVM">Project quality view model</param>
+            <param name="projectQualityVM">Project quality view model</param>
             <returns></returns>
         </member>
         <member name="M:QuestWPF.Views.QuestView.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

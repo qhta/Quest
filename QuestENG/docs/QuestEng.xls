@@ -9,11 +9,22 @@
             ViewModel for a single document quality assessment
             </summary>
         </member>
-        <member name="M:Quest.DocumentQualityVM.#ctor(Quest.DocumentQuality)">
+        <member name="M:Quest.DocumentQualityVM.#ctor(Quest.IQualityObjectVM,Quest.DocumentQuality)">
             <summary>
             Mandatory constructor
             </summary>
-            <param name="model"></param>
+            <param name="parent">Required parent View Model</param>
+            <param name="model">Required data entity</param>
+        </member>
+        <member name="P:Quest.DocumentQualityVM.Parent">
+            <summary>
+            Required parent view model
+            </summary>
+        </member>
+        <member name="P:Quest.DocumentQualityVM.QualityObject">
+            <summary>
+            Gets the quality object associated with the model.
+            </summary>
         </member>
         <member name="P:Quest.DocumentQualityVM.DocumentType">
             <summary>
@@ -45,6 +56,11 @@
         <member name="T:Quest.IQualityNodeVM">
             <summary>
             ViewModel for a quality metrics node
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Parent">
+            <summary>
+            Required parent view model
             </summary>
         </member>
         <member name="P:Quest.IQualityNodeVM.Level">
@@ -112,6 +128,11 @@
             Mandatory constructor
             </summary>
             <param name="model"></param>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.QualityObject">
+            <summary>
+            Gets the quality object associated with the model.
+            </summary>
         </member>
         <member name="P:Quest.ProjectQualityVM.RootNode">
             <summary>
@@ -241,11 +262,17 @@
             ViewModel for a quality factor assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityFactorVM.#ctor(Quest.QualityFactor)">
+        <member name="M:Quest.QualityFactorVM.#ctor(Quest.IQualityObjectVM,Quest.QualityFactor)">
             <summary>
             Mandatory constructor
             </summary>
-            <param name="model"></param>
+            <param name="parent">Required parent View Model</param>
+            <param name="model">Required data entity</param>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Parent">
+            <summary>
+            Required parent view model
+            </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.QualityObject">
             <summary>
@@ -352,11 +379,22 @@
             ViewModel for a quality factor assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityMeasureVM.#ctor(Quest.QualityMeasure)">
+        <member name="M:Quest.QualityMeasureVM.#ctor(Quest.IQualityObjectVM,Quest.QualityMeasure)">
             <summary>
             Mandatory constructor
             </summary>
-            <param name="model"></param>
+            <param name="parent">Required parent View Model</param>
+            <param name="model">Required data entity</param>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Parent">
+            <summary>
+            Required parent view model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Scale">
+            <summary>
+            Gets the quality scale from the grandparent ProjectQualityVM
+            </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.QualityObject">
             <summary>
@@ -381,6 +419,11 @@
         <member name="P:Quest.QualityMeasureVM.Value">
             <summary>
             Value of the assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Grade">
+            <summary>
+            Grade of the assessment
             </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.Comment">
@@ -415,11 +458,17 @@
             ViewModel for a quality factor assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityMetricsVM.#ctor(Quest.QualityMetrics)">
+        <member name="M:Quest.QualityMetricsVM.#ctor(Quest.IQualityObjectVM,Quest.QualityMetrics)">
             <summary>
             Mandatory constructor
             </summary>
-            <param name="model"></param>
+            <param name="parent">Required parent View Model</param>
+            <param name="model">Required data entity</param>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Parent">
+            <summary>
+            Required parent view model
+            </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.QualityObject">
             <summary>

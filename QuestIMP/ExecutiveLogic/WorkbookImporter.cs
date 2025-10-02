@@ -157,20 +157,20 @@ public static class WorkbookImporter
     var endCellIndex = WorkbookHelper.GetCellColumnIndex(questEnd);
     var gradesColumn = worksheetInfo.GradesColumn ?? -1;
     QualityNode? lastNode = null;
-    for (int r = startRowIndex + 1; r < endRowIndex+1; r++)
+    for (int r = startRowIndex + 1; r < endRowIndex + 1; r++)
     {
       var row = worksheet.Rows[r];
       if (!row.Cells.Any()) continue; // Skip rows without cells
 
-      QualityNode? qualityNode = null;
+      QualityNode? currentNode = null;
       for (int c = startCellIndex; c <= endCellIndex; c++)
       {
-        if (c>=row.Count) break; // Skip cells outside the row range
+        if (c >= row.Count) break; // Skip cells outside the row range
         var cell = row.Cells[c];
-        var s = cell?.Value?.ToString();
+        var s = cell?.Value.Trim();
         if (!String.IsNullOrWhiteSpace(s))
         {
-          if (qualityNode == null)
+          if (currentNode == null)
           {
             if (Char.IsDigit(s.First()))
             {
@@ -179,26 +179,22 @@ public static class WorkbookImporter
               if (level == 1)
               {
                 QualityFactor qualityFactor = new QualityFactor { Level = level };
-                qualityNode = qualityFactor;
+                currentNode = qualityFactor;
                 documentQuality.Factors.Add(qualityFactor);
                 qualityFactor.DocumentQuality = documentQuality;
                 lastNode = qualityFactor;
               }
               else
               {
-                QualityMetrics qualityMetrics = new QualityMetrics { Level = level };
-                qualityNode = qualityMetrics;
-                if (lastNode is QualityFactor lastFactor)
-                {
-                  lastFactor.Children.Add(qualityMetrics);
-                  qualityMetrics.Parent = lastFactor;
-                }
+                var qualityMetrics = new QualityMetrics { Level = level };
+                currentNode = qualityMetrics;
                 if (lastNode is QualityMetricsNode lastMetricsNode)
                 {
-                  if (lastMetricsNode.Level < level)
+                  if (lastMetricsNode.Level == level - 1)
                   {
                     lastMetricsNode.Children.Add(qualityMetrics);
                     qualityMetrics.Parent = lastMetricsNode;
+                    lastNode = qualityMetrics;
                   }
                   else
                   {
@@ -212,17 +208,30 @@ public static class WorkbookImporter
               }
             }
             else
-              qualityNode = new QualityMeasure();
+            {
+              var qualityMeasure = new QualityMeasure{Text=s};
+              currentNode = qualityMeasure;
+              if (lastNode is QualityMetricsNode lastMetricsNode)
+              {
+                qualityMeasure.Level = lastMetricsNode.Level + 1;
+                lastMetricsNode.Children.Add(qualityMeasure);
+                qualityMeasure.Parent = lastMetricsNode;
+              }
+              else
+                throw new InvalidOperationException("Invalid structure of questionnaire");
+            }
           }
-          else if (c==gradesColumn && hasGrades)
+          else if (c == gradesColumn && hasGrades)
           {
-            if (qualityNode is QualityMeasure qualityMeasure)
+            if (currentNode is QualityMeasure qualityMeasure)
               qualityMeasure.Grade = s;
           }
           else if (int.TryParse(s, out int weight))
-            qualityNode.Weight = weight;
+            currentNode.Weight = weight;
+          else if (currentNode.Text == null)
+            currentNode.Text = s;
           else
-            qualityNode.Text = s;
+            currentNode.Comment = s;
         }
       }
     }

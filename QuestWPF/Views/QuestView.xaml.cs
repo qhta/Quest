@@ -1,4 +1,5 @@
 ﻿using Quest.Data.QDM;
+using QuestWPF.Helpers;
 
 namespace QuestWPF.Views;
 
@@ -14,7 +15,8 @@ public partial class QuestView : UserControl
   {
     SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZfdXRQQmlYWUB+WERWYEg=");
     InitializeComponent();
-    DataContext = new ProjectQualityVM(new ProjectQuality());
+    var projectQualityVM = new ProjectQualityVM(new ProjectQuality());
+    DataContext = projectQualityVM;
   }
 
   #region FileName Dependency Property
@@ -94,24 +96,24 @@ public partial class QuestView : UserControl
   /// </summary>
   /// <param name="workbook">Opened Excel workbook</param>
   /// <param name="workbookInfo">Workbook info object</param>
-  /// <param name="qualityVM">Project quality view model</param>
+  /// <param name="projectQualityVM">Project quality view model</param>
   /// <returns></returns>
-  private async Task ImportWorkbookAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQualityVM qualityVM)
+  private async Task ImportWorkbookAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQualityVM projectQualityVM)
   {
-    qualityVM.ProjectTitle = workbookInfo.ProjectTitle;
+    projectQualityVM.ProjectTitle = workbookInfo.ProjectTitle;
     var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
     if (worksheetWithScale != null)
     {
-      qualityVM.Model.Scale = WorkbookImporter.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
-      qualityVM.Scale = new QualityScaleVM(qualityVM, qualityVM.Model.Scale!);
+      projectQualityVM.Model.Scale = WorkbookImporter.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+      projectQualityVM.Scale = new QualityScaleVM(projectQualityVM, projectQualityVM.Model.Scale!);
     }
 
     var worksheetInfos = WorkbookImporter.ImportDocumentQualitiesAsync(workbook, workbookInfo);
     await foreach (var worksheetInfo in worksheetInfos)
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");
-      qualityVM.DocumentQualities.Add(new DocumentQualityVM(worksheetInfo));
-      qualityVM.LoadedCount++;
+      projectQualityVM.DocumentQualities.Add(new DocumentQualityVM(projectQualityVM, worksheetInfo));
+      projectQualityVM.LoadedCount++;
     }
   }
 

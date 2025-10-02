@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <Folder Include="docs\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 

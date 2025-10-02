@@ -8,11 +8,18 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   /// <summary>
   /// Mandatory constructor
   /// </summary>
-  /// <param name="model"></param>
-  public QualityFactorVM(QualityFactor model) : base(model)
+  /// <param name="parent">Required parent View Model</param>
+  /// <param name="model">Required data entity</param>
+  public QualityFactorVM(IQualityObjectVM parent, QualityFactor model) : base(model)
   {
+    Parent = parent;
     Children = new QualityNodeVMCollection(this, model.Children ?? []);
   }
+
+  /// <summary>
+  /// Required parent view model
+  /// </summary>
+  public IQualityObjectVM Parent { get; set; }
 
   /// <summary>
   /// Gets the quality object associated with the model.

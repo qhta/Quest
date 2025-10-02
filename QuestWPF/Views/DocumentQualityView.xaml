@@ -7,9 +7,31 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
+  xmlns:helpers="clr-namespace:QuestWPF.Helpers"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
   d:DesignHeight="450" d:DesignWidth="810">
+  <UserControl.Resources>
+    <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
+      <ComboBox 
+        Text="{Binding Path=Grade}"
+        ItemsSource="{DynamicResource GradeValuesProvider}" 
+        DisplayMemberPath="Text"
+        SelectedValuePath="Text"/>
+    </DataTemplate>
+    <DataTemplate x:Key="QualityMetricsTemplate" DataType="{x:Type quest:QualityMetricsVM}">
+      <TextBlock Text="{Binding Path=Value}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="QualityFactorTemplate" DataType="{x:Type quest:QualityFactorVM}">
+      <TextBlock Text="{Binding Path=Value}"/>
+    </DataTemplate>
+    <helpers:QualityNodeValueTemplateSelector 
+      x:Key="QualityNodeValueTemplateSelector"
+      QualityMeasureTemplate="{StaticResource QualityMeasureTemplate}"
+      QualityMetricsTemplate="{StaticResource QualityMetricsTemplate}"
+      QualityFactorTemplate="{StaticResource QualityFactorTemplate}"
+    />
+  </UserControl.Resources>
   <Grid 
     DataContext="{Binding Content}" 
     d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
@@ -26,6 +48,9 @@
       AutoExpandMode = "RootNodesExpanded"
       ItemsSource="{Binding Factors}"
       AutoGenerateColumns="False"
+      AllowResizingColumns="True"
+      AllowSorting="False"
+      AllowFiltering="False"
       ColumnSizer="AutoFillColumn">
       <syncfusion:SfTreeGrid.Columns>
         <syncfusion:TreeGridTextColumn
@@ -42,9 +67,10 @@
           NullValue="0"
           NumberDecimalDigits="0"
         />
-        <syncfusion:TreeGridTextColumn
+        <syncfusion:TreeGridTemplateColumn
           HeaderText="{x:Static questRsx:Strings.Value}"
           MappingName="Value"
+          CellTemplateSelector="{StaticResource QualityNodeValueTemplateSelector}"
         />
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Comment}"

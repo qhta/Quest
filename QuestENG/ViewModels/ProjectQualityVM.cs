@@ -5,7 +5,7 @@ namespace Quest;
 /// <summary>
 /// ViewModel for a project quality assessment
 /// </summary>
-public class ProjectQualityVM : ViewModel<ProjectQuality>
+public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
 {
   /// <summary>
   /// Mandatory constructor
@@ -18,6 +18,11 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>
     ViewItems = new QuestItemsCollection(this);
     DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
   }
+
+  /// <summary>
+  /// Gets the quality object associated with the model.
+  /// </summary>
+  public QualityObject QualityObject => Model;
 
   private void DocumentQualities_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
   {

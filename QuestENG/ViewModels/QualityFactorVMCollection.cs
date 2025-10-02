@@ -15,7 +15,8 @@ public class QualityFactorVMCollection : ObservableList<QualityFactorVM>
   /// </summary>
   /// <param name="parent">Parent view model</param>
   /// <param name="items">Collection of entities to add their view models.</param>
-  public QualityFactorVMCollection(DocumentQualityVM parent,IEnumerable<QualityFactor> items) : base(items.Select(item => new QualityFactorVM(item)))
+  public QualityFactorVMCollection(DocumentQualityVM parent,IEnumerable<QualityFactor> items) : 
+    base(items.Select(item => new QualityFactorVM(parent, item)))
   {
     Parent = parent;
   }

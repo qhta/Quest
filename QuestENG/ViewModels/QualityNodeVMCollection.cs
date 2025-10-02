@@ -22,15 +22,15 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
     {
       if (item is QualityFactor qualityFactor)
       {
-        return new QualityFactorVM(qualityFactor);
+        return new QualityFactorVM(parent, qualityFactor);
       }
       if (item is QualityMetrics qualityMetrics)
       {
-        return new QualityMetricsVM(qualityMetrics);
+        return new QualityMetricsVM(parent, qualityMetrics);
       }
       if (item is QualityMeasure qualityMeasure)
       {
-        return new QualityMeasureVM(qualityMeasure);
+        return new QualityMeasureVM(parent, qualityMeasure);
       }
       throw new NotImplementedException("Invalid item type when creating ViewModel");
     }))

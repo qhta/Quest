@@ -5,6 +5,12 @@
 /// </summary>
 public interface IQualityNodeVM : IQualityObjectVM
 {
+
+  /// <summary>
+  /// Required parent view model
+  /// </summary>
+  public IQualityObjectVM Parent { get; set; }
+
   /// <summary>
   /// Level of the factor in the hierarchy (0 for root, 1 for factor)
   /// </summary>

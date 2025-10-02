@@ -3,17 +3,29 @@
 /// <summary>
 /// ViewModel for a single document quality assessment
 /// </summary>
-public class DocumentQualityVM: ViewModel<DocumentQuality>
+public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
 {
   /// <summary>
   /// Mandatory constructor
   /// </summary>
-  /// <param name="model"></param>
-  public DocumentQualityVM(DocumentQuality model) : base(model)
+  /// <param name="parent">Required parent View Model</param>
+  /// <param name="model">Required data entity</param>
+  public DocumentQualityVM(IQualityObjectVM parent, DocumentQuality model) : base(model)
   {
+    Parent = parent;
     Factors = new QualityFactorVMCollection(this, model.Factors ?? []);
   }
 
+
+  /// <summary>
+  /// Required parent view model
+  /// </summary>
+  public IQualityObjectVM Parent { get; set; }
+
+  /// <summary>
+  /// Gets the quality object associated with the model.
+  /// </summary>
+  public QualityObject QualityObject => Model;
 
   /// <summary>
   /// Document Type from the model

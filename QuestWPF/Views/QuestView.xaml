@@ -23,7 +23,7 @@
       QualityScaleTemplate="{StaticResource QualityScaleTemplate}"
       DocumentQualityTemplate="{StaticResource DocumentQualityTemplate}"
       />
-    </UserControl.Resources>
+  </UserControl.Resources>
     <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -90,7 +90,6 @@
                   Margin="5,0,0,0"/>
               </StackPanel>
             </DataTemplate>
-
           </TreeView.Resources>
         </TreeView>
       </Grid>
@@ -116,13 +115,6 @@
               <TextBlock Text="{Binding Header}" />
             </DataTemplate>
           </TabControl.ItemTemplate>
-
-          <!-- Define the content of each tab -->
-          <!--<TabControl.ContentTemplate>
-            <DataTemplate DataType="{x:Type quest:QualityScaleVM}">
-              <views:GradeScaleView></views:GradeScaleView>
-            </DataTemplate>
-          </TabControl.ContentTemplate>-->
         </TabControl>
       </Grid>
     </Grid>

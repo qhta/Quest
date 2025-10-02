@@ -13,4 +13,5 @@ public class QuestItemViewModel
   /// Any content associated with the quest item
   /// </summary>
   public object? Content { get; set; }
+
 }

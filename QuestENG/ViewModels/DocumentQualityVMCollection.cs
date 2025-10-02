@@ -12,7 +12,8 @@ public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>
   /// </summary>
   /// <param name="parent">Parent view model</param>
   /// <param name="items">Collection of entities to add their view models.</param>
-  public DocumentQualityVMCollection(ProjectQualityVM parent,IEnumerable<DocumentQuality> items) : base(items.Select(item => new DocumentQualityVM(item)))
+  public DocumentQualityVMCollection(ProjectQualityVM parent,IEnumerable<DocumentQuality> items) : 
+    base(items.Select(item => new DocumentQualityVM(parent, item)))
   {
     Parent = parent;
   }
