@@ -20,4 +20,54 @@ public class QualityFactorVMCollection : ObservableList<QualityFactorVM>
   {
     Parent = parent;
   }
+
+  private bool _isRefreshing = false;
+  /// <summary>
+  /// Weighted mean value of items.
+  /// </summary>
+  public double? Value
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      if (_isRefreshing)
+        _Value = EvaluateValue(true);
+      return _Value;
+    }
+    set
+    {
+      if (_Value != value)
+      {
+        _Value = value;
+        NotifyPropertyChanged(nameof(Value));
+      }
+    }
+  }
+  private double? _Value;
+
+  /// <summary>
+  /// Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
+  /// </summary>
+  /// <returns></returns>
+  public double? EvaluateValue(bool refreshDeep)
+  {
+    _isRefreshing = refreshDeep;
+    double? valueSum = null;
+    double? weightSum = null;
+    foreach (var item in this)
+    {
+      double? itemValue = (refreshDeep) ? item.EvaluateValue() : item.Value;
+      if (itemValue != null)
+      {
+        if (valueSum == null)
+          valueSum = 0;
+        if (weightSum == null)
+          weightSum = 0;
+        valueSum += itemValue * item.Weight;
+        weightSum += item.Weight;
+      }
+    }
+    _isRefreshing = false;
+    return weightSum > 0 ? valueSum / weightSum : null;
+  }
 }

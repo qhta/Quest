@@ -1,4 +1,8 @@
-﻿namespace Quest;
+﻿using System.Diagnostics;
+
+using static System.Formats.Asn1.AsnWriter;
+
+namespace Quest;
 
 /// <summary>
 /// ViewModel for a quality factor assessment
@@ -14,9 +18,15 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   {
     Parent = parent;
     Children = new QualityNodeVMCollection(this, model.Children ?? []);
+    Children.PropertyChanged += Children_PropertyChanged;
   }
 
-  
+  private void Children_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  {
+    if (e.PropertyName == nameof(Children.Value))
+      Value = Children.Value;
+  }
+ 
   /// <summary>
   /// Required parent view model
   /// </summary>
@@ -106,6 +116,21 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   /// <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
   /// be null.</remarks>
   public QualityNodeVMCollection Children { get; }
+
+  /// <summary>
+  /// Evaluates the value of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateValue()
+  {
+    if (Children.Count != 0)
+    {
+      Value = Children.EvaluateValue(true);
+      return Value;
+    }
+    Value = null;
+    return null;
+  }
 
   #region Loading State Properties
   /// <summary>

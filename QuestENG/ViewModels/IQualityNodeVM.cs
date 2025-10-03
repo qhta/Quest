@@ -41,6 +41,12 @@ public interface IQualityNodeVM : IQualityObjectVM
   /// </summary>
   public QualityNodeVMCollection Children { get; }
 
+  /// <summary>
+  /// Evaluates the value of the node.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateValue();
+
   #region Loading State Properties
   /// <summary>
   /// Determines whether the workbook is currently in a loading state.

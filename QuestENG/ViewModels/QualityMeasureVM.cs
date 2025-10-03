@@ -120,6 +120,12 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
       {
         Model.Grade = value;
         NotifyPropertyChanged(nameof(Grade));
+        if (value != null)
+        {
+          var gradeObject = Scale.GetGradeByName(value);
+          if (gradeObject != null)
+            Value = gradeObject.Value;
+        }
       }
     }
   }
@@ -147,6 +153,21 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   /// <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
   /// be null.</remarks>
   public QualityNodeVMCollection Children { get; }
+
+  /// <summary>
+  /// Evaluates the value of the node if the grade is set.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateValue()
+  {
+    if (Grade!=null)
+    {
+      var gradeObject = Scale.GetGradeByName(Grade);
+      if (gradeObject != null)
+        return gradeObject.Value;
+    } 
+    return null;
+  }
 
   #region Loading State Properties
   /// <summary>

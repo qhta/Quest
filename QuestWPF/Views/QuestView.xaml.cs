@@ -16,6 +16,7 @@ public partial class QuestView : UserControl
     SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZfdXRQQmlYWUB+WERWYEg=");
     InitializeComponent();
     var projectQualityVM = new ProjectQualityVM(new ProjectQuality());
+    projectQualityVM.EvaluateValue();
     DataContext = projectQualityVM;
   }
 

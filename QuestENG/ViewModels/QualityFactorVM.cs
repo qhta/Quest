@@ -14,6 +14,13 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   {
     Parent = parent;
     Children = new QualityNodeVMCollection(this, model.Children ?? []);
+    Children.PropertyChanged += Children_PropertyChanged;
+  }
+
+  private void Children_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  {
+    if (e.PropertyName == nameof(Children.Value))
+      Value = Children.Value;
   }
 
   /// <summary>
@@ -106,8 +113,21 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   /// be null.</remarks>
   public QualityNodeVMCollection Children { get; }
 
+  /// <summary>
+  /// Evaluates the value of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateValue()
+  {
+    if (Children.Count != 0)
+    {
+      Value = Children.EvaluateValue(true);
+    }
+    return Value;
+  }
+
   #region Loading State Properties
-  
+
   /// <summary>
   /// Determines whether the workbook is currently in a loading state.
   /// </summary>

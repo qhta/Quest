@@ -65,4 +65,35 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
   /// Individual document qualities within the project
   /// </summary>
   public QualityFactorVMCollection Factors { get; set; }
+
+  /// <summary>
+  /// Value of the assessment
+  /// </summary>
+  public double? Value
+  {
+    [DebuggerStepThrough]
+    get => _Value;
+    set
+    {
+      if (_Value != value)
+      {
+        _Value = value;
+        NotifyPropertyChanged(nameof(Value));
+      }
+    }
+  }
+  private double? _Value;
+
+  /// <summary>
+  /// Evaluates the value of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateValue()
+  {
+    if (Factors.Count != 0)
+    {
+      Value = Factors.EvaluateValue(true);
+    }
+    return Value;
+  }
 }

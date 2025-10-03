@@ -41,6 +41,17 @@
             Individual document qualities within the project
             </summary>
         </member>
+        <member name="P:Quest.DocumentQualityVM.Value">
+            <summary>
+            Value of the assessment
+            </summary>
+        </member>
+        <member name="M:Quest.DocumentQualityVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
         <member name="T:Quest.DocumentQualityVMCollection">
             <summary>
             Observable collection of <see cref="T:Quest.DocumentQualityVM"/> objects.
@@ -52,6 +63,17 @@
             </summary>
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
+        </member>
+        <member name="P:Quest.DocumentQualityVMCollection.Value">
+            <summary>
+            Evaluated value;
+            </summary>
+        </member>
+        <member name="M:Quest.DocumentQualityVMCollection.EvaluateValue(System.Boolean)">
+            <summary>
+            Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Quest.IQualityNodeVM">
             <summary>
@@ -92,6 +114,12 @@
             <summary>
             Gets the collection of child nodes associated with this node.
             </summary>
+        </member>
+        <member name="M:Quest.IQualityNodeVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the node.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
         </member>
         <member name="P:Quest.IQualityNodeVM.IsLoading">
             <summary>
@@ -154,6 +182,12 @@
             Individual document qualities within the project
             </summary>
         </member>
+        <member name="M:Quest.ProjectQualityVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
         <member name="P:Quest.ProjectQualityVM.IsExpanded">
             <summary>
             Determines whether the project quality is expanded (when used in TreeView).
@@ -177,6 +211,11 @@
         <member name="P:Quest.ProjectQualityVM.ViewItems">
             <summary>
             Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
+            </summary>
+        </member>
+        <member name="P:Quest.ProjectQualityVM.IsLoaded">
+            <summary>
+            Evaluates whether all items are loaded.
             </summary>
         </member>
         <member name="T:Quest.ProjectsViewModel">
@@ -311,6 +350,12 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
+        <member name="M:Quest.QualityFactorVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
         <member name="P:Quest.QualityFactorVM.IsLoading">
             <summary>
             Determines whether the workbook is currently in a loading state.
@@ -342,6 +387,17 @@
             </summary>
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
+        </member>
+        <member name="P:Quest.QualityFactorVMCollection.Value">
+            <summary>
+            Weighted mean value of items.
+            </summary>
+        </member>
+        <member name="M:Quest.QualityFactorVMCollection.EvaluateValue(System.Boolean)">
+            <summary>
+            Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Quest.QualityGradeVM">
             <summary>
@@ -438,6 +494,12 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
+        <member name="M:Quest.QualityMeasureVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the node if the grade is set.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
         <member name="P:Quest.QualityMeasureVM.IsLoading">
             <summary>
             Determines whether the workbook is currently in a loading state.
@@ -507,6 +569,12 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
+        <member name="M:Quest.QualityMetricsVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
         <member name="P:Quest.QualityMetricsVM.IsLoading">
             <summary>
             Determines whether the workbook is currently in a loading state.
@@ -539,6 +607,33 @@
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
         </member>
+        <member name="M:Quest.QualityNodeVMCollection.InsertItem(System.Int32,Quest.IQualityNodeVM)">
+            <summary>
+            Inserts the specified item into the collection at the specified index setting its parent if necessary
+            and subscribing to its PropertyChanged event.
+            </summary>
+            <param name="index">The zero-based index at which the item should be inserted.</param>
+            <param name="item">The item to insert into the collection. Cannot be <see langword="null"/>.</param>
+        </member>
+        <member name="M:Quest.QualityNodeVMCollection.Item_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            If an item's PropertyChanged event signals a change of the "Value" property,
+            the collection will be notified to refresh its state.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:Quest.QualityNodeVMCollection.Value">
+            <summary>
+            Weighted mean value of items.
+            </summary>
+        </member>
+        <member name="M:Quest.QualityNodeVMCollection.EvaluateValue(System.Boolean)">
+            <summary>
+            Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Quest.QualityScaleVM">
             <summary>
             Observable collection of <see cref="T:Quest.QualityGradeVM"/> objects.
@@ -555,6 +650,14 @@
             </summary>
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
+        </member>
+        <member name="M:Quest.QualityScaleVM.GetGradeByName(System.String)">
+            <summary>
+            Finds a grade by its text representation.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
         </member>
         <member name="T:Quest.QuestItemsCollection">
             <summary>

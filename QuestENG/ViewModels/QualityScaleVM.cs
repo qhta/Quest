@@ -19,4 +19,12 @@ public class QualityScaleVM : ObservableList<QualityGradeVM>
   {
     Parent = parent;
   }
+
+  /// <summary>
+  /// Finds a grade by its text representation.
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  /// <exception cref="KeyNotFoundException"></exception>
+  public QualityGradeVM? GetGradeByName(string name) => this.FirstOrDefault(g => g.Text == name);
 }

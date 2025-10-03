@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// ViewModel for a project quality assessment
@@ -96,6 +94,20 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
     }
   }
   private DocumentQualityVMCollection _documentQualities = null!;
+
+  /// <summary>
+  /// Evaluates the value of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateValue()
+  {
+    if (DocumentQualities.Count != 0)
+    {
+      return DocumentQualities.EvaluateValue(true);
+    }
+    return null;
+  }
+
   /// <summary>
   /// Determines whether the project quality is expanded (when used in TreeView).
   /// </summary>
@@ -175,4 +187,22 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// </summary>
   public QuestItemsCollection ViewItems { get; private set; }
 
+  /// <summary>
+  /// Evaluates whether all items are loaded.
+  /// </summary>
+  public new bool IsLoaded
+  {
+    [DebuggerStepThrough]
+    get => _IsLoaded;
+    set
+    {
+      if (_IsLoaded != value)
+      {
+        _IsLoaded = value;
+        NotifyPropertyChanged(nameof(IsLoaded));
+        EvaluateValue();
+      }
+    }
+  }
+  private new bool _IsLoaded;
 };
