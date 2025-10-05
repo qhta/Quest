@@ -50,7 +50,7 @@
     <syncfusion:SfTreeGrid
       Grid.Row="1"
       ChildPropertyName = "Children"
-      AutoExpandMode = "RootNodesExpanded"
+      AutoExpandMode = "AllNodesExpanded"
       ItemsSource="{Binding Factors}"
       AutoGenerateColumns="False"
       AllowResizingColumns="True"
@@ -60,7 +60,7 @@
       <syncfusion:SfTreeGrid.Columns>
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Text}"
-          MappingName="Text"
+          MappingName="TextWithNumbering"
         />
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Level}"

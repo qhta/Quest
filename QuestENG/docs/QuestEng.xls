@@ -85,14 +85,29 @@
             Required parent view model
             </summary>
         </member>
+        <member name="P:Quest.IQualityNodeVM.Collection">
+            <summary>
+            Collection to which this node belongs.
+            </summary>
+        </member>
         <member name="P:Quest.IQualityNodeVM.Level">
             <summary>
-            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            Level of the node in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.Numbering">
+            <summary>
+            Ordering number string ended with a dot.
             </summary>
         </member>
         <member name="P:Quest.IQualityNodeVM.Text">
             <summary>
-            Factor text from the model
+            Text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.TextWithNumbering">
+            <summary>
+            Text from the model preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.IQualityNodeVM.Weight">
@@ -301,16 +316,22 @@
             ViewModel for a quality factor assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityFactorVM.#ctor(Quest.IQualityObjectVM,Quest.QualityFactor)">
+        <member name="M:Quest.QualityFactorVM.#ctor(Quest.IQualityObjectVM,System.Collections.IList,Quest.QualityFactor)">
             <summary>
             Mandatory constructor
             </summary>
             <param name="parent">Required parent View Model</param>
+            <param name="collection">Collection to which this node belongs.</param>
             <param name="model">Required data entity</param>
         </member>
         <member name="P:Quest.QualityFactorVM.Parent">
             <summary>
             Required parent view model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Collection">
+            <summary>
+            Collection to which this node belongs.
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.QualityObject">
@@ -320,17 +341,27 @@
         </member>
         <member name="P:Quest.QualityFactorVM.Level">
             <summary>
-            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            Level of the node in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.Numbering">
+            <summary>
+            Ordering number string ended with a dot.
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Text">
             <summary>
-            Factor text from the model
+            Text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.TextWithNumbering">
+            <summary>
+            Text from the model preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Weight">
             <summary>
-            Weight of the factor  
+            Weight of the value.  
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Value">
@@ -435,11 +466,12 @@
             ViewModel for a quality factor assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityMeasureVM.#ctor(Quest.IQualityObjectVM,Quest.QualityMeasure)">
+        <member name="M:Quest.QualityMeasureVM.#ctor(Quest.IQualityObjectVM,System.Collections.IList,Quest.QualityMeasure)">
             <summary>
             Mandatory constructor
             </summary>
             <param name="parent">Required parent View Model</param>
+            <param name="collection">Collection to which this node belongs.</param>
             <param name="model">Required data entity</param>
         </member>
         <member name="P:Quest.QualityMeasureVM.Parent">
@@ -452,6 +484,11 @@
             Gets the quality scale from the grandparent ProjectQualityVM
             </summary>
         </member>
+        <member name="P:Quest.QualityMeasureVM.Collection">
+            <summary>
+            Collection to which this node belongs.
+            </summary>
+        </member>
         <member name="P:Quest.QualityMeasureVM.QualityObject">
             <summary>
             Gets the quality object associated with the model.
@@ -459,17 +496,27 @@
         </member>
         <member name="P:Quest.QualityMeasureVM.Level">
             <summary>
-            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            Level of the node in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.Numbering">
+            <summary>
+            Ordering number string ended with a dot.
             </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.Text">
             <summary>
-            Factor text from the model
+            Text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.TextWithNumbering">
+            <summary>
+            Text from the model preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.Weight">
             <summary>
-            Weight of the factor  
+            Weight of the value.  
             </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.Value">
@@ -520,16 +567,22 @@
             ViewModel for a quality factor assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityMetricsVM.#ctor(Quest.IQualityObjectVM,Quest.QualityMetrics)">
+        <member name="M:Quest.QualityMetricsVM.#ctor(Quest.IQualityObjectVM,System.Collections.IList,Quest.QualityMetrics)">
             <summary>
             Mandatory constructor
             </summary>
             <param name="parent">Required parent View Model</param>
+            <param name="collection">Collection to which this node belongs.</param>
             <param name="model">Required data entity</param>
         </member>
         <member name="P:Quest.QualityMetricsVM.Parent">
             <summary>
             Required parent view model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Collection">
+            <summary>
+            Collection to which this node belongs.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.QualityObject">
@@ -539,17 +592,27 @@
         </member>
         <member name="P:Quest.QualityMetricsVM.Level">
             <summary>
-            Level of the factor in the hierarchy (0 for root, 1 for factor)
+            Level of the node in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.Numbering">
+            <summary>
+            Ordering number string ended with a dot.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.Text">
             <summary>
-            Factor text from the model
+            Text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.TextWithNumbering">
+            <summary>
+            Text from the model preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.Weight">
             <summary>
-            Weight of the factor  
+            Weight of the value.  
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.Value">

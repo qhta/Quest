@@ -12,14 +12,29 @@ public interface IQualityNodeVM : IQualityObjectVM
   public IQualityObjectVM Parent { get; set; }
 
   /// <summary>
-  /// Level of the factor in the hierarchy (0 for root, 1 for factor)
+  /// Collection to which this node belongs.
+  /// </summary>
+  public IList Collection { get; set; }
+
+  /// <summary>
+  /// Level of the node in the hierarchy (0 for root, 1 for factor)
   /// </summary>
   public int Level { get; }
 
   /// <summary>
-  /// Factor text from the model
+  /// Ordering number string ended with a dot.
+  /// </summary>
+  public string? Numbering { get;}
+
+  /// <summary>
+  /// Text from the model
   /// </summary>
   public string? Text { get; set; }
+
+  /// <summary>
+  /// Text from the model preceding with ordering number.
+  /// </summary>
+  public string? TextWithNumbering { get; }
 
   /// <summary>
   /// Weight of the factor  

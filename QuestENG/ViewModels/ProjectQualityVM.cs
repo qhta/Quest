@@ -204,5 +204,5 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       }
     }
   }
-  private new bool _IsLoaded;
+  private bool _IsLoaded;
 };

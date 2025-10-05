@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Quest;
 
@@ -18,24 +19,19 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
   /// <param name="parent">Parent view model</param>
   /// <param name="items">Collection of entities to add their view models.</param>
   public QualityNodeVMCollection(IQualityObjectVM parent, IEnumerable<QualityNode> items) :
-    base(items.Select<QualityNode, IQualityNodeVM>(item =>
-    {
-      if (item is QualityFactor qualityFactor)
-      {
-        return new QualityFactorVM(parent, qualityFactor);
-      }
-      if (item is QualityMetrics qualityMetrics)
-      {
-        return new QualityMetricsVM(parent, qualityMetrics);
-      }
-      if (item is QualityMeasure qualityMeasure)
-      {
-        return new QualityMeasureVM(parent, qualityMeasure);
-      }
-      throw new NotImplementedException("Invalid item type when creating ViewModel");
-    }))
+    base([])
   {
     Parent = parent;
+    foreach (var item in items)
+    {
+      if (item is QualityFactor qualityFactor) 
+        Add(new QualityFactorVM(parent, this, qualityFactor));
+      else if (item is QualityMetrics qualityMetrics) 
+        Add(new QualityMetricsVM(parent, this, qualityMetrics));
+      else if (item is QualityMeasure qualityMeasure) 
+        Add(new QualityMeasureVM(parent, this, qualityMeasure));
+      else throw new NotImplementedException("Invalid item type when creating ViewModel");
+    }
   }
 
   /// <summary>

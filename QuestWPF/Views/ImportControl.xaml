@@ -6,7 +6,7 @@ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 xmlns:views="clr-namespace:QuestWPF.Views"
 xmlns:questWpf="clr-namespace:QuestWPF"
-xmlns:converters="clr-namespace:QuestWPF.Converters"
+xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
 mc:Ignorable="d" 
 d:DesignHeight="50" d:DesignWidth="800">
   <UserControl.Resources>

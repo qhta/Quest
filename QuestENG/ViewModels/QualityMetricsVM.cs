@@ -13,10 +13,12 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   /// Mandatory constructor
   /// </summary>
   /// <param name="parent">Required parent View Model</param>
+  /// <param name="collection">Collection to which this node belongs.</param>
   /// <param name="model">Required data entity</param>
-  public QualityMetricsVM(IQualityObjectVM parent, QualityMetrics model) : base(model)
+  public QualityMetricsVM(IQualityObjectVM parent, IList collection, QualityMetrics model) : base(model)
   {
     Parent = parent;
+    Collection = collection;
     Children = new QualityNodeVMCollection(this, model.Children ?? []);
     Children.PropertyChanged += Children_PropertyChanged;
   }
@@ -33,17 +35,38 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   public IQualityObjectVM Parent { get; set; }
 
   /// <summary>
+  /// Collection to which this node belongs.
+  /// </summary>
+  public IList Collection { get; set; }
+
+  /// <summary>
   /// Gets the quality object associated with the model.
   /// </summary>
   public QualityObject QualityObject => Model;
 
   /// <summary>
-  /// Level of the factor in the hierarchy (0 for root, 1 for factor)
+  /// Level of the node in the hierarchy (0 for root, 1 for factor)
   /// </summary>
   public int Level => Model.Level;
 
   /// <summary>
-  /// Factor text from the model
+  /// Ordering number string ended with a dot.
+  /// </summary>
+  public string? Numbering
+  {
+    get
+    {
+      var text = "";
+      if (Parent is IQualityNodeVM parentNode)
+        text = parentNode.Numbering;
+      var number = Collection.IndexOf(this)+1;
+      text += number.ToString() + ".";
+      return text;
+    }
+  }
+
+  /// <summary>
+  /// Text from the model
   /// </summary>
   public string? Text
   {
@@ -60,7 +83,24 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Weight of the factor  
+  /// Text from the model preceding with ordering number.
+  /// </summary>
+  public string? TextWithNumbering
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      var text = Model.Text;
+      var numbering = Numbering;
+      if (numbering != null)
+        text = numbering + " " + text;
+      return text;
+    }
+  }
+
+
+  /// <summary>
+  /// Weight of the value.  
   /// </summary>
   public int Weight
   {
