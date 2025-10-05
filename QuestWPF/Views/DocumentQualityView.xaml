@@ -49,13 +49,15 @@
     </Border>
     <syncfusion:SfTreeGrid
       Grid.Row="1"
-      ChildPropertyName = "Children"
-      AutoExpandMode = "AllNodesExpanded"
+      ChildPropertyName="Children"
+      AutoExpandMode="AllNodesExpanded"
       ItemsSource="{Binding Factors}"
       AutoGenerateColumns="False"
       AllowResizingColumns="True"
       AllowSorting="False"
       AllowFiltering="False"
+      EditorSelectionBehavior="SelectAll"
+      EditTrigger="OnTap"
       ColumnSizer="AutoFillColumn"
       >
       <syncfusion:SfTreeGrid.Columns>
@@ -68,6 +70,7 @@
           MappingName="Weight"
           NullValue="0"
           NumberDecimalDigits="0"
+          AllowEditing="True"
         />
         <syncfusion:TreeGridTemplateColumn
           HeaderText="{x:Static questRsx:Strings.Value}"
@@ -77,6 +80,7 @@
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Comment}"
           MappingName="Comment"
+          AllowEditing="True"
         />
       </syncfusion:SfTreeGrid.Columns>
     </syncfusion:SfTreeGrid>

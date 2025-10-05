@@ -161,8 +161,10 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
     if (Children.Count != 0)
     {
       Value = Children.EvaluateValue(true);
+      return Value;
     }
-    return Value;
+    Value = null;
+    return null;
   }
 
   #region Loading State Properties
