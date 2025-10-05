@@ -8,28 +8,33 @@
   xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
   xmlns:helpers="clr-namespace:QuestWPF.Helpers"
+  xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
   d:DesignHeight="450" d:DesignWidth="810">
   <UserControl.Resources>
+    <converters:DoubleValueConverter x:Key="MetricsValueConverter" />
     <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
       <ComboBox 
         Text="{Binding Path=Grade}"
         ItemsSource="{DynamicResource GradeValuesProvider}" 
         DisplayMemberPath="Text"
-        SelectedValuePath="Text"/>
+        SelectedValuePath="Text"
+        HorizontalContentAlignment="Center"
+        />
     </DataTemplate>
     <DataTemplate x:Key="QualityMetricsTemplate" DataType="{x:Type quest:QualityMetricsVM}">
-      <TextBlock Text="{Binding Path=Value}"/>
-    </DataTemplate>
-    <DataTemplate x:Key="QualityFactorTemplate" DataType="{x:Type quest:QualityFactorVM}">
-      <TextBlock Text="{Binding Path=Value}"/>
+      <TextBlock 
+        Text="{Binding Path=Value, Converter={StaticResource MetricsValueConverter}, ConverterParameter='F2'}"
+        HorizontalAlignment="Center"
+        Margin="3"
+        />
     </DataTemplate>
     <helpers:QualityNodeValueTemplateSelector 
       x:Key="QualityNodeValueTemplateSelector"
       QualityMeasureTemplate="{StaticResource QualityMeasureTemplate}"
       QualityMetricsTemplate="{StaticResource QualityMetricsTemplate}"
-      QualityFactorTemplate="{StaticResource QualityFactorTemplate}"
+      QualityFactorTemplate="{StaticResource QualityMetricsTemplate}"
     />
   </UserControl.Resources>
   <Grid 
