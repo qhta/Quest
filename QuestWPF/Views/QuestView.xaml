@@ -101,10 +101,6 @@
       <Grid 
         Grid.Column="1"
         Margin="5,0,0,0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <TabControl 
           ItemsSource="{Binding Path=ViewItems}"
           ContentTemplateSelector="{StaticResource QuestViewContentTemplateSelector}"

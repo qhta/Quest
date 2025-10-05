@@ -38,8 +38,8 @@
     />
   </UserControl.Resources>
   <Grid 
-    DataContext="{Binding Content}" 
-    d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
+      DataContext="{Binding Content}" 
+      d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
@@ -56,15 +56,12 @@
       AllowResizingColumns="True"
       AllowSorting="False"
       AllowFiltering="False"
-      ColumnSizer="AutoFillColumn">
+      ColumnSizer="AutoFillColumn"
+      >
       <syncfusion:SfTreeGrid.Columns>
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Text}"
           MappingName="TextWithNumbering"
-        />
-        <syncfusion:TreeGridTextColumn
-          HeaderText="{x:Static questRsx:Strings.Level}"
-          MappingName="Level"
         />
         <syncfusion:TreeGridNumericColumn
           HeaderText="{x:Static questRsx:Strings.Weight}"
