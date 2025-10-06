@@ -26,7 +26,7 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   /// <summary>
   /// Gets the quality scale from the grandparent ProjectQualityVM
   /// </summary>
-  public QualityScaleVM Scale
+  public QualityScaleVM? Scale
   {
     get
     {
@@ -161,7 +161,7 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
         NotifyPropertyChanged(nameof(Grade));
         if (value != null)
         {
-          var gradeObject = Scale.GetGradeByName(value);
+          var gradeObject = Scale?.GetGradeByName(value);
           if (gradeObject != null)
             Value = gradeObject.Value;
         }
@@ -201,7 +201,7 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   {
     if (Grade!=null)
     {
-      var gradeObject = Scale.GetGradeByName(Grade);
+      var gradeObject = Scale?.GetGradeByName(Grade);
       if (gradeObject != null)
         return gradeObject.Value;
     } 

@@ -76,7 +76,8 @@ public partial class QuestView : UserControl
       DataContext = qualityVM;
       qualityVM.IsLoading = true;
       qualityVM.TotalCount = workbookInfo.Worksheets.Count(item => item.IsSelected);
-      var workbook = WorkbookImporter.OpenWorkbook(excelFileName);
+      var importer = new WorkbookImporter();
+      var workbook = importer.OpenWorkbook(excelFileName);
 
       await ImportWorkbookAsync(workbook, workbookInfo, qualityVM);
       qualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
@@ -102,14 +103,16 @@ public partial class QuestView : UserControl
   private async Task ImportWorkbookAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQualityVM projectQualityVM)
   {
     projectQualityVM.ProjectTitle = workbookInfo.ProjectTitle;
+    var importer = new WorkbookImporter();
+
     var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
-    if (worksheetWithScale != null)
+    if (worksheetWithScale != null/* && worksheetWithScale.IsSelected*/)
     {
-      projectQualityVM.Model.Scale = WorkbookImporter.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+      projectQualityVM.Model.Scale = importer.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
       projectQualityVM.Scale = new QualityScaleVM(projectQualityVM, projectQualityVM.Model.Scale!);
     }
 
-    var worksheetInfos = WorkbookImporter.ImportDocumentQualitiesAsync(workbook, workbookInfo);
+    var worksheetInfos = importer.ImportDocumentQualitiesAsync(workbook, workbookInfo);
     await foreach (var worksheetInfo in worksheetInfos)
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");

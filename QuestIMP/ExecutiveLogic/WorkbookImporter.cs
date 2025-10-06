@@ -1,17 +1,17 @@
-﻿using Quest;
+﻿
 
 namespace QuestIMP;
 
 /// <summary>
 /// Class for import Excel Workbooks.
 /// </summary>
-public static class WorkbookImporter
+public class WorkbookImporter
 {
   /// <summary>
   /// Opens an Excel workbook from the specified file and returns the IWorkbook instance.
   /// </summary>
   /// <param name="fileName">Filename of the workbook</param>
-  public static IWorkbook OpenWorkbook(string fileName)
+  public IWorkbook OpenWorkbook(string fileName)
   {
     ExcelEngine excelEngine = new ExcelEngine();
     IApplication application = excelEngine.Excel;
@@ -25,17 +25,17 @@ public static class WorkbookImporter
   /// <param name="workbook">Opened Excel workbook interface</param>
   /// <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
   /// <returns>Project quality object</returns>
-  public static ProjectQuality ImportProjectQuality(IWorkbook workbook, WorkbookInfo workbookInfo)
+  public ProjectQuality ImportProjectQuality(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
     var projectQuality = new ProjectQuality
     {
-      ProjectName = workbookInfo.ProjectTitle,
+      ProjectTitle = workbookInfo.ProjectTitle,
       DocumentQualities = new List<DocumentQuality>()
     };
     var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
     if (worksheetWithScale != null)
     {
-      projectQuality.Scale = WorkbookImporter.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+      projectQuality.Scale = ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
     }
     projectQuality.DocumentQualities = new List<DocumentQuality>();
     foreach (var documentQuality in ImportDocumentQualities(workbook, workbookInfo))
@@ -51,7 +51,7 @@ public static class WorkbookImporter
   /// <param name="worksheet">Excel worksheet with scale table</param>  
   /// <param name="worksheetInfo">Info about worksheet with scale range recognized.</param>
   /// <returns>List of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  public static List<QualityGrade>? ImportScaleTable(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  public List<QualityGrade>? ImportScaleTable(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     if (worksheetInfo.ScaleRange == null) return null;
     var resultList = new List<QualityGrade>();
@@ -80,7 +80,7 @@ public static class WorkbookImporter
   /// <param name="workbook">Opened Excel workbook interface</param>  
   /// <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
   /// <returns>List of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  private static IEnumerable<DocumentQuality> ImportDocumentQualities(IWorkbook workbook, WorkbookInfo workbookInfo)
+  private IEnumerable<DocumentQuality> ImportDocumentQualities(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
     var resultList = new List<DocumentQuality>();
     foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item => item.IsSelected && item.QuestRange != null))
@@ -98,7 +98,7 @@ public static class WorkbookImporter
   /// <param name="workbook">Opened Excel workbook interface</param>  
   /// <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
   /// <returns>Asynchronously filled list of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  public static async IAsyncEnumerable<DocumentQuality> ImportDocumentQualitiesAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
+  public async IAsyncEnumerable<DocumentQuality> ImportDocumentQualitiesAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
     foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item => item.IsSelected && item.QuestRange != null))
     {
@@ -114,7 +114,7 @@ public static class WorkbookImporter
   /// <param name="worksheet">Interface for opened Excel worksheet</param>
   /// <param name="worksheetInfo">Info about worksheet info.</param>
   /// <returns><see cref="DocumentQuality"/> object.</returns>
-  public static DocumentQuality ImportDocumentQuality(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  public DocumentQuality ImportDocumentQuality(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     var documentQuality = new DocumentQuality
     {
@@ -133,7 +133,7 @@ public static class WorkbookImporter
   /// <param name="worksheet">Interface for opened Excel worksheet</param>
   /// <param name="worksheetInfo">Info about worksheet info.</param>
   /// <returns>Task with <see cref="DocumentQuality"/> result.</returns>
-  public static async Task<DocumentQuality> ImportDocumentQualityAsync(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  public async Task<DocumentQuality> ImportDocumentQualityAsync(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     return await Task.Run(() => ImportDocumentQuality(worksheet, worksheetInfo));
   }
@@ -146,7 +146,7 @@ public static class WorkbookImporter
   /// <param name="worksheetInfo"></param>
   /// <param name="documentQuality"></param>
   /// <returns></returns>
-  private static bool ImportQuestionnaire(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
+  private bool ImportQuestionnaire(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
   {
     if (worksheetInfo.QuestRange == null) return false;
     var hasGrades = worksheetInfo.HasGrades;
@@ -229,7 +229,9 @@ public static class WorkbookImporter
           else if (int.TryParse(s, out int weight))
             currentNode.Weight = weight;
           else if (currentNode.Text == null)
+          {
             currentNode.Text = s;
+          }
           else
             currentNode.Comment = s;
         }
@@ -238,7 +240,7 @@ public static class WorkbookImporter
     return hasGrades;
   }
 
-  private static string? GetDocumentTitle(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  private string? GetDocumentTitle(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     if (worksheetInfo.WeightsRange == null) return null;
     var (weightsStart, weightsEnd) = WorkbookHelper.SplitRange(worksheetInfo.WeightsRange!);

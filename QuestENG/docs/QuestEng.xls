@@ -192,9 +192,14 @@
             Individual grade scale definition within the project
             </summary>
         </member>
+        <member name="P:Quest.ProjectQualityVM.FactorTypes">
+            <summary>
+            Collection of quality factor types used in the project.
+            </summary>
+        </member>
         <member name="P:Quest.ProjectQualityVM.DocumentQualities">
             <summary>
-            Individual document qualities within the project
+            Individual document qualities within the project.
             </summary>
         </member>
         <member name="M:Quest.ProjectQualityVM.EvaluateValue">
@@ -311,6 +316,29 @@
             </summary>
             <param name="items"></param>
         </member>
+        <member name="T:Quest.QualityFactorTypeVM">
+            <summary>
+            ViewModel for a factor type
+            </summary>
+        </member>
+        <member name="M:Quest.QualityFactorTypeVM.#ctor(Quest.QualityFactorType)">
+            <summary>
+            Initialization constructor.
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="T:Quest.QualityFactorTypeVMCollection">
+            <summary>
+            List of quality factor types.
+            </summary>
+        </member>
+        <member name="M:Quest.QualityFactorTypeVMCollection.#ctor(Quest.ProjectQualityVM,System.Collections.Generic.IEnumerable{Quest.QualityFactorType})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Quest.DocumentQualityVMCollection"/> class with a list of <see cref="T:Quest.DocumentQuality"/>.
+            </summary>
+            <param name="parent">Parent view model</param>
+            <param name="items">Collection of entities to add their view models.</param>
+        </member>
         <member name="T:Quest.QualityFactorVM">
             <summary>
             ViewModel for a quality factor assessment
@@ -357,6 +385,11 @@
         <member name="P:Quest.QualityFactorVM.TextWithNumbering">
             <summary>
             Text from the model preceding with ordering number.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.DisplayName">
+            <summary>
+            Gets a display name for the factor, combining numbering and text.
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Weight">

@@ -39,4 +39,5 @@ public record WorksheetInfo
   /// Specifies whether the worksheet should be processed.
   /// </summary>
   public bool IsSelected { get; set; }
+
 }

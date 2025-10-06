@@ -8,7 +8,7 @@ public class QualityFactor: QualityMetricsNode
   /// <summary>
   /// Unique identifier for the quality factor.
   /// </summary>
-  public QualityFactorType FactorType { get; set; }
+  public QualityFactorType? FactorType { get; set; }
 
   /// <summary>
   /// Navigation property to the associated DocumentQuality.

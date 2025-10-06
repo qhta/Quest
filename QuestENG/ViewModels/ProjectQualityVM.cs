@@ -12,6 +12,8 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   public ProjectQualityVM(ProjectQuality model) : base(model)
   {
     RootNode = [this];
+    FactorTypes = new QualityFactorTypeVMCollection(this, model.FactorTypes ?? []);
+    FactorTypes.CollectionChanged += FactorTypes_CollectionChanged;
     DocumentQualities = new DocumentQualityVMCollection(this, model.DocumentQualities ?? []);
     ViewItems = new QuestItemsCollection(this);
     DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
@@ -21,6 +23,28 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// Gets the quality object associated with the model.
   /// </summary>
   public QualityObject QualityObject => Model;
+
+
+  private void FactorTypes_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+  {
+    if (sender == FactorTypes)
+    {
+      if (e.Action == NotifyCollectionChangedAction.Add)
+        foreach (var qualityFactorTypeVM in e.NewItems?.OfType<QualityFactorTypeVM>() ?? [])
+        {
+          FactorTypes.Add(new QualityFactorTypeVM(qualityFactorTypeVM.Model));
+        }
+      else if (e.Action == NotifyCollectionChangedAction.Remove)
+        foreach (var qualityFactorTypeVM in e.OldItems?.OfType<QualityFactorTypeVM>() ?? [])
+        {
+          var toRemove = FactorTypes.FirstOrDefault(qft => qft.Model == qualityFactorTypeVM.Model);
+          if (toRemove != null)
+            FactorTypes.Remove(toRemove);
+        }
+      else if (e.Action == NotifyCollectionChangedAction.Reset)
+        FactorTypes.Clear();
+    }
+  }
 
   private void DocumentQualities_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
   {
@@ -45,12 +69,12 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   public string? ProjectTitle
   {
     [DebuggerStepThrough]
-    get => Model.ProjectName;
+    get => Model.ProjectTitle;
     set
     {
-      if (Model.ProjectName != value)
+      if (Model.ProjectTitle != value)
       {
-        Model.ProjectName = value;
+        Model.ProjectTitle = value;
         NotifyPropertyChanged(nameof(ProjectTitle));
       }
     }
@@ -59,7 +83,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// <summary>
   /// Individual grade scale definition within the project
   /// </summary>
-  public QualityScaleVM Scale
+  public QualityScaleVM? Scale
   {
     [DebuggerStepThrough]
     get => _scale;
@@ -75,10 +99,28 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       }
     }
   }
-  private QualityScaleVM _scale = null!;
+  private QualityScaleVM? _scale = null!;
 
   /// <summary>
-  /// Individual document qualities within the project
+  /// Collection of quality factor types used in the project.
+  /// </summary>
+  public QualityFactorTypeVMCollection FactorTypes
+  {
+    [DebuggerStepThrough]
+    get => _qualityTypes;
+    set
+    {
+      if (_qualityTypes != value)
+      {
+        _qualityTypes = value;
+        NotifyPropertyChanged(nameof(FactorTypes));
+      }
+    }
+  }
+  private QualityFactorTypeVMCollection _qualityTypes = null!;
+
+  /// <summary>
+  /// Individual document qualities within the project.
   /// </summary>
   public DocumentQualityVMCollection DocumentQualities
   {
@@ -94,6 +136,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
     }
   }
   private DocumentQualityVMCollection _documentQualities = null!;
+
 
   /// <summary>
   /// Evaluates the value of the children collection.

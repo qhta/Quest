@@ -15,8 +15,7 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   /// <param name="model"></param>
   public WorksheetInfoVM(WorksheetInfo model) : base(model)
   {
-    // By default, select only those worksheets that have associated grades.
-    IsSelected = model.HasGrades;
+    IsSelected = true;
   }
 
   /// <summary>

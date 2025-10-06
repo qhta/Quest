@@ -8,7 +8,7 @@ public class QualityFactorAggregate: QualityNode
   /// <summary>
   /// Aggregated factor type.
   /// </summary>
-  public QualityFactorType FactorType { get; set; }
+  public QualityFactorType? FactorType { get; set; }
 
   /// <summary>
   /// Aggregated value.

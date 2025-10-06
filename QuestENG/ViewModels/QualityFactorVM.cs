@@ -95,6 +95,24 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   }
 
   /// <summary>
+  /// Gets a display name for the factor, combining numbering and text.
+  /// </summary>
+  public string? DisplayName
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      var text = Model.Text;
+      //if (Parent is ProjectQualityVM projectQualityVM)
+      //  text = projectQualityVM.GetFactor(text);
+      var numbering = Numbering;
+      if (numbering != null)
+        text = numbering + " " + text;
+      return text;
+    }
+  }
+
+  /// <summary>
   /// Weight of the value.  
   /// </summary>
   public int Weight
