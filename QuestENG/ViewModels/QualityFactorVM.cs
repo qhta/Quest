@@ -95,16 +95,44 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Gets a display name for the factor, combining numbering and text.
+  /// Access to the model's factor type
+  /// </summary>
+  public QualityFactorType? FactorType 
+  {
+    [DebuggerStepThrough]
+    get => Model.FactorType;
+    set
+    {
+      if (Model.FactorType != value)
+      {
+        Model.FactorType = value;
+        NotifyPropertyChanged(nameof(FactorType));
+      }
+    }
+  }
+
+  /// <summary>
+  /// Gets a display name for the factor.
   /// </summary>
   public string? DisplayName
   {
     [DebuggerStepThrough]
     get
     {
-      var text = Model.Text;
-      //if (Parent is ProjectQualityVM projectQualityVM)
-      //  text = projectQualityVM.GetFactor(text);
+      var text = FactorType?.Name ?? Model.Text;
+      return text + "!";
+    }
+  }
+
+  /// <summary>
+  /// Gets a display name for the factor with numbering.
+  /// </summary>
+  public string? DisplayNameWithNumbering
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      var text = DisplayName;
       var numbering = Numbering;
       if (numbering != null)
         text = numbering + " " + text;

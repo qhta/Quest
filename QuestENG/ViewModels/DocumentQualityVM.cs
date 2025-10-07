@@ -96,4 +96,21 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
     }
     return Value;
   }
+
+  /// <summary>
+  /// Binds the factor types from the parent project quality to the local factors.
+  /// </summary>
+  /// <param name="factorTypes"></param>
+  /// <exception cref="NotImplementedException"></exception>
+  public void BindFactorTypes(QualityFactorTypeVMCollection factorTypes)
+  {
+    foreach (var factor in Factors)
+    {
+      if (factor.Text == null) continue;
+      var allFactorStrings = FactorStringsHelper.GetAllCultureSpecificVariants();
+      var name = allFactorStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == factor.Text).Key;
+      if (name != null)
+        factor.FactorType = factorTypes.FirstOrDefault(ft => ft.Model.Name == name)?.Model;
+    }
+  }
 }

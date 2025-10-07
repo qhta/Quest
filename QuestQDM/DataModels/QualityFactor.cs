@@ -5,8 +5,13 @@
 /// </summary>
 public class QualityFactor: QualityMetricsNode
 {
+  ///// <summary>
+  ///// Foreign key referencing the associated QualityFactorType.
+  ///// </summary>
+  //public int? TypeId { get; set; }
+
   /// <summary>
-  /// Unique identifier for the quality factor.
+  /// Navigation property to the associated QualityFactorType.
   /// </summary>
   public QualityFactorType? FactorType { get; set; }
 

@@ -22,24 +22,24 @@ namespace QuestRSX {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Factors {
+    public class FactorStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Factors() {
+        internal FactorStrings() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("QuestRSX.Factors", typeof(Factors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("QuestRSX.FactorStrings", typeof(FactorStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace QuestRSX {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Completeness.
         /// </summary>
-        internal static string Completeness {
+        public static string Completeness {
             get {
                 return ResourceManager.GetString("Completeness", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Specifies the degree to which all necessary elements are present..
         /// </summary>
-        internal static string CompletenessDescription {
+        public static string CompletenessDescription {
             get {
                 return ResourceManager.GetString("CompletenessDescription", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Consistency.
         /// </summary>
-        internal static string Consistency {
+        public static string Consistency {
             get {
                 return ResourceManager.GetString("Consistency", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Specifies the uniformity and coherence of information across different elements or documents..
         /// </summary>
-        internal static string ConsistencyDescription {
+        public static string ConsistencyDescription {
             get {
                 return ResourceManager.GetString("ConsistencyDescription", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Correctness.
         /// </summary>
-        internal static string Correctness {
+        public static string Correctness {
             get {
                 return ResourceManager.GetString("Correctness", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Specifies the degree to which the given information is correct and free from errors..
         /// </summary>
-        internal static string CorrectnessDescription {
+        public static string CorrectnessDescription {
             get {
                 return ResourceManager.GetString("CorrectnessDescription", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Modifiability.
         /// </summary>
-        internal static string Modifiability {
+        public static string Modifiability {
             get {
                 return ResourceManager.GetString("Modifiability", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Specifies how easily information can be changed or adapted when necessary..
         /// </summary>
-        internal static string ModifiabilityDescription {
+        public static string ModifiabilityDescription {
             get {
                 return ResourceManager.GetString("ModifiabilityDescription", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Understandability.
         /// </summary>
-        internal static string Understandability {
+        public static string Understandability {
             get {
                 return ResourceManager.GetString("Understandability", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Specifies how easily information can be understood by the intended audience..
         /// </summary>
-        internal static string UnderstandabilityDescription {
+        public static string UnderstandabilityDescription {
             get {
                 return ResourceManager.GetString("UnderstandabilityDescription", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Verifiability.
         /// </summary>
-        internal static string Verifiability {
+        public static string Verifiability {
             get {
                 return ResourceManager.GetString("Verifiability", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Specifies the degree to which provisions can be verified for completeness and correctness..
         /// </summary>
-        internal static string VerifialibilityDescription {
+        public static string VerifialibilityDescription {
             get {
                 return ResourceManager.GetString("VerifialibilityDescription", resourceCulture);
             }

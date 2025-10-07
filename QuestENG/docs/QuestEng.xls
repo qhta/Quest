@@ -52,6 +52,13 @@
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
+        <member name="M:Quest.DocumentQualityVM.BindFactorTypes(Quest.QualityFactorTypeVMCollection)">
+            <summary>
+            Binds the factor types from the parent project quality to the local factors.
+            </summary>
+            <param name="factorTypes"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
         <member name="T:Quest.DocumentQualityVMCollection">
             <summary>
             Observable collection of <see cref="T:Quest.DocumentQualityVM"/> objects.
@@ -108,6 +115,16 @@
         <member name="P:Quest.IQualityNodeVM.TextWithNumbering">
             <summary>
             Text from the model preceding with ordering number.
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.DisplayName">
+            <summary>
+            Display Name from the model
+            </summary>
+        </member>
+        <member name="P:Quest.IQualityNodeVM.DisplayNameWithNumbering">
+            <summary>
+            Display Name from the model preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.IQualityNodeVM.Weight">
@@ -387,9 +404,19 @@
             Text from the model preceding with ordering number.
             </summary>
         </member>
+        <member name="P:Quest.QualityFactorVM.FactorType">
+            <summary>
+            Access to the model's factor type
+            </summary>
+        </member>
         <member name="P:Quest.QualityFactorVM.DisplayName">
             <summary>
-            Gets a display name for the factor, combining numbering and text.
+            Gets a display name for the factor.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityFactorVM.DisplayNameWithNumbering">
+            <summary>
+            Gets a display name for the factor with numbering.
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Weight">
@@ -547,6 +574,16 @@
             Text from the model preceding with ordering number.
             </summary>
         </member>
+        <member name="P:Quest.QualityMeasureVM.DisplayName">
+            <summary>
+            Display Name from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.DisplayNameWithNumbering">
+            <summary>
+            Display Name from the model preceding with ordering number.
+            </summary>
+        </member>
         <member name="P:Quest.QualityMeasureVM.Weight">
             <summary>
             Weight of the value.  
@@ -641,6 +678,16 @@
         <member name="P:Quest.QualityMetricsVM.TextWithNumbering">
             <summary>
             Text from the model preceding with ordering number.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.DisplayName">
+            <summary>
+            Display Name from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.DisplayNameWithNumbering">
+            <summary>
+            Display Name from the model preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.Weight">

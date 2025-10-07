@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Factors.Designer.cs">
+    <Compile Update="FactorStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Factors.resx</DependentUpon>
+      <DependentUpon>FactorStrings.resx</DependentUpon>
     </Compile>
     <Compile Update="Strings.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -20,9 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Factors.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Factors.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="FactorStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FactorStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

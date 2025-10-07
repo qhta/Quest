@@ -112,6 +112,16 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
       return text;
     }
   }
+
+  /// <summary>
+  /// Display Name from the model
+  /// </summary>
+  public string? DisplayName => Text;
+
+  /// <summary>
+  /// Display Name from the model preceding with ordering number.
+  /// </summary>
+  public string? DisplayNameWithNumbering => TextWithNumbering;
   /// <summary>
   /// Weight of the value.  
   /// </summary>

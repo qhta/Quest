@@ -37,6 +37,16 @@ public interface IQualityNodeVM : IQualityObjectVM
   public string? TextWithNumbering { get; }
 
   /// <summary>
+  /// Display Name from the model
+  /// </summary>
+  public string? DisplayName { get; }
+
+  /// <summary>
+  /// Display Name from the model preceding with ordering number.
+  /// </summary>
+  public string? DisplayNameWithNumbering { get; }
+
+  /// <summary>
   /// Weight of the factor  
   /// </summary>
   public int Weight { get; set; }
