@@ -76,6 +76,19 @@
             Template for displaying document Factor value.
             </summary>
         </member>
+        <member name="T:QuestWPF.Helpers.QuestRowStyleSelector">
+            <summary>
+            Selects a style for TreeGrid rows based on the BackgroundColor of IQualityNodeVM BackgroundColor property.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Helpers.QuestRowStyleSelector.SelectStyle(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            Selects a style for TreeGrid rows based on the BackgroundColor of IQualityNodeVM BackgroundColor property.
+            </summary>
+            <param name="item"></param>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
         <member name="T:QuestWPF.Helpers.QuestViewContentTemplateSelector">
             <summary>
             Selector for choosing the appropriate DataTemplate for quest view content.

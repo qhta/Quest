@@ -36,6 +36,7 @@
       QualityMetricsTemplate="{StaticResource QualityMetricsTemplate}"
       QualityFactorTemplate="{StaticResource QualityMetricsTemplate}"
     />
+    <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
   </UserControl.Resources>
   <Grid 
       DataContext="{Binding Content}" 
@@ -59,6 +60,7 @@
       EditorSelectionBehavior="SelectAll"
       EditTrigger="OnTap"
       ColumnSizer="AutoFillColumn"
+      RowStyleSelector="{StaticResource QuestRowStyleSelector}"
       >
       <syncfusion:SfTreeGrid.Columns>
         <syncfusion:TreeGridTextColumn

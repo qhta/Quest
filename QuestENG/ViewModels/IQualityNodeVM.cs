@@ -1,4 +1,7 @@
-﻿namespace Quest;
+﻿using System.Drawing;
+using System.Net.Http.Headers;
+
+namespace Quest;
 
 /// <summary>
 /// ViewModel for a quality metrics node
@@ -45,6 +48,11 @@ public interface IQualityNodeVM : IQualityObjectVM
   /// Display Name from the model preceding with ordering number.
   /// </summary>
   public string? DisplayNameWithNumbering { get; }
+
+  /// <summary>
+  /// Gets the background color name of the current element.
+  /// </summary>
+  public string? BackgroundColor { get; }
 
   /// <summary>
   /// Weight of the factor  

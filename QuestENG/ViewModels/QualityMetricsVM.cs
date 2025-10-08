@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 
 using static System.Formats.Asn1.AsnWriter;
 
@@ -107,6 +108,41 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   /// Display Name from the model preceding with ordering number.
   /// </summary>
   public string? DisplayNameWithNumbering => TextWithNumbering;
+
+
+  /// <summary>
+  /// Access to the model's factor type
+  /// </summary>
+  public QualityFactorType? FactorType
+  {
+    get
+    {
+      object? parent = Parent as IQualityNodeVM;
+      while (parent is IQualityNodeVM node && parent is not QualityFactorVM)
+        parent = node.Parent;
+      if (parent is QualityFactorVM factorVM)
+        return factorVM.FactorType;
+      return null;
+    }
+  }
+
+  /// <summary>
+  /// Gets the background color for display purposes.
+  /// </summary>
+  public string? BackgroundColor
+  {
+    get
+    {
+      var colors = FactorType?.Colors;
+      if (colors == null || !colors.Any())
+        return null;
+      if (colors.Count() > Level)
+      {
+        return colors[Level - 1];
+      }
+      return colors[colors.Count() - 1];
+    }
+  }
 
   /// <summary>
   /// Weight of the value.  

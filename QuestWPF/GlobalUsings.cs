@@ -26,6 +26,7 @@ global using QuestWPF.Views;
 global using Syncfusion.Licensing;
 global using Syncfusion.UI.Xaml.CellGrid;
 global using Syncfusion.UI.Xaml.Spreadsheet;
+global using Syncfusion.UI.Xaml.TreeGrid;
 global using Syncfusion.Windows.Shared;
 global using Syncfusion.Windows.Tools.Controls;
 global using Syncfusion.XlsIO;

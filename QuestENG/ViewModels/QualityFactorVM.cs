@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using System.Drawing;
+
+namespace Quest;
 
 /// <summary>
 /// ViewModel for a quality factor assessment
@@ -119,8 +121,11 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
     [DebuggerStepThrough]
     get
     {
-      var text = FactorType?.Name ?? Model.Text;
-      return text + "!";
+      var text = Model.Text;
+      var name = FactorType?.Name;
+      if (name!=null && name!=text)
+        text += $" ({name})";
+      return text;
     }
   }
 
@@ -137,6 +142,21 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
       if (numbering != null)
         text = numbering + " " + text;
       return text;
+    }
+  }
+
+  /// <summary>
+  /// Gets the background color for display purposes.
+  /// </summary>
+  public string? BackgroundColor
+  {
+    get
+    {
+      var colors = FactorType?.Colors;
+      if (colors == null || !colors.Any())
+        return null;
+      var colorName = colors[0];
+      return colorName;
     }
   }
 

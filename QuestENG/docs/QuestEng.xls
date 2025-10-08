@@ -127,6 +127,11 @@
             Display Name from the model preceding with ordering number.
             </summary>
         </member>
+        <member name="P:Quest.IQualityNodeVM.BackgroundColor">
+            <summary>
+            Gets the background color name of the current element.
+            </summary>
+        </member>
         <member name="P:Quest.IQualityNodeVM.Weight">
             <summary>
             Weight of the factor  
@@ -419,6 +424,11 @@
             Gets a display name for the factor with numbering.
             </summary>
         </member>
+        <member name="P:Quest.QualityFactorVM.BackgroundColor">
+            <summary>
+            Gets the background color for display purposes.
+            </summary>
+        </member>
         <member name="P:Quest.QualityFactorVM.Weight">
             <summary>
             Weight of the value.  
@@ -584,6 +594,16 @@
             Display Name from the model preceding with ordering number.
             </summary>
         </member>
+        <member name="P:Quest.QualityMeasureVM.FactorType">
+            <summary>
+            Access to the model's factor type
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMeasureVM.BackgroundColor">
+            <summary>
+            Gets the background color for display purposes.
+            </summary>
+        </member>
         <member name="P:Quest.QualityMeasureVM.Weight">
             <summary>
             Weight of the value.  
@@ -688,6 +708,16 @@
         <member name="P:Quest.QualityMetricsVM.DisplayNameWithNumbering">
             <summary>
             Display Name from the model preceding with ordering number.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.FactorType">
+            <summary>
+            Access to the model's factor type
+            </summary>
+        </member>
+        <member name="P:Quest.QualityMetricsVM.BackgroundColor">
+            <summary>
+            Gets the background color for display purposes.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.Weight">
