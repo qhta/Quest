@@ -174,11 +174,25 @@ public class WorkbookImporter
           {
             if (Char.IsDigit(s.First()))
             {
-              var ss = s.Split('.', StringSplitOptions.RemoveEmptyEntries);
+              string? text = null;
+              var ss = s.Split('.', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
               int level = ss.Length;
+              if (level>1 && !Char.IsDigit(ss.Last().FirstOrDefault()))
+              {
+                level--;
+                text = ss.Last();
+              }
+              else if (Char.IsDigit(ss.Last().FirstOrDefault()) && !Char.IsDigit(ss.Last().LastOrDefault()))
+              {
+                level++;
+                text = ss.Last();
+                while (char.IsDigit(text.FirstOrDefault()))
+                  text = text.Substring(1);
+                text = text.Trim();
+              }
               if (level == 1)
               {
-                QualityFactor qualityFactor = new QualityFactor { Level = level };
+                QualityFactor qualityFactor = new QualityFactor { Level = level, Text = text };
                 currentNode = qualityFactor;
                 documentQuality.Factors.Add(qualityFactor);
                 qualityFactor.DocumentQuality = documentQuality;
@@ -186,7 +200,7 @@ public class WorkbookImporter
               }
               else
               {
-                var qualityMetrics = new QualityMetrics { Level = level };
+                var qualityMetrics = new QualityMetrics { Level = level, Text = text };
                 currentNode = qualityMetrics;
                 if (lastNode is QualityMetricsNode lastMetricsNode)
                 {
@@ -209,7 +223,7 @@ public class WorkbookImporter
             }
             else
             {
-              var qualityMeasure = new QualityMeasure{Text=s};
+              var qualityMeasure = new QualityMeasure{ Text = s };
               currentNode = qualityMeasure;
               if (lastNode is QualityMetricsNode lastMetricsNode)
               {
