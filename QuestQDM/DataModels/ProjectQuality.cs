@@ -40,7 +40,7 @@ public class ProjectQuality: QualityObject
   /// <summary>
   /// Gets or sets the scale used to evaluate quality grades.
   /// </summary>
-  public List<QualityGrade>? Scale { get; set; }
+  public QualityScale? Scale { get; set; }
 
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.

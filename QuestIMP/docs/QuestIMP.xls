@@ -112,6 +112,16 @@
             <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
             <returns>Project quality object</returns>
         </member>
+        <member name="M:QuestIMP.WorkbookImporter.ImportProjectQualityAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo,Quest.ProjectQuality,System.AsyncCallback)">
+            <summary>
+            Retrieves data from workbook and populates the quality view model asynchronously.
+            </summary>
+            <param name="workbook">Opened Excel workbook</param>
+            <param name="workbookInfo">Workbook info object</param>
+            <param name="projectQuality">Project quality view model</param>
+            <param name="callback">Method to invoke when a worksheet is imported</param>
+            <returns></returns>
+        </member>
         <member name="M:QuestIMP.WorkbookImporter.ImportScaleTable(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
             <summary>
             Get the grade scale from the given worksheet.
@@ -156,6 +166,23 @@
             <summary>
             Imports the questionnaire table from the given worksheet into the provided document quality object.
             The worksheet must have a defined questionnaire range.
+            </summary>
+            <param name="worksheet"></param>
+            <param name="worksheetInfo"></param>
+            <param name="documentQuality"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.GetDocumentTitle(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo)">
+            <summary>
+            Gets the document title from the given worksheet by searching for the first non-empty cell over the weights table.
+            </summary>
+            <param name="worksheet"></param>
+            <param name="worksheetInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.GetFactorWeights(Syncfusion.XlsIO.IWorksheet,QuestIMP.WorksheetInfo,Quest.DocumentQuality)">
+            <summary>
+            Gets the factor weights from the given worksheet weights range.
             </summary>
             <param name="worksheet"></param>
             <param name="worksheetInfo"></param>

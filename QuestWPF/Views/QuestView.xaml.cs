@@ -104,20 +104,16 @@ public partial class QuestView : UserControl
   {
     projectQualityVM.ProjectTitle = workbookInfo.ProjectTitle;
     var importer = new WorkbookImporter();
-
-    var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
-    if (worksheetWithScale != null/* && worksheetWithScale.IsSelected*/)
+    await importer.ImportProjectQualityAsync(workbook, workbookInfo, projectQualityVM.Model, Callback);
+    void Callback(IAsyncResult ar)
     {
-      projectQualityVM.Model.Scale = importer.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
-      projectQualityVM.Scale = new QualityScaleVM(projectQualityVM, projectQualityVM.Model.Scale!);
-    }
-
-    var worksheetInfos = importer.ImportDocumentQualitiesAsync(workbook, workbookInfo);
-    await foreach (var worksheetInfo in worksheetInfos)
-    {
-      //Debug.WriteLine($"Add {worksheetInfo.Name}");
-      projectQualityVM.DocumentQualities.Add(new DocumentQualityVM(projectQualityVM, worksheetInfo));
-      projectQualityVM.LoadedCount++;
+      if (ar.AsyncState is QualityScale qualityScale)
+        projectQualityVM.Scale = new QualityScaleVM(projectQualityVM,qualityScale); 
+      else if (ar.AsyncState is DocumentQuality documentQuality)
+      {
+        projectQualityVM.DocumentQualities.Add(new DocumentQualityVM(projectQualityVM, documentQuality));
+        projectQualityVM.LoadedCount++;
+      }
     }
   }
 

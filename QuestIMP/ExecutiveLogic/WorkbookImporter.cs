@@ -1,6 +1,4 @@
-﻿
-
-namespace QuestIMP;
+﻿namespace QuestIMP;
 
 /// <summary>
 /// Class for import Excel Workbooks.
@@ -46,15 +44,49 @@ public class WorkbookImporter
   }
 
   /// <summary>
+  /// Retrieves data from workbook and populates the quality view model asynchronously.
+  /// </summary>
+  /// <param name="workbook">Opened Excel workbook</param>
+  /// <param name="workbookInfo">Workbook info object</param>
+  /// <param name="projectQuality">Project quality view model</param>
+  /// <param name="callback">Method to invoke when a worksheet is imported</param>
+  /// <returns></returns>
+  public async Task ImportProjectQualityAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQuality projectQuality, AsyncCallback? callback)
+  {
+    projectQuality.ProjectTitle = workbookInfo.ProjectTitle;
+    var importer = new WorkbookImporter();
+
+    var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
+    if (worksheetWithScale != null/* && worksheetWithScale.IsSelected*/)
+    {
+      var aScale = importer.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+      if (aScale != null)
+      {
+        projectQuality.Scale = aScale;
+        callback?.Invoke(new AsyncResult(true, aScale));
+      }
+    }
+
+    var documentQualities = importer.ImportDocumentQualitiesAsync(workbook, workbookInfo);
+    await foreach (var documentQuality in documentQualities)
+    {
+      //Debug.WriteLine($"Add {worksheetInfo.Name}");
+      if (projectQuality.DocumentQualities == null)
+        projectQuality.DocumentQualities = new List<DocumentQuality>();
+      projectQuality.DocumentQualities.Add(documentQuality);
+      callback?.Invoke(new AsyncResult(true, documentQuality));
+    }
+  }
+  /// <summary>
   /// Get the grade scale from the given worksheet.
   /// </summary>
   /// <param name="worksheet">Excel worksheet with scale table</param>  
   /// <param name="worksheetInfo">Info about worksheet with scale range recognized.</param>
   /// <returns>List of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  public List<QualityGrade>? ImportScaleTable(IWorksheet worksheet, WorksheetInfo worksheetInfo)
+  public QualityScale? ImportScaleTable(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     if (worksheetInfo.ScaleRange == null) return null;
-    var resultList = new List<QualityGrade>();
+    var resultList = new QualityScale([]);
     var (scaleStart, scaleEnd) = WorkbookHelper.SplitRange(worksheetInfo.ScaleRange!);
     var startRowIndex = WorkbookHelper.GetCellRowIndex(scaleStart);
     var endRowIndex = WorkbookHelper.GetCellRowIndex(scaleEnd);
@@ -98,7 +130,7 @@ public class WorkbookImporter
   /// <param name="workbook">Opened Excel workbook interface</param>  
   /// <param name="workbookInfo">Info about workbook with worksheet info collection.</param>
   /// <returns>Asynchronously filled list of <see cref="DocumentQuality"/>. Can be empty.</returns>
-  public async IAsyncEnumerable<DocumentQuality> ImportDocumentQualitiesAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
+  private async IAsyncEnumerable<DocumentQuality> ImportDocumentQualitiesAsync(IWorkbook workbook, WorkbookInfo workbookInfo)
   {
     foreach (var worksheetInfo in workbookInfo.Worksheets.Where(item => item.IsSelected && item.QuestRange != null))
     {
@@ -177,7 +209,7 @@ public class WorkbookImporter
               string? text = null;
               var ss = s.Split('.', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
               int level = ss.Length;
-              if (level>1 && !Char.IsDigit(ss.Last().FirstOrDefault()))
+              if (level > 1 && !Char.IsDigit(ss.Last().FirstOrDefault()))
               {
                 level--;
                 text = ss.Last();
@@ -223,7 +255,7 @@ public class WorkbookImporter
             }
             else
             {
-              var qualityMeasure = new QualityMeasure{ Text = s };
+              var qualityMeasure = new QualityMeasure { Text = s };
               currentNode = qualityMeasure;
               if (lastNode is QualityMetricsNode lastMetricsNode)
               {
@@ -241,7 +273,7 @@ public class WorkbookImporter
               if (currentNode is QualityMeasure qualityMeasure)
                 qualityMeasure.Grade = s;
           }
-          else if (c == gradesColumn+1)
+          else if (c == gradesColumn + 1)
             currentNode.Comment = s;
           else if (int.TryParse(s, out int weight))
             currentNode.Weight = weight;
@@ -252,9 +284,17 @@ public class WorkbookImporter
         }
       }
     }
+    if (worksheetInfo.WeightsRange != null)
+      GetFactorWeights(worksheet, worksheetInfo, documentQuality);
     return hasGrades;
   }
 
+  /// <summary>
+  /// Gets the document title from the given worksheet by searching for the first non-empty cell over the weights table.
+  /// </summary>
+  /// <param name="worksheet"></param>
+  /// <param name="worksheetInfo"></param>
+  /// <returns></returns>
   private string? GetDocumentTitle(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     if (worksheetInfo.WeightsRange == null) return null;
@@ -276,6 +316,50 @@ public class WorkbookImporter
       }
     }
     return null;
+  }
 
+  /// <summary>
+  /// Gets the factor weights from the given worksheet weights range.
+  /// </summary>
+  /// <param name="worksheet"></param>
+  /// <param name="worksheetInfo"></param>
+  /// <param name="documentQuality"></param>
+  /// <returns></returns>
+  private bool GetFactorWeights(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
+  {
+    if (worksheetInfo.WeightsRange == null) return false;
+    if (documentQuality.Factors.Count == 0) return false;
+    var (weightsStart, weightsEnd) = WorkbookHelper.SplitRange(worksheetInfo.WeightsRange!);
+    var weightsTableRowStart = WorkbookHelper.GetCellRowIndex(weightsStart);
+    var weightsTableRowEnd = WorkbookHelper.GetCellRowIndex(weightsEnd);
+    var weightsTableCellStart = WorkbookHelper.GetCellColumnIndex(weightsStart);
+    var weightsTableCellEnd = WorkbookHelper.GetCellColumnIndex(weightsEnd);
+    for (int r = weightsTableRowStart + 1; r <= weightsTableRowEnd; r++)
+    {
+      var row = worksheet.Rows[r];
+      if (!row.Cells.Any()) continue; // Skip rows without cells
+
+      var c = weightsTableCellStart + 1;
+      var text = row.Cells[c].Value;
+      if (!string.IsNullOrEmpty(text))
+      {
+        if (text.StartsWith('='))
+        {
+          var refAddr = text.Substring(1);
+          var refCol = WorkbookHelper.GetCellColumnIndex(refAddr);
+          var refRow = WorkbookHelper.GetCellRowIndex(refAddr);
+          text = worksheet.Rows[refRow].Cells[refCol].Value;
+        }
+        var factor = documentQuality.Factors.FirstOrDefault(f => f.Text == text);
+        if (factor != null)
+        {
+          if (int.TryParse(row.Cells[c + 1].Value, out var weight))
+          {
+            factor.Weight = weight;
+          }
+        }
+      }
+    }
+    return true;
   }
 }
