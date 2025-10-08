@@ -14,7 +14,7 @@ public class ProjectQuality: QualityObject
       new QualityFactorType 
         { Id = 3, Name = "Consistency", Colors = ["#008000","#33CC33","#66FF66","#99FF99","#CCFFCC"] },
       new QualityFactorType 
-        { Id = 4, Name = "Understandability", Colors = ["#CC00CC","#FF00FF","#FF66FF","#FF99FF","#FFCCFF"] },
+        { Id = 4, Name = "Understandability", Colors = ["#CC00CC","#FF33FF","#FF66FF","#FF99FF","#FFCCFF"] },
       new QualityFactorType 
         { Id = 5, Name = "Modifiability", Colors = ["#009A96","#4AD5D2","#7CF3F0","#BFF9F8","#E3FFFF"] },
       new QualityFactorType 
