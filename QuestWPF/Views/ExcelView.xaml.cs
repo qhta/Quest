@@ -146,8 +146,11 @@ public partial class ExcelView : UserControl
       {
         var text = textBlock.Text;
         //Debug.WriteLine($"RangeTextBlock_OnMouseLeftButton({worksheetInfo.Name},{text})");
-        var range = SpreadsheetControl.ActiveSheet.Range[text];
-        SelectRange(range);
+        if (text != null)
+        {
+          var range = SpreadsheetControl.ActiveSheet.Range[text];
+          SelectRange(range);
+        }
       }
     }
   }

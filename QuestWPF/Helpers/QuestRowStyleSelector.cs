@@ -19,11 +19,17 @@ namespace QuestWPF.Helpers
         var backgroundColor = node.BackgroundColor;
         if (backgroundColor != null)
         {
-          var mediaColor = backgroundColor.StartsWith("#")?
-            (Color)System.Windows.Media.ColorConverter.ConvertFromString(backgroundColor) :
-            GetColorByName(backgroundColor);
+          var mediaColor = (Color)System.Windows.Media.ColorConverter.ConvertFromString(backgroundColor);
           var style = new Style(typeof(TreeGridRowControl));
           style.Setters.Add(new Setter(Control.BackgroundProperty, new SolidColorBrush(mediaColor)));
+          if (IsColorDark(mediaColor))
+          {
+            style.Setters.Add(new Setter(Control.ForegroundProperty, Brushes.White));
+          }
+          else
+          {
+            style.Setters.Add(new Setter(Control.ForegroundProperty, Brushes.Black));
+          }
           return style;
         }
       }
@@ -31,16 +37,12 @@ namespace QuestWPF.Helpers
       return base.SelectStyle(item, container);
     }
 
-    private static Color GetColorByName(string colorName)
+    private static bool IsColorDark(Color color)
     {
-      var colorProperty = typeof(Colors).GetProperty(colorName);
-      if (colorProperty != null)
-      {
-        var colorValue = colorProperty.GetValue(null);
-        if (colorValue != null)
-          return (Color)colorValue;
-      }
-      throw new ArgumentException($"Color '{colorName}' is not a valid System.Windows.Media.Color.");
+      // Calculate luminance
+      double luminance = (0.299 * color.R + 0.587 * color.G + 0.114 * color.B) / 255;
+      return luminance < 0.5; // Dark if luminance is less than 0.5
     }
+
   }
 }
