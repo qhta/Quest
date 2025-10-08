@@ -235,19 +235,20 @@ public class WorkbookImporter
                 throw new InvalidOperationException("Invalid structure of questionnaire");
             }
           }
-          else if (c == gradesColumn && hasGrades)
+          else if (c == gradesColumn)
           {
-            if (currentNode is QualityMeasure qualityMeasure)
-              qualityMeasure.Grade = s;
+            if (hasGrades)
+              if (currentNode is QualityMeasure qualityMeasure)
+                qualityMeasure.Grade = s;
           }
+          else if (c == gradesColumn+1)
+            currentNode.Comment = s;
           else if (int.TryParse(s, out int weight))
             currentNode.Weight = weight;
           else if (currentNode.Text == null)
           {
             currentNode.Text = s;
           }
-          else
-            currentNode.Comment = s;
         }
       }
     }
