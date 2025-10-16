@@ -5,6 +5,13 @@
 /// </summary>
 public class DocumentQuality: QualityObject
 {
+  public DocumentQuality()
+  {
+    Factors = new ObservableList<QualityFactor>();
+    Factors.CollectionChanged += _Factors_CollectionChanged;
+  }
+
+
   /// <summary>
   /// Type of the document.
   /// </summary>
@@ -46,5 +53,34 @@ public class DocumentQuality: QualityObject
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public List<QualityFactor> Factors { get; set; } = new List<QualityFactor>();
+  public ObservableList<QualityFactor>? Factors
+  {
+    get => _Factors;
+    set
+    {
+      if (_Factors != value)
+      {
+        _Factors = value;
+        if (_Factors != null)
+        {
+          foreach (var factor in _Factors)
+            factor.DocumentQuality = this;
+          _Factors.CollectionChanged += _Factors_CollectionChanged;
+        }
+      }
+    }
+  }
+  private ObservableList<QualityFactor>? _Factors;
+
+  private void _Factors_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+  {
+    if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add && e.NewItems != null)
+    {
+      foreach (QualityFactor factor in e.NewItems)
+      {
+        factor.DocumentQuality = this;
+      }
+    }
+  }
+
 }

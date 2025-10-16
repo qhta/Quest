@@ -147,11 +147,6 @@
             Comment added to assessment
             </summary>
         </member>
-        <member name="P:Quest.IQualityNodeVM.Children">
-            <summary>
-            Gets the collection of child nodes associated with this node.
-            </summary>
-        </member>
         <member name="M:Quest.IQualityNodeVM.EvaluateValue">
             <summary>
             Evaluates the value of the node.
@@ -623,13 +618,6 @@
             <summary>
             Comment added to assessment
             </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.Children">
-            <summary>
-            Gets the collection of child nodes associated with this node.
-            </summary>
-            <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
-            be null.</remarks>
         </member>
         <member name="M:Quest.QualityMeasureVM.EvaluateValue">
             <summary>

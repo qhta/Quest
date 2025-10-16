@@ -47,15 +47,15 @@ public class ProjectQuality: QualityObject
   /// </summary>
   public List<QualityFactorType>? FactorTypes { get; set; } = new List<QualityFactorType>(_factors);
 
-  /// <summary>
-  /// Gets or sets the collection of quality factors associated with the current context.
-  /// </summary>
-  public List<QualityFactorAggregate>? Factors { get; set; }
+  ///// <summary>
+  ///// Gets or sets the collection of quality factors associated with the current context.
+  ///// </summary>
+  //public List<QualityFactorAggregate>? Factors { get; set; }
 
-  /// <summary>
-  /// A collection of phase qualities within the project.
-  /// </summary>
-  public List<PhaseQuality>? PhaseQualities { get; set; }
+  ///// <summary>
+  ///// A collection of phase qualities within the project.
+  ///// </summary>
+  //public List<PhaseQuality>? PhaseQualities { get; set; }
 
   /// <summary>
   /// A collection of document qualities within the project.

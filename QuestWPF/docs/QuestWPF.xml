@@ -235,11 +235,12 @@
             </summary>
             <param name="fileName">Full path to Excel file</param>
         </member>
-        <member name="M:QuestWPF.Views.ExcelView.OpenSpreadsheetAsync(System.String)">
+        <member name="M:QuestWPF.Views.ExcelView.OpenSpreadsheetAsync(System.String,QuestIMP.WorkbookInfoVM)">
             <summary>
             Opens the specified Excel file asynchronously and updates the SpreadsheetControl and DataContext accordingly.
             </summary>
             <param name="fileName">Full path to Excel file</param>
+            <param name="workbookInfoVM">Filled workbook info</param>
         </member>
         <member name="M:QuestWPF.Views.ExcelView.GetWorkbookInfo(System.String)">
             <summary>
@@ -386,13 +387,12 @@
             Name of the Quest file to be displayed.
             </summary>
         </member>
-        <member name="M:QuestWPF.Views.QuestView.ImportSpreadsheetAsync(System.String,QuestIMP.WorkbookInfo,System.String)">
+        <member name="M:QuestWPF.Views.QuestView.ImportExcelFileAsync(System.String,QuestIMP.WorkbookInfo)">
             <summary>
             Opens the specified Excel file and asynchronously updates the QualityView and DataContext accordingly.
             </summary>
             <param name="excelFileName">Full path to excel file to import</param>
             <param name="workbookInfo">Info about Excel file to import. Contains recognized ranges of questionnaires and aggregation weights</param>
-            <param name="dbFileName">Full path to database file to create</param>
         </member>
         <member name="M:QuestWPF.Views.QuestView.ImportWorkbookAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo,Quest.ProjectQualityVM)">
             <summary>

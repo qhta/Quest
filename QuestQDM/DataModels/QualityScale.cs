@@ -8,8 +8,15 @@ public class QualityScale : ObservableList<QualityGrade>
   /// <summary>
   /// Initializing constructor.
   /// </summary>
-  /// <param name="items">Collection of entities to add their view models.</param>
-  public QualityScale(IEnumerable<QualityGrade> items) : base(items)
+  public QualityScale() : base([])
   {
   }
+
+  //public void Add(QualityGrade item)
+  //{
+  //  if (item is QualityGrade grade)
+  //   Items = Items.Add(grade);
+  //  else
+  //    throw new ArgumentException("Item must be of type QualityGrade", nameof(item));
+  //}
 }

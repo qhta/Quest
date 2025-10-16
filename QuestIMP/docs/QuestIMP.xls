@@ -64,6 +64,41 @@
             Specifies whether the worksheet should be processed.
             </summary>
         </member>
+        <member name="T:QuestIMP.AsyncResult">
+            <summary>
+            Class representing the result of an asynchronous operation.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.AsyncResult.AsyncState">
+            <summary>
+            Gets the user-defined object that qualifies or contains information about an asynchronous operation.  
+            </summary>
+        </member>
+        <member name="P:QuestIMP.AsyncResult.AsyncWaitHandle">
+            <summary>
+            Gets a <see cref="T:System.Threading.WaitHandle"/> that can be used to wait for the asynchronous operation to complete.
+            </summary>
+            <remarks>The returned <see cref="T:System.Threading.WaitHandle"/> can be used in scenarios where blocking is required to wait
+            for the completion of an asynchronous operation. It is the caller's responsibility to ensure proper disposal of
+            the <see cref="T:System.Threading.WaitHandle"/> if necessary.</remarks>
+        </member>
+        <member name="P:QuestIMP.AsyncResult.CompletedSynchronously">
+            <summary>
+            Gets a value indicating whether the operation completed synchronously.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.AsyncResult.IsCompleted">
+            <summary>
+            Gets a value indicating whether the operation has been completed.
+            </summary>
+        </member>
+        <member name="M:QuestIMP.AsyncResult.#ctor(System.Boolean,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:QuestIMP.AsyncResult"/> class.
+            </summary>
+            <param name="isCompleted"></param>
+            <param name="asyncState"></param>
+        </member>
         <member name="T:QuestIMP.WorkbookHelper">
             <summary>
             Class with helper methods for workbook processing.

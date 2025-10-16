@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Serialization;
 
 namespace Quest;
 
@@ -18,10 +20,11 @@ public abstract class QualityNode: QualityObject
   ///  Level of the quality node in the tree (0 for root, 1 for factor).
   /// </summary>
   public int Level { get; set; }
-  
+
   /// <summary>
   /// Order of the quality node among its siblings.
   /// </summary>
+  [DefaultValue(0)]
   public int Ord { get; set; }
 
   /// <summary>
@@ -40,4 +43,10 @@ public abstract class QualityNode: QualityObject
   /// </summary>
   [MaxLength(255)]
   public string? Comment { get; set; }
+
+  /// <summary>
+  /// Gets or sets the parent node associated with this quality metrics node.
+  /// </summary>
+  [XmlIgnore]
+  public QualityMetricsNode Parent { get; set; } = null!;
 }

@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using System.Xml.Serialization;
+
+namespace Quest;
 
 /// <summary>
 /// Top level quality factor with weight and grade value.
@@ -13,10 +15,13 @@ public class QualityFactor: QualityMetricsNode
   /// <summary>
   /// Navigation property to the associated QualityFactorType.
   /// </summary>
+  [XmlReference]
   public QualityFactorType? FactorType { get; set; }
+
 
   /// <summary>
   /// Navigation property to the associated DocumentQuality.
   /// </summary>
+  [XmlIgnore]
   public DocumentQuality DocumentQuality { get; set; } = null!;
 }

@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Qhta.TestHelper" Version="3.0.0" />
+    <PackageReference Include="SharpSerializer" Version="4.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLib\Qhta.Xml.Serialization\Qhta.Xml.Serialization.csproj" />
+    <ProjectReference Include="..\QuestQDM\QuestQDM.csproj" />
     <ProjectReference Include="..\QuestRSX\QuestRSX.csproj" />
   </ItemGroup>
 

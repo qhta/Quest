@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
-
+using System.IO;
+using Polenter.Serialization;
 using QuestRSX;
 
 using QuestWPF.Views;
@@ -31,24 +32,32 @@ public partial class MainWindow : Window
   /// </summary>
   public ICommand OpenSpreadsheetCommand { get; }
 
-  private void OpenSpreadsheet(object? parameter)
+  private async void OpenSpreadsheet(object? parameter)
   {
-    // Open a file dialog to select an Excel file
-    var openFileDialog = new OpenFileDialog
+    try
     {
-      Filter = Strings.ExcelFilesFilter,
-      Title = Strings.OpenExcelFileTitle
-    };
+      // Open a file dialog to select an Excel file
+      var openFileDialog = new OpenFileDialog
+      {
+        Filter = Strings.ExcelFilesFilter,
+        Title = Strings.OpenExcelFileTitle
+      };
 
-    if (openFileDialog.ShowDialog() == true)
-    {
-      string newFilename = openFileDialog.FileName;
-      var excelView = new ExcelView {  FileName = newFilename };
-      excelView.OpenSpreadsheetAsync(newFilename);
-      if (excelView.DataContext is WorkbookInfoVM workbookInfoVM)
+      if (openFileDialog.ShowDialog() == true)
+      {
+        string newFilename = openFileDialog.FileName;
+        var workbookInfoVM = new WorkbookInfoVM();
         workbookInfoVM.PropertyChanged += WorkbookInfoVM_PropertyChanged;
-      AddFloatingView(excelView, newFilename);
+        var excelView = new ExcelView { FileName = newFilename, DataContext = workbookInfoVM};
+        AddFloatingView(excelView, newFilename);
+        await excelView.OpenSpreadsheetAsync(newFilename, workbookInfoVM);
+      }
     }
+    catch (Exception e)
+    {
+      MessageBox.Show(e.Message);
+    }
+
   }
   #endregion
 
@@ -75,27 +84,40 @@ public partial class MainWindow : Window
     return workbookInfoVM.IsLoaded && workbookInfoVM.Model.Worksheets.Any(item => item.IsSelected);
   }
 
-  private void StartImport(object? parameter)
+  private async void StartImport(object? parameter)
   {
-    if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
+    try
     {
-      MessageBox.Show("No workbook to import from.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-      return;
-    }
-    // Open a file dialog to select an Excel file
-    var saveFileDialog = new SaveFileDialog
-    {
-      FileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".db")),
-      Filter = Strings.DatabaseFilesTitle,
-      Title = Strings.CreateDatabaseFileTitle
-    };
+      if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
+      {
+        MessageBox.Show("No workbook to import from.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+      }
+      // Open a file dialog to select an Excel file
+      var saveFileDialog = new SaveFileDialog
+      {
+        FileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".qxml")),
+        Filter = Strings.QuestFilesTitle,
+        Title = Strings.CreateQuestFileTitle
+      };
 
-    if (saveFileDialog.ShowDialog() == true)
+      if (saveFileDialog.ShowDialog() == true)
+      {
+        string newFilename = saveFileDialog.FileName;
+        var questView = new QuestView { FileName = newFilename };
+        AddFloatingView(questView, newFilename);
+        var projectQuality = await questView.ImportExcelFileAsync(excelView.FileName, workbookInfoVM.Model);
+        new SharpSerializer().Serialize(projectQuality, newFilename);
+        //await using (var writer = new StreamWriter(newFilename))
+        //{
+        //  var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
+        //  xmlSerializer.Serialize(writer, projectQuality);
+        //}
+      }
+    }
+    catch (Exception e)
     {
-      string newFilename = saveFileDialog.FileName;
-      var questView = new QuestView { FileName = newFilename };
-      questView.ImportSpreadsheetAsync(excelView.FileName, workbookInfoVM.Model, newFilename);
-      AddFloatingView(questView, newFilename);
+      MessageBox.Show(e.Message);
     }
   }
   #endregion

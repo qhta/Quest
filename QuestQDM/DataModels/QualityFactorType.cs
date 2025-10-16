@@ -9,6 +9,7 @@ public class QualityFactorType
   /// Numeric identifier.
   /// </summary>
   public int Id { get; set; }
+
   /// <summary>
   /// Name of the quality factor type.
   /// </summary>

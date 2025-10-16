@@ -1,4 +1,5 @@
 ﻿using Quest.Data.QDM;
+
 using QuestWPF.Helpers;
 
 namespace QuestWPF.Views;
@@ -66,31 +67,23 @@ public partial class QuestView : UserControl
   /// </summary>
   /// <param name="excelFileName">Full path to excel file to import</param>
   /// <param name="workbookInfo">Info about Excel file to import. Contains recognized ranges of questionnaires and aggregation weights</param>
-  /// <param name="dbFileName">Full path to database file to create</param>
-  public async void ImportSpreadsheetAsync(string excelFileName, WorkbookInfo workbookInfo, string dbFileName)
+  public async Task<ProjectQuality> ImportExcelFileAsync(string excelFileName, WorkbookInfo workbookInfo)
   {
-    try
-    {
-      FileName = dbFileName;
-      var qualityVM = new ProjectQualityVM(new ProjectQuality());
-      DataContext = qualityVM;
-      qualityVM.IsLoading = true;
-      qualityVM.TotalCount = workbookInfo.Worksheets.Count(item => item.IsSelected);
-      var importer = new WorkbookImporter();
-      var workbook = importer.OpenWorkbook(excelFileName);
+    var projectQualityVM = new ProjectQualityVM(new ProjectQuality());
+    DataContext = projectQualityVM;
+    projectQualityVM.IsLoading = true;
+    projectQualityVM.TotalCount = workbookInfo.Worksheets.Count(item => item.IsSelected);
+    var importer = new WorkbookImporter();
+    var workbook = importer.OpenWorkbook(excelFileName);
 
-      await ImportWorkbookAsync(workbook, workbookInfo, qualityVM);
-      qualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
-      qualityVM.IsLoading = false;
-      qualityVM.IsLoaded = true;
-      qualityVM.IsExpanded = true;
+    await ImportWorkbookAsync(workbook, workbookInfo, projectQualityVM);
+    projectQualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
+    projectQualityVM.IsLoading = false;
+    projectQualityVM.IsLoaded = true;
+    projectQualityVM.IsExpanded = true;
 
-      ExpandTreeViewItem(qualityVM);
-    }
-    catch (Exception e)
-    {
-      Debug.WriteLine(e);
-    }
+    ExpandTreeViewItem(projectQualityVM);
+    return projectQualityVM.Model;
   }
 
   /// <summary>
@@ -108,7 +101,7 @@ public partial class QuestView : UserControl
     void Callback(IAsyncResult ar)
     {
       if (ar.AsyncState is QualityScale qualityScale)
-        projectQualityVM.Scale = new QualityScaleVM(projectQualityVM,qualityScale); 
+        projectQualityVM.Scale = new QualityScaleVM(projectQualityVM, qualityScale);
       else if (ar.AsyncState is DocumentQuality documentQuality)
       {
         projectQualityVM.DocumentQualities.Add(new DocumentQualityVM(projectQualityVM, documentQuality));

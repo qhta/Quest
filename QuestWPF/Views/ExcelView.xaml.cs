@@ -59,26 +59,17 @@ public partial class ExcelView : UserControl
   /// Opens the specified Excel file asynchronously and updates the SpreadsheetControl and DataContext accordingly.
   /// </summary>
   /// <param name="fileName">Full path to Excel file</param>
-  public async void OpenSpreadsheetAsync(string fileName)
+  /// <param name="workbookInfoVM">Filled workbook info</param>
+  public async Task OpenSpreadsheetAsync(string fileName, WorkbookInfoVM workbookInfoVM)
   {
-    try
-    {
-      FileName = fileName;
-      SpreadsheetControl.Open(fileName);
-      var workbookVM = new WorkbookInfoVM { FileName = fileName };
-      workbookVM.IsLoading = true;
-      DataContext = workbookVM;
-      var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
-      workbookVM.TotalCount = workbook.Worksheets.Count;
-      await GetWorkbookInfoAsync(workbook, workbookVM);
-      workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
-      workbookVM.IsLoading = false;
-      workbookVM.IsLoaded = true;
-    }
-    catch (Exception e)
-    {
-      Debug.WriteLine(e);
-    }
+    SpreadsheetControl.Open(fileName);
+    workbookInfoVM.IsLoading = true;
+    var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
+    workbookInfoVM.TotalCount = workbook.Worksheets.Count;
+    await GetWorkbookInfoAsync(workbook, workbookInfoVM);
+    workbookInfoVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
+    workbookInfoVM.IsLoading = false;
+    workbookInfoVM.IsLoaded = true;
   }
 
   /// <summary>

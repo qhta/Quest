@@ -20,7 +20,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Qhta.ObservableObjects" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLib\Qhta.ObservableObjects\Qhta.ObservableObjects.csproj" />
+    <ProjectReference Include="..\..\MyLib\Qhta.Xml\Qhta.Xml.csproj" />
   </ItemGroup>
 
 </Project>

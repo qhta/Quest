@@ -8,7 +8,7 @@ public class QualityFactorCollection : ObservableList<QualityFactor>
   /// <summary>
   /// Parent view model
   /// </summary>
-  public DocumentQuality Parent { get; set; }
+  private DocumentQuality Parent { get; set; }
 
   /// <summary>
   /// Initializing constructor.

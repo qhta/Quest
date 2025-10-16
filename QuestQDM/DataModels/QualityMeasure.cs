@@ -3,7 +3,7 @@
 /// <summary>
 /// Quality measure containing assessments. Its value is computed from the assessments.
 /// </summary>
-public class QualityMeasure: QualityMetricsNode
+public class QualityMeasure: QualityNode
 {
   /// <summary>
   /// Agreed grade value.
@@ -12,7 +12,12 @@ public class QualityMeasure: QualityMetricsNode
   public string? Grade { get; set; }
 
   /// <summary>
-  /// Collection of assessments contributing to this quality measure value.
+  /// Evaluated value computed from child nodes.
   /// </summary>
-  public List<QualityAssessment>? Assessments { get; set; }
+  public double? Value { get; set; }
+
+  ///// <summary>
+  ///// Collection of assessments contributing to this quality measure value.
+  ///// </summary>
+  //public List<QualityAssessment>? Assessments { get; set; }
 }

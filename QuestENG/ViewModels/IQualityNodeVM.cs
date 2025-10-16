@@ -70,11 +70,6 @@ public interface IQualityNodeVM : IQualityObjectVM
   public string? Comment { get; set; }
 
   /// <summary>
-  /// Gets the collection of child nodes associated with this node.
-  /// </summary>
-  public QualityNodeVMCollection Children { get; }
-
-  /// <summary>
   /// Evaluates the value of the node.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>

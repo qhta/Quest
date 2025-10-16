@@ -17,7 +17,6 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   {
     Parent = parent;
     Collection = collection;
-    Children = new QualityNodeVMCollection(this, model.Children ?? []);  
   }
 
   /// <summary>
@@ -230,13 +229,6 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Gets the collection of child nodes associated with this node.
-  /// </summary>
-  /// <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
-  /// be null.</remarks>
-  public QualityNodeVMCollection Children { get; }
-
-  /// <summary>
   /// Evaluates the value of the node if the grade is set.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
@@ -246,7 +238,10 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
     {
       var gradeObject = Scale?.GetGradeByName(Grade);
       if (gradeObject != null)
+      {
+        Value = gradeObject.Value;
         return gradeObject.Value;
+      }
     } 
     return null;
   }

@@ -86,7 +86,7 @@ public class WorkbookImporter
   public QualityScale? ImportScaleTable(IWorksheet worksheet, WorksheetInfo worksheetInfo)
   {
     if (worksheetInfo.ScaleRange == null) return null;
-    var resultList = new QualityScale([]);
+    var resultList = new QualityScale();
     var (scaleStart, scaleEnd) = WorkbookHelper.SplitRange(worksheetInfo.ScaleRange!);
     var startRowIndex = WorkbookHelper.GetCellRowIndex(scaleStart);
     var endRowIndex = WorkbookHelper.GetCellRowIndex(scaleEnd);
@@ -226,8 +226,7 @@ public class WorkbookImporter
               {
                 QualityFactor qualityFactor = new QualityFactor { Level = level, Text = text };
                 currentNode = qualityFactor;
-                documentQuality.Factors.Add(qualityFactor);
-                qualityFactor.DocumentQuality = documentQuality;
+                documentQuality.Factors?.Add(qualityFactor);
                 lastNode = qualityFactor;
               }
               else
@@ -238,15 +237,14 @@ public class WorkbookImporter
                 {
                   if (lastMetricsNode.Level == level - 1)
                   {
-                    lastMetricsNode.Children.Add(qualityMetrics);
-                    qualityMetrics.Parent = lastMetricsNode;
+                    lastMetricsNode.Add(qualityMetrics);
                     lastNode = qualityMetrics;
                   }
                   else
                   {
                     while (lastMetricsNode.Level >= level && lastMetricsNode.Parent != null)
                       lastMetricsNode = lastMetricsNode.Parent;
-                    lastMetricsNode.Children.Add(qualityMetrics);
+                    lastMetricsNode.Add(qualityMetrics);
                     qualityMetrics.Parent = lastMetricsNode;
                     lastNode = qualityMetrics;
                   }
@@ -260,8 +258,7 @@ public class WorkbookImporter
               if (lastNode is QualityMetricsNode lastMetricsNode)
               {
                 qualityMeasure.Level = lastMetricsNode.Level + 1;
-                lastMetricsNode.Children.Add(qualityMeasure);
-                qualityMeasure.Parent = lastMetricsNode;
+                lastMetricsNode.Add(qualityMeasure);
               }
               else
                 throw new InvalidOperationException("Invalid structure of questionnaire");
@@ -328,6 +325,7 @@ public class WorkbookImporter
   private bool GetFactorWeights(IWorksheet worksheet, WorksheetInfo worksheetInfo, DocumentQuality documentQuality)
   {
     if (worksheetInfo.WeightsRange == null) return false;
+    if (documentQuality.Factors == null) return false;
     if (documentQuality.Factors.Count == 0) return false;
     var (weightsStart, weightsEnd) = WorkbookHelper.SplitRange(worksheetInfo.WeightsRange!);
     var weightsTableRowStart = WorkbookHelper.GetCellRowIndex(weightsStart);
@@ -362,4 +360,5 @@ public class WorkbookImporter
     }
     return true;
   }
+
 }
