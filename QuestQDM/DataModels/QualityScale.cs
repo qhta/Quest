@@ -3,20 +3,33 @@
 /// <summary>
 /// Observable collection of <see cref="QualityGrade"/> objects.
 /// </summary>
+[XmlCollection]
+[HideInheritedMembers]
 public class QualityScale : ObservableList<QualityGrade>
 {
   /// <summary>
-  /// Initializing constructor.
+  /// Default.
   /// </summary>
   public QualityScale() : base([])
   {
+    // ReSharper disable once VirtualMemberCallInConstructor
+    CollectionChanged += QualityScale_CollectionChanged;
   }
 
-  //public void Add(QualityGrade item)
-  //{
-  //  if (item is QualityGrade grade)
-  //   Items = Items.Add(grade);
-  //  else
-  //    throw new ArgumentException("Item must be of type QualityGrade", nameof(item));
-  //}
+  private void QualityScale_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+  {
+    if (e.Action == NotifyCollectionChangedAction.Add)
+    {
+      if (e.NewItems != null)
+        foreach (var item in e.NewItems.OfType<QualityGrade>())
+        {
+          if (item.Id == 0)
+          {
+            var maxId = this.Any() ? this.Max(g => g.Id) : 0;
+            item.Id = maxId + 1;
+          }
+        }
+    }
+  }
+
 }

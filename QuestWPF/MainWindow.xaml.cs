@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.IO;
 using Polenter.Serialization;
+using Quest.Data.QDM;
 using QuestRSX;
 
 using QuestWPF.Views;
@@ -108,11 +109,16 @@ public partial class MainWindow : Window
         AddFloatingView(questView, newFilename);
         var projectQuality = await questView.ImportExcelFileAsync(excelView.FileName, workbookInfoVM.Model);
         new SharpSerializer().Serialize(projectQuality, newFilename);
-        //await using (var writer = new StreamWriter(newFilename))
-        //{
-        //  var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
-        //  xmlSerializer.Serialize(writer, projectQuality);
-        //}
+        newFilename = System.IO.Path.ChangeExtension(newFilename, ".xml");
+        await using (var writer = new StreamWriter(newFilename))
+        {
+          var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
+          xmlSerializer.Serialize(writer, projectQuality);
+        }
+
+        //var qdmContext = new QuestQDMDbContext();
+
+
       }
     }
     catch (Exception e)

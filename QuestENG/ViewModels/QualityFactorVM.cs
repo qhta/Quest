@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
 
 namespace Quest;
 
@@ -17,11 +17,11 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   {
     Parent = parent;
     Collection = collection;
-    Children = new QualityNodeVMCollection(this, model.Children ?? []);
+    Children = new QualityNodeVMCollection(this, model.Children?.Cast<QualityNode>() ?? []);
     Children.PropertyChanged += Children_PropertyChanged;
   }
 
-  private void Children_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  private void Children_PropertyChanged(object? sender, PropertyChangedEventArgs e)
   {
     if (e.PropertyName == nameof(Children.Value))
       Value = Children.Value;
@@ -58,7 +58,7 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
       if (Parent is IQualityNodeVM parentNode)
         text = parentNode.Numbering;
       var number = Collection.IndexOf(this)+1;
-      text += number.ToString() + ".";
+      text += number + ".";
       return text;
     }
   }
@@ -152,7 +152,7 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   {
     get
     {
-      var colors = FactorType?.Colors;
+      var colors = FactorType?.Colors?.Split(',', ';');
       if (colors == null || !colors.Any())
         return null;
       var colorName = colors[0];
@@ -291,4 +291,4 @@ public class QualityFactorVM : ViewModel<QualityFactor>, IQualityNodeVM
   #endregion
 
 
-};
+}

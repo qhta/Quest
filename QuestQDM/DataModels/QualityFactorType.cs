@@ -19,7 +19,7 @@ public class QualityFactorType
   /// <summary>
   /// Background color associated with the quality factor type (for UI purposes).
   /// </summary>
-  [MaxLength(20)]
-  public string[]? Colors { get; set; }
+  [MaxLength(50)]
+  public string? Colors { get; set; }
 
 }

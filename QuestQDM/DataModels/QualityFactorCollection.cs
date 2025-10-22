@@ -1,14 +1,36 @@
-﻿namespace Quest;
+﻿using System.Xml.Serialization;
+
+namespace Quest;
 
 /// <summary>
 /// Observable collection of <see cref="QualityFactor"/> objects.
 /// </summary>
+[XmlCollection]
+[HideInheritedMembers]
 public class QualityFactorCollection : ObservableList<QualityFactor>
 {
   /// <summary>
   /// Parent view model
   /// </summary>
-  private DocumentQuality Parent { get; set; }
+  [XmlIgnore]
+  public DocumentQuality Parent { get; set; }
+
+  /// <summary>
+  /// Default constructor.
+  /// </summary>
+  public QualityFactorCollection()
+  {
+    Parent = null!;
+  }
+
+  /// <summary>
+  /// Default constructor.
+  /// </summary>
+  /// <param name="parent">Parent view model</param>
+  public QualityFactorCollection(DocumentQuality parent) : base()
+  {
+    Parent = parent;
+  }
 
   /// <summary>
   /// Initializing constructor.

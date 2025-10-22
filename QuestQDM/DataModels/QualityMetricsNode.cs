@@ -3,13 +3,13 @@
 /// <summary>
 /// Quality metrics node in a hierarchical structure of quality nodes.
 /// </summary>
-[XmlContentProperty("Children")]
+//[XmlContentProperty("Children")]
 public class QualityMetricsNode: QualityNode
 {
   /// <summary>
   /// Gets or sets the collection of child nodes associated with this node.
   /// </summary>
-  public ObservableList<QualityNode>? Children
+  public QualityNodeCollection? Children
   {
     get => _Children;
     set
@@ -19,6 +19,7 @@ public class QualityMetricsNode: QualityNode
         _Children = value;
         if (_Children != null)
         {
+          _Children.Parent ??= this;
           foreach (var child in _Children)
             child.Parent = this;
           _Children.CollectionChanged += Children_CollectionChanged;
@@ -27,7 +28,7 @@ public class QualityMetricsNode: QualityNode
     }
   }
 
-  private ObservableList<QualityNode>? _Children;
+  private QualityNodeCollection? _Children;
 
   /// <summary>
   /// Evaluated value computed from child nodes.
@@ -38,7 +39,7 @@ public class QualityMetricsNode: QualityNode
   {
     if (Children == null)
     {
-      Children = new ObservableList<QualityNode>();
+      Children = new (this);
       Children.CollectionChanged += Children_CollectionChanged;
     }
     Children.Add(childNode);

@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qhta.ObservableObjects", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qhta.Conversion", "..\MyLib\Qhta.Conversion\Qhta.Conversion.csproj", "{9F3AA563-7B1F-3C8B-8030-190A1B7C2219}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qhta.TypeUtils", "..\MyLib\Qhta.TypeUtils\Qhta.TypeUtils.csproj", "{C1A4B43D-7C05-1118-A0A8-5745558F3CA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{9F3AA563-7B1F-3C8B-8030-190A1B7C2219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F3AA563-7B1F-3C8B-8030-190A1B7C2219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F3AA563-7B1F-3C8B-8030-190A1B7C2219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A4B43D-7C05-1118-A0A8-5745558F3CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A4B43D-7C05-1118-A0A8-5745558F3CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A4B43D-7C05-1118-A0A8-5745558F3CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A4B43D-7C05-1118-A0A8-5745558F3CA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

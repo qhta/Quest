@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Quest</RootNamespace>
@@ -15,6 +15,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -24,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MyLib\Qhta.ObservableObjects\Qhta.ObservableObjects.csproj" />
+    <ProjectReference Include="..\..\MyLib\Qhta.TypeUtils\Qhta.TypeUtils.csproj" />
     <ProjectReference Include="..\..\MyLib\Qhta.Xml\Qhta.Xml.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using System.Xml.Serialization;
+
+namespace Quest;
 
 /// <summary>
 /// Quality of a single document.
@@ -7,7 +9,7 @@ public class DocumentQuality: QualityObject
 {
   public DocumentQuality()
   {
-    Factors = new ObservableList<QualityFactor>();
+    Factors = new QualityFactorCollection(this);
     Factors.CollectionChanged += _Factors_CollectionChanged;
   }
 
@@ -27,6 +29,7 @@ public class DocumentQuality: QualityObject
   /// <summary>
   /// Foreign key referencing the associated ProjectQuality.
   /// </summary>
+  [XmlIgnore]
   public int ProjectQualityId { get; set; }
 
   /// <summary>
@@ -53,7 +56,7 @@ public class DocumentQuality: QualityObject
   /// <summary>
   /// Gets or sets the collection of quality factors associated with the current context.
   /// </summary>
-  public ObservableList<QualityFactor>? Factors
+  public QualityFactorCollection? Factors
   {
     get => _Factors;
     set
@@ -63,6 +66,7 @@ public class DocumentQuality: QualityObject
         _Factors = value;
         if (_Factors != null)
         {
+          _Factors.Parent ??= this;
           foreach (var factor in _Factors)
             factor.DocumentQuality = this;
           _Factors.CollectionChanged += _Factors_CollectionChanged;
@@ -70,7 +74,7 @@ public class DocumentQuality: QualityObject
       }
     }
   }
-  private ObservableList<QualityFactor>? _Factors;
+  private QualityFactorCollection? _Factors;
 
   private void _Factors_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
   {

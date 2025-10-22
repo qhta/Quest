@@ -13,7 +13,7 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
   public DocumentQualityVM(IQualityObjectVM parent, DocumentQuality model) : base(model)
   {
     Parent = parent;
-    Factors = new QualityFactorVMCollection(this, model.Factors ?? []);
+    Factors = new QualityFactorVMCollection(this, model.Factors?.Cast<QualityFactor>() ?? []);
   }
 
 

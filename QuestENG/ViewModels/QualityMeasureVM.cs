@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// ViewModel for a quality factor assessment
@@ -76,7 +74,7 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
       if (Parent is IQualityNodeVM parentNode)
         text = parentNode.Numbering;
       var number = Collection.IndexOf(this)+1;
-      text += number.ToString() + ".";
+      text += number + ".";
       return text;
     }
   }
@@ -147,7 +145,7 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   {
     get
     {
-      var colors = FactorType?.Colors;
+      var colors = FactorType?.Colors?.Split(',', ';');
       if (colors == null || !colors.Any())
         return null;
       return colors[colors.Count() - 1];
@@ -303,4 +301,4 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   #endregion
 
 
-};
+}

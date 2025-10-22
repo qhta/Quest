@@ -6,6 +6,11 @@
 public class QualityGrade()
 {
   /// <summary>
+  /// Unique identifier for the grade.
+  /// </summary>
+  public int Id { get; set; }
+
+  /// <summary>
   /// Text representation of the grade, e.g. "1", "2", "b.o."
   /// </summary>
   [MaxLength(4)]

@@ -5,7 +5,8 @@ namespace Quest;
 /// <summary>
 /// Base class for quality assessment.
 /// </summary>
-public abstract class QualityObject
+[HideInheritedMembers]
+public abstract class QualityObject: ObservableObject
 {
   /// <summary>
   /// Unique identifier for the quality.

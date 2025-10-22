@@ -28,14 +28,13 @@ public class WorkbookImporter
     var projectQuality = new ProjectQuality
     {
       ProjectTitle = workbookInfo.ProjectTitle,
-      DocumentQualities = new List<DocumentQuality>()
     };
     var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
     if (worksheetWithScale != null)
     {
       projectQuality.Scale = ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
     }
-    projectQuality.DocumentQualities = new List<DocumentQuality>();
+    projectQuality.DocumentQualities = new DocumentQualityCollection(projectQuality);
     foreach (var documentQuality in ImportDocumentQualities(workbook, workbookInfo))
     {
       projectQuality.DocumentQualities.Add(documentQuality);
@@ -72,7 +71,7 @@ public class WorkbookImporter
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");
       if (projectQuality.DocumentQualities == null)
-        projectQuality.DocumentQualities = new List<DocumentQuality>();
+        projectQuality.DocumentQualities = new DocumentQualityCollection(projectQuality);
       projectQuality.DocumentQualities.Add(documentQuality);
       callback?.Invoke(new AsyncResult(true, documentQuality));
     }

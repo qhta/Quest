@@ -14,7 +14,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
     RootNode = [this];
     FactorTypes = new QualityFactorTypeVMCollection(this, model.FactorTypes ?? []);
     FactorTypes.CollectionChanged += FactorTypes_CollectionChanged;
-    DocumentQualities = new DocumentQualityVMCollection(this, model.DocumentQualities ?? []);
+    DocumentQualities = new DocumentQualityVMCollection(this, model.DocumentQualities?.Cast<DocumentQuality>() ?? []);
     ViewItems = new QuestItemsCollection(this);
     DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
   }

@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-
-using static System.Formats.Asn1.AsnWriter;
+﻿using System.ComponentModel;
 
 namespace Quest;
 
@@ -20,11 +17,11 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   {
     Parent = parent;
     Collection = collection;
-    Children = new QualityNodeVMCollection(this, model.Children ?? []);
+    Children = new QualityNodeVMCollection(this, model.Children?.Cast<QualityNode>() ?? []);
     Children.PropertyChanged += Children_PropertyChanged;
   }
 
-  private void Children_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  private void Children_PropertyChanged(object? sender, PropertyChangedEventArgs e)
   {
     if (e.PropertyName == nameof(Children.Value))
       Value = Children.Value;
@@ -61,7 +58,7 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
       if (Parent is IQualityNodeVM parentNode)
         text = parentNode.Numbering;
       var number = Collection.IndexOf(this)+1;
-      text += number.ToString() + ".";
+      text += number + ".";
       return text;
     }
   }
@@ -133,7 +130,7 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   {
     get
     {
-      var colors = FactorType?.Colors;
+      var colors = FactorType?.Colors?.Split(',', ';');
       if (colors == null || !colors.Any())
         return null;
       if (colors.Count() > Level)
@@ -274,4 +271,4 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   #endregion
 
 
-};
+}
