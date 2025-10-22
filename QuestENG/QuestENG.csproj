@@ -7,6 +7,7 @@
     <RootNamespace>Quest</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>docs\QuestEng.xls</DocumentationFile>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
   <ItemGroup>

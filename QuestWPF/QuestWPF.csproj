@@ -51,11 +51,11 @@
     <PackageReference Include="Qhta.SF.WPF.Tools" Version="1.2.0" />
     <PackageReference Include="Qhta.WPF.Converters" Version="1.8.0" />
     <PackageReference Include="SharpSerializer" Version="4.0.2" />
-    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="31.1.23" />
-    <PackageReference Include="Syncfusion.SfSpreadsheet.WPF" Version="31.1.23" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="31.1.23" />
-    <PackageReference Include="Syncfusion.Shared.WPF" Version="31.1.23" />
-    <PackageReference Include="syncfusion.ui.wpf.net" Version="31.1.23" />
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="31.2.3" />
+    <PackageReference Include="Syncfusion.SfSpreadsheet.WPF" Version="31.2.3" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="31.2.3" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="31.2.3" />
+    <PackageReference Include="syncfusion.ui.wpf.net" Version="31.2.3" />
   </ItemGroup>
 
   <ItemGroup>
