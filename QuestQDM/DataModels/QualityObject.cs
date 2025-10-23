@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Quest;
 
@@ -12,6 +13,7 @@ public abstract class QualityObject: ObservableObject
   /// Unique identifier for the quality.
   /// </summary>
   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+  [DefaultValue(0)]
   public int Id { get; set; }
 
 }

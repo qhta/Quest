@@ -223,14 +223,14 @@ public class WorkbookImporter
               }
               if (level == 1)
               {
-                QualityFactor qualityFactor = new QualityFactor { Level = level, Text = text };
+                QualityFactor qualityFactor = new QualityFactor { Text = text };
                 currentNode = qualityFactor;
                 documentQuality.Factors?.Add(qualityFactor);
                 lastNode = qualityFactor;
               }
               else
               {
-                var qualityMetrics = new QualityMetrics { Level = level, Text = text };
+                var qualityMetrics = new QualityMetrics { Text = text };
                 currentNode = qualityMetrics;
                 if (lastNode is QualityMetricsNode lastMetricsNode)
                 {
@@ -256,7 +256,7 @@ public class WorkbookImporter
               currentNode = qualityMeasure;
               if (lastNode is QualityMetricsNode lastMetricsNode)
               {
-                qualityMeasure.Level = lastMetricsNode.Level + 1;
+                //qualityMeasure.Level = lastMetricsNode.Level + 1;
                 lastMetricsNode.Add(qualityMeasure);
               }
               else

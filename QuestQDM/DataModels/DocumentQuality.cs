@@ -5,6 +5,7 @@ namespace Quest;
 /// <summary>
 /// Quality of a single document.
 /// </summary>
+[XmlContentProperty("Factors")]
 public class DocumentQuality: QualityObject
 {
   public DocumentQuality()

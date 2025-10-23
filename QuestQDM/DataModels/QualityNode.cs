@@ -15,11 +15,23 @@ public abstract class QualityNode: QualityObject
   //[Key]
   //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
   //public int Id { get; set; }
-  
+
   /// <summary>
   ///  Level of the quality node in the tree (0 for root, 1 for factor).
   /// </summary>
-  public int Level { get; set; }
+  public int Level
+  {
+    get
+    {
+      if (GetType()==typeof(QualityFactor))
+        return 1;
+      if (Parent is QualityNode parentNode)
+      {
+        return parentNode.Level + 1;
+      }
+      return 0;
+    }
+  }
 
   /// <summary>
   /// Order of the quality node among its siblings.

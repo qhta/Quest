@@ -3,7 +3,7 @@
 /// <summary>
 /// Quality metrics node in a hierarchical structure of quality nodes.
 /// </summary>
-//[XmlContentProperty("Children")]
+[XmlContentProperty("Children")]
 public class QualityMetricsNode: QualityNode
 {
   /// <summary>
