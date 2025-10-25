@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\QuestQDM\QuestQDM.csproj" />
     <ProjectReference Include="..\QuestRDM\QuestRDM.csproj" />
+    <ProjectReference Include="..\QuestRSX\QuestRSX.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,11 @@
-﻿namespace QuestIMP;
+﻿using System.Numerics;
+using System.Reflection;
+
+using QuestRSX;
+
+using static System.Net.Mime.MediaTypeNames;
+
+namespace QuestIMP;
 
 /// <summary>
 /// Class for import Excel Workbooks.
@@ -211,19 +218,26 @@ public class WorkbookImporter
               if (level > 1 && !Char.IsDigit(ss.Last().FirstOrDefault()))
               {
                 level--;
-                text = ss.Last();
+                text = ss.Count() > 1 ? ss.Last() : null;
               }
               else if (Char.IsDigit(ss.Last().FirstOrDefault()) && !Char.IsDigit(ss.Last().LastOrDefault()))
               {
                 level++;
-                text = ss.Last();
-                while (char.IsDigit(text.FirstOrDefault()))
-                  text = text.Substring(1);
-                text = text.Trim();
+                if (ss.Count() > 1)
+                {
+                  text = ss.Last();
+                  while (char.IsDigit(text.FirstOrDefault()))
+                    text = text.Substring(1);
+                  text = text.Trim();
+                }
+                else
+                  text = null;
               }
+
               if (level == 1)
               {
-                QualityFactor qualityFactor = new QualityFactor { Text = text };
+                var name = text != null ? GetFactorName(text) : null;
+                QualityFactor qualityFactor = new QualityFactor { Text = text, Name = name };
                 currentNode = qualityFactor;
                 documentQuality.Factors?.Add(qualityFactor);
                 lastNode = qualityFactor;
@@ -275,7 +289,10 @@ public class WorkbookImporter
             currentNode.Weight = weight;
           else if (currentNode.Text == null)
           {
-            currentNode.Text = s;
+            var text = s;
+            var name =GetFactorName(text);
+            currentNode.Name = name;
+            currentNode.Text = text;
           }
         }
       }
@@ -283,6 +300,14 @@ public class WorkbookImporter
     if (worksheetInfo.WeightsRange != null)
       GetFactorWeights(worksheet, worksheetInfo, documentQuality);
     return hasGrades;
+  }
+
+
+  private string? GetFactorName(string text)
+  {
+    var allFactorStrings = FactorStringsHelper.GetAllCultureSpecificVariants();
+    var name = allFactorStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
+    return name;
   }
 
   /// <summary>
