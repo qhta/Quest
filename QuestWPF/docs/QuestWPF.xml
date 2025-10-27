@@ -394,15 +394,6 @@
             <param name="excelFileName">Full path to excel file to import</param>
             <param name="workbookInfo">Info about Excel file to import. Contains recognized ranges of questionnaires and aggregation weights</param>
         </member>
-        <member name="M:QuestWPF.Views.QuestView.ImportWorkbookAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfo,Quest.ProjectQualityVM)">
-            <summary>
-            Retrieves data from workbook and populates the quality view model asynchronously.
-            </summary>
-            <param name="workbook">Opened Excel workbook</param>
-            <param name="workbookInfo">Workbook info object</param>
-            <param name="projectQualityVM">Project quality view model</param>
-            <returns></returns>
-        </member>
         <member name="M:QuestWPF.Views.QuestView.InitializeComponent">
             <summary>
             InitializeComponent

@@ -73,31 +73,23 @@ public partial class QuestView : UserControl
     DataContext = projectQualityVM;
     projectQualityVM.IsLoading = true;
     projectQualityVM.TotalCount = workbookInfo.Worksheets.Count(item => item.IsSelected);
-    var importer = new WorkbookImporter();
-    var workbook = importer.OpenWorkbook(excelFileName);
+    using (var importer = new WorkbookImporter())
+    {
 
-    await ImportWorkbookAsync(workbook, workbookInfo, projectQualityVM);
-    projectQualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
-    projectQualityVM.IsLoading = false;
-    projectQualityVM.IsLoaded = true;
-    projectQualityVM.IsExpanded = true;
+      var workbook = importer.OpenWorkbook(excelFileName);
+      projectQualityVM.ProjectTitle = workbookInfo.ProjectTitle;
 
-    ExpandTreeViewItem(projectQualityVM);
-    return projectQualityVM.Model;
-  }
+      await importer.ImportProjectQualityAsync(workbook, workbookInfo, projectQualityVM.Model, Callback);
 
-  /// <summary>
-  /// Retrieves data from workbook and populates the quality view model asynchronously.
-  /// </summary>
-  /// <param name="workbook">Opened Excel workbook</param>
-  /// <param name="workbookInfo">Workbook info object</param>
-  /// <param name="projectQualityVM">Project quality view model</param>
-  /// <returns></returns>
-  private async Task ImportWorkbookAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQualityVM projectQualityVM)
-  {
-    projectQualityVM.ProjectTitle = workbookInfo.ProjectTitle;
-    var importer = new WorkbookImporter();
-    await importer.ImportProjectQualityAsync(workbook, workbookInfo, projectQualityVM.Model, Callback);
+      projectQualityVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
+      projectQualityVM.IsLoading = false;
+      projectQualityVM.IsLoaded = true;
+      projectQualityVM.IsExpanded = true;
+
+      ExpandTreeViewItem(projectQualityVM);
+      return projectQualityVM.Model;
+    }
+
     void Callback(IAsyncResult ar)
     {
       if (ar.AsyncState is QualityScale qualityScale)

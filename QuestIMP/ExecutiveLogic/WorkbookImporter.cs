@@ -1,17 +1,41 @@
-﻿using System.Numerics;
-using System.Reflection;
-
-using QuestRSX;
-
-using static System.Net.Mime.MediaTypeNames;
+﻿using QuestRSX;
 
 namespace QuestIMP;
 
 /// <summary>
 /// Class for import Excel Workbooks.
 /// </summary>
-public class WorkbookImporter
+public class WorkbookImporter : IDisposable
 {
+  const string filepath = @"d:\OneDrive\VS\Projects\Quest\QuestRSX\";
+
+  //private HashSet<string> metricsSet = new();
+  //private HashSet<string> measureSet = new();
+
+  /// <summary>
+  /// Create a new instance of the <see cref="WorkbookImporter"/> class and opening text list files.
+  /// </summary>
+  public WorkbookImporter()
+  {
+
+  }
+
+  /// <summary>
+  /// Closes the text list files.
+  /// </summary>
+  public void Dispose()
+  {
+    //using (var metricsTextWriter = File.CreateText(Path.Combine(filepath, "Metrics.txt")))
+    //  foreach (var metrics in metricsSet)
+    //    metricsTextWriter?.WriteLine(metrics);
+
+
+
+    //using (var measureTextWriter = File.CreateText(Path.Combine(filepath, "Measures.txt")))
+    //  foreach (var measure in measureSet)
+    //    measureTextWriter?.WriteLine(measure);
+  }
+
   /// <summary>
   /// Opens an Excel workbook from the specified file and returns the IWorkbook instance.
   /// </summary>
@@ -60,12 +84,11 @@ public class WorkbookImporter
   public async Task ImportProjectQualityAsync(IWorkbook workbook, WorkbookInfo workbookInfo, ProjectQuality projectQuality, AsyncCallback? callback)
   {
     projectQuality.ProjectTitle = workbookInfo.ProjectTitle;
-    var importer = new WorkbookImporter();
 
     var worksheetWithScale = workbookInfo.Worksheets.FirstOrDefault(item => item.ScaleRange != null);
     if (worksheetWithScale != null/* && worksheetWithScale.IsSelected*/)
     {
-      var aScale = importer.ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
+      var aScale = ImportScaleTable(workbook.Worksheets[worksheetWithScale.Name], worksheetWithScale);
       if (aScale != null)
       {
         projectQuality.Scale = aScale;
@@ -73,7 +96,7 @@ public class WorkbookImporter
       }
     }
 
-    var documentQualities = importer.ImportDocumentQualitiesAsync(workbook, workbookInfo);
+    var documentQualities = ImportDocumentQualitiesAsync(workbook, workbookInfo);
     await foreach (var documentQuality in documentQualities)
     {
       //Debug.WriteLine($"Add {worksheetInfo.Name}");
@@ -213,6 +236,7 @@ public class WorkbookImporter
             if (Char.IsDigit(s.First()))
             {
               string? text = null;
+              string? name = null;
               var ss = s.Split('.', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
               int level = ss.Length;
               if (level > 1 && !Char.IsDigit(ss.Last().FirstOrDefault()))
@@ -236,7 +260,7 @@ public class WorkbookImporter
 
               if (level == 1)
               {
-                var name = text != null ? GetFactorName(text) : null;
+                name = text != null ? GetFactorName(text) : null;
                 QualityFactor qualityFactor = new QualityFactor { Text = text, Name = name };
                 currentNode = qualityFactor;
                 documentQuality.Factors?.Add(qualityFactor);
@@ -244,7 +268,11 @@ public class WorkbookImporter
               }
               else
               {
-                var qualityMetrics = new QualityMetrics { Text = text };
+                if (text != null)
+                {
+                  name = GetMetricsName(text);
+                }
+                var qualityMetrics = new QualityMetrics { Text = text, Name = name };
                 currentNode = qualityMetrics;
                 if (lastNode is QualityMetricsNode lastMetricsNode)
                 {
@@ -266,7 +294,11 @@ public class WorkbookImporter
             }
             else
             {
-              var qualityMeasure = new QualityMeasure { Text = s };
+              var text = s;
+              var name = GetFactorName(text);
+              //if (name == null)
+              //  measureSet?.Add(text);
+              var qualityMeasure = new QualityMeasure { Name = name, Text = text };
               currentNode = qualityMeasure;
               if (lastNode is QualityMetricsNode lastMetricsNode)
               {
@@ -290,7 +322,16 @@ public class WorkbookImporter
           else if (currentNode.Text == null)
           {
             var text = s;
-            var name =GetFactorName(text);
+            var name = currentNode.Name;
+            if (name == null)
+            {
+              if (currentNode is QualityFactor)
+                name = GetFactorName(text);
+              else if (currentNode is QualityMetrics)
+                name = GetMetricsName(text);
+              //else
+              //  metricsSet?.Add(text);
+            }
             currentNode.Name = name;
             currentNode.Text = text;
           }
@@ -305,8 +346,15 @@ public class WorkbookImporter
 
   private string? GetFactorName(string text)
   {
-    var allFactorStrings = FactorStringsHelper.GetAllCultureSpecificVariants();
+    var allFactorStrings = FactorStringsHelper.Instance.GetAllCultureSpecificVariants();
     var name = allFactorStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
+    return name;
+  }
+
+  private string? GetMetricsName(string text)
+  {
+    var allMetricsStrings = MetricsStringsHelper.Instance.GetAllCultureSpecificVariants();
+    var name = allMetricsStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
     return name;
   }
 

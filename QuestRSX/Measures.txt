@@ -1,0 +1,635 @@
+Czy cele systemu zostały zdefiniowane? Jak dokładnie?
+Czy problemy zostały zdefiniowane? Jak dokładnie?
+Czy korzyści zostały zdefiniowane? Jak dokładnie?
+Czy zdefiniowano podstawowych udziałowców? Na ile wyczerpująco?
+Czy zdefiniowano dodatkowych udziałowców? Na ile wyczerpująco?
+Czy zdefiniowano udziałowców zewnętrznych? Na ile wyczerpująco?
+Czy podstawowi użytkownicy zostali określeni? Na ile wyczerpująco?
+Czy dodatkowi użytkownicy zostali określeni? Na ile wyczerpująco?
+Czy zostały określone zadania użytkowników? Na ile dokładnie?
+Czy zdefiniowano wszystkie wymagane funkcje? Na ile wyczerpująco?
+Czy każda funkcja ma kompletny opis? Na ile wyczerpujący?
+Czy funkcje zostały poprzypisywane do użytkowników? Na ile precyzyjnie?
+Czy zdefiniowano dane wejściowe? Na ile precyzyjnie?
+Czy zdefiniowano dane wyjściowe? Na ile precyzyjnie?
+Czy zdefiniowano dane przechowywane? Na ile precyzyjnie?
+Czy zdefiniowano sposoby przetwarzania danych? Na ile precyzyjnie?
+Czy zdefiniowano podstawowe procesy? Na ile dokładnie?
+Czy zdefiniowano podstawowe operacje? Na ile szczegółowo?
+Czy określono architekturę systemu? Na ile szczegółowo?
+Czy określono środowisko pracy systemu? Na ile precyzyjnie?
+Czy określono inne systemy współdziałające? Na ile wyczerpująco?
+Czy określono sposób interakcji z użytkownikiem? Na ile precyzyjnie?
+Czy pokazano przykład interfejsu użytkownika? Na ile szczegółowo?
+Czy określono interfejsy do innych systemów? Na ile precyzyjnie?
+Czy określono wymagania na czas przetwarzania?
+Czy określono wymagania na czas reakcji?
+Czy określono potencjalnie równoległe procesy?
+Czy określono potencjalnie równoległe operacje?
+Czy oszacowano liczbę użytkowników jednocześnie korzystających z systemu?
+Czy oszacowano liczbę transakcji na jednostkę czasu?
+Czy oszacowano początkową liczbę rekordów (plików) danych?
+Czy oszacowano przyrost rekordów (plików) danych?
+Czy oszacowano objętość danych?
+Czy przewidziano archiwizację danych?
+Czy określono optymalne wymagania na sprzęt?
+Czy określono minimalne wymagania na sprzęt?
+Czy określono dopuszczalną utratę wydajności w nieoptymalnych warunkach?
+Czy określono optymalne wymagania na oprogramowanie?
+Czy określono minimalne wymagania na oprogramowanie?
+Czy oszacowano maksymalną dopuszczalną liczbę użytkowników?
+Czy oszacowano maksymalną dopuszczalną liczbę transakcji na jednostkę czasu?
+Czy przewidziano rozszerzanie systemu przy przekroczeniu wartości maksymalnych?
+Czy oszacowano maksymalną liczbę rekordów (plików) danych?
+Czy oszacowano maksymalną objętość danych?
+Czy przewidziano sytuacje wyjątkowe?
+Czy określono reakcje na sytuacje wyjątkowe?
+Czy przewidziano sytuacje krytyczne?
+Czy określono reakcje na sytuacje krytyczne?
+Czy określono sposób zapobiegania awariom?
+Czy określono sposób minimalizowania skutków awarii?
+Czy określono wymagany poziom odporności na błędy użytkownika?
+Czy określono środki minimalizujące możliwość pomyłki użytkownika?
+Czy określono metody weryfikacji danych?
+Czy określono sposoby naprawy danych?
+Czy określono sposoby weryfikacji wyników przetwarzania?
+Czy określono sposoby postępowania przy błędach przetwarzania?
+Czy zidentyfikowano zagrożenia ze strony systemu dla użytkownika?
+Czy oceniono ryzyko w tym aspekcie?
+Czy określono sposoby zabezpieczeń w tym aspekcie?
+Czy zidentyfikowano zagrożenia ze strony systemu dla innych systemów?
+Czy zidentyfikowano zagrożenia dla systemu ze strony użytkowników?
+Czy zidentyfikowano zagrożenia dla systemu ze strony innych systemów?
+Czy przewidziano weryfikację danych wejściowych?
+Czy przewidziano weryfikację danych wyjściowych?
+Czy przewidziano możliwość podglądu danych przechowywanych?
+Czy przewidziano możliwość weryfikacji danych przechowywanych?
+Czy przewidziano procedury kontrolne?
+Czy przewidziano procedury testowe?
+Czy określono platformę sprzętową, na których będzie uruchamiany system?
+Czy przewidziano możliwość uruchamiania na różnych platformach sprzętowych?
+Czy określono system operacyjny, na którym będzie uruchamiany system?
+Czy przewidziano możliwość uruchamiania na różnych systemach operacyjnych?
+Czy określono formaty plików importowanych?
+Czy określono formaty plików eksportowanych?
+Czy określono akceptowalne (różne) systemy bazy danych?
+Czy przewidziano wersje językowe dla krajów zachodnich? Ile?
+Czy przewidziano wersje językowe dla pozostałych krajów europejskich? Ile?
+Czy przewidziano wersje językowe dla krajów bliskowschodnich? Ile?
+Czy przewidziano wersje językowe dla krajów dalekowschodnich? Ile?
+Czy przewidziano zmianę formatu daty?
+Czy przewidziano zmianę formatu czasu?
+Czy przewidziano zmianę formatu liczb?
+Czy przewidziano zmianę symbolu waluty i jego położenia?
+Czy przewidziano zmianę cudzysłowów?
+Czy przewidziano możliwość pisania makr (skryptów) przez użytkownika?
+Czy określono język makr (skryptów)?
+Czy przewidziano możliwość wprowadzania dodatków?
+Czy określono język pisania dodatków?
+Czy określono interfejs dla dodatków?
+Czy przewidziano możliwość wyboru formatu plików?
+Czy przewidziano możliwość zmiany systemu bazy danych?
+Czy przewidziano możliwość zmiany układu okien?
+Czy przewidziano możliwość zmiany wyglądu okien?
+Czy przewidziano możliwość wyboru profilu użytkownika?
+Czy przewidziano możliwość konfigurowania menu?
+Czy przewidziano możliwość konfigurowania pasków narzędziowych?
+Czy przewidziano możliwość konfigurowania skrótów klawiszowych?
+Czy przewidziano dopasowanie konfiguracji architektury systemu przy instalacji?
+Czy przewidziano dopasowanie konfiguracji architektury systemu po instalacji?
+Czy cele są adekwatne do problemów?
+Czy cele są adekwatne do korzyści?
+Czy funkcje są adekwatne do celów?
+Czy wymagania zostały ocenione przez klienta? Jak wysoko?
+Czy wymagania zostały ocenione przez przyszłych użytkowników? Jak wysoko?
+Czy wymagania zostały ocenione przez wykonawców? Jak wysoko?
+Czy określono wymagania na zgodność interfejsu ze standardami?
+Czy przewidywany sposób pracy jest zgodny ze standardami?
+Czy przewidziano podpowiedzi dla użytkownika?
+Czy przewidziano objaśnienia dla niedoświadczonych użytkowników?
+Czy przewidziano system pomocy?
+Czy przewidziano autouzupełnienie?
+Czy przewidziano autokorektę?
+Czy określono zakres systemu pomocy?
+Czy określono zakres systemu podpowiedzi?
+Czy przewidziano wsparcie techniczne dla użytkownika?
+Czy przewidywany sposób pracy jest zgodny z dotychczasowym sposobem pracy?
+Czy przewiduje się wyprodukowanie wersji demo?
+Czy przewiduje się wyprodukowanie programów uczących?
+Czy przewiduje się kursy szkoleniowe?
+Czy przewidziano możliwość automatycznego wykonywania pewnych czynności?
+Czy przewidziano możliwość rejestrowania i powtarzania poleceń użytkownika?
+Czy przewidziano możliwość rejestrowania i powtarzania sekwencji poleceń?
+Czy przewidziano podpowiedzi?
+Czy przewidziano środki autokorekty, autouzupełniania?
+Czy przewidziano istnienie skrótów klawiszowych?
+Czy przewidziano odpowiednią funkcjonalność myszy?
+Czy specyfikację wymagań wykonano zgodnie ze standardami?
+Czy oddzielono wymagania od decyzji (propozycji) projektowych?
+Czy wykonano prototyp?
+Czy wymagania zostały przeanalizowane i zaakceptowane przez klienta?
+Czy wymagania zostały zaakceptowane przez użytkowników?
+Czy wymagania zostały przeanalizowane i zaakceptowane przez wykonawcę?
+Czy deklarowane cele są wewnętrznie spójne?
+Czy wymagania są spójne z celami?
+Czy wymagane funkcje są wewnętrznie spójne?
+Czy wymagania funkcjonalne są niesprzeczne z wydajnościowymi?
+Czy wymagania wydajnościowe są niesprzeczne z wiarygodnościowymi?
+Czy wymagania wydajnościowe są niesprzeczne z wymaganą elastycznością?
+Czy każde wymaganie ma opis?
+Czy opisy wymagań są krótkie?
+Czy słownictwo w opisach jest zrozumiałe?
+Czy słownik pojęć został zamieszczony? Czy jest przydatny?
+Czy stosowanie synonimów i skrótów jest ograniczone?
+Czy bardziej skomplikowane opisy mają dodatkowe wyjaśnienie graficzne?
+Czy podaje się odwołania do koniecznych zewnętrznych źródeł informacji?
+Czy wymagania funkcjonalne zostawiają pole swobody dla wykonawcy?
+Czy wymagania niefunkcjonalne zostawiają pole swobody dla wykonawcy?
+Czy wśród udziałowców jest kadra kierownicza?
+Czy kadra kierownicza określiła cele?
+Czy wszystkie cele zostały zaakceptowane?
+Czy kontrakt określa możliwość renegocjacji wymagań ze strony klienta?
+Czy kontrakt określa możliwość renegocjacji wymagań ze strony wykonawcy?
+Czy cele zostały powiązane z udziałowcami?
+Czy wymagania zostały powiązane z celami?
+Czy wymagania funkcjonalne zostały wzajemnie powiązane?
+Czy wymagania funkcjonalne zostały powiązane z niefunkcjonalnymi?
+Czy wymagania niefunkcjonalne zostały wzajemnie powiązane?
+Czy wymagania funkcjonalne zostały ponumerowane (oznaczone identyfikatorami)?
+Czy wymagania niefunkcjonalne zostały ponumerowane (oznaczone identyfikatorami)?
+Czy wszystkie wymagania funkcjonalne mają określone rezultaty?
+Czy wszystkie wymagania niefunkcjonalne są konkretnie określone?
+Czy wyspecyfikowano kryteria akceptacji?
+Czy określono warunki testowania sytuacji wyjątkowych?
+Czy wymagania dotyczące sytuacji krytycznych są możliwe do testowania?
+Czy wymagania dotyczące awarii są możliwe do testowania?
+Czy wymagania nie odwołują się do nieistniejących lub niedostępnych systemów?
+Czy wymagania nie odwołują się do nieistniejących rozwiązań prawnych?
+Czy wymagania nie odwołują się do nieokreślonych możliwości rozwoju?
+Czy wszystkie klasy ze słownika pojęć zostały zidentyfikowane?
+Czy wszystkie klasy ze specyfikacji wymagań zostały zidentyfikowane?
+Czy wszystkie klasy z dodatkowych źródeł zostały zidentyfikowane?
+Czy wszystkie właściwości ze słownika pojęć zostały zidentyfikowane?
+Czy wszystkie właściwości ze specyfikacji wymagań zostały zidentyfikowane?
+Czy wszystkie właściwości z dodatkowych źródeł zostały zidentyfikowane?
+Czy wszystkie możliwości ze słownika pojęć zostały zidentyfikowane?
+Czy wszystkie możliwości ze specyfikacji wymagań zostały zidentyfikowane?
+Czy wszystkie możliwości z dodatkowych źródeł zostały zidentyfikowane?
+Czy określono typy właściwości?
+Czy określono krotności właściwości?
+Czy określono wartości właściwości (domyślne/wyrażenia obliczeniowe)?
+Czy określono stereotypy możliwości?
+Czy określono argumenty?
+Czy określono typy wyników?
+Czy zdefiniowano typy wyliczeniowe?
+Czy zdefiniowano typy strukturalne?
+Czy zdefiniowano typy interfejsowe?
+Czy zidentyfikowano klasy uogólnione?
+Czy zidentyfikowano klasy wyspecjalizowane?
+Czy zidentyfikowano pełną hierarchię klas?
+Czy zidentyfikowano klasy agregacyjne?
+Czy określono obowiązkowość/opcjonalność relacji?
+Czy zdefiniowano krotność relacji?
+Czy zidentyfikowano asocjacje między klasami?
+Czy określono nazwy asocjacji
+Czy określono kierunek asocjacji
+Czy wszystkie zidentyfikowane klasy zostały wyspecyfikowane?
+Czy każda klasa ma krótki opis?
+Czy wszystkie zidentyfikowane właściwości zostały wyspecyfikowane?
+Czy wyspecyfikowane właściwości mają kompletną specyfikację?
+Czy wszystkie zidentyfikowane możliwości zostały wyspecyfikowane?
+Czy wyspecyfikowane możliwości mają kompletną specyfikację?
+Czy wszystkie zidentyfikowane relacje zostały wyspecyfikowane?
+Czy wyspecyfikowane relacje mają kompletną specyfikację?
+Czy klasy są poprawnie podefiniowane?
+Czy właściwości są poprawnie podefiniowane?
+Czy możliwości są poprawnie podefiniowane?
+Czy relacje są poprawnie podefiniowane?
+Czy parametry są poprawnie podefiniowane?
+Czy typy są poprawnie podefiniowane?
+Czy model klas wykonano zgodnie ze standardami?
+Czy diagram klas wykonano zgodnie z formalnymi regułami?
+Czy specyfikację klas wykonano zgodnie ze standardami?
+Czy wszystkie klasy są powiązane relacjami?
+Czy podefiniowano właściwości obrazujące relacje?
+Czy diagramy klas są spójne?
+Czy występuje jeden spójny diagram klasy?
+Czy nazwy klas są spójne z nazwami w specyfikacji wymagań?
+Czy nazwy właściwości są spójne z nazwami w specyfikacji wymagań?
+Czy nazwy możliwości są spójne z nazwami w specyfikacji wymagań?
+Czy typy i nazwy relacje są spójne ze specyfikacją wymagań?
+Czy każda właściwość ma krótki opis?
+Czy każda możliwość ma krótki opis?
+Czy każda relacja ma krótki opis?
+Czy opisy są zrozumiałe?
+Czy stosowane nazwy są zrozumiałe?
+Czy nie są zbyt długie?
+Czy synonimy są prawidłowo rozwiązane?
+Czy stosuje się typy uogólnione?
+Czy stosuje się uogólniony zapis typów kontenerowych?
+Czy klasy uogólnione nie są zbyt szczegółowo zdefiniowane?
+Czy klasy agregacyjne nie są zbyt szczegółowo zdefiniowane?
+Czy diagramy nie są zbyt ściśle narysowane?
+Czy specyfikacja umożliwia łatwe dodawanie/usuwanie klas?
+Czy klasy mają referencje do słownika pojęć?
+Czy właściwości mają określone referencje?
+Czy możliwości mają określone referencje?
+Czy relacje mają określone referencje?
+Czy klasy oprócz nazw mają osobne identyfikatory?
+Czy relacje oprócz nazw mają osobne identyfikatory?
+Czy wszyscy użytkownicy są odwzorowani w aktorów?
+Czy nie brakuje jeszcze jakichś aktorów?
+Czy wszystkie wymagania funkcjonalne są odwzorowanie w przypadkach użycia?
+Czy nie brakuje jeszcze jakichś przypadków użycia?
+Czy zidentyfikowano uogólnionych aktorów?
+Czy zidentyfikowano wyspecjalizowanych aktorów? Czy wyczerpująco?
+Czy pokazano relacje pomiędzy aktorami uogólnionymi i wyspecjalizowanymi?
+Czy zidentyfikowano uogólnione przypadki użycia?
+Czy zidentyfikowano wyspecjalizowane przypadki użycia? Czy wyczerpująco?
+Czy pokazano relacje między przypadkami uogólnionymi i wyspecjalizowanymi?
+Czy zidentyfikowano złożone przypadki użycia?
+Czy zidentyfikowano składowe przypadki użycia? Czy wyczerpująco?
+Czy pokazano relacje między przypadkami złożonymi i składowymi?
+Czy zidentyfikowano przypadki użycia, które można rozszerzać?
+Czy zidentyfikowano rozszerzające składowe przypadki użycia? Czy wyczerpująco?
+Czy wszyscy zidentyfikowani aktorzy zostali wyspecyfikowani?
+Czy każdy aktor ma krótki opis?
+Czy wszystkie zidentyfikowane przypadki użycia zostały wyspecyfikowane?
+Czy wyspecyfikowane przypadki użycia mają kompletną specyfikację?
+Czy przypadki użycia są poprawnie zdefiniowane?
+Czy aktorzy są poprawnie zdefiniowani?
+Czy relacje aktorów i przypadków użycia są poprawnie zdefiniowane?
+Czy model przypadków użycia wykonano zgodnie ze standardami?
+Czy diagram przypadków użycia wykonano zgodnie z formalnymi regułami?
+Czy specyfikację przypadków użycia wykonano zgodnie ze standardami?
+Czy każdy aktor jest połączony z jakimś przypadkiem użycia?
+Czy każdy przypadek użycia jest połączony z jakimś aktorem (nawet pośrednio)?
+Czy specyfikacja jest spójna z diagramem?
+Czy przypadki użycia są zgodne z wymaganiami funkcjonalnymi?
+Czy definicje aktorów są zgodne z definicjami użytkowników?
+Czy definicje aktorów występują jako klasy w modelu klas?
+Czy przypadki użycia są powiązane z odpowiednimi możliwościami aktorów?
+Czy każdy przypadek użycia ma krótki opis?
+Czy specyfikacja umożliwia łatwe dodawanie/usuwanie elementów?
+Czy przypadki użycia mają referencje do wymagań funkcjonalnych?
+Czy przypadki użycia mają referencje między sobą?
+Czy przypadki użycia oprócz nazw mają osobne identyfikatory?
+Czy aktorzy oprócz nazw mają osobne identyfikatory?
+Czy każdy przypadek ma określoną interakcję?
+Czy nie brakuje jeszcze jakichś interakcji?
+Czy każdy aktor jest udziałowcem interakcji?
+Czy zdefiniowane komponenty systemu biorą udział w interakcji?
+Czy nie brakuje jeszcze jakichś udziałowców?
+Czy wszystkie przekazywane dane mają odwzorowanie w komunikatach?
+Czy komunikaty zwrotne (potwierdzenia, odpowiedzi, powiadomienia) są okreslone?
+Czy nie brakuje jeszcze jakichś komunikatów?
+Czy każdy komunikat ma określony efekt?
+Czy wszystkie warunki przepływu są ustalone?
+Czy każdy komunikat od aktora ma komunikat zwrotny?
+Czy wszystkie zidentyfikowane interakcje zostały wyspecyfikowane?
+Czy każda interakcja ma określone okoliczności?
+Czy każda interakcja ma określony cel?
+Czy każda interakcja ma krótki opis?
+Czy interakcje są prawidłowo zdefiniowane?
+Czy udziałowcy interakcji są prawidłowo zdefiniowani?
+Czy przepływy komunikatów są prawidłowe?
+Czy model interakcji wykonano zgodnie ze standardami?
+Czy diagramy interakcji wykonano zgodnie z formalnymi regułami?
+Czy specyfikację interakcji wykonano zgodnie z formalnymi regułami?
+Czy nazwy i klasy stosowane we wszystkich interakcjach są ze sobą zgodne?
+Czy przepływ komunikatów jest wewnętrznie spójny?
+Czy ilość i klasy aktorów w interakcjach i przypadkach użycia są ze sobą zgodne?
+Czy zawartości interakcji odpowiadają opisom przypadków użycia?
+Czy definicje uczestników interakcji są zgodne ze specyfikacją wymagań?
+Czy definicje komunikatów są zgodne ze specyfikacją wymagań?
+Czy definicje uczestników interakcji występują jako klasy w modelu klas?
+Czy przetwarzanie komunikatów ma odpowiednie możliwości u odbiorców?
+Czy komunikaty są powiązane ze zdarzeniami?
+Czy diagramy sekwencji i kolaboracji są ze sobą zgodne?
+Czy interakcje mają referencje do przypadków użycia/wymagań funkcjonalnych?
+Czy interakcje mają referencje wzajemne?
+Czy interakcje oprócz nazw mają osobne identyfikatory?
+Czy komunikaty oprócz nazw mają osobne identyfikatory?
+Czy każdy przypadek ma określoną aktywność?
+Czy nie brakuje jeszcze jakichś aktywności?
+Czy każdy udziałowiec (ożywiony) ma swój obszar odpowiedzialności?
+Czy każda aktywność jest w określonym obszarze odpowiedzialności?
+Czy dla każdego przejścia między obszarami aktywności jest interfejs?
+Czy dla każdego przepływu jest określony początek?
+Czy dla każdego przepływu jest określony koniec?
+Czy każdy warunek rozpływu jest określony?
+Czy wszystkie zidentyfikowane aktywności zostały wyspecyfikowane?
+Czy każda aktywność ma określone okoliczności?
+Czy każda aktywność ma określony cel?
+Czy każda aktywność ma krótki opis?
+Czy aktywności są prawidłowo zdefiniowane?
+Czy udziałowcy aktywności są prawidłowo zdefiniowani?
+Czy przepływy aktywności są prawidłowe?
+Czy model aktywności wykonano zgodnie ze standardami?
+Czy diagramy aktywności wykonano zgodnie z formalnymi regułami?
+Czy specyfikację aktywności wykonano zgodnie z formalnymi regułami?
+Czy nazwy i klasy stosowane we wszystkich aktywnościach są ze sobą zgodne?
+Czy przepływ aktywności jest wewnętrznie spójny?
+Czy ilość i nazwy aktywności oraz przypadków użycia są ze sobą zgodne?
+Czy zawartości aktywności odpowiadają opisom przypadków użycia?
+Czy definicje uczestników aktywności są zgodne ze specyfikacją wymagań?
+Czy przepływy aktywności są zgodne ze specyfikacją wymagań?
+Czy definicje uczestników aktywności występują jako klasy w modelu klas?
+Czy aktywności mają odpowiednie możliwości u odbiorców?
+Czy przejścia aktywności są powiązane ze zdarzeniami?
+Czy aktywności mają referencje do przypadków użycia/wymagań funkcjonalnych?
+Czy aktywności mają referencje wzajemne?
+Czy aktywności oprócz nazw mają osobne identyfikatory?
+Czy interfejsy oprócz nazw mają osobne identyfikatory?
+Czy zidentyfikowano wszystkie klasy aktywne?
+Czy zdefiniowano maszyny stanów dla wszystkich klas aktywnych?
+Czy zdefiniowano wymagane zagłębione maszyny stanów?
+Czy wszystkie stany klas aktywnych zostały zidentyfikowane?
+Czy wszystkie stany związane z właściwościami zostały zidentyfikowane?
+Czy wszystkie stany związane z możliwościami zostały zidentyfikowane?
+Czy wszystkie stany związane z przekazywaniem komunikatów zostały zdefiniowane?
+Czy dla każdej maszyny stanów określono stan początkowy?
+Czy wszystkie zdarzenia przekazywania komunikatów zostały zidentyfikowane?
+Czy wszystkie zdarzenia zakończenia aktywności zostały zidentyfikowane?
+Czy wszystkie zdarzenia czasowe zostały zidentyfikowane?
+Czy wszystkie zdarzenia wyjątkowe zostały zidentyfikowane?
+Czy każde zdarzenie ma przejście?
+Czy każde przejście ma zdarzenie?
+Czy przejścia z tymi samymi zdarzeniami z tego samego stanu mają warunki?
+Czy określono wymagane akcje przy przejściach?
+Czy dla każdej maszyny podano jej specyfikację?
+Czy każda maszyna stanów ma krótki opis?
+Czy wszystkie zidentyfikowane stany zostały wyspecyfikowane?
+Czy wyspecyfikowane stany mają kompletną specyfikację?
+Czy wszystkie zidentyfikowane zdarzenia zostały wyspecyfikowane?
+Czy wyspecyfikowane zdarzenia mają kompletną specyfikację?
+Czy wszystkie zidentyfikowane przejścia zostały wyspecyfikowane?
+Czy wyspecyfikowane przejścia mają kompletną specyfikację?
+Czy maszyny stanów są poprawnie podefiniowane?
+Czy stany są poprawnie podefiniowane?
+Czy zdarzenia są poprawnie podefiniowane?
+Czy przejścia są poprawnie podefiniowane?
+Czy model stanów wykonano zgodnie ze standardami?
+Czy diagram stanów wykonano zgodnie z formalnymi regułami?
+Czy specyfikację stanów wykonano zgodnie ze standardami?
+Czy wszystkie diagramy stanów są wewnętrznie spójne?
+Czy zagłębione maszyny stanów są spójne z nadrzędnymi?
+Czy nazwy stanów są spójne z nazwami w specyfikacji wymagań?
+Czy nazwy zdarzeń są spójne z nazwami w specyfikacji wymagań?
+Czy nazwy akcji są spójne ze specyfikacją wymagań?
+Czy maszyny stanów są poprzypisywane do klas?
+Czy zdefiniowano właściwości klas przechowujące stany?
+Czy zdefiniowano klasy zdarzeń?
+Czy zdefiniowano możliwości odpowiadające obsłudze zdarzeń?
+Czy zdefiniowano możliwości odpowiadające akcjom?
+Czy każdy stan ma krótki opis?
+Czy każde zdarzenie ma krótki opis?
+Czy każde przejście ma krótki opis?
+Czy maszyny stanów mają referencje do klas?
+Czy stany mają określone referencje?
+Czy zdarzenia mają określone referencje?
+Czy przejścia mają określone referencje?
+Czy maszyny stanów oprócz nazw mają osobne identyfikatory?
+Czy stany oprócz nazw mają osobne identyfikatory?
+Czy zdarzenia oprócz nazw mają osobne identyfikatory?
+Czy określono nazwy asocjacji?
+Czy określono kierunek asocjacji?
+Czy dla każdego wymagania funkcjonalnego jest zdefiniowany komponent?
+Czy wszystkie relacje między komponentami zostały zidentyfikowane?
+Czy wszystkie klasy zostały przypisane do komponentów?
+Czy wszystkie komponenty zostały wyspecyfikowane?
+Czy każdy komponent ma krótki opis?
+Czy specyfikacje komponentów są kompletne?
+Czy definicje komponentów są poprawne?
+Czy model komponentów wykonano zgodnie ze standardami?
+Czy diagram komponentów wykonano zgodnie z formalnymi regułami?
+Czy specyfikację komponentów wykonano zgodnie z formalnymi regułami?
+Czy wszystkie komponenty są powiązane relacjami?
+Czy zależności nie są cykliczne?
+Czy model komponentów jest spójny z wymaganiami funkcjonalnymi?
+Czy model komponentów jest spójny z modelem klas?
+Czy model komponentów jest spójny z modelem funkcjonalnym?
+Czy zamieszczono odpowiednie diagramy?
+Czy podział na moduły (pakiety) jest odpowiedni?
+Czy specyfikacja umożliwia łatwe dodawanie/usuwanie komponentów?
+Czy komponenty mają referencje do specyfikacji wymagań?
+Czy komponenty oprócz nazw mają osobne identyfikatory?
+Czy zdefiniowano wszystkie formularze wynikające z modelu funkcjonalnego?
+Czy zdefiniowano wszystkie formularze wynikające z modelu danych?
+Czy zdefiniowano podstawowe dialogi?
+Czy zdefiniowano pomocnicze dialogi?
+Czy zdefiniowano podstawowe raporty?
+Czy zdefiniowano pomocnicze raporty?
+Czy zdefiniowano nawigację między formularzami?
+Czy zdefiniowano komendy użytkownika?
+Czy zdefiniowano strukturę menu?
+Czy zdefiniowano paski narzędziowe?
+Czy sporządzono diagramy nawigacji?
+Czy diagramy nawigacji są kompletne?
+Czy sporządzono projekty formularzy?
+Czy projekty formularzy są kompletne?
+Czy sporządzono projekty raportów?
+Czy projekty raportów są kompletne?
+Czy wszystkie komendy zostały wyspecyfikowane?
+Czy każda komenda ma krótki opis?
+Czy specyfikacje komend są kompletne?
+Czy wszystkie formularze zostały wyspecyfikowane?
+Czy każdy formularz ma krótki opis?
+Czy specyfikacje formularzy są kompletne?
+Czy wszystkie raporty zostały wyspecyfikowane?
+Czy każdy raport ma krótki opis?
+Czy specyfikacje raportów są kompletne?
+Czy definicje formularzy są poprawne?
+Czy definicje dialogów są poprawne?
+Czy definicje raportów są poprawne?
+Czy definicje sterowania są poprawne?
+Czy projekt interfejsu użytkownika wykonano zgodnie ze standardami?
+Czy projekty komponentów i.u. wykonano zgodnie z formalnymi regułami?
+Czy specyfikację komponentów i.u. wykonano zgodnie z formalnymi regułami?
+Czy wszystkie komponenty i.u. są powiązane relacjami?
+Czy projekt i.u. jest spójny ze specyfikacją wymagań?
+Czy projekt i.u. jest spójny z modelem statycznym?
+Czy projekt i.u. jest spójny z modelem funkcjonalnym?
+Czy każdy komponent i.u. ma krótki opis?
+Czy podział na komponenty i.u. jest odpowiedni?
+Czy specyfikacja umożliwia łatwe dodawanie/usuwanie komponentów i.u.?
+Czy komponenty i.u. mają odpowiednie referencje?
+Czy komponenty i.u. oprócz nazw mają osobne identyfikatory?
+Ocena: 6
+Czy zdefiniowano klasy trwałe?
+Czy dla każdej klasy trwałej zdefiniowano strukturę danych?
+Czy wszystkie relacje między strukturami danych zostały zidentyfikowane?
+Czy sporządzono diagramy struktur danych?
+Czy diagramy struktur danych są kompletne?
+Czy wszystkie struktury danych zostały wyspecyfikowane?
+Czy każda struktura danych ma krótki opis?
+Czy specyfikacje struktur danych są kompletne?
+Czy definicje struktur danych są poprawne?
+Czy model struktur danych wykonano zgodnie ze standardami?
+Czy diagram struktur danych wykonano zgodnie z formalnymi regułami?
+Czy specyfikację struktur danych wykonano zgodnie z formalnymi regułami?
+Czy wszystkie struktury danych są powiązane relacjami?
+Czy model struktur danych jest spójny ze specyfikacją wymagań?
+Czy model struktur danych jest spójny z modelem klas?
+Czy podział na moduły danych jest odpowiedni?
+Czy specyfikacja umożliwia łatwe dodawanie/usuwanie struktur danych?
+Czy struktury danych mają odpowiednie referencje?
+Czy struktury danych oprócz nazw mają osobne identyfikatory?
+Ocena: 5
+Czy wszystkie cele systemu zostały zrealizowane?
+Czy problemy zostały rozwiązane?
+Czy korzyści zostały zapewnione?
+Czy wymagania podstawowych udziałowców zostały spełnione?
+Czy wymagania dodatkowych udziałowców zostały spełnione?
+Czy wymagania udziałowców zewnętrznych zostały spełnione?
+Czy wymagania podstawowych użytkowników zostały spełnione?
+Czy wymagania dodatkowych użytkowników zostały spełnione?
+Czy wykonywanie wszystkich zadań użytkowników zostało zapewnione?
+Czy wszystkie wymagane funkcje zostały zaimplementowane?
+Czy każda funkcja została zaimplementowana kompletnie?
+Czy funkcje zostały odpowiednio poprzypisywane do użytkowników?
+Czy zaimplementowano wszystkie wejścia danych (wszystkie pliki)?
+Czy zaimplementowano wszystkie wyjścia danych (wszystkie pliki)?
+Czy zaimplementowano wszystkie dane przechowywane (tabele, pliki)?
+Czy zaimplementowano wszystkie sposoby przetwarzania danych?
+Czy zaimplementowano wszystkie procesy?
+Czy zaimplementowano wszystkie operacje?
+Czy zaimplementowano pełną architekturę systemu?
+Czy system pracuje w założonym środowisku pracy?
+Czy zaimplementowano współdziałanie z innymi systemami?
+Czy w pełni zaimplementowano interfejs z użytkownikiem (wszystkie okna/dialogi)?
+Czy funkcjonalność interfejsu użytkownika jest odpowiednia?
+Czy w pełni zaimplementowano interfejsy do innych systemów?
+Czy czas przetwarzania jest odpowiedni?
+Czy czas reakcji jest odpowiedni?
+Czy wykorzystano równoległe procesy?
+Czy wykorzystano równoległe operacje?
+Czy liczba użytkowników jednocześnie korzystających z systemu jest odpowiednia?
+Czy liczba transakcji obsługiwanych na jednostkę czasu jest odpowiednia?
+Czy początkowa liczba rekordów (plików) danych jest odpowiednia?
+Czy przyrost rekordów (plików) danych jest odpowiedni?
+Czy objętość danych jest odpowiednia?
+Czy zaimplementowano archiwizację danych i dearchiwizację danych?
+Jak system pracuje ze sprzętem spełniającym optymalne wymagania?
+Jak system pracuje ze sprzętem spełniającym minimalne wymagania?
+Czy utrata wydajności w optymalnych warunkach jest dopuszczalna?
+Jak system pracuje z oprogramowam spełniającym optymalne wymagania?
+Jak system pracuje z oprogramowam spełniającym minimalne wymagania?
+Jak system pracuje z dużą liczbą użytkowników?
+Jak system pracuje z dużą liczbą transakcji na jednostkę czasu?
+Czy możliwe jest rozszerzenie systemu w tym zakresie?
+Jak system pracuje z dużą liczbą rekordów (plików)?
+Jak system pracuje z dużą objętością danych?
+Czy system prawidłowo funkcjonuje w normalnych warunkach?
+Czy liczba błędów jest dopuszczalna?
+Czy system prawidłowo obsługuje sytuacje wyjątkowe?
+Czy wszystkie sytuacje wyjątkowe zostały przetestowane?
+Czy system prawidłowo obsługuje sytuacje krytyczne?
+Czy wszystkie sytuacje krytyczne zostały przetestowane?
+Czy zaimplementowano mechanizmy zapobiegania awariom?
+Czy zaimplementowano mechanizmy minimalizowania skutków awarii?
+Czy system jest odporny na błędy użytkownika w stopniu odpowiednim?
+Czy zaimplementowano środki minimalizujące możliwość pomyłki użytkownika?
+Czy zaimplementowano metody weryfikacji danych?
+Czy zaimplementowano sposoby naprawy danych?
+Czy zaimplementowano sposoby weryfikacji wyników przetwarzania?
+Czy zaimplementowano sposoby postępowania przy błędach przetwarzania?
+Czy zaimplementowano sposoby zabezpieczeń w tym aspekcie?
+Czy zaimplementowano weryfikację danych wejściowych?
+Czy zaimplementowano weryfikację danych wyjściowych?
+Czy zaimplementowano możliwość podglądu danych przechowywanych?
+Czy zaimplementowano możliwość weryfikacji danych przechowywanych?
+Czy zaimplementowano procedury kontrolne?
+Czy zaimplementowano procedury testowe?
+Czy system można uruchamiać na różnych platformach sprzętowych?
+Czy na wszystkich wymaganych?
+Czy system można uruchamiać w różnych środowiskach programowych?
+Czy zaimplementowano import plików we wszystkich wymaganych formatach?
+Czy zaimplementowano eksport plików we wszystkich wymaganych formatach?
+Czy zaimplementowano możliwość wymiany danych z różnymi systemami?
+Czy zaimplementowano wersje językowe dla krajów zachodnich?
+Czy zaimplementowano wersje językowe dla pozostałych krajów europejskich?
+Czy zaimplementowano wersje językowe dla krajów bliskowschodnich?
+Czy zaimplementowano wersje językowe dla krajów dalekowschodnich?
+Czy zaimplementowano możliwość zmiany formatu daty?
+Czy zaimplementowano możliwość zmiany formatu czasu?
+Czy zaimplementowano możliwość zmiany formatu liczb?
+Czy zaimplementowano możliwość zmiany symbolu waluty i jego położenia?
+Czy zaimplementowano możliwość zmiany cudzysłowów?
+Czy zaimplementowano możliwość pisania makr (skryptów) przez użytkownika?
+Czy stworzono specyfikację języka makr (skryptów)?
+Czy zaimplementowano możliwość wprowadzania dodatków?
+Czy stworzono specyfikację języka pisania dodatków?
+Czy stworzono specyfikację interfejsu dla dodatków?
+Czy zaimplementowano możliwość wyboru formatu plików zapisywanych?
+Czy zaimplementowano możliwość zmiany systemu bazy danych?
+Czy zaimplementowano możliwość zmiany układu okien?
+Czy zaimplementowano możliwość zmiany wyglądu okien?
+Czy zaimplementowano możliwość wyboru profilu użytkownika?
+Czy zaimplementowano możliwość konfigurowania menu?
+Czy zaimplementowano możliwość konfigurowania pasków narzędziowych?
+Czy zaimplementowano możliwość konfigurowania skrótów klawiszowych?
+Czy zaimplementowano dopasowanie konfiguracji architektury systemu przy instalacji?
+Czy zaimplementowano dopasowanie konfiguracji architektury systemu po instalacji?
+Czy zaimplementowane funkcje są adekwatne do określonych problemów?
+Czy zaimplementowane funkcje są adekwatne do spodziewanych korzyści?
+Czy zaimplementowane funkcje są adekwatne do celów?
+Czy implementacja została oceniona przez klienta? Jak wysoko?
+Czy implementacja została oceniona przez użytkowników? Jak wysoko?
+Czy zaimplementowany interfejs jest zgodny ze standardami?
+Czy zaimplementowany sposób pracy jest zgodny ze standardami?
+Czy zaimplementowano podpowiedzi dla użytkownika?
+Czy zaimplementowano objaśnia dla niedoświadczonych użytkowników?
+Czy zaimplementowano system pomocy?
+Czy zaimplementowano autouzupełnienie?
+Czy zaimplementowano autokorektę?
+Czy zakres systemu pomocy jest odpowiedni?
+Czy zakres systemu podpowiedzi jest odpowiedni?
+Czy zaimplementowano środki wsparcia technicznego dla użytkownika?
+Czy zaimplementowany sposób pracy jest zgodny z dotychczasowym?
+Czy zaimplementowano wersję demo?
+Czy zaimplementowano programy uczące?
+Czy zorganizowano kursy szkoleniowe?
+Czy zaimplementowano możliwość automatycznego wykonywania pewnych czynności?
+Czy zaimplementowano możliwość rejestrowania i powtarzania poleceń użytkownika?
+Czy zaimplementowano możliwość rejestrowania i powtarzania sekwencji poleceń?
+Czy zaimplementowano podpowiedzi?
+Czy zaimplementowano środki autokorekty, autouzupełniania?
+Czy zaimplementowano skróty klawiszowe?
+Czy zaimplementowano odpowiednią funkcjonalność myszy?
+Czy wszystkie funkcje zostały zaimplementowane poprawnie?
+Czy interfejs użytkownika ma poprawną funkcjonalność?
+Czy interfejsy do innych systemów działają poprawnie?
+Czy implementacja została przetestowana i zaakceptowana przez ekspertów?
+Czy wykonano dokumentację implementacji?
+Czy dokumentacja implementacji jest zgodna ze standardami?
+Czy dokumentacja implementacji jest zrozumiała?
+Czy przedstawiono dokumentację testów?
+Czy funkcje są wykonywane w ten sam sposób w różnych modułach?
+Czy wygląd interfejsu w różnych modułach jest taki sam?
+Czy funkcjonalność interfejsu w różnych modułach jest taka sama?
+Jak pogodzono wymagania funkcjonalne z wydajnościowymi?
+Jak pogodzono wymagania wydajnościowe z wiarygodnościowymi?
+Jak pogodzono wymagania wydajnościowe z wymaganą elastycznością?
+Czy sposób implementacji funkcji jest zrozumiały?
+Czy sposób ustawienia interfejsu ułatwia zrozumienie funkcjonalności?
+Czy implementacja została wykonana w sposób modularny?
+Czy podział na moduły jest odpowiedni?
+Czy zależności między modułami są odpowiednie?
+Czy zastosowano moduły wykonawcze?
+Czy podział na moduły wykonawcze jest odpowiedni?
+Czy zależności między modułami wykonawczymi są odpowiednie?
+Czy kod źródłowy jest dostępny?
+Czy kod źródłowy jest zgodny z dokumentacją?
+Czy kod źródłowy jest sformatowany zgodnie ze standardami?
+Czy kod źródłowy jest zrozumiały?
+Czy powiązano implementację z projektem?
+Czy powiązano implementację ze specyfikacją wymagań?
+Czy zaimplementowane funkcje zostały odpowiednio wzajemnie powiązane?
+Czy implementacje funkcjonalne zostały powiązane z funkcjonalnymi?
+Czy implementacje funkcjonalne zostały wzajemnie powiązane?
+Czy określono warunki wejściowe i wyjściowe operacji
+Czy określono warunki wejściowe i wyjściowe procesów?
+Czy określono sposób testowania sytuacji wyjątkowych?
+Czy możliwe jest testowanie sytuacji krytycznych?
+Czy możliwe jest testowanie sytuacji awaryjnych?

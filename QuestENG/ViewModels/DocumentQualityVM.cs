@@ -107,7 +107,7 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
     foreach (var factor in Factors)
     {
       if (factor.Text == null) continue;
-      var allFactorStrings = FactorStringsHelper.GetAllCultureSpecificVariants();
+      var allFactorStrings = FactorStringsHelper.Instance.GetAllCultureSpecificVariants();
       var name = allFactorStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == factor.Text).Key;
       if (name != null)
         factor.FactorType = factorTypes.FirstOrDefault(ft => ft.Model.Name == name)?.Model;

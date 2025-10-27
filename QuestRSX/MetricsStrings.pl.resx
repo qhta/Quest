@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Functionality" xml:space="preserve">
+    <value>Funkcjonalność</value>
+  </data>
+  <data name="UsabilityCompleteness" xml:space="preserve">
+    <value>Kompletność użytkowa</value>
+  </data>
+  <data name="CompletenessOfGoalDefinitions" xml:space="preserve">
+    <value>Kompletność definicji celów</value>
+  </data>
+  <data name="CompletenessOfShareholdersDefinition" xml:space="preserve">
+    <value>Kompletność definicji udziałowców</value>
+  </data>
+  <data name="CompletenessOfUserDefinitions" xml:space="preserve">
+    <value>Kompletność definicji użytkowników</value>
+  </data>
+  <data name="FunctionalCompleteness" xml:space="preserve">
+    <value>Kompletność funkcjonalna</value>
+  </data>
+  <data name="CompletenessOfFunctionDefinitions" xml:space="preserve">
+    <value>Kompletność definicji funkcji</value>
+  </data>
+  <data name="CompletenessOfDataDefinitions" xml:space="preserve">
+    <value>Kompletność definicji danych</value>
+  </data>
+  <data name="CompletenessOfProcessingDefinitions" xml:space="preserve">
+    <value>Kompletność definicji przetwarzania</value>
+  </data>
+  <data name="SystemCompleteness" xml:space="preserve">
+    <value>Kompletność systemowa</value>
+  </data>
+  <data name="CompletenessOfSystemDefinition" xml:space="preserve">
+    <value>Kompletność definicji systemu</value>
+  </data>
+  <data name="CompletenessOfInterfaceDefinitions" xml:space="preserve">
+    <value>Kompletność definicji interfejsów</value>
+  </data>
+  <data name="Efficiency" xml:space="preserve">
+    <value>Wydajność</value>
+  </data>
+  <data name="ProcessingEfficiency" xml:space="preserve">
+    <value>Efektywność przetwarzania</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>Czas wykonania</value>
+  </data>
+  <data name="LeveragingParallelism" xml:space="preserve">
+    <value>Wykorzystanie równoległości</value>
+  </data>
+  <data name="LoadCapacity" xml:space="preserve">
+    <value>Obciążalność</value>
+  </data>
+  <data name="Payload" xml:space="preserve">
+    <value>Obciążalność użytkowa</value>
+  </data>
+  <data name="DataSize" xml:space="preserve">
+    <value>Rozmiar danych</value>
+  </data>
+  <data name="Stability" xml:space="preserve">
+    <value>Stabilność</value>
+  </data>
+  <data name="HardwareStability" xml:space="preserve">
+    <value>Stabilność sprzętowa</value>
+  </data>
+  <data name="SoftwareStability" xml:space="preserve">
+    <value>Stabilność programowa</value>
+  </data>
+  <data name="Scalability" xml:space="preserve">
+    <value>Skalowalność</value>
+  </data>
+  <data name="UsableScalability" xml:space="preserve">
+    <value>Skalowalność użytkowa</value>
+  </data>
+  <data name="DataScalability" xml:space="preserve">
+    <value>Skalowalność danych</value>
+  </data>
+  <data name="Credibility" xml:space="preserve">
+    <value>Wiarygodność</value>
+  </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Niezawodność</value>
+  </data>
+  <data name="ExceptionalSituations" xml:space="preserve">
+    <value>Sytuacje wyjątkowe</value>
+  </data>
+  <data name="CriticalSituations" xml:space="preserve">
+    <value>Sytuacje krytyczne</value>
+  </data>
+  <data name="Failures" xml:space="preserve">
+    <value>Awarie</value>
+  </data>
+  <data name="FaultTolerance" xml:space="preserve">
+    <value>Odporność na błędy</value>
+  </data>
+  <data name="UserErrors" xml:space="preserve">
+    <value>Błędy użytkownika</value>
+  </data>
+  <data name="DataErrors" xml:space="preserve">
+    <value>Błędy danych</value>
+  </data>
+  <data name="ProcessingErrors" xml:space="preserve">
+    <value>Błędy przetwarzania</value>
+  </data>
+  <data name="Safety" xml:space="preserve">
+    <value>Bezpieczeństwo</value>
+  </data>
+  <data name="RisksToUser" xml:space="preserve">
+    <value>Zagrożenia dla użytkownika</value>
+  </data>
+  <data name="ThreatsToOtherSystems" xml:space="preserve">
+    <value>Zagrożenia dla innych systemów</value>
+  </data>
+  <data name="Protection" xml:space="preserve">
+    <value>Ochrona</value>
+  </data>
+  <data name="UserRisks" xml:space="preserve">
+    <value>Zagrożenia ze strony użytkowników</value>
+  </data>
+  <data name="ThreatsFromOtherSystems" xml:space="preserve">
+    <value>Zagrożenia ze strony innych systemów</value>
+  </data>
+  <data name="Testability" xml:space="preserve">
+    <value>Testowalność</value>
+  </data>
+  <data name="DataTestability" xml:space="preserve">
+    <value>Testowalność danych</value>
+  </data>
+  <data name="ProcessingTestability" xml:space="preserve">
+    <value>Testowalność przetwarzania</value>
+  </data>
+  <data name="Flexibility" xml:space="preserve">
+    <value>Elastyczność</value>
+  </data>
+  <data name="Portability" xml:space="preserve">
+    <value>Przenośność</value>
+  </data>
+  <data name="HardwarePortability" xml:space="preserve">
+    <value>Przenośność sprzętowa</value>
+  </data>
+  <data name="SoftwarePortability" xml:space="preserve">
+    <value>Przenośność programowa</value>
+  </data>
+  <data name="DataPortability" xml:space="preserve">
+    <value>Przenośność danych</value>
+  </data>
+  <data name="Localizability" xml:space="preserve">
+    <value>Lokalizowalność</value>
+  </data>
+  <data name="LanguagesSupported" xml:space="preserve">
+    <value>Wersje językowe</value>
+  </data>
+  <data name="SystemSettings" xml:space="preserve">
+    <value>Ustawienia systemowe</value>
+  </data>
+  <data name="UserModifiability" xml:space="preserve">
+    <value>Modyfikowalność przez użytkownika</value>
+  </data>
+  <data name="ModifiabilityByItSpecialists" xml:space="preserve">
+    <value>Modyfikowalność przez informatyków</value>
+  </data>
+  <data name="DataModifiability" xml:space="preserve">
+    <value>Modyfikowalność danych</value>
+  </data>
+  <data name="Configurability" xml:space="preserve">
+    <value>Konfigurowalność</value>
+  </data>
+  <data name="PresentationCustomizability" xml:space="preserve">
+    <value>Konfigurowalność prezentacji</value>
+  </data>
+  <data name="NavigationConfigurability" xml:space="preserve">
+    <value>Konfigurowalność nawigacji</value>
+  </data>
+  <data name="InstallationConfigurability" xml:space="preserve">
+    <value>Konfigurowalność instalacji</value>
+  </data>
+  <data name="Utility" xml:space="preserve">
+    <value>Użyteczność</value>
+  </data>
+  <data name="Adequacy" xml:space="preserve">
+    <value>Adekwatność</value>
+  </data>
+  <data name="Expediency" xml:space="preserve">
+    <value>Celowość</value>
+  </data>
+  <data name="Acceptance" xml:space="preserve">
+    <value>Akceptacja</value>
+  </data>
+  <data name="EaseOfUse" xml:space="preserve">
+    <value>Łatwość użycia</value>
+  </data>
+  <data name="Intuitive" xml:space="preserve">
+    <value>Intuicyjność</value>
+  </data>
+  <data name="User-Friendliness" xml:space="preserve">
+    <value>Przyjazność dla użytkownika</value>
+  </data>
+  <data name="UserAssistance" xml:space="preserve">
+    <value>Pomoc dla użytkownika</value>
+  </data>
+  <data name="EaseOfLearning" xml:space="preserve">
+    <value>Łatwość nauki</value>
+  </data>
+  <data name="CompatibilityWithExperience" xml:space="preserve">
+    <value>Zgodność z doświadczem</value>
+  </data>
+  <data name="Training" xml:space="preserve">
+    <value>Szkolenia</value>
+  </data>
+  <data name="Productivity" xml:space="preserve">
+    <value>Produktywność</value>
+  </data>
+  <data name="Automation" xml:space="preserve">
+    <value>Automatyzacja</value>
+  </data>
+  <data name="InterfaceMeasures" xml:space="preserve">
+    <value>Środki interfejsowe</value>
+  </data>
+  <data name="FormalCorrectness" xml:space="preserve">
+    <value>Poprawność formalna</value>
+  </data>
+  <data name="Acceptability" xml:space="preserve">
+    <value>Akceptowalność</value>
+  </data>
+  <data name="ConsistencyOfGoalsAndRequirements" xml:space="preserve">
+    <value>Spójność celów i wymagań</value>
+  </data>
+  <data name="Non-ContradictoryRequirements" xml:space="preserve">
+    <value>Niesprzeczność wymagań</value>
+  </data>
+  <data name="HowToDescribe" xml:space="preserve">
+    <value>Sposób opisu</value>
+  </data>
+  <data name="ClarityOfDescriptions" xml:space="preserve">
+    <value>Zrozumiałość opisów</value>
+  </data>
+  <data name="AdditionalDescriptions" xml:space="preserve">
+    <value>Opisy dodatkowe</value>
+  </data>
+  <data name="FlexibilityOfRequirements" xml:space="preserve">
+    <value>Elastyczność wymagań</value>
+  </data>
+  <data name="ImmutabilityOfGoals" xml:space="preserve">
+    <value>Niezmienność celów</value>
+  </data>
+  <data name="ContractualCollateral" xml:space="preserve">
+    <value>Zabezpieczenia kontraktowe</value>
+  </data>
+  <data name="SourcesOfRequirements" xml:space="preserve">
+    <value>Źródła wymagań</value>
+  </data>
+  <data name="RequirementBindings" xml:space="preserve">
+    <value>Powiązania wymagań</value>
+  </data>
+  <data name="EaseOfAppealInFurtherWork" xml:space="preserve">
+    <value>Łatwość odwołania w dalszej pracy</value>
+  </data>
+  <data name="SpecificityOfRequirements" xml:space="preserve">
+    <value>Konkretność wymagań</value>
+  </data>
+  <data name="RequirementsTestability" xml:space="preserve">
+    <value>Testowalność wymagań</value>
+  </data>
+  <data name="Requirements&quot;ForFuture&quot;" xml:space="preserve">
+    <value>Wymagania "na przyszłość"</value>
+  </data>
+  <data name="ClassModelCompleteness" xml:space="preserve">
+    <value>Kompletność modelu klas</value>
+  </data>
+  <data name="CompletenessOfClassDefinitions" xml:space="preserve">
+    <value>Kompletność definicji klas</value>
+  </data>
+  <data name="ClassIdentificationCompleteness" xml:space="preserve">
+    <value>Kompletność identyfikacji klas</value>
+  </data>
+  <data name="CompletenessOfClassPropertyIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji właściwości klas</value>
+  </data>
+  <data name="CompletenessOfClassCapabilityIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji możliwości klas</value>
+  </data>
+  <data name="CompletenessOfClassPropertyDefinitions" xml:space="preserve">
+    <value>Kompletność definicji właściwości klas</value>
+  </data>
+  <data name="CompletenessOfClassCapabilityDefinitions" xml:space="preserve">
+    <value>Kompletność definicji możliwości klas</value>
+  </data>
+  <data name="CompletenessOfTypeDefinitions" xml:space="preserve">
+    <value>Kompletność definicji typów</value>
+  </data>
+  <data name="CompletenessOfRelationshipDefinitions" xml:space="preserve">
+    <value>Kompletność definicji relacji</value>
+  </data>
+  <data name="ClassGeneralizationCompleteness" xml:space="preserve">
+    <value>Kompletność generalizacji klas</value>
+  </data>
+  <data name="CompletenessOfAggregationDeclarations" xml:space="preserve">
+    <value>Kompletność deklaracji agregacji</value>
+  </data>
+  <data name="CompletenessOfAssociationDeclaration" xml:space="preserve">
+    <value>Kompletność deklaracji asocjacji</value>
+  </data>
+  <data name="SpecificationCompleteness" xml:space="preserve">
+    <value>Kompletność specyfikacji</value>
+  </data>
+  <data name="ClassSpecificationCompleteness" xml:space="preserve">
+    <value>Kompletność specyfikacji klas</value>
+  </data>
+  <data name="CompletenessOfPropertySpecification" xml:space="preserve">
+    <value>Kompletność specyfikacji właściwości</value>
+  </data>
+  <data name="CompletenessOfCapabilitySpecification" xml:space="preserve">
+    <value>Kompletność specyfikacji możliwości</value>
+  </data>
+  <data name="CompletenessOfRelationshipSpecification" xml:space="preserve">
+    <value>Kompletność specyfikacji relacji</value>
+  </data>
+  <data name="SemanticCorrectness" xml:space="preserve">
+    <value>Poprawność semantyczna</value>
+  </data>
+  <data name="InternalConsistencyOfClassModel" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu klas</value>
+  </data>
+  <data name="ConsistencyOfClassModelAndRequirementsSpecifications" xml:space="preserve">
+    <value>Spójność modelu klas i specyfikacji wymagań</value>
+  </data>
+  <data name="Nomenclature" xml:space="preserve">
+    <value>Nazewnictwo</value>
+  </data>
+  <data name="TypeFlexibility" xml:space="preserve">
+    <value>Elastyczność typów</value>
+  </data>
+  <data name="RelationshipFlexibility" xml:space="preserve">
+    <value>Elastyczność relacji</value>
+  </data>
+  <data name="FormalModifiability" xml:space="preserve">
+    <value>Modyfikowalność formalna</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>Źródła</value>
+  </data>
+  <data name="EaseOfReference" xml:space="preserve">
+    <value>Łatwość referencji</value>
+  </data>
+  <data name="CompletenessOfUseCaseModel" xml:space="preserve">
+    <value>Kompletność modelu przypadków użycia</value>
+  </data>
+  <data name="CompletenessOfActors" xml:space="preserve">
+    <value>Kompletność aktorów</value>
+  </data>
+  <data name="CompletenessOfActorIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji aktorów</value>
+  </data>
+  <data name="CompletenessOfUseCaseDefinitions" xml:space="preserve">
+    <value>Kompletność definicji przypadków użycia</value>
+  </data>
+  <data name="CompletenessOfUseCaseIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji przypadków użycia</value>
+  </data>
+  <data name="CompletenessOfActorGeneralizations" xml:space="preserve">
+    <value>Kompletność generalizacji aktorów</value>
+  </data>
+  <data name="CompletenessOfGeneralizationOfUseCases" xml:space="preserve">
+    <value>Kompletność generalizacji przypadków użycia</value>
+  </data>
+  <data name="CompletenessOfUseCaseIncorporating" xml:space="preserve">
+    <value>Kompletność zawierania przypadków użycia</value>
+  </data>
+  <data name="CompletenessOfUseCaseExtension" xml:space="preserve">
+    <value>Kompletność rozszerzania przypadków użycia</value>
+  </data>
+  <data name="CompletenessOfActorSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji aktorów</value>
+  </data>
+  <data name="CompletenessOfUseCaseSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji przypadków użycia</value>
+  </data>
+  <data name="InternalConsistencyOfUseCaseModel" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu przypadków użycia</value>
+  </data>
+  <data name="ConsistencyOfUseCaseModelAndRequirementsSpecifications" xml:space="preserve">
+    <value>Spójność modelu przypadków użycia i specyfikacji wymagań</value>
+  </data>
+  <data name="ConsistencyOfFunctionalModelAndClassModel" xml:space="preserve">
+    <value>Spójność modelu funkcjonalnego i modelu klas</value>
+  </data>
+  <data name="CompletenessOfInteractionModel" xml:space="preserve">
+    <value>Kompletność modelu interakcji</value>
+  </data>
+  <data name="CompletenessOfInteractions" xml:space="preserve">
+    <value>Kompletność interakcji</value>
+  </data>
+  <data name="CompletenessOfInteractionIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji interakcji</value>
+  </data>
+  <data name="CompletenessOfInteractionStakeholders" xml:space="preserve">
+    <value>Kompletność udziałowców interakcji</value>
+  </data>
+  <data name="CompletenessOfMessages" xml:space="preserve">
+    <value>Kompletność komunikatów</value>
+  </data>
+  <data name="CompletenessOfMessageIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji komunikatów</value>
+  </data>
+  <data name="CompletenessOfFlow" xml:space="preserve">
+    <value>Kompletność przepływu</value>
+  </data>
+  <data name="CompletenessOfInteractionSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji interakcji</value>
+  </data>
+  <data name="InternalConsistencyOfInteractionModel" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu interakcji</value>
+  </data>
+  <data name="ConsistencyOfInteractionModelAndUseCaseModel" xml:space="preserve">
+    <value>Spójność modelu interakcji i modelu przypadków użycia</value>
+  </data>
+  <data name="ConsistencyOfInteractionModelAndRequirementsSpecification" xml:space="preserve">
+    <value>Spójność modelu interakcji i specyfikacji wymagań</value>
+  </data>
+  <data name="ConsistencyOfInteractionModelAndClassModel" xml:space="preserve">
+    <value>Spójność modelu interakcji i modelu klas</value>
+  </data>
+  <data name="ConsistencyOfInteractionModelAndBehavioralModel" xml:space="preserve">
+    <value>Spójność modelu interakcji i modelu behawioralnego</value>
+  </data>
+  <data name="ConsistencyOfInteractionModelAndDynamicModel" xml:space="preserve">
+    <value>Spójność modelu interakcji i modelu dynamicznego</value>
+  </data>
+  <data name="ActivityModelCompleteness" xml:space="preserve">
+    <value>Kompletność modelu aktywności</value>
+  </data>
+  <data name="CompletenessOfDefinition" xml:space="preserve">
+    <value>Kompletność definicji</value>
+  </data>
+  <data name="CompletenessOfActivityIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji aktywności</value>
+  </data>
+  <data name="CompletenessOfLiabilityIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji odpowiedzialności</value>
+  </data>
+  <data name="CompletenessOfActivitySpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji aktywności</value>
+  </data>
+  <data name="InternalConsistencyOfActivityModel" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu aktywności</value>
+  </data>
+  <data name="ConsistencyOfActivityModelAndUseCaseModel" xml:space="preserve">
+    <value>Spójność modelu aktywności i modelu przypadków użycia</value>
+  </data>
+  <data name="ConsistencyOfActivityModelAndRequirementsSpecifications" xml:space="preserve">
+    <value>Spójność modelu aktywności i specyfikacji wymagań</value>
+  </data>
+  <data name="ConsistencyOfActivityModelAndClassModel" xml:space="preserve">
+    <value>Spójność modelu aktywności i modelu klas</value>
+  </data>
+  <data name="ConsistencyOfActivityModelAndBehavioralModel" xml:space="preserve">
+    <value>Spójność modelu aktywności i modelu behawioralnego</value>
+  </data>
+  <data name="StateModelCompleteness" xml:space="preserve">
+    <value>Kompletność modelu stanów</value>
+  </data>
+  <data name="CompletenessOfConditionMachines" xml:space="preserve">
+    <value>Kompletność maszyn stanów</value>
+  </data>
+  <data name="CompleteIdentificationOfStateMachines" xml:space="preserve">
+    <value>Kompletność identyfikacji maszyn stanów</value>
+  </data>
+  <data name="CompletenessOfStateIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji stanów</value>
+  </data>
+  <data name="CompletenessOfEventIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji zdarzeń</value>
+  </data>
+  <data name="CompletenessOfTransitionDefinitions" xml:space="preserve">
+    <value>Kompletność definicji przejść</value>
+  </data>
+  <data name="CompletenessOfMachineSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji maszyn stanów</value>
+  </data>
+  <data name="CompletenessOfStateSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji stanów</value>
+  </data>
+  <data name="CompletenessOfEventSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji zdarzeń</value>
+  </data>
+  <data name="CompletenessOfPassSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji przejść</value>
+  </data>
+  <data name="StateModelInternalConsistency" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu stanów</value>
+  </data>
+  <data name="ConsistencyOfStateModelAndRequirementsSpecifications" xml:space="preserve">
+    <value>Spójność modelu stanów i specyfikacji wymagań</value>
+  </data>
+  <data name="StateModelAndClassModelConsistency" xml:space="preserve">
+    <value>Spójność modelu stanów i modelu klas</value>
+  </data>
+  <data name="EaseOfVerification" xml:space="preserve">
+    <value>Łatwość weryfikacji</value>
+  </data>
+  <data name="ComponentModelCompleteness" xml:space="preserve">
+    <value>Kompletność modelu komponentów</value>
+  </data>
+  <data name="CompletenessOfComponentDefinitions" xml:space="preserve">
+    <value>Kompletność definicji komponentów</value>
+  </data>
+  <data name="CompletenessOfComponentIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji komponentów</value>
+  </data>
+  <data name="CompletenessOfAssignmentOfClassesToComponents" xml:space="preserve">
+    <value>Kompletność przypisania klas do komponentów</value>
+  </data>
+  <data name="CompletenessOfComponentSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji komponentów</value>
+  </data>
+  <data name="InternalConsistencyOfComponentModel" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu komponentów</value>
+  </data>
+  <data name="ConsistencyOfComponentModelAndRequirementsSpecifications" xml:space="preserve">
+    <value>Spójność modelu komponentów i specyfikacji wymagań</value>
+  </data>
+  <data name="ConsistencyOfClassModelAndStaticModel" xml:space="preserve">
+    <value>Spójność modelu klas i modelu statycznego</value>
+  </data>
+  <data name="ConsistencyOfClassModelAndFunctionalModel" xml:space="preserve">
+    <value>Spójność modelu klas i modelu funkcjonalnego</value>
+  </data>
+  <data name="Modularity" xml:space="preserve">
+    <value>Modularność</value>
+  </data>
+  <data name="CompletenessOfUserInterfaceDesign" xml:space="preserve">
+    <value>Kompletność projektu interfejsu użytkownika</value>
+  </data>
+  <data name="CompletenessOfUserInterfaceDefinitions" xml:space="preserve">
+    <value>Kompletność definicji interfejsów użytkownika</value>
+  </data>
+  <data name="CompletenessOfFormDefinitions" xml:space="preserve">
+    <value>Kompletność definicji formularzy</value>
+  </data>
+  <data name="CompletenessOfDialogueDefinitions" xml:space="preserve">
+    <value>Kompletność definicji dialogów</value>
+  </data>
+  <data name="CompletenessOfReportDefinitions" xml:space="preserve">
+    <value>Kompletność definicji raportów</value>
+  </data>
+  <data name="CompletenessOfControlDefinitions" xml:space="preserve">
+    <value>Kompletność definicji sterowania</value>
+  </data>
+  <data name="CompletenessOfNavigationDiagrams" xml:space="preserve">
+    <value>Kompletność diagramów nawigacji</value>
+  </data>
+  <data name="CompletenessOfFormDesigns" xml:space="preserve">
+    <value>Kompletność projektów formularzy</value>
+  </data>
+  <data name="CompletenessOfReportDesigns" xml:space="preserve">
+    <value>Kompletność projektów raportów</value>
+  </data>
+  <data name="CompletenessOfControlSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji sterowania</value>
+  </data>
+  <data name="CompletenessOfFormSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji formularzy</value>
+  </data>
+  <data name="CompletenessOfReportSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji raportów</value>
+  </data>
+  <data name="InternalConsistencyOfUiDesign" xml:space="preserve">
+    <value>Spójność wewnętrzna projektu interfejsu użytkownika</value>
+  </data>
+  <data name="ConsistencyOfUiDesignAndRequirementsSpecifications" xml:space="preserve">
+    <value>Spójność projektu interfejsu użytkownika i specyfikacji wymagań</value>
+  </data>
+  <data name="UiAndStaticModelDesignConsistency" xml:space="preserve">
+    <value>Spójność projektu interfejsu użytkownika i modelu statycznego</value>
+  </data>
+  <data name="UiAndFunctionalModelDesignConsistency" xml:space="preserve">
+    <value>Spójność projektu interfejsu użytkownika i modelu funkcjonalnego</value>
+  </data>
+  <data name="DataModelCompleteness" xml:space="preserve">
+    <value>Kompletność modelu danych</value>
+  </data>
+  <data name="CompletenessOfDataStructureDefinitions" xml:space="preserve">
+    <value>Kompletność definicji struktur danych</value>
+  </data>
+  <data name="CompletenessOfDataStructureIdentification" xml:space="preserve">
+    <value>Kompletność identyfikacji struktur danych</value>
+  </data>
+  <data name="CompletenessOfDiagrams" xml:space="preserve">
+    <value>Kompletność diagramów</value>
+  </data>
+  <data name="CompletenessOfStructureSpecifications" xml:space="preserve">
+    <value>Kompletność specyfikacji struktur</value>
+  </data>
+  <data name="DataModelInternalConsistency" xml:space="preserve">
+    <value>Spójność wewnętrzna modelu danych</value>
+  </data>
+  <data name="DataModelAndRequirementsSpecificationConsistency" xml:space="preserve">
+    <value>Spójność modelu danych i specyfikacji wymagań</value>
+  </data>
+  <data name="DataModelAndStaticModelConsistency" xml:space="preserve">
+    <value>Spójność modelu danych i modelu statycznego</value>
+  </data>
+  <data name="CompletenessOfGoalAchievement" xml:space="preserve">
+    <value>Kompletność realizacji celów</value>
+  </data>
+  <data name="CompletenessMeetsShareholderRequirements" xml:space="preserve">
+    <value>Kompletność spełnia wymagań udziałowców</value>
+  </data>
+  <data name="CompletenessMeetsUserRequirements" xml:space="preserve">
+    <value>Kompletność spełnia wymagań użytkowników</value>
+  </data>
+  <data name="CompletenessOfFunctionImplementation" xml:space="preserve">
+    <value>Kompletność implementacji funkcji</value>
+  </data>
+  <data name="DataImplementationCompleteness" xml:space="preserve">
+    <value>Kompletność implementacji danych</value>
+  </data>
+  <data name="CompletenessOfProcessingImplementation" xml:space="preserve">
+    <value>Kompletność implementacji przetwarzania</value>
+  </data>
+  <data name="CompletenessOfSystemImplementation" xml:space="preserve">
+    <value>Kompletność implementacji systemu</value>
+  </data>
+  <data name="CompletenessOfInterfaceImplementations" xml:space="preserve">
+    <value>Kompletność implementacji interfejsów</value>
+  </data>
+  <data name="ItWillUseParallels" xml:space="preserve">
+    <value>Wykorzysta równoległości</value>
+  </data>
+  <data name="FunctionalReliability" xml:space="preserve">
+    <value>Niezawodność funkcjonalna</value>
+  </data>
+  <data name="FunctionalCorrectness" xml:space="preserve">
+    <value>Poprawność funkcjonalna</value>
+  </data>
+  <data name="CorrectnessOfDocumentation" xml:space="preserve">
+    <value>Poprawność dokumentacji</value>
+  </data>
+  <data name="FunctionalConsistency" xml:space="preserve">
+    <value>Spójność funkcjonalna</value>
+  </data>
+  <data name="ResolvingContradiction" xml:space="preserve">
+    <value>Rozwiązanie sprzeczności</value>
+  </data>
+  <data name="FunctionalIntelligibility" xml:space="preserve">
+    <value>Zrozumiałość funkcjonalna</value>
+  </data>
+  <data name="DocumentationComprehensibility" xml:space="preserve">
+    <value>Zrozumiałość dokumentacji</value>
+  </data>
+  <data name="CompletenessOfDocumentation" xml:space="preserve">
+    <value>Kompletność dokumentacji</value>
+  </data>
+  <data name="SourceCodeModifiability" xml:space="preserve">
+    <value>Modyfikowalność kodu źródłowego</value>
+  </data>
+  <data name="InternalConnections" xml:space="preserve">
+    <value>Powiązania wewnętrzne</value>
+  </data>
+</root>

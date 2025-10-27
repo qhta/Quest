@@ -133,6 +133,16 @@
             Class for import Excel Workbooks.
             </summary>
         </member>
+        <member name="M:QuestIMP.WorkbookImporter.#ctor">
+            <summary>
+            Create a new instance of the <see cref="T:QuestIMP.WorkbookImporter"/> class and opening text list files.
+            </summary>
+        </member>
+        <member name="M:QuestIMP.WorkbookImporter.Dispose">
+            <summary>
+            Closes the text list files.
+            </summary>
+        </member>
         <member name="M:QuestIMP.WorkbookImporter.OpenWorkbook(System.String)">
             <summary>
             Opens an Excel workbook from the specified file and returns the IWorkbook instance.

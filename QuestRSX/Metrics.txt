@@ -1,0 +1,220 @@
+Funkcjonalność
+Kompletność użytkowa
+Kompletność definicji celów
+Kompletność definicji udziałowców
+Kompletność definicji użytkowników
+Kompletność funkcjonalna
+Kompletność definicji funkcji
+Kompletność definicji danych
+Kompletność definicji przetwarzania
+Kompletność systemowa
+Kompletność definicji systemu
+Kompletność definicji interfejsów
+Wydajność
+Efektywność przetwarzania
+Czas wykonania
+Wykorzystanie równoległości
+Obciążalność
+Obciążalność użytkowa
+Rozmiar danych
+Stabilność
+Stabilność sprzętowa
+Stabilność programowa
+Skalowalność
+Skalowalność użytkowa
+Skalowalność danych
+Wiarygodność
+Niezawodność
+Sytuacje wyjątkowe
+Sytuacje krytyczne
+Awarie
+Odporność na błędy
+Błędy użytkownika
+Błędy danych
+Błędy przetwarzania
+Bezpieczeństwo
+Zagrożenia dla użytkownika
+Zagrożenia dla innych systemów
+Ochrona
+Zagrożenia ze strony użytkowników
+Zagrożenia ze strony innych systemów
+Testowalność
+Testowalność danych
+Testowalność przetwarzania
+Elastyczność
+Przenośność
+Przenośność sprzętowa
+Przenośność programowa
+Przenośność danych
+Lokalizowalność
+Wersje językowe
+Ustawienia systemowe
+Modyfikowalność przez użytkownika
+Modyfikowalność przez informatyków
+Modyfikowalność danych
+Konfigurowalność
+Konfigurowalność prezentacji
+Konfigurowalność nawigacji
+Konfigurowalność instalacji
+Użyteczność
+Adekwatność
+Celowość
+Akceptacja
+Łatwość użycia
+Intuicyjność
+Przyjazność dla użytkownika
+Pomoc dla użytkownika
+Łatwość nauki
+Zgodność z doświadczeniem
+Szkolenia
+Produktywność
+Automatyzacja
+Środki interfejsowe
+Poprawność formalna
+Akceptowalność
+Spójność celów i wymagań
+Niesprzeczność wymagań
+Sposób opisu
+Zrozumiałość opisów
+Opisy dodatkowe
+Elastyczność wymagań
+Niezmienność celów
+Zabezpieczenia kontraktowe
+Źródła wymagań
+Powiązania wymagań
+Łatwość odwołania w dalszej pracy
+Konkretność wymagań
+Testowalność wymagań
+Wymagania "na przyszłość"
+Kompletność modelu klas
+Kompletność definicji klas
+Kompletność identyfikacji klas
+Kompletność identyfikacji właściwości klas
+Kompletność identyfikacji możliwości klas
+Kompletność definicji właściwości klas
+Kompletność definicji możliwości klas
+Kompletność definicji typów
+Kompletność definicji relacji
+Kompletność generalizacji klas
+Kompletność deklaracji agregacji
+Kompletność deklaracji asocjacji
+Kompletność specyfikacji
+Kompletność specyfikacji klas
+Kompletność specyfikacji właściwości
+Kompletność specyfikacji możliwości
+Kompletność specyfikacji relacji
+Poprawność semantyczna
+Spójność wewnętrzna modelu klas
+Spójność modelu klas i specyfikacji wymagań
+Nazewnictwo
+Elastyczność typów
+Elastyczność relacji
+Modyfikowalność formalna
+Źródła
+Łatwość referencji
+Kompletność modelu przypadków użycia
+Kompletność aktorów
+Kompletność identyfikacji aktorów
+Kompletność definicji przypadków użycia
+Kompletność identyfikacji przypadków użycia
+Kompletność generalizacji aktorów
+Kompletność generalizacji przypadków użycia
+Kompletność zawierania przypadków użycia
+Kompletność rozszerzania przypadków użycia
+Kompletność specyfikacji aktorów
+Kompletność specyfikacji przypadków użycia
+Spójność wewnętrzna modelu przypadków użycia
+Spójność modelu przypadków użycia i specyfikacji wymagań
+Spójność modelu funkcjonalnego i modelu klas
+Kompletność modelu interakcji
+Kompletność interakcji
+Kompletność identyfikacji interakcji
+Kompletność udziałowców interakcji
+Kompletność komunikatów
+Kompletność identyfikacji komunikatów
+Kompletność przepływu
+Kompletność specyfikacji interakcji
+Spójność wewnętrzna modelu interakcji
+Spójność modelu interakcji i modelu przypadków użycia
+Spójność modelu interakcji i specyfikacji wymagań
+Spójność modelu interakcji i modelu klas
+Spójność modelu interakcji i modelu behawioralnego
+Spójność modelu interakcji i modelu dynamicznego
+Kompletność modelu aktywności
+Kompletność definicji
+Kompletność identyfikacji aktywności
+Kompletność identyfikacji odpowiedzialności
+Kompletność specyfikacji aktywności
+Spójność wewnętrzna modelu aktywności
+Spójność modelu aktywności i modelu przypadków użycia
+Spójność modelu aktywności i specyfikacji wymagań
+Spójność modelu aktywności i modelu klas
+Spójność modelu aktywności i modelu behawioralnego
+Kompletność modelu stanów
+Kompletność maszyn stanów
+Kompletność identyfikacji maszyn stanów
+Kompletność identyfikacji stanów
+Kompletność identyfikacji zdarzeń
+Kompletność definicji przejść
+Kompletność specyfikacji maszyn stanów
+Kompletność specyfikacji stanów
+Kompletność specyfikacji zdarzeń
+Kompletność specyfikacji przejść
+Spójność wewnętrzna modelu stanów
+Spójność modelu stanów i specyfikacji wymagań
+Spójność modelu stanów i modelu klas
+Łatwość weryfikacji
+Kompletność modelu komponentów
+Kompletność definicji komponentów
+Kompletność identyfikacji komponentów
+Kompletność przypisania klas do komponentów
+Kompletność specyfikacji komponentów
+Spójność wewnętrzna modelu komponentów
+Spójność modelu komponentów i specyfikacji wymagań
+Spójność modelu klas i modelu statycznego
+Spójność modelu klas i modelu funkcjonalnego
+Modularność
+Kompletność projektu interfejsu użytkownika
+Kompletność definicji interfejsów użytkownika
+Kompletność definicji formularzy
+Kompletność definicji dialogów
+Kompletność definicji raportów
+Kompletność definicji sterowania
+Kompletność diagramów nawigacji
+Kompletność projektów formularzy
+Kompletność projektów raportów
+Kompletność specyfikacji sterowania
+Kompletność specyfikacji formularzy
+Kompletność specyfikacji raportów
+Spójność wewnętrzna projektu interfejsu użytkownika
+Spójność projektu interfejsu użytkownika i specyfikacji wymagań
+Spójność projektu interfejsu użytkownika i modelu statycznego
+Spójność projektu interfejsu użytkownika i modelu funkcjonalnego
+Kompletność modelu danych
+Kompletność definicji struktur danych
+Kompletność identyfikacji struktur danych
+Kompletność diagramów
+Kompletność specyfikacji struktur
+Spójność wewnętrzna modelu danych
+Spójność modelu danych i specyfikacji wymagań
+Spójność modelu danych i modelu statycznego
+Kompletność realizacji celów
+Kompletność spełnia wymagań udziałowców
+Kompletność spełnia wymagań użytkowników
+Kompletność implementacji funkcji
+Kompletność implementacji danych
+Kompletność implementacji przetwarzania
+Kompletność implementacji systemu
+Kompletność implementacji interfejsów
+Wykorzysta równoległości
+Niezawodność funkcjonalna
+Zgodność z doświadczem
+Poprawność funkcjonalna
+Poprawność dokumentacji
+Spójność funkcjonalna
+Rozwiązanie sprzeczności
+Zrozumiałość funkcjonalna
+Zrozumiałość dokumentacji
+Kompletność dokumentacji
+Modyfikowalność kodu źródłowego
+Powiązania wewnętrzne
