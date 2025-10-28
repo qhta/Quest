@@ -153,4 +153,7 @@
   <data name="VerifialibilityDescription" xml:space="preserve">
     <value>Określa stopień, w jakim postanowienia można zweryfikować pod kątem kompletności i poprawności.</value>
   </data>
+  <data name="EaseOfVerification" xml:space="preserve">
+    <value>Łatwość weryfikacji</value>
+  </data>
 </root>

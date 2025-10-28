@@ -97,9 +97,20 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Display Name from the model
+  /// Gets a display name for the metrics.
   /// </summary>
-  public string? DisplayName => Text;
+  public string? DisplayName
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      var text = Model.Text;
+      var name = Model.Name;
+      if (name != null && name != text)
+        text += $" ({name})";
+      return text;
+    }
+  }
 
   /// <summary>
   /// Display Name from the model preceding with ordering number.

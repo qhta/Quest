@@ -115,6 +115,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ease of verification.
+        /// </summary>
+        public static string EaseOfVerification {
+            get {
+                return ResourceManager.GetString("EaseOfVerification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modifiability.
         /// </summary>
         public static string Modifiability {

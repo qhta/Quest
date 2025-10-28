@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>Quest</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>docs\QuestEng.xls</DocumentationFile>
+    <DocumentationFile>docs\QuestENG.xml</DocumentationFile>
     <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="docs\" />
     <Folder Include="ExecutiveLogic\" />
   </ItemGroup>
 

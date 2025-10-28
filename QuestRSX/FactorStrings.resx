@@ -153,4 +153,7 @@
   <data name="VerifialibilityDescription" xml:space="preserve">
     <value>Specifies the degree to which provisions can be verified for completeness and correctness.</value>
   </data>
+  <data name="EaseOfVerification" xml:space="preserve">
+    <value>Ease of verification</value>
+  </data>
 </root>

@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>QuestRDM</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>docs\QuestRDM</DocumentationFile>
+    <DocumentationFile>docs\QuestRDM.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,10 +17,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Qhta.Xml" Version="3.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="docs\" />
   </ItemGroup>
 
   <ItemGroup>

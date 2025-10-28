@@ -1,4 +1,5 @@
-﻿using QuestRSX;
+﻿using Qhta.TextUtils;
+using QuestRSX;
 
 namespace QuestIMP;
 
@@ -260,7 +261,7 @@ public class WorkbookImporter : IDisposable
 
               if (level == 1)
               {
-                name = text != null ? GetFactorName(text) : null;
+                if (text != null) name = GetFactorName(text);
                 QualityFactor qualityFactor = new QualityFactor { Text = text, Name = name };
                 currentNode = qualityFactor;
                 documentQuality.Factors?.Add(qualityFactor);
@@ -268,10 +269,7 @@ public class WorkbookImporter : IDisposable
               }
               else
               {
-                if (text != null)
-                {
-                  name = GetMetricsName(text);
-                }
+                if (text != null) name = GetMetricsName(text);
                 var qualityMetrics = new QualityMetrics { Text = text, Name = name };
                 currentNode = qualityMetrics;
                 if (lastNode is QualityMetricsNode lastMetricsNode)
@@ -295,9 +293,7 @@ public class WorkbookImporter : IDisposable
             else
             {
               var text = s;
-              var name = GetFactorName(text);
-              //if (name == null)
-              //  measureSet?.Add(text);
+              var name = GetMeasureName(text);
               var qualityMeasure = new QualityMeasure { Name = name, Text = text };
               currentNode = qualityMeasure;
               if (lastNode is QualityMetricsNode lastMetricsNode)
@@ -329,8 +325,8 @@ public class WorkbookImporter : IDisposable
                 name = GetFactorName(text);
               else if (currentNode is QualityMetrics)
                 name = GetMetricsName(text);
-              //else
-              //  metricsSet?.Add(text);
+              else if (currentNode is QualityMeasure)
+                name = GetMeasureName(text);
             }
             currentNode.Name = name;
             currentNode.Text = text;
@@ -346,17 +342,50 @@ public class WorkbookImporter : IDisposable
 
   private string? GetFactorName(string text)
   {
+    // Special case correction
+    if (text == "Łatwość weryfikacji")
+      text = "Weryfikowalność";
+
     var allFactorStrings = FactorStringsHelper.Instance.GetAllCultureSpecificVariants();
     var name = allFactorStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
+    if (name == null)
+    {
+      Debug.WriteLine($"Missing factor translation: {text}");
+    }
     return name;
   }
 
   private string? GetMetricsName(string text)
   {
+    // Special error correction
+    if (text== "Wykorzysta równoległości")
+      text = "Wykorzystanie równoległości";
+    else if (text == "Zgodność z doświadczem")
+      text = "Zgodność z doświadczeniem";
+
     var allMetricsStrings = MetricsStringsHelper.Instance.GetAllCultureSpecificVariants();
     var name = allMetricsStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
+    if (name == null)
+    {
+      Debug.WriteLine($"Missing metrics translation: {text}");
+    }
     return name;
   }
+
+  private string? GetMeasureName(string text)
+  {
+    return null;
+    //var allMeasureStrings = MeasureStringsHelper.Instance.GetAllCultureSpecificVariants();
+    //var name = allMeasureStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
+    //if (name == null)
+    //{
+    //  name = TranslationHelper.TranslateText(text, "pl", "en");
+    //  if (name != null)
+    //    name = name.CamelCase();
+    //}
+    //return name;
+  }
+
 
   /// <summary>
   /// Gets the document title from the given worksheet by searching for the first non-empty cell over the weights table.

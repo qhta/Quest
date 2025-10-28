@@ -690,7 +690,7 @@
         </member>
         <member name="P:Quest.QualityMetricsVM.DisplayName">
             <summary>
-            Display Name from the model
+            Gets a display name for the metrics.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.DisplayNameWithNumbering">

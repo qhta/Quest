@@ -1,9 +1,11 @@
-﻿namespace Quest;
+﻿using Qhta.TextUtils;
+
+namespace Quest;
 
 /// <summary>
 /// ViewModel for a single document quality assessment
 /// </summary>
-public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
+public class DocumentQualityVM : ViewModel<DocumentQuality>, IQualityObjectVM
 {
   /// <summary>
   /// Mandatory constructor
@@ -110,7 +112,16 @@ public class DocumentQualityVM: ViewModel<DocumentQuality>, IQualityObjectVM
       var allFactorStrings = FactorStringsHelper.Instance.GetAllCultureSpecificVariants();
       var name = allFactorStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == factor.Text).Key;
       if (name != null)
+      {
         factor.FactorType = factorTypes.FirstOrDefault(ft => ft.Model.Name == name)?.Model;
+        if (factor.FactorType == null)
+        {
+          var alias = AliasHelper.GetAlias(name);
+          if (alias == null) 
+            alias = AliasHelper.GetAlias(name.DeCamelCase());
+          factor.FactorType = factorTypes.FirstOrDefault(ft => ft.Model.Name == alias)?.Model;
+        }
+      }
     }
   }
 }

@@ -1,0 +1,1998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GoalsDefined" xml:space="preserve">
+    <value>Have the goals of the system been defined? How exactly?</value>
+  </data>
+  <data name="ProblemsDefined" xml:space="preserve">
+    <value>Have the problems been defined? How exactly?</value>
+  </data>
+  <data name="BenefitsDefined" xml:space="preserve">
+    <value>Have the benefits been defined? How exactly?</value>
+  </data>
+  <data name="BasicShareholdersDefined" xml:space="preserve">
+    <value>Have the basic shareholders been defined? How exhaustive?</value>
+  </data>
+  <data name="AdditionalShareholdersDefined" xml:space="preserve">
+    <value>Have additional shareholders been defined? How exhaustive?</value>
+  </data>
+  <data name="ExternalShareholdersDefined" xml:space="preserve">
+    <value>Are external shareholders defined? How exhaustive?</value>
+  </data>
+  <data name="CoreUsersDetermined" xml:space="preserve">
+    <value>Have the core users been determined? How exhaustive?</value>
+  </data>
+  <data name="AdditionalUsersIdentified" xml:space="preserve">
+    <value>Have additional users been identified? How exhaustive?</value>
+  </data>
+  <data name="UserTasksSpecified" xml:space="preserve">
+    <value>Have user tasks been specified? How exactly?</value>
+  </data>
+  <data name="RequiredFunctionsDefined" xml:space="preserve">
+    <value>Have all the required functions been defined? How exhaustive?</value>
+  </data>
+  <data name="FeatureDescriptionsComplete" xml:space="preserve">
+    <value>Does each feature have a complete description? How exhaustive?</value>
+  </data>
+  <data name="FeaturesAssignedToUsers" xml:space="preserve">
+    <value>Have the features been properly assigned to users?</value>
+  </data>
+  <data name="InputsDefined" xml:space="preserve">
+    <value>Have inputs been defined? How precisely?</value>
+  </data>
+  <data name="OutputDefined" xml:space="preserve">
+    <value>Is the output defined? How precisely?</value>
+  </data>
+  <data name="StoredDataDefined" xml:space="preserve">
+    <value>Is stored data defined? How precisely?</value>
+  </data>
+  <data name="DataProcessingMethodsDefined" xml:space="preserve">
+    <value>Are the methods of data processing defined? How precisely?</value>
+  </data>
+  <data name="CoreProcessesDefined" xml:space="preserve">
+    <value>Have the core processes been defined? How exactly?</value>
+  </data>
+  <data name="BasicOperationsDefined" xml:space="preserve">
+    <value>Are basic operations defined? In how much detail?</value>
+  </data>
+  <data name="SystemArchitectureSpecified" xml:space="preserve">
+    <value>Is the system architecture specified? In how much detail?</value>
+  </data>
+  <data name="OperatingEnvironmentSpecified" xml:space="preserve">
+    <value>Is the operating environment of the system specified? How precisely?</value>
+  </data>
+  <data name="InteroperableSystemsDefined" xml:space="preserve">
+    <value>Are there any other interoperable systems? How exhaustive?</value>
+  </data>
+  <data name="UserInteractionDefined" xml:space="preserve">
+    <value>Is there a way to interact with the user? How precisely?</value>
+  </data>
+  <data name="UserInterfaceExampleShown" xml:space="preserve">
+    <value>Is the user interface example shown? In how much detail?</value>
+  </data>
+  <data name="InterfacesToOtherSystemsDefined" xml:space="preserve">
+    <value>Are there any interfaces to other systems? How precisely?</value>
+  </data>
+  <data name="ProcessingTimeRequirements" xml:space="preserve">
+    <value>Are there requirements for processing time?</value>
+  </data>
+  <data name="ResponseTimeRequirements" xml:space="preserve">
+    <value>Are there any requirements for response time?</value>
+  </data>
+  <data name="ParallelProcessesIdentified" xml:space="preserve">
+    <value>Have potentially parallel processes been identified?</value>
+  </data>
+  <data name="ParallelOperationsIdentified" xml:space="preserve">
+    <value>Have potentially parallel operations been identified?</value>
+  </data>
+  <data name="ConcurrentUsersEstimated" xml:space="preserve">
+    <value>Has the number of users using the system at the same time been estimated?</value>
+  </data>
+  <data name="TransactionsPerUnitTimeEstimated" xml:space="preserve">
+    <value>Have you estimated the number of transactions per unit of time?</value>
+  </data>
+  <data name="InitialRecordsEstimated" xml:space="preserve">
+    <value>Has the initial number of records (files) been estimated?</value>
+  </data>
+  <data name="IncreaseInRecordsEstimated" xml:space="preserve">
+    <value>Has the increase in records (files) of data been estimated?</value>
+  </data>
+  <data name="DataVolumeEstimated" xml:space="preserve">
+    <value>Has the volume of data been estimated?</value>
+  </data>
+  <data name="DataArchivingPlanned" xml:space="preserve">
+    <value>Is data archiving planned?</value>
+  </data>
+  <data name="OptimalEquipmentRequirementsDetermined" xml:space="preserve">
+    <value>Have the optimal requirements for the equipment been determined?</value>
+  </data>
+  <data name="MinimumHardwareRequirements" xml:space="preserve">
+    <value>Are there minimum requirements for the hardware?</value>
+  </data>
+  <data name="PerformanceLossUnderSuboptimalConditions" xml:space="preserve">
+    <value>Has the permissible loss of performance under suboptimal conditions been determined?</value>
+  </data>
+  <data name="OptimalSoftwareRequirementsDetermined" xml:space="preserve">
+    <value>Have the optimal requirements for the software been determined?</value>
+  </data>
+  <data name="MinimumSoftwareRequirements" xml:space="preserve">
+    <value>Are there minimum requirements for the software?</value>
+  </data>
+  <data name="MaximumUsersEstimated" xml:space="preserve">
+    <value>Has the maximum number of users been estimated?</value>
+  </data>
+  <data name="MaximumTransactionsPerUnitTimeEstimated" xml:space="preserve">
+    <value>Has the maximum number of transactions per unit of time been estimated?</value>
+  </data>
+  <data name="SystemExpansionPlanned" xml:space="preserve">
+    <value>Is it planned to expand the system when the maximum values are exceeded?</value>
+  </data>
+  <data name="MaximumRecordsEstimated" xml:space="preserve">
+    <value>Has the maximum number of records (files) been estimated?</value>
+  </data>
+  <data name="MaximumDataVolumeEstimated" xml:space="preserve">
+    <value>Has the maximum data volume been estimated?</value>
+  </data>
+  <data name="EmergencySituationsDefined" xml:space="preserve">
+    <value>Are there any emergency situations?</value>
+  </data>
+  <data name="EmergencyResponsesDefined" xml:space="preserve">
+    <value>Have emergency responses been defined?</value>
+  </data>
+  <data name="CriticalSituationsForeseen" xml:space="preserve">
+    <value>Are critical situations foreseen?</value>
+  </data>
+  <data name="CriticalResponsesSpecified" xml:space="preserve">
+    <value>Have critical responses been specified?</value>
+  </data>
+  <data name="FailurePreventionDefined" xml:space="preserve">
+    <value>Is there a way to prevent failures?</value>
+  </data>
+  <data name="FailureEffectsMinimized" xml:space="preserve">
+    <value>Has there been a way to minimize the effects of failures?</value>
+  </data>
+  <data name="UserFaultToleranceLevelSpecified" xml:space="preserve">
+    <value>Is the required level of user fault tolerance specified?</value>
+  </data>
+  <data name="UserErrorMinimizationMeasures" xml:space="preserve">
+    <value>Are there measures in place to minimize the possibility of user error?</value>
+  </data>
+  <data name="DataVerificationMethods" xml:space="preserve">
+    <value>Are there any specific methods for verifying your data?</value>
+  </data>
+  <data name="DataRepairMethods" xml:space="preserve">
+    <value>Are there any specific ways to repair the data?</value>
+  </data>
+  <data name="ProcessingResultsVerification" xml:space="preserve">
+    <value>Are there any ways to verify the processing results?</value>
+  </data>
+  <data name="ProcessingErrorsHandling" xml:space="preserve">
+    <value>Are there any ways to deal with processing errors?</value>
+  </data>
+  <data name="SystemThreatsToUsersIdentified" xml:space="preserve">
+    <value>Have you identified threats from the system to the user?</value>
+  </data>
+  <data name="RiskAssessmentPerformed" xml:space="preserve">
+    <value>Has the risk been assessed in this aspect?</value>
+  </data>
+  <data name="SecurityMeasuresDefined" xml:space="preserve">
+    <value>Are there any security measures in this aspect?</value>
+  </data>
+  <data name="SystemThreatsToOtherSystemsIdentified" xml:space="preserve">
+    <value>Have system threats to other systems been identified?</value>
+  </data>
+  <data name="UserThreatsToSystemIdentified" xml:space="preserve">
+    <value>Have threats to the system been identified from users?</value>
+  </data>
+  <data name="OtherSystemThreatsToSystemIdentified" xml:space="preserve">
+    <value>Have you identified threats to your system from other systems?</value>
+  </data>
+  <data name="InputDataVerification" xml:space="preserve">
+    <value>Is there a verification of input data?</value>
+  </data>
+  <data name="OutputVerification" xml:space="preserve">
+    <value>Is there a verification of the output?</value>
+  </data>
+  <data name="StoredDataPreview" xml:space="preserve">
+    <value>Is it possible to view the stored data?</value>
+  </data>
+  <data name="StoredDataVerification" xml:space="preserve">
+    <value>Is it possible to verify the stored data?</value>
+  </data>
+  <data name="ControlProceduresDefined" xml:space="preserve">
+    <value>Are there any control procedures?</value>
+  </data>
+  <data name="TestProceduresDefined" xml:space="preserve">
+    <value>Are there any test procedures?</value>
+  </data>
+  <data name="HardwarePlatformDefined" xml:space="preserve">
+    <value>Is there a hardware platform on which the system will run?</value>
+  </data>
+  <data name="DifferentHardwarePlatformsSupported" xml:space="preserve">
+    <value>Is it possible to run on different hardware platforms?</value>
+  </data>
+  <data name="SpecificOperatingSystemDefined" xml:space="preserve">
+    <value>Is there a specific operating system on which the system will run?</value>
+  </data>
+  <data name="DifferentOperatingSystemsSupported" xml:space="preserve">
+    <value>Is it possible to run on different operating systems?</value>
+  </data>
+  <data name="ImportFileFormatsSpecified" xml:space="preserve">
+    <value>Are import file formats specified?</value>
+  </data>
+  <data name="ExportFileFormatsSpecified" xml:space="preserve">
+    <value>Are there any export file formats specified?</value>
+  </data>
+  <data name="DatabaseSystemsSpecified" xml:space="preserve">
+    <value>Are acceptable (different) database systems specified?</value>
+  </data>
+  <data name="WesternLanguageVersionsSpecified" xml:space="preserve">
+    <value>Are there language versions for Western countries? How much?</value>
+  </data>
+  <data name="OtherEuropeanLanguageVersionsSpecified" xml:space="preserve">
+    <value>Are there language versions for other European countries? How much?</value>
+  </data>
+  <data name="MiddleEasternLanguageVersionsSpecified" xml:space="preserve">
+    <value>Are there language versions for Middle Eastern countries? How much?</value>
+  </data>
+  <data name="FarEasternLanguageVersionsSpecified" xml:space="preserve">
+    <value>Are there language versions for the Far Eastern countries? How much?</value>
+  </data>
+  <data name="DateFormatChangeSupported" xml:space="preserve">
+    <value>Is there a change in the date format?</value>
+  </data>
+  <data name="TimeFormatChangeSupported" xml:space="preserve">
+    <value>Is there a change in the time format?</value>
+  </data>
+  <data name="NumberFormatChangeSupported" xml:space="preserve">
+    <value>Is there a change in the number format?</value>
+  </data>
+  <data name="CurrencySymbolChangeSupported" xml:space="preserve">
+    <value>Is there a change in the currency symbol and its position?</value>
+  </data>
+  <data name="QuotationMarksChangeSupported" xml:space="preserve">
+    <value>Is there a change in quotation marks?</value>
+  </data>
+  <data name="UserMacrosSupported" xml:space="preserve">
+    <value>Is it possible for the user to write macros (scripts)?</value>
+  </data>
+  <data name="MacroLanguageSpecified" xml:space="preserve">
+    <value>Is the macro (script) language specified?</value>
+  </data>
+  <data name="AddonsSupported" xml:space="preserve">
+    <value>Is there a possibility of introducing additives?</value>
+  </data>
+  <data name="AddonLanguageSpecified" xml:space="preserve">
+    <value>Is there a specific language for writing add-ons?</value>
+  </data>
+  <data name="AddonInterfaceSpecified" xml:space="preserve">
+    <value>Is there an interface for add-ons?</value>
+  </data>
+  <data name="FileFormatChoiceSupported" xml:space="preserve">
+    <value>Is there a choice of file format?</value>
+  </data>
+  <data name="DatabaseSystemChangeSupported" xml:space="preserve">
+    <value>Is there a possibility to change the database system?</value>
+  </data>
+  <data name="WindowLayoutChangeSupported" xml:space="preserve">
+    <value>Is it possible to change the layout of the windows?</value>
+  </data>
+  <data name="WindowAppearanceChangeSupported" xml:space="preserve">
+    <value>Is it possible to change the appearance of windows?</value>
+  </data>
+  <data name="UserProfileChoiceSupported" xml:space="preserve">
+    <value>Is there a possibility to choose a user profile?</value>
+  </data>
+  <data name="MenuConfigurationSupported" xml:space="preserve">
+    <value>Is there a way to configure menus?</value>
+  </data>
+  <data name="ToolbarConfigurationSupported" xml:space="preserve">
+    <value>Is there a way to configure toolbars?</value>
+  </data>
+  <data name="KeyboardShortcutsConfigurationSupported" xml:space="preserve">
+    <value>Is there a way to configure keyboard shortcuts?</value>
+  </data>
+  <data name="InstallationConfigurationSupported" xml:space="preserve">
+    <value>Is there a system architecture configuration to be adjusted during installation?</value>
+  </data>
+  <data name="PostInstallationConfigurationSupported" xml:space="preserve">
+    <value>Is there a system architecture configuration adjustment after installation?</value>
+  </data>
+  <data name="GoalsAdequateToProblems" xml:space="preserve">
+    <value>Are the goals adequate to the problems?</value>
+  </data>
+  <data name="GoalsAdequateToBenefits" xml:space="preserve">
+    <value>Are the goals adequate to the benefits?</value>
+  </data>
+  <data name="FeaturesFitForPurpose" xml:space="preserve">
+    <value>Are the features fit for purpose?</value>
+  </data>
+  <data name="RequirementsEvaluatedByCustomer" xml:space="preserve">
+    <value>Have the requirements been evaluated by the customer? How high?</value>
+  </data>
+  <data name="RequirementsEvaluatedByUsers" xml:space="preserve">
+    <value>Have the requirements been evaluated by future users? How high?</value>
+  </data>
+  <data name="RequirementsEvaluatedByContractors" xml:space="preserve">
+    <value>Have the requirements been assessed by the contractors? How high?</value>
+  </data>
+  <data name="InterfaceStandardsCompliance" xml:space="preserve">
+    <value>Is the implemented interface compliant with the standards?</value>
+  </data>
+  <data name="ExpectedWayOfWorkingStandardsCompliance" xml:space="preserve">
+    <value>Is the expected way of working up to standards?</value>
+  </data>
+  <data name="UserHintsProvided" xml:space="preserve">
+    <value>Are there any hints for the user?</value>
+  </data>
+  <data name="ExplanationsForInexperiencedUsers" xml:space="preserve">
+    <value>Are there explanations for inexperienced users?</value>
+  </data>
+  <data name="AssistanceSystemProvided" xml:space="preserve">
+    <value>Is there a system of assistance?</value>
+  </data>
+  <data name="AutofillProvided" xml:space="preserve">
+    <value>Is autofill provided?</value>
+  </data>
+  <data name="AutocorrectProvided" xml:space="preserve">
+    <value>Is there an autocorrect?</value>
+  </data>
+  <data name="AidSchemeScopeDefined" xml:space="preserve">
+    <value>Has the scope of the aid scheme been defined?</value>
+  </data>
+  <data name="HintSystemScopeDefined" xml:space="preserve">
+    <value>Is the scope of the hint system specified?</value>
+  </data>
+  <data name="TechnicalSupportProvided" xml:space="preserve">
+    <value>Is there any technical support for the user?</value>
+  </data>
+  <data name="ExpectedWayOfWorkingConsistency" xml:space="preserve">
+    <value>Is the expected way of working consistent with the current way of working?</value>
+  </data>
+  <data name="DemoVersionPlanned" xml:space="preserve">
+    <value>Is it planned to produce a demo version?</value>
+  </data>
+  <data name="TeachingProgramsPlanned" xml:space="preserve">
+    <value>Are there any plans to produce teaching programs?</value>
+  </data>
+  <data name="TrainingCoursesPlanned" xml:space="preserve">
+    <value>Are training courses planned?</value>
+  </data>
+  <data name="AutomaticActivitiesSupported" xml:space="preserve">
+    <value>Is it possible to perform certain activities automatically?</value>
+  </data>
+  <data name="UserCommandRecordingSupported" xml:space="preserve">
+    <value>Is there a possibility to record and repeat user commands?</value>
+  </data>
+  <data name="CommandSequenceRecordingSupported" xml:space="preserve">
+    <value>Is there a possibility of recording and repeating a sequence of commands?</value>
+  </data>
+  <data name="HintsProvided" xml:space="preserve">
+    <value>Are there hints?</value>
+  </data>
+  <data name="AutocorrectionOrAutocompletionProvided" xml:space="preserve">
+    <value>Are there any means of autocorrection or autocompletion?</value>
+  </data>
+  <data name="KeyboardShortcutsImplemented" xml:space="preserve">
+    <value>Have keyboard shortcuts been implemented?</value>
+  </data>
+  <data name="MouseFunctionalityImplemented" xml:space="preserve">
+    <value>Have you implemented the appropriate mouse functionality?</value>
+  </data>
+  <data name="RequirementsSpecificationStandardsCompliance" xml:space="preserve">
+    <value>Was the requirements specification made in accordance with the standards?</value>
+  </data>
+  <data name="RequirementsSeparatedFromDesignDecisions" xml:space="preserve">
+    <value>Have requirements been separated from design decisions (proposals)?</value>
+  </data>
+  <data name="PrototypeCreated" xml:space="preserve">
+    <value>Has a prototype been made?</value>
+  </data>
+  <data name="RequirementsAnalyzedAndAcceptedByCustomer" xml:space="preserve">
+    <value>Have the requirements been analyzed and accepted by the customer?</value>
+  </data>
+  <data name="RequirementsAcceptedByUsers" xml:space="preserve">
+    <value>Have the requirements been accepted by users?</value>
+  </data>
+  <data name="RequirementsAnalyzedAndAcceptedByContractor" xml:space="preserve">
+    <value>Have the requirements been analysed and accepted by the contractor?</value>
+  </data>
+  <data name="GoalsInternallyConsistent" xml:space="preserve">
+    <value>Are the declared goals internally consistent?</value>
+  </data>
+  <data name="RequirementsConsistentWithGoals" xml:space="preserve">
+    <value>Are the requirements consistent with the goals?</value>
+  </data>
+  <data name="RequiredFeaturesInternallyConsistent" xml:space="preserve">
+    <value>Are the required features internally consistent?</value>
+  </data>
+  <data name="FunctionalRequirementsNotInConflictWithPerformance" xml:space="preserve">
+    <value>Are functional requirements not in conflict with performance requirements?</value>
+  </data>
+  <data name="PerformanceRequirementsNotInConflictWithCredibility" xml:space="preserve">
+    <value>Are performance requirements not in conflict with credibility requirements?</value>
+  </data>
+  <data name="PerformanceRequirementsNotInConflictWithFlexibility" xml:space="preserve">
+    <value>Are the performance requirements not in conflict with the required flexibility?</value>
+  </data>
+  <data name="RequirementDescriptionsComplete" xml:space="preserve">
+    <value>Does each requirement have a description?</value>
+  </data>
+  <data name="RequirementDescriptionsShort" xml:space="preserve">
+    <value>Are the requirements descriptions short?</value>
+  </data>
+  <data name="VocabularyUnderstandable" xml:space="preserve">
+    <value>Is the vocabulary in the descriptions understandable?</value>
+  </data>
+  <data name="GlossaryIncluded" xml:space="preserve">
+    <value>Has a glossary been included? Is it useful?</value>
+  </data>
+  <data name="SynonymsAndAbbreviationsLimited" xml:space="preserve">
+    <value>Is the use of synonyms and abbreviations limited?</value>
+  </data>
+  <data name="GraphicalExplanationsForComplexDescriptions" xml:space="preserve">
+    <value>Do more complicated descriptions have additional graphical explanation?</value>
+  </data>
+  <data name="ExternalInformationSourcesReferenced" xml:space="preserve">
+    <value>Are the necessary external sources of information referenced?</value>
+  </data>
+  <data name="FunctionalRequirementsLeaveRoomForContractor" xml:space="preserve">
+    <value>Do functional requirements leave room for the contractor?</value>
+  </data>
+  <data name="NonFunctionalRequirementsLeaveRoomForContractor" xml:space="preserve">
+    <value>Do non-functional requirements leave room for the contractor?</value>
+  </data>
+  <data name="ExecutivesAmongShareholders" xml:space="preserve">
+    <value>Are there executives among the shareholders?</value>
+  </data>
+  <data name="ExecutivesSetGoals" xml:space="preserve">
+    <value>Have executives set goals?</value>
+  </data>
+  <data name="GoalsAccepted" xml:space="preserve">
+    <value>Have all the goals been accepted?</value>
+  </data>
+  <data name="ContractAllowsClientRequirementRenegotiation" xml:space="preserve">
+    <value>Does the contract specify the possibility of renegotiating the client's requirements?</value>
+  </data>
+  <data name="ContractAllowsContractorRequirementRenegotiation" xml:space="preserve">
+    <value>Does the contract specify the possibility of renegotiating the requirements on the part of the contractor?</value>
+  </data>
+  <data name="GoalsLinkedToShareholders" xml:space="preserve">
+    <value>Have the goals been linked to shareholders?</value>
+  </data>
+  <data name="RequirementsLinkedToGoals" xml:space="preserve">
+    <value>Are the requirements linked to the goals?</value>
+  </data>
+  <data name="FunctionalRequirementsInterrelated" xml:space="preserve">
+    <value>Are the functional requirements interrelated?</value>
+  </data>
+  <data name="FunctionalRequirementsLinkedToNonFunctional" xml:space="preserve">
+    <value>Have functional requirements been linked to non-functional ones?</value>
+  </data>
+  <data name="NonFunctionalRequirementsInterrelated" xml:space="preserve">
+    <value>Are non-functional requirements interrelated?</value>
+  </data>
+  <data name="FunctionalRequirementsNumbered" xml:space="preserve">
+    <value>Have the functional requirements been numbered (identified with identifiers)?</value>
+  </data>
+  <data name="NonFunctionalRequirementsNumbered" xml:space="preserve">
+    <value>Have non-functional requirements been numbered (identified with identifiers)?</value>
+  </data>
+  <data name="FunctionalRequirementsHaveSpecificResults" xml:space="preserve">
+    <value>Do all functional requirements have specific results?</value>
+  </data>
+  <data name="NonFunctionalRequirementsSpecificallySpecified" xml:space="preserve">
+    <value>Are all non-functional requirements specifically specified?</value>
+  </data>
+  <data name="AcceptanceCriteriaSpecified" xml:space="preserve">
+    <value>Are the acceptance criteria specified?</value>
+  </data>
+  <data name="EmergencyTestingConditionsSpecified" xml:space="preserve">
+    <value>Are there conditions for testing for emergency situations?</value>
+  </data>
+  <data name="CriticalSituationTestingRequirements" xml:space="preserve">
+    <value>Are the requirements for critical situations testable?</value>
+  </data>
+  <data name="FailureTestingRequirements" xml:space="preserve">
+    <value>Are the failure requirements testable?</value>
+  </data>
+  <data name="RequirementsDoNotReferToNonExistentSystems" xml:space="preserve">
+    <value>Do the requirements refer to non-existent or inaccessible systems?</value>
+  </data>
+  <data name="RequirementsDoNotReferToNonExistentLegalSolutions" xml:space="preserve">
+    <value>Do the requirements not refer to non-existent legal solutions?</value>
+  </data>
+  <data name="RequirementsDoNotReferToUnspecifiedDevelopmentOpportunities" xml:space="preserve">
+    <value>Do the requirements not refer to unspecified development opportunities?</value>
+  </data>
+  <data name="GlossaryClassesIdentified" xml:space="preserve">
+    <value>Have all the classes in the glossary been identified?</value>
+  </data>
+  <data name="RequirementsSpecificationClassesIdentified" xml:space="preserve">
+    <value>Have all classes from the requirements specification been identified?</value>
+  </data>
+  <data name="AdditionalSourceClassesIdentified" xml:space="preserve">
+    <value>Have all classes from additional sources been identified?</value>
+  </data>
+  <data name="GlossaryPropertiesIdentified" xml:space="preserve">
+    <value>Have all the properties in the glossary been identified?</value>
+  </data>
+  <data name="RequirementsSpecificationPropertiesIdentified" xml:space="preserve">
+    <value>Have all properties from the requirements specification been identified?</value>
+  </data>
+  <data name="AdditionalSourcePropertiesIdentified" xml:space="preserve">
+    <value>Have all properties from additional sources been identified?</value>
+  </data>
+  <data name="GlossaryPossibilitiesIdentified" xml:space="preserve">
+    <value>Have all the possibilities from the glossary been identified?</value>
+  </data>
+  <data name="RequirementsSpecificationPossibilitiesIdentified" xml:space="preserve">
+    <value>Have all the possibilities from the requirements specification been identified?</value>
+  </data>
+  <data name="AdditionalSourcePossibilitiesIdentified" xml:space="preserve">
+    <value>Have all the opportunities from additional sources been identified?</value>
+  </data>
+  <data name="PropertyTypesSpecified" xml:space="preserve">
+    <value>Are property types specified?</value>
+  </data>
+  <data name="MultiplicityPropertiesSpecified" xml:space="preserve">
+    <value>Are multiplicity properties specified?</value>
+  </data>
+  <data name="PropertyValuesSpecified" xml:space="preserve">
+    <value>Are property values (default/calculated expressions) specified?</value>
+  </data>
+  <data name="PossibilityStereotypesDefined" xml:space="preserve">
+    <value>Have stereotypes of possibility been defined?</value>
+  </data>
+  <data name="ArgumentsSpecified" xml:space="preserve">
+    <value>Are arguments specified?</value>
+  </data>
+  <data name="ResultTypesSpecified" xml:space="preserve">
+    <value>Are types of results specified?</value>
+  </data>
+  <data name="EnumerationTypesDefined" xml:space="preserve">
+    <value>Are enumeration types defined?</value>
+  </data>
+  <data name="StructuralTypesDefined" xml:space="preserve">
+    <value>Are structural types defined?</value>
+  </data>
+  <data name="InterfaceTypesDefined" xml:space="preserve">
+    <value>Are interface types defined?</value>
+  </data>
+  <data name="GeneralizedClassesIdentified" xml:space="preserve">
+    <value>Have generalized classes been identified?</value>
+  </data>
+  <data name="SpecializedClassesIdentified" xml:space="preserve">
+    <value>Have specialized classes been identified?</value>
+  </data>
+  <data name="ClassHierarchyIdentified" xml:space="preserve">
+    <value>Has the full class hierarchy been identified?</value>
+  </data>
+  <data name="AggregationClassesIdentified" xml:space="preserve">
+    <value>Have aggregation classes been identified?</value>
+  </data>
+  <data name="RelationshipObligationSpecified" xml:space="preserve">
+    <value>Is the obligation/optionality of the relationship specified?</value>
+  </data>
+  <data name="RelationshipMultiplicityDefined" xml:space="preserve">
+    <value>Is the multiplicity of the relationship defined?</value>
+  </data>
+  <data name="ClassAssociationsIdentified" xml:space="preserve">
+    <value>Have associations between classes been identified?</value>
+  </data>
+  <data name="AssociationNamesSpecified" xml:space="preserve">
+    <value>Are association names specified?</value>
+  </data>
+  <data name="AssociationDirectionDetermined" xml:space="preserve">
+    <value>Has the direction of association been determined?</value>
+  </data>
+  <data name="IdentifiedClassesSpecified" xml:space="preserve">
+    <value>Have all identified classes been specified?</value>
+  </data>
+  <data name="ClassShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each class have a short description?</value>
+  </data>
+  <data name="IdentifiedPropertiesSpecified" xml:space="preserve">
+    <value>Have all identified properties been specified?</value>
+  </data>
+  <data name="PropertySpecificationsComplete" xml:space="preserve">
+    <value>Do the specified properties have a complete specification?</value>
+  </data>
+  <data name="IdentifiedOpportunitiesSpecified" xml:space="preserve">
+    <value>Have all identified opportunities been specified?</value>
+  </data>
+  <data name="OpportunitySpecificationsComplete" xml:space="preserve">
+    <value>Do the specified capabilities have a complete specification?</value>
+  </data>
+  <data name="IdentifiedRelationshipsSpecified" xml:space="preserve">
+    <value>Have all identified relationships been specified?</value>
+  </data>
+  <data name="RelationshipSpecificationsComplete" xml:space="preserve">
+    <value>Do the specified relationships have a complete specification?</value>
+  </data>
+  <data name="ClassesCorrectlyDefined" xml:space="preserve">
+    <value>Are the classes correctly defined?</value>
+  </data>
+  <data name="PropertiesCorrectlyDefined" xml:space="preserve">
+    <value>Are the properties correctly defined?</value>
+  </data>
+  <data name="PossibilitiesCorrectlyDefined" xml:space="preserve">
+    <value>Are the possibilities correctly defined?</value>
+  </data>
+  <data name="RelationshipsCorrectlyDefined" xml:space="preserve">
+    <value>Are the relationships correctly defined?</value>
+  </data>
+  <data name="ParametersCorrectlyDefined" xml:space="preserve">
+    <value>Are the parameters correctly defined?</value>
+  </data>
+  <data name="TypesCorrectlyDefined" xml:space="preserve">
+    <value>Are the types correctly defined?</value>
+  </data>
+  <data name="ClassModelStandardsCompliance" xml:space="preserve">
+    <value>Was the class model made according to the standards?</value>
+  </data>
+  <data name="ClassDiagramFormalRulesCompliance" xml:space="preserve">
+    <value>Was the class diagram made according to formal rules?</value>
+  </data>
+  <data name="ClassSpecificationStandardsCompliance" xml:space="preserve">
+    <value>Was the class specification made in accordance with the standards?</value>
+  </data>
+  <data name="ClassesRelatedByRelationships" xml:space="preserve">
+    <value>Are all classes related by relationships?</value>
+  </data>
+  <data name="RelationshipPropertiesDefined" xml:space="preserve">
+    <value>Are properties that illustrate relationships defined?</value>
+  </data>
+  <data name="ClassDiagramsConsistent" xml:space="preserve">
+    <value>Are class diagrams consistent?</value>
+  </data>
+  <data name="ConsistentClassDiagram" xml:space="preserve">
+    <value>Is there one consistent class diagram?</value>
+  </data>
+  <data name="ClassNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the class names consistent with the names in the requirements specification?</value>
+  </data>
+  <data name="PropertyNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the property names consistent with the names in the requirements specification?</value>
+  </data>
+  <data name="CapabilityNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the capability names consistent with the names in the requirements specification?</value>
+  </data>
+  <data name="RelationshipTypesAndNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the relationship types and names consistent with the requirements specification?</value>
+  </data>
+  <data name="PropertyShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each property have a short description?</value>
+  </data>
+  <data name="OptionShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each option have a short description?</value>
+  </data>
+  <data name="AccountShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each account have a short description?</value>
+  </data>
+  <data name="DescriptionsUnderstandable" xml:space="preserve">
+    <value>Are the descriptions understandable?</value>
+  </data>
+  <data name="NamesUnderstandable" xml:space="preserve">
+    <value>Are the names understandable?</value>
+  </data>
+  <data name="NamesNotTooLong" xml:space="preserve">
+    <value>Aren't they too long?</value>
+  </data>
+  <data name="SynonymsResolvedCorrectly" xml:space="preserve">
+    <value>Are synonyms solved correctly?</value>
+  </data>
+  <data name="GeneralizedTypesUsed" xml:space="preserve">
+    <value>Are generalized types used?</value>
+  </data>
+  <data name="GeneralizedContainerTypesNotation" xml:space="preserve">
+    <value>Is there a generalized notation of container types?</value>
+  </data>
+  <data name="GeneralizedClassesNotTooSpecific" xml:space="preserve">
+    <value>Aren't generalized classes too specifically?</value>
+  </data>
+  <data name="AggregationClassesNotTooDetailed" xml:space="preserve">
+    <value>Aren't aggregation classes defined in too much detail?</value>
+  </data>
+  <data name="DiagramsNotTooTightlyDrawn" xml:space="preserve">
+    <value>Aren't the diagrams too tightly drawn?</value>
+  </data>
+  <data name="SpecificationAllowsClassAdditionOrRemoval" xml:space="preserve">
+    <value>Does the specification allow for easy addition/removal of classes?</value>
+  </data>
+  <data name="ClassesHaveGlossaryReferences" xml:space="preserve">
+    <value>Do classes have glossary references?</value>
+  </data>
+  <data name="PropertiesHaveSpecificReferences" xml:space="preserve">
+    <value>Do properties have specific references?</value>
+  </data>
+  <data name="CapabilitiesHaveSpecificReferences" xml:space="preserve">
+    <value>Do the capabilities have specific references?</value>
+  </data>
+  <data name="RelationshipsHaveSpecificReferences" xml:space="preserve">
+    <value>Do relationships have specific references?</value>
+  </data>
+  <data name="ClassesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do classes have separate identifiers in addition to names?</value>
+  </data>
+  <data name="RelationshipsHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do relationships have separate identifiers in addition to names?</value>
+  </data>
+  <data name="UsersMappedToActors" xml:space="preserve">
+    <value>Are all users mapped into actors?</value>
+  </data>
+  <data name="ActorsNotMissing" xml:space="preserve">
+    <value>Are there still some actors missing?</value>
+  </data>
+  <data name="FunctionalRequirementsMappedToUseCases" xml:space="preserve">
+    <value>Are all functional requirements mapped in use cases?</value>
+  </data>
+  <data name="UseCasesNotMissing" xml:space="preserve">
+    <value>Are there still some use cases missing?</value>
+  </data>
+  <data name="GeneralizedActorsIdentified" xml:space="preserve">
+    <value>Have generalized actors been identified?</value>
+  </data>
+  <data name="SpecializedActorsIdentified" xml:space="preserve">
+    <value>Have specialized actors been identified? Or exhaustive?</value>
+  </data>
+  <data name="GeneralizedAndSpecializedActorRelationshipsShown" xml:space="preserve">
+    <value>Is the relationship between generalized and specialized actors shown?</value>
+  </data>
+  <data name="GeneralizedUseCasesIdentified" xml:space="preserve">
+    <value>Have generalized use cases been identified?</value>
+  </data>
+  <data name="SpecializedUseCasesIdentified" xml:space="preserve">
+    <value>Have specialized use cases been identified? Or exhaustive?</value>
+  </data>
+  <data name="GeneralizedAndSpecializedUseCaseRelationshipsShown" xml:space="preserve">
+    <value>Are the relationships between generalized and specialized cases shown?</value>
+  </data>
+  <data name="ComplexUseCasesIdentified" xml:space="preserve">
+    <value>Have complex use cases been identified?</value>
+  </data>
+  <data name="ComponentUseCasesIdentified" xml:space="preserve">
+    <value>Have component use cases been identified? Or exhaustive?</value>
+  </data>
+  <data name="ComplexAndComponentUseCaseRelationshipsShown" xml:space="preserve">
+    <value>Are the relationships between complex and component cases shown?</value>
+  </data>
+  <data name="ExtensibleUseCasesIdentified" xml:space="preserve">
+    <value>Have you identified extensible use cases?</value>
+  </data>
+  <data name="ExtensibleComponentUseCasesIdentified" xml:space="preserve">
+    <value>Have extensible component use cases been identified? Or exhaustive?</value>
+  </data>
+  <data name="IdentifiedActorsSpecified" xml:space="preserve">
+    <value>Have all identified actors been specified?</value>
+  </data>
+  <data name="ActorShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each actor have a short description?</value>
+  </data>
+  <data name="IdentifiedUseCasesSpecified" xml:space="preserve">
+    <value>Have all identified use cases been specified?</value>
+  </data>
+  <data name="UseCaseSpecificationsComplete" xml:space="preserve">
+    <value>Do the specified use cases have a complete specification?</value>
+  </data>
+  <data name="UseCasesCorrectlyDefined" xml:space="preserve">
+    <value>Are the use cases defined correctly?</value>
+  </data>
+  <data name="ActorsCorrectlyDefined" xml:space="preserve">
+    <value>Are the actors defined correctly?</value>
+  </data>
+  <data name="ActorUseCaseRelationshipsCorrectlyDefined" xml:space="preserve">
+    <value>Are the relationships of actors and use cases correctly defined?</value>
+  </data>
+  <data name="UseCaseModelStandardsCompliance" xml:space="preserve">
+    <value>Was the use case model made to standards?</value>
+  </data>
+  <data name="UseCaseDiagramFormalRulesCompliance" xml:space="preserve">
+    <value>Was the use case diagram made according to formal rules?</value>
+  </data>
+  <data name="UseCaseSpecificationStandardsCompliance" xml:space="preserve">
+    <value>Is the use case specification done to the standards?</value>
+  </data>
+  <data name="ActorsConnectedToUseCases" xml:space="preserve">
+    <value>Is every actor connected to some kind of use case?</value>
+  </data>
+  <data name="UseCasesConnectedToActors" xml:space="preserve">
+    <value>Is each use case connected to an actor (even indirectly)?</value>
+  </data>
+  <data name="SpecificationConsistentWithDiagram" xml:space="preserve">
+    <value>Is the specification consistent with the diagram?</value>
+  </data>
+  <data name="UseCasesAlignedWithFunctionalRequirements" xml:space="preserve">
+    <value>Are the use cases aligned with the functional requirements?</value>
+  </data>
+  <data name="ActorDefinitionsMatchUserDefinitions" xml:space="preserve">
+    <value>Do the actor definitions match the user definitions?</value>
+  </data>
+  <data name="ActorDefinitionsAppearAsClasses" xml:space="preserve">
+    <value>Do actor definitions appear as classes in the class model?</value>
+  </data>
+  <data name="UseCasesTiedToActorCapabilities" xml:space="preserve">
+    <value>Are use cases tied to the respective capabilities of the actors?</value>
+  </data>
+  <data name="UseCaseShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each use case have a brief description?</value>
+  </data>
+  <data name="SpecificationAllowsElementAdditionOrRemoval" xml:space="preserve">
+    <value>Does the specification allow for easy addition/removal of elements?</value>
+  </data>
+  <data name="UseCasesHaveFunctionalRequirementReferences" xml:space="preserve">
+    <value>Do the use cases have references to functional requirements?</value>
+  </data>
+  <data name="UseCasesHaveMutualReferences" xml:space="preserve">
+    <value>Do use cases have references between them?</value>
+  </data>
+  <data name="UseCasesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do use cases have separate identifiers in addition to names?</value>
+  </data>
+  <data name="ActorsHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do actors have separate IDs in addition to their names?</value>
+  </data>
+  <data name="EachCaseHasSpecificInteraction" xml:space="preserve">
+    <value>Does each case have a specific interaction?</value>
+  </data>
+  <data name="InteractionsNotMissing" xml:space="preserve">
+    <value>Are there still some interactions missing?</value>
+  </data>
+  <data name="ActorsShareholderInInteraction" xml:space="preserve">
+    <value>Is every actor a shareholder in the interaction?</value>
+  </data>
+  <data name="SystemComponentsInvolvedInInteraction" xml:space="preserve">
+    <value>Are the defined system components involved in the interaction?</value>
+  </data>
+  <data name="ShareholdersNotMissing" xml:space="preserve">
+    <value>Aren't there any shareholders missing?</value>
+  </data>
+  <data name="DataMappedInMessages" xml:space="preserve">
+    <value>Is all the data passed mapped in the messages?</value>
+  </data>
+  <data name="FeedbackMessagesSpecified" xml:space="preserve">
+    <value>Are the feedback messages (confirmations, replies, notifications) specified?</value>
+  </data>
+  <data name="MessagesNotMissing" xml:space="preserve">
+    <value>Are there any other messages missing?</value>
+  </data>
+  <data name="EachMessageHasSpecificEffect" xml:space="preserve">
+    <value>Does each message have a specific effect?</value>
+  </data>
+  <data name="FlowConditionsFixed" xml:space="preserve">
+    <value>Are all flow conditions fixed?</value>
+  </data>
+  <data name="ActorMessagesHaveFeedbackMessages" xml:space="preserve">
+    <value>Does every message from an actor have a feedback message?</value>
+  </data>
+  <data name="IdentifiedInteractionsSpecified" xml:space="preserve">
+    <value>Have all identified interactions been specified?</value>
+  </data>
+  <data name="InteractionSpecificCircumstances" xml:space="preserve">
+    <value>Does each interaction have specific circumstances?</value>
+  </data>
+  <data name="InteractionSpecificPurpose" xml:space="preserve">
+    <value>Does each interaction have a specific purpose?</value>
+  </data>
+  <data name="InteractionShortDescriptionsProvided" xml:space="preserve">
+    <value>Does every interaction have a short description?</value>
+  </data>
+  <data name="InteractionsCorrectlyDefined" xml:space="preserve">
+    <value>Are interactions defined correctly?</value>
+  </data>
+  <data name="InteractionShareholdersCorrectlyDefined" xml:space="preserve">
+    <value>Are the shareholders of the interaction correctly defined?</value>
+  </data>
+  <data name="MessageFlowsValid" xml:space="preserve">
+    <value>Are message flows valid?</value>
+  </data>
+  <data name="InteractionModelStandardsCompliance" xml:space="preserve">
+    <value>Was the interaction model made according to standards?</value>
+  </data>
+  <data name="InteractionDiagramsFormalRulesCompliance" xml:space="preserve">
+    <value>Were the interaction diagrams made according to formal rules?</value>
+  </data>
+  <data name="InteractionSpecificationFormalRulesCompliance" xml:space="preserve">
+    <value>Was the interaction specification made in accordance with formal rules?</value>
+  </data>
+  <data name="InteractionNamesAndClassesMatch" xml:space="preserve">
+    <value>Do the names and classes used in all interactions match each other?</value>
+  </data>
+  <data name="MessageFlowInternallyConsistent" xml:space="preserve">
+    <value>Is the message flow internally consistent?</value>
+  </data>
+  <data name="InteractionActorsAndUseCasesMatch" xml:space="preserve">
+    <value>Do the number and classes of actors in interactions and use cases match each other?</value>
+  </data>
+  <data name="InteractionContentMatchesUseCaseDescriptions" xml:space="preserve">
+    <value>Does the interaction content match the descriptions of the use cases?</value>
+  </data>
+  <data name="InteractionParticipantDefinitionsConformToRequirements" xml:space="preserve">
+    <value>Do the definitions of interaction participants conform to the requirements specification?</value>
+  </data>
+  <data name="MessageDefinitionsConformToRequirements" xml:space="preserve">
+    <value>Do the message definitions conform to the requirements specification?</value>
+  </data>
+  <data name="InteractionParticipantDefinitionsAppearAsClasses" xml:space="preserve">
+    <value>Do interaction participant definitions appear as classes in the class model?</value>
+  </data>
+  <data name="MessageProcessingCapabilitiesForRecipients" xml:space="preserve">
+    <value>Does message processing have the right capabilities for recipients?</value>
+  </data>
+  <data name="MessagesRelatedToEvents" xml:space="preserve">
+    <value>Are messages related to events?</value>
+  </data>
+  <data name="SequenceAndCollaborationDiagramsCompatible" xml:space="preserve">
+    <value>Are sequence and collaboration diagrams compatible with each other?</value>
+  </data>
+  <data name="InteractionsHaveUseCaseReferences" xml:space="preserve">
+    <value>Do the interactions have references to use cases/functional requirements?</value>
+  </data>
+  <data name="InteractionsHaveMutualReferences" xml:space="preserve">
+    <value>Do interactions have mutual references?</value>
+  </data>
+  <data name="InteractionsHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do interactions have separate identifiers in addition to names?</value>
+  </data>
+  <data name="MessagesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do messages have separate identifiers in addition to names?</value>
+  </data>
+  <data name="EachCaseHasSpecificActivity" xml:space="preserve">
+    <value>Does each case have a specific activity?</value>
+  </data>
+  <data name="ActivitiesNotMissing" xml:space="preserve">
+    <value>Are there any other activities missing?</value>
+  </data>
+  <data name="ShareholdersHaveResponsibilityAreas" xml:space="preserve">
+    <value>Does each shareholder (animated) have their own area of responsibility?</value>
+  </data>
+  <data name="ActivitiesInSpecificResponsibilityAreas" xml:space="preserve">
+    <value>Is each activity in a specific area of responsibility?</value>
+  </data>
+  <data name="InterfacesForActivityAreaTransitions" xml:space="preserve">
+    <value>Is there an interface for each transition between activity areas?</value>
+  </data>
+  <data name="SpecificStartForEachFlow" xml:space="preserve">
+    <value>Is there a specific start for each flow?</value>
+  </data>
+  <data name="EndForEachFlow" xml:space="preserve">
+    <value>Is there an end for each flow?</value>
+  </data>
+  <data name="ReflowingConditionsSpecified" xml:space="preserve">
+    <value>Is each reflowing condition specified?</value>
+  </data>
+  <data name="IdentifiedActivitiesSpecified" xml:space="preserve">
+    <value>Have all identified activities been specified?</value>
+  </data>
+  <data name="ActivitySpecificCircumstances" xml:space="preserve">
+    <value>Does each activity have specific circumstances?</value>
+  </data>
+  <data name="ActivitySpecificGoals" xml:space="preserve">
+    <value>Does each activity have a specific goal?</value>
+  </data>
+  <data name="ActivityShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each activity have a short description?</value>
+  </data>
+  <data name="ActivitiesCorrectlyDefined" xml:space="preserve">
+    <value>Are the activities defined correctly?</value>
+  </data>
+  <data name="ActivityShareholdersCorrectlyDefined" xml:space="preserve">
+    <value>Are the shareholders of the activity correctly defined?</value>
+  </data>
+  <data name="ActivityFlowsCorrect" xml:space="preserve">
+    <value>Are activity flows correct?</value>
+  </data>
+  <data name="ActivityModelStandardsCompliance" xml:space="preserve">
+    <value>Was the activity model made in accordance with the standards?</value>
+  </data>
+  <data name="ActivityDiagramsFormalRulesCompliance" xml:space="preserve">
+    <value>Were the activity diagrams made according to formal rules?</value>
+  </data>
+  <data name="ActivitySpecificationFormalRulesCompliance" xml:space="preserve">
+    <value>Was the activity specification made in accordance with formal rules?</value>
+  </data>
+  <data name="ActivityNamesAndClassesMatch" xml:space="preserve">
+    <value>Do the names and classes used in all activities match each other?</value>
+  </data>
+  <data name="ActivityFlowInternallyConsistent" xml:space="preserve">
+    <value>Is the flow of activity internally consistent?</value>
+  </data>
+  <data name="ActivityAndUseCaseNamesMatch" xml:space="preserve">
+    <value>Do the amount and names of activities and use cases match?</value>
+  </data>
+  <data name="ActivityContentMatchesUseCaseDescriptions" xml:space="preserve">
+    <value>Does the activity content match the descriptions of the use cases?</value>
+  </data>
+  <data name="ActivityParticipantDefinitionsConformToRequirements" xml:space="preserve">
+    <value>Do the definitions of activity participants comply with the requirements specification?</value>
+  </data>
+  <data name="ActivityFlowsAlignedWithRequirements" xml:space="preserve">
+    <value>Are the activity flows aligned with the requirements specification?</value>
+  </data>
+  <data name="ActivityParticipantDefinitionsAppearAsClasses" xml:space="preserve">
+    <value>Do activity participant definitions appear as classes in the class model?</value>
+  </data>
+  <data name="ActivitiesHaveAudienceCapabilities" xml:space="preserve">
+    <value>Do the activities have the right capabilities for the audience?</value>
+  </data>
+  <data name="ActivityTransitionsRelatedToEvents" xml:space="preserve">
+    <value>Are activity transitions related to events?</value>
+  </data>
+  <data name="ActivitiesHaveUseCaseReferences" xml:space="preserve">
+    <value>Do the activities have references for use cases/functional requirements?</value>
+  </data>
+  <data name="ActivitiesHaveMutualReferences" xml:space="preserve">
+    <value>Do activities have mutual references?</value>
+  </data>
+  <data name="ActivitiesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do activities have separate IDs in addition to names?</value>
+  </data>
+  <data name="InterfacesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do interfaces have separate identifiers in addition to names?</value>
+  </data>
+  <data name="ActiveClassesIdentified" xml:space="preserve">
+    <value>Have all active classes been identified?</value>
+  </data>
+  <data name="StateMachinesDefinedForActiveClasses" xml:space="preserve">
+    <value>Are state machines defined for all active classes?</value>
+  </data>
+  <data name="RecessedStateMachinesDefined" xml:space="preserve">
+    <value>Are the required recessed state machines defined?</value>
+  </data>
+  <data name="ActiveClassStatesIdentified" xml:space="preserve">
+    <value>Have all active class states been identified?</value>
+  </data>
+  <data name="PropertyRelatedStatesIdentified" xml:space="preserve">
+    <value>Have all property related states been identified?</value>
+  </data>
+  <data name="CapabilityStatesIdentified" xml:space="preserve">
+    <value>Have all capability states been identified?</value>
+  </data>
+  <data name="MessageForwardingStatesDefined" xml:space="preserve">
+    <value>Have all the states related to message forwarding been defined?</value>
+  </data>
+  <data name="InitialStateForEachStateMachine" xml:space="preserve">
+    <value>Is there an initial state for each state machine?</value>
+  </data>
+  <data name="MessageForwardingEventsIdentified" xml:space="preserve">
+    <value>Have all message forwarding events been identified?</value>
+  </data>
+  <data name="TerminationEventsIdentified" xml:space="preserve">
+    <value>Have all termination events been identified?</value>
+  </data>
+  <data name="TemporalEventsIdentified" xml:space="preserve">
+    <value>Have all temporal events been identified?</value>
+  </data>
+  <data name="ExceptionalEventsIdentified" xml:space="preserve">
+    <value>Have all exceptional events been identified?</value>
+  </data>
+  <data name="EachEventHasTransition" xml:space="preserve">
+    <value>Does every event have a transition?</value>
+  </data>
+  <data name="EachPassHasEvent" xml:space="preserve">
+    <value>Does every pass have an event?</value>
+  </data>
+  <data name="TransitionConditionsForSameEvent" xml:space="preserve">
+    <value>Do transitions with the same events from the same state have conditions?</value>
+  </data>
+  <data name="TransitionActionsSpecified" xml:space="preserve">
+    <value>Are there any required actions for transitions?</value>
+  </data>
+  <data name="StateMachineSpecificationsProvided" xml:space="preserve">
+    <value>Is there a specification for each machine?</value>
+  </data>
+  <data name="StateMachineShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each state machine have a short description?</value>
+  </data>
+  <data name="IdentifiedStatesSpecified" xml:space="preserve">
+    <value>Have all identified states been specified?</value>
+  </data>
+  <data name="StateSpecificationsComplete" xml:space="preserve">
+    <value>Do the specified states have a complete specification?</value>
+  </data>
+  <data name="IdentifiedEventsSpecified" xml:space="preserve">
+    <value>Have all identified events been specified?</value>
+  </data>
+  <data name="EventSpecificationsComplete" xml:space="preserve">
+    <value>Do the specified events have a complete specification?</value>
+  </data>
+  <data name="IdentifiedPassagesSpecified" xml:space="preserve">
+    <value>Have all identified passages been specified?</value>
+  </data>
+  <data name="PassageSpecificationsComplete" xml:space="preserve">
+    <value>Do the specified passages have a complete specification?</value>
+  </data>
+  <data name="StateMachinesCorrectlyDefined" xml:space="preserve">
+    <value>Are state machines correctly defined?</value>
+  </data>
+  <data name="StatesCorrectlyDefined" xml:space="preserve">
+    <value>Are states defined correctly?</value>
+  </data>
+  <data name="EventsCorrectlyDefined" xml:space="preserve">
+    <value>Are the events correctly defined?</value>
+  </data>
+  <data name="TransitionsCorrectlyDefined" xml:space="preserve">
+    <value>Are transitions correctly defined?</value>
+  </data>
+  <data name="StateModelStandardsCompliance" xml:space="preserve">
+    <value>Was the state model made to standards?</value>
+  </data>
+  <data name="StateDiagramFormalRulesCompliance" xml:space="preserve">
+    <value>Was the state diagram made according to formal rules?</value>
+  </data>
+  <data name="ConditionSpecificationStandardsCompliance" xml:space="preserve">
+    <value>Was the condition specification made in accordance with the standards?</value>
+  </data>
+  <data name="StateDiagramsInternallyConsistent" xml:space="preserve">
+    <value>Are all state diagrams internally consistent?</value>
+  </data>
+  <data name="RecessedStateMachinesConsistentWithParent" xml:space="preserve">
+    <value>Are the recessed state machines consistent with the parent ones?</value>
+  </data>
+  <data name="StateNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the state names consistent with the names in the requirements specification?</value>
+  </data>
+  <data name="EventNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the event names consistent with the names in the requirements specification?</value>
+  </data>
+  <data name="ActionNamesConsistentWithRequirements" xml:space="preserve">
+    <value>Are the action names consistent with the requirements specification?</value>
+  </data>
+  <data name="StateMachinesAssignedToClasses" xml:space="preserve">
+    <value>Are state machines assigned to classes?</value>
+  </data>
+  <data name="ClassPropertiesForStates" xml:space="preserve">
+    <value>Are class properties defined to store states?</value>
+  </data>
+  <data name="EventClassesDefined" xml:space="preserve">
+    <value>Are event classes defined?</value>
+  </data>
+  <data name="CapabilitiesForEventHandling" xml:space="preserve">
+    <value>Have capabilities been defined to handle events?</value>
+  </data>
+  <data name="CapabilitiesForActionsDefined" xml:space="preserve">
+    <value>Have the capabilities corresponding to the actions been defined?</value>
+  </data>
+  <data name="StateShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each state have a short description?</value>
+  </data>
+  <data name="EventShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each event have a short description?</value>
+  </data>
+  <data name="PassageShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each passage have a short description?</value>
+  </data>
+  <data name="StateMachinesHaveClassReferences" xml:space="preserve">
+    <value>Do state machines have class references?</value>
+  </data>
+  <data name="StatesHaveSpecificReferences" xml:space="preserve">
+    <value>Do states have specific references?</value>
+  </data>
+  <data name="EventsHaveSpecificReferences" xml:space="preserve">
+    <value>Do the events have specific references?</value>
+  </data>
+  <data name="TransitionsHaveSpecificReferences" xml:space="preserve">
+    <value>Do the transitions have specific references?</value>
+  </data>
+  <data name="StateMachinesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do state machines have separate identifiers in addition to names?</value>
+  </data>
+  <data name="StatesHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do states have separate identifiers in addition to names?</value>
+  </data>
+  <data name="EventsHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do events have separate IDs in addition to names?</value>
+  </data>
+  <data name="ComponentForEachFunctionalRequirement" xml:space="preserve">
+    <value>Is there a component defined for each functional requirement?</value>
+  </data>
+  <data name="ComponentRelationshipsIdentified" xml:space="preserve">
+    <value>Have all the relationships between components been identified?</value>
+  </data>
+  <data name="ClassesAssignedToComponents" xml:space="preserve">
+    <value>Have all classes been assigned to components?</value>
+  </data>
+  <data name="ComponentsSpecified" xml:space="preserve">
+    <value>Have all components been specified?</value>
+  </data>
+  <data name="ComponentShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each component have a short description?</value>
+  </data>
+  <data name="ComponentSpecificationsComplete" xml:space="preserve">
+    <value>Are the component specifications complete?</value>
+  </data>
+  <data name="ComponentDefinitionsCorrect" xml:space="preserve">
+    <value>Are component definitions correct?</value>
+  </data>
+  <data name="ComponentModelStandardsCompliance" xml:space="preserve">
+    <value>Was the component model made to standards?</value>
+  </data>
+  <data name="ComponentDiagramFormalRulesCompliance" xml:space="preserve">
+    <value>Was the component diagram made according to formal rules?</value>
+  </data>
+  <data name="ComponentSpecificationFormalRulesCompliance" xml:space="preserve">
+    <value>Was the component specification made in accordance with formal rules?</value>
+  </data>
+  <data name="ComponentsRelatedByRelationships" xml:space="preserve">
+    <value>Are all components related by relationships?</value>
+  </data>
+  <data name="DependenciesNotCyclical" xml:space="preserve">
+    <value>Aren't dependencies cyclical?</value>
+  </data>
+  <data name="ComponentModelConsistentWithFunctionalRequirements" xml:space="preserve">
+    <value>Is the component model consistent with the functional requirements?</value>
+  </data>
+  <data name="ComponentModelConsistentWithClassModel" xml:space="preserve">
+    <value>Is the component model consistent with the class model?</value>
+  </data>
+  <data name="ComponentModelConsistentWithFunctionalModel" xml:space="preserve">
+    <value>Is the component model consistent with the functional model?</value>
+  </data>
+  <data name="DiagramsProvided" xml:space="preserve">
+    <value>Are there any diagrams?</value>
+  </data>
+  <data name="ModuleDivisionAppropriate" xml:space="preserve">
+    <value>Is the division into modules appropriate?</value>
+  </data>
+  <data name="SpecificationAllowsComponentAdditionOrRemoval" xml:space="preserve">
+    <value>Does the specification allow for easy addition/removal of components?</value>
+  </data>
+  <data name="ComponentsHaveRequirementReferences" xml:space="preserve">
+    <value>Do the components have references to the requirements specification?</value>
+  </data>
+  <data name="ComponentsHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do components have separate identifiers in addition to names?</value>
+  </data>
+  <data name="FormsFromFunctionalModelDefined" xml:space="preserve">
+    <value>Have all forms resulting from the functional model been defined?</value>
+  </data>
+  <data name="FormsFromDataModelDefined" xml:space="preserve">
+    <value>Have all forms resulting from the data model been defined?</value>
+  </data>
+  <data name="BasicDialoguesDefined" xml:space="preserve">
+    <value>Are basic dialogues defined?</value>
+  </data>
+  <data name="AuxiliaryDialoguesDefined" xml:space="preserve">
+    <value>Are auxiliary dialogues defined?</value>
+  </data>
+  <data name="BasicReportsDefined" xml:space="preserve">
+    <value>Are basic reports defined?</value>
+  </data>
+  <data name="SecondaryReportsDefined" xml:space="preserve">
+    <value>Are secondary reports defined?</value>
+  </data>
+  <data name="NavigationBetweenFormsDefined" xml:space="preserve">
+    <value>Is there a definition of navigation between forms?</value>
+  </data>
+  <data name="UserCommandsDefined" xml:space="preserve">
+    <value>Are user commands defined?</value>
+  </data>
+  <data name="MenuStructureDefined" xml:space="preserve">
+    <value>Is there a menu structure defined?</value>
+  </data>
+  <data name="ToolbarsDefined" xml:space="preserve">
+    <value>Are toolbars defined?</value>
+  </data>
+  <data name="NavigationDiagramsCreated" xml:space="preserve">
+    <value>Have navigation diagrams been made?</value>
+  </data>
+  <data name="NavigationDiagramsComplete" xml:space="preserve">
+    <value>Are navigation diagrams complete?</value>
+  </data>
+  <data name="FormDraftsCreated" xml:space="preserve">
+    <value>Have drafts of forms been made?</value>
+  </data>
+  <data name="FormDesignsComplete" xml:space="preserve">
+    <value>Are the form designs complete?</value>
+  </data>
+  <data name="DraftReportsCreated" xml:space="preserve">
+    <value>Have draft reports been prepared?</value>
+  </data>
+  <data name="DraftReportsComplete" xml:space="preserve">
+    <value>Are the draft reports complete?</value>
+  </data>
+  <data name="CommandsSpecified" xml:space="preserve">
+    <value>Have all commands been specified?</value>
+  </data>
+  <data name="CommandShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each command have a short description?</value>
+  </data>
+  <data name="CommandSpecificationsComplete" xml:space="preserve">
+    <value>Are the command specifications complete?</value>
+  </data>
+  <data name="FormsSpecified" xml:space="preserve">
+    <value>Have all forms been specified?</value>
+  </data>
+  <data name="FormShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each form have a short description?</value>
+  </data>
+  <data name="FormSpecificationsComplete" xml:space="preserve">
+    <value>Are the form specifications complete?</value>
+  </data>
+  <data name="ReportsSpecified" xml:space="preserve">
+    <value>Have all reports been specified?</value>
+  </data>
+  <data name="ReportShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each report have a short description?</value>
+  </data>
+  <data name="ReportSpecificationsComplete" xml:space="preserve">
+    <value>Are the report specifications complete?</value>
+  </data>
+  <data name="FormDefinitionsCorrect" xml:space="preserve">
+    <value>Are the form definitions correct?</value>
+  </data>
+  <data name="DialogueDefinitionsCorrect" xml:space="preserve">
+    <value>Are the dialogue definitions correct?</value>
+  </data>
+  <data name="ReportDefinitionsCorrect" xml:space="preserve">
+    <value>Are the report definitions correct?</value>
+  </data>
+  <data name="ControlDefinitionsCorrect" xml:space="preserve">
+    <value>Are the control definitions correct?</value>
+  </data>
+  <data name="UserInterfaceDesignStandardsCompliance" xml:space="preserve">
+    <value>Is the user interface design done according to standards?</value>
+  </data>
+  <data name="IUComponentDesignFormalRulesCompliance" xml:space="preserve">
+    <value>Were the designs of the I.U. components made in accordance with the formal rules?</value>
+  </data>
+  <data name="IUComponentSpecificationFormalRulesCompliance" xml:space="preserve">
+    <value>Was the specification of the components i.u. made in accordance with the formal rules?</value>
+  </data>
+  <data name="IUComponentsRelatedByRelationships" xml:space="preserve">
+    <value>Are all components of the I.U related by relationships?</value>
+  </data>
+  <data name="IUDesignConsistentWithRequirements" xml:space="preserve">
+    <value>Is the i.u. design consistent with the requirements specification?</value>
+  </data>
+  <data name="IUDesignConsistentWithStaticModel" xml:space="preserve">
+    <value>Is the i.u. design consistent with the static model?</value>
+  </data>
+  <data name="IUDesignConsistentWithFunctionalModel" xml:space="preserve">
+    <value>Is the i.u. design consistent with the functional model?</value>
+  </data>
+  <data name="IUComponentShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each i.u. component have a short description?</value>
+  </data>
+  <data name="IUComponentDivisionAppropriate" xml:space="preserve">
+    <value>Is the division into components of the I.U. appropriate?</value>
+  </data>
+  <data name="SpecificationAllowsIUComponentAdditionOrRemoval" xml:space="preserve">
+    <value>Does the specification allow for easy addition/removal of i.u. components?</value>
+  </data>
+  <data name="IUComponentsHaveReferences" xml:space="preserve">
+    <value>Do the components have the appropriate references?</value>
+  </data>
+  <data name="IUComponentsHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do i.u. components have separate identifiers in addition to names?</value>
+  </data>
+  <data name="PersistentClassesDefined" xml:space="preserve">
+    <value>Are persistent classes defined?</value>
+  </data>
+  <data name="DataStructureForPersistentClassesDefined" xml:space="preserve">
+    <value>Is there a data structure defined for each persistent class?</value>
+  </data>
+  <data name="DataStructureRelationshipsIdentified" xml:space="preserve">
+    <value>Have all relationships between data structures been identified?</value>
+  </data>
+  <data name="DataStructureDiagramsCreated" xml:space="preserve">
+    <value>Have you created data structure diagrams?</value>
+  </data>
+  <data name="DataStructureDiagramsComplete" xml:space="preserve">
+    <value>Are data structure diagrams complete?</value>
+  </data>
+  <data name="DataStructuresSpecified" xml:space="preserve">
+    <value>Have all data structures been specified?</value>
+  </data>
+  <data name="DataStructureShortDescriptionsProvided" xml:space="preserve">
+    <value>Does each data structure have a short description?</value>
+  </data>
+  <data name="DataStructureSpecificationsComplete" xml:space="preserve">
+    <value>Are the specifications of the data structures complete?</value>
+  </data>
+  <data name="DataStructureDefinitionsCorrect" xml:space="preserve">
+    <value>Are the data structure definitions correct?</value>
+  </data>
+  <data name="DataStructureModelStandardsCompliance" xml:space="preserve">
+    <value>Is the data structure model made in accordance with the standards?</value>
+  </data>
+  <data name="DataStructureDiagramFormalRulesCompliance" xml:space="preserve">
+    <value>Was the data structure diagram made according to formal rules?</value>
+  </data>
+  <data name="DataStructureSpecificationFormalRulesCompliance" xml:space="preserve">
+    <value>Was the specification of the data structures made according to formal rules?</value>
+  </data>
+  <data name="DataStructuresRelatedByRelationships" xml:space="preserve">
+    <value>Are all data structures related by relationships?</value>
+  </data>
+  <data name="DataStructureModelConsistentWithRequirements" xml:space="preserve">
+    <value>Is the data structure model consistent with the requirements specification?</value>
+  </data>
+  <data name="DataStructureModelConsistentWithClassModel" xml:space="preserve">
+    <value>Is the data structure model consistent with the class model?</value>
+  </data>
+  <data name="DataModuleDivisionAppropriate" xml:space="preserve">
+    <value>Is the division into data modules appropriate?</value>
+  </data>
+  <data name="SpecificationAllowsDataStructureAdditionOrRemoval" xml:space="preserve">
+    <value>Does the specification allow easy addition/removal of data structures?</value>
+  </data>
+  <data name="DataStructuresHaveReferences" xml:space="preserve">
+    <value>Do the data structures have the right references?</value>
+  </data>
+  <data name="DataStructuresHaveSeparateIdentifiers" xml:space="preserve">
+    <value>Do data structures have separate identifiers in addition to names?</value>
+  </data>
+  <data name="SystemObjectivesAchieved" xml:space="preserve">
+    <value>Have all the objectives of the system been achieved?</value>
+  </data>
+  <data name="IssuesResolved" xml:space="preserve">
+    <value>Are the issues resolved?</value>
+  </data>
+  <data name="BenefitsProvided" xml:space="preserve">
+    <value>Have the benefits been provided?</value>
+  </data>
+  <data name="CoreShareholderRequirementsMet" xml:space="preserve">
+    <value>Have the requirements of the core shareholders been met?</value>
+  </data>
+  <data name="AdditionalShareholderRequirementsMet" xml:space="preserve">
+    <value>Have the requirements of additional shareholders been met?</value>
+  </data>
+  <data name="ExternalShareholderRequirementsMet" xml:space="preserve">
+    <value>Have the requirements of external shareholders been met?</value>
+  </data>
+  <data name="BasicUserRequirementsMet" xml:space="preserve">
+    <value>Have the requirements of the basic users been met?</value>
+  </data>
+  <data name="AdditionalUserRequirementsMet" xml:space="preserve">
+    <value>Have the requirements of additional users been met?</value>
+  </data>
+  <data name="UserTasksAssured" xml:space="preserve">
+    <value>Is all user tasks assured?</value>
+  </data>
+  <data name="RequiredFeaturesImplemented" xml:space="preserve">
+    <value>Have all the required features been implemented?</value>
+  </data>
+  <data name="FeaturesImplementedCompletely" xml:space="preserve">
+    <value>Has each feature been implemented completely?</value>
+  </data>
+  <data name="DataInputsImplemented" xml:space="preserve">
+    <value>Are all data inputs (all files) implemented?</value>
+  </data>
+  <data name="DataOutputsImplemented" xml:space="preserve">
+    <value>Have all data outputs (all files) been implemented?</value>
+  </data>
+  <data name="StoredDataImplemented" xml:space="preserve">
+    <value>Have all stored data (tables, files) been implemented?</value>
+  </data>
+  <data name="DataProcessingMethodsImplemented" xml:space="preserve">
+    <value>Have all data processing methods been implemented?</value>
+  </data>
+  <data name="ProcessesImplemented" xml:space="preserve">
+    <value>Have all processes been implemented?</value>
+  </data>
+  <data name="OperationsImplemented" xml:space="preserve">
+    <value>Have all operations been implemented?</value>
+  </data>
+  <data name="SystemArchitectureImplemented" xml:space="preserve">
+    <value>Has the full system architecture been implemented?</value>
+  </data>
+  <data name="SystemWorksInAssumedEnvironment" xml:space="preserve">
+    <value>Does the system work in the assumed work environment?</value>
+  </data>
+  <data name="InteroperabilityWithOtherSystemsImplemented" xml:space="preserve">
+    <value>Has interoperability with other systems been implemented?</value>
+  </data>
+  <data name="UserInterfaceFullyImplemented" xml:space="preserve">
+    <value>Is the user interface (all windows/dialogs) fully implemented?</value>
+  </data>
+  <data name="UIFunctionalityAppropriate" xml:space="preserve">
+    <value>Is the UI functionality appropriate?</value>
+  </data>
+  <data name="InterfacesToOtherSystemsImplemented" xml:space="preserve">
+    <value>Have the interfaces to other systems been fully implemented?</value>
+  </data>
+  <data name="ProcessingTimeAppropriate" xml:space="preserve">
+    <value>Is the processing time appropriate?</value>
+  </data>
+  <data name="ResponseTimeAdequate" xml:space="preserve">
+    <value>Is the response time adequate?</value>
+  </data>
+  <data name="ParallelProcessesUsed" xml:space="preserve">
+    <value>Have parallel processes been used?</value>
+  </data>
+  <data name="ParallelOperationsUsed" xml:space="preserve">
+    <value>Have parallel operations been used?</value>
+  </data>
+  <data name="ConcurrentUsersAppropriate" xml:space="preserve">
+    <value>Is the number of users using the system at the same time appropriate?</value>
+  </data>
+  <data name="TransactionsPerUnitTimeAppropriate" xml:space="preserve">
+    <value>Is the number of transactions handled per unit of time appropriate?</value>
+  </data>
+  <data name="InitialRecordsAppropriate" xml:space="preserve">
+    <value>Is the initial number of records (files) of data appropriate?</value>
+  </data>
+  <data name="IncreaseInRecordsAppropriate" xml:space="preserve">
+    <value>Is the increment of records (files) of data appropriate?</value>
+  </data>
+  <data name="DataVolumeAppropriate" xml:space="preserve">
+    <value>Is the data volume appropriate?</value>
+  </data>
+  <data name="DataArchivingImplemented" xml:space="preserve">
+    <value>Have data archiving and data dearchiving been implemented?</value>
+  </data>
+  <data name="SystemWorksWithOptimalEquipment" xml:space="preserve">
+    <value>How does the system work with equipment that meets optimal requirements?</value>
+  </data>
+  <data name="SystemWorksWithMinimumEquipment" xml:space="preserve">
+    <value>How does the system work with equipment that meets the minimum requirements?</value>
+  </data>
+  <data name="PerformanceLossUnderOptimalConditionsAcceptable" xml:space="preserve">
+    <value>Is it acceptable to lose performance under optimal conditions?</value>
+  </data>
+  <data name="SystemWorksWithOptimalSoftware" xml:space="preserve">
+    <value>How does the system work with software that meets optimal requirements?</value>
+  </data>
+  <data name="SystemWorksWithMinimumSoftware" xml:space="preserve">
+    <value>How does the system work with software that meets the minimum requirements?</value>
+  </data>
+  <data name="SystemWorksWithManyUsers" xml:space="preserve">
+    <value>How does the system work with a large number of users?</value>
+  </data>
+  <data name="SystemWorksWithManyTransactions" xml:space="preserve">
+    <value>How does the system work with a large number of transactions per unit of time?</value>
+  </data>
+  <data name="SystemExpandable" xml:space="preserve">
+    <value>Is it possible to expand the system in this regard?</value>
+  </data>
+  <data name="SystemWorksWithManyRecords" xml:space="preserve">
+    <value>How does the system work with a large number of records (files)?</value>
+  </data>
+  <data name="SystemWorksWithLargeDataVolume" xml:space="preserve">
+    <value>How does the system work with a large volume of data?</value>
+  </data>
+  <data name="SystemFunctionsProperlyUnderNormalConditions" xml:space="preserve">
+    <value>Is the system functioning properly under normal conditions?</value>
+  </data>
+  <data name="ErrorCountAcceptable" xml:space="preserve">
+    <value>Is the number of errors acceptable?</value>
+  </data>
+  <data name="SystemHandlesEmergenciesCorrectly" xml:space="preserve">
+    <value>Does the system handle emergencies correctly?</value>
+  </data>
+  <data name="EmergenciesTested" xml:space="preserve">
+    <value>Have all emergencies been tested?</value>
+  </data>
+  <data name="SystemHandlesCriticalSituationsCorrectly" xml:space="preserve">
+    <value>Is the system handling critical situations correctly?</value>
+  </data>
+  <data name="CriticalSituationsTested" xml:space="preserve">
+    <value>Have all critical situations been tested?</value>
+  </data>
+  <data name="FailurePreventionImplemented" xml:space="preserve">
+    <value>Are you in place to prevent failures?</value>
+  </data>
+  <data name="FailureEffectsMinimizationImplemented" xml:space="preserve">
+    <value>Have mechanisms been implemented to minimize the effects of failures?</value>
+  </data>
+  <data name="UserErrorResilienceImplemented" xml:space="preserve">
+    <value>Is the system adequately resilient to user errors?</value>
+  </data>
+  <data name="UserErrorMinimizationImplemented" xml:space="preserve">
+    <value>Have measures been implemented to minimize the possibility of user error?</value>
+  </data>
+  <data name="DataVerificationImplemented" xml:space="preserve">
+    <value>Have data verification methods been implemented?</value>
+  </data>
+  <data name="DataRepairImplemented" xml:space="preserve">
+    <value>Have you implemented ways to repair your data?</value>
+  </data>
+  <data name="ProcessingResultsVerificationImplemented" xml:space="preserve">
+    <value>Have you implemented ways to verify the processing results?</value>
+  </data>
+  <data name="ProcessingErrorsHandlingImplemented" xml:space="preserve">
+    <value>Are there any ways to deal with processing errors?</value>
+  </data>
+  <data name="SecurityMethodsImplemented" xml:space="preserve">
+    <value>Have security methods been implemented in this aspect?</value>
+  </data>
+  <data name="InputValidationImplemented" xml:space="preserve">
+    <value>Has input validation been implemented?</value>
+  </data>
+  <data name="OutputValidationImplemented" xml:space="preserve">
+    <value>Has output validation been implemented?</value>
+  </data>
+  <data name="StoredDataPreviewImplemented" xml:space="preserve">
+    <value>Has the ability to preview stored data been implemented?</value>
+  </data>
+  <data name="StoredDataVerificationImplemented" xml:space="preserve">
+    <value>Has the ability to verify stored data been implemented?</value>
+  </data>
+  <data name="ControlProceduresImplemented" xml:space="preserve">
+    <value>Have control procedures been implemented?</value>
+  </data>
+  <data name="TestProceduresImplemented" xml:space="preserve">
+    <value>Have test procedures been implemented?</value>
+  </data>
+  <data name="SystemRunsOnDifferentHardwarePlatforms" xml:space="preserve">
+    <value>Can the system run on different hardware platforms?</value>
+  </data>
+  <data name="SystemRunsInDifferentSoftwareEnvironments" xml:space="preserve">
+    <value>Can the system run in different software environments?</value>
+  </data>
+  <data name="ImportFileFormatsImplemented" xml:space="preserve">
+    <value>Have you implemented the import of files in all required formats?</value>
+  </data>
+  <data name="ExportFileFormatsImplemented" xml:space="preserve">
+    <value>Has you implemented the export of files in all required formats?</value>
+  </data>
+  <data name="DataExchangeWithDifferentSystemsImplemented" xml:space="preserve">
+    <value>Has the ability to exchange data with different systems been implemented?</value>
+  </data>
+  <data name="WesternLanguageVersionsImplemented" xml:space="preserve">
+    <value>Have language versions for Western countries been implemented?</value>
+  </data>
+  <data name="OtherEuropeanLanguageVersionsImplemented" xml:space="preserve">
+    <value>Have language versions for other European countries been implemented?</value>
+  </data>
+  <data name="MiddleEasternLanguageVersionsImplemented" xml:space="preserve">
+    <value>Have languages for Middle Eastern countries been implemented?</value>
+  </data>
+  <data name="FarEasternLanguageVersionsImplemented" xml:space="preserve">
+    <value>Have language versions for Far Eastern countries been implemented?</value>
+  </data>
+  <data name="DateFormatChangeImplemented" xml:space="preserve">
+    <value>Is the ability to change the date format implemented?</value>
+  </data>
+  <data name="TimeFormatChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change the time format been implemented?</value>
+  </data>
+  <data name="NumberFormatChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change the number format been implemented?</value>
+  </data>
+  <data name="CurrencySymbolChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change the currency symbol and its position implemented?</value>
+  </data>
+  <data name="QuotationMarksChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change quotation marks been implemented?</value>
+  </data>
+  <data name="UserMacrosImplemented" xml:space="preserve">
+    <value>Has the ability to write macros (scripts) by the user been implemented?</value>
+  </data>
+  <data name="MacroLanguageSpecificationCreated" xml:space="preserve">
+    <value>Has a macro (scripting) language specification been created?</value>
+  </data>
+  <data name="AddonsImplemented" xml:space="preserve">
+    <value>Has the ability to introduce add-ons been implemented?</value>
+  </data>
+  <data name="AddonLanguageSpecificationCreated" xml:space="preserve">
+    <value>Has an add-on writing language specification been created?</value>
+  </data>
+  <data name="AddonInterfaceSpecificationCreated" xml:space="preserve">
+    <value>Have you created an interface specification for add-ons?</value>
+  </data>
+  <data name="FileFormatChoiceImplemented" xml:space="preserve">
+    <value>Is there a way to choose the format of the files to be saved?</value>
+  </data>
+  <data name="DatabaseSystemChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change the database system been implemented?</value>
+  </data>
+  <data name="WindowLayoutChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change the layout of windows been implemented?</value>
+  </data>
+  <data name="WindowAppearanceChangeImplemented" xml:space="preserve">
+    <value>Has the ability to change the appearance of windows been implemented?</value>
+  </data>
+  <data name="UserProfileChoiceImplemented" xml:space="preserve">
+    <value>Is the ability to select a user profile implemented?</value>
+  </data>
+  <data name="MenuConfigurationImplemented" xml:space="preserve">
+    <value>Is the ability to configure menus implemented?</value>
+  </data>
+  <data name="ToolbarConfigurationImplemented" xml:space="preserve">
+    <value>Is the ability to configure toolbars implemented?</value>
+  </data>
+  <data name="KeyboardShortcutsConfigurationImplemented" xml:space="preserve">
+    <value>Is the ability to configure keyboard shortcuts implemented?</value>
+  </data>
+  <data name="InstallationConfigurationImplemented" xml:space="preserve">
+    <value>Has the system architecture configuration adjustment been implemented during installation?</value>
+  </data>
+  <data name="PostInstallationConfigurationImplemented" xml:space="preserve">
+    <value>Has the system architecture configuration adjustment been implemented after installation?</value>
+  </data>
+  <data name="FunctionsAdequateToProblems" xml:space="preserve">
+    <value>Are the implemented functions adequate for specific problems?</value>
+  </data>
+  <data name="FunctionsAdequateToBenefits" xml:space="preserve">
+    <value>Are the implemented functions adequate to the expected benefits?</value>
+  </data>
+  <data name="FunctionsAdequateToGoals" xml:space="preserve">
+    <value>Are the implemented functions adequate to the goals?</value>
+  </data>
+  <data name="ImplementationEvaluatedByCustomer" xml:space="preserve">
+    <value>Has the implementation been evaluated by the customer? How high?</value>
+  </data>
+  <data name="ImplementationEvaluatedByUsers" xml:space="preserve">
+    <value>Has the implementation been evaluated by users? How high?</value>
+  </data>
+  <data name="WayOfWorkingStandardsCompliance" xml:space="preserve">
+    <value>Is the implemented way of working compliant with the standards?</value>
+  </data>
+  <data name="UserHintsImplemented" xml:space="preserve">
+    <value>Have user hints been implemented?</value>
+  </data>
+  <data name="ExplanationsForInexperiencedUsersImplemented" xml:space="preserve">
+    <value>Have explanations for inexperienced users been implemented?</value>
+  </data>
+  <data name="SupportSystemImplemented" xml:space="preserve">
+    <value>Has a support system been implemented?</value>
+  </data>
+  <data name="AutocompleteImplemented" xml:space="preserve">
+    <value>Has autocomplete been implemented?</value>
+  </data>
+  <data name="AutocorrectImplemented" xml:space="preserve">
+    <value>Has autocorrect been implemented?</value>
+  </data>
+  <data name="AidSchemeScopeAppropriate" xml:space="preserve">
+    <value>Is the scope of the aid scheme adequate?</value>
+  </data>
+  <data name="HintSystemScopeAppropriate" xml:space="preserve">
+    <value>Is the scope of the hint system appropriate?</value>
+  </data>
+  <data name="UserSupportMeasuresImplemented" xml:space="preserve">
+    <value>Have user support measures been implemented?</value>
+  </data>
+  <data name="WayOfWorkingConsistency" xml:space="preserve">
+    <value>Is the implemented way of working consistent with the current one?</value>
+  </data>
+  <data name="DemoImplemented" xml:space="preserve">
+    <value>Has a demo been implemented?</value>
+  </data>
+  <data name="TrainingProgramsImplemented" xml:space="preserve">
+    <value>Have training programs been implemented?</value>
+  </data>
+  <data name="TrainingCoursesOrganized" xml:space="preserve">
+    <value>Have training courses been organized?</value>
+  </data>
+  <data name="AutomaticActionsImplemented" xml:space="preserve">
+    <value>Is the ability to perform certain actions automatically implemented?</value>
+  </data>
+  <data name="UserCommandRecordingImplemented" xml:space="preserve">
+    <value>Is the ability to record and repeat user commands implemented?</value>
+  </data>
+  <data name="CommandSequenceRecordingImplemented" xml:space="preserve">
+    <value>Is the ability to record and repeat sequences of commands implemented?</value>
+  </data>
+  <data name="HintsImplemented" xml:space="preserve">
+    <value>Have hints been implemented?</value>
+  </data>
+  <data name="AutocorrectionOrAutocompletionImplemented" xml:space="preserve">
+    <value>Have autocorrects or autocompletes been implemented?</value>
+  </data>
+  <data name="FeaturesImplementedCorrectly" xml:space="preserve">
+    <value>Have all the features been implemented correctly?</value>
+  </data>
+  <data name="UIFunctionalityCorrect" xml:space="preserve">
+    <value>Does the user interface have the correct functionality?</value>
+  </data>
+  <data name="InterfacesToOtherSystemsWorking" xml:space="preserve">
+    <value>Are the interfaces to other systems working properly?</value>
+  </data>
+  <data name="ImplementationTestedAndAcceptedByExperts" xml:space="preserve">
+    <value>Has the implementation been tested and accepted by experts?</value>
+  </data>
+  <data name="ImplementationDocumentationCreated" xml:space="preserve">
+    <value>Has implementation documentation been made?</value>
+  </data>
+  <data name="ImplementationDocumentationStandardsCompliance" xml:space="preserve">
+    <value>Is the implementation documentation compliant with the standards?</value>
+  </data>
+  <data name="ImplementationDocumentationUnderstandable" xml:space="preserve">
+    <value>Is the implementation documentation understandable?</value>
+  </data>
+  <data name="TestDocumentationProvided" xml:space="preserve">
+    <value>Have test documentation been provided?</value>
+  </data>
+  <data name="FunctionsPerformedConsistentlyAcrossModules" xml:space="preserve">
+    <value>Are the functions performed in the same way in different modules?</value>
+  </data>
+  <data name="InterfaceLookConsistentAcrossModules" xml:space="preserve">
+    <value>Is the interface look the same in different modules?</value>
+  </data>
+  <data name="InterfaceFunctionalityConsistentAcrossModules" xml:space="preserve">
+    <value>Is the functionality of the interface in different modules the same?</value>
+  </data>
+  <data name="FunctionalAndPerformanceRequirementsReconciled" xml:space="preserve">
+    <value>How were functional and performance requirements reconciled?</value>
+  </data>
+  <data name="PerformanceAndReliabilityRequirementsReconciled" xml:space="preserve">
+    <value>How were performance and reliability requirements reconciled?</value>
+  </data>
+  <data name="PerformanceRequirementsReconciledWithFlexibility" xml:space="preserve">
+    <value>How are performance requirements reconciled with the required flexibility?</value>
+  </data>
+  <data name="FunctionImplementationUnderstandable" xml:space="preserve">
+    <value>Is the way the function is implemented understandable?</value>
+  </data>
+  <data name="InterfaceSetupFacilitatesUnderstanding" xml:space="preserve">
+    <value>Does the way the interface is set up make it easier to understand the functionality?</value>
+  </data>
+  <data name="ImplementationModular" xml:space="preserve">
+    <value>Was the implementation done in a modular way?</value>
+  </data>
+  <data name="ModuleDependenciesAppropriate" xml:space="preserve">
+    <value>Are the dependencies between modules appropriate?</value>
+  </data>
+  <data name="ExecutionModulesUsed" xml:space="preserve">
+    <value>Are execution modules used?</value>
+  </data>
+  <data name="ExecutionModuleDivisionAppropriate" xml:space="preserve">
+    <value>Is the division into executive modules appropriate?</value>
+  </data>
+  <data name="ExecutionModuleDependenciesAppropriate" xml:space="preserve">
+    <value>Are the dependencies between the execution modules appropriate?</value>
+  </data>
+  <data name="SourceCodeAvailable" xml:space="preserve">
+    <value>Is the source code available?</value>
+  </data>
+  <data name="SourceCodeConsistentWithDocumentation" xml:space="preserve">
+    <value>Is the source code consistent with the documentation?</value>
+  </data>
+  <data name="SourceCodeFormattedToStandards" xml:space="preserve">
+    <value>Is the source code formatted according to standards?</value>
+  </data>
+  <data name="SourceCodeUnderstandable" xml:space="preserve">
+    <value>Is the source code understandable?</value>
+  </data>
+  <data name="ImplementationLinkedToProject" xml:space="preserve">
+    <value>Is the implementation linked to the project?</value>
+  </data>
+  <data name="ImplementationLinkedToRequirements" xml:space="preserve">
+    <value>Is the implementation linked to the requirements specification?</value>
+  </data>
+  <data name="ImplementedFunctionsInterconnected" xml:space="preserve">
+    <value>Have the implemented functions been properly interconnected?</value>
+  </data>
+  <data name="FunctionalImplementationsLinked" xml:space="preserve">
+    <value>Have functional implementations been linked to functional implementations?</value>
+  </data>
+  <data name="FunctionalImplementationsInterrelated" xml:space="preserve">
+    <value>Are the functional implementations interrelated?</value>
+  </data>
+  <data name="InputOutputConditionsSpecified" xml:space="preserve">
+    <value>Are the input and output conditions of the operation specified</value>
+  </data>
+  <data name="ProcessInputOutputConditionsSpecified" xml:space="preserve">
+    <value>Have the input and output conditions of the processes been specified?</value>
+  </data>
+  <data name="EmergencyTestingPossible" xml:space="preserve">
+    <value>Is there a specific way to test for emergencies?</value>
+  </data>
+  <data name="CriticalSituationTestingPossible" xml:space="preserve">
+    <value>Is it possible to test critical situations?</value>
+  </data>
+  <data name="EmergencySituationTestingPossible" xml:space="preserve">
+    <value>Is it possible to test emergency situations?</value>
+  </data>
+  <data name="UserInterfaceRequirementsStandardCompliance" xml:space="preserve">
+    <value>Have requirements been defined for interface compliance with standards?</value>
+  </data>
+</root>

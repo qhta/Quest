@@ -1,6 +1,11 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 using System.Resources;
+
+using Azure;
+using Azure.AI.Translation.Text;
+using Azure.Identity;
 
 namespace QuestRSX;
 

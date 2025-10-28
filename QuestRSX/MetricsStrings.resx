@@ -291,8 +291,8 @@
   <data name="InstallationConfigurability" xml:space="preserve">
     <value>Installation configurability</value>
   </data>
-  <data name="Utility" xml:space="preserve">
-    <value>Utility</value>
+  <data name="Usability" xml:space="preserve">
+    <value>Usability</value>
   </data>
   <data name="Adequacy" xml:space="preserve">
     <value>Adequacy</value>
@@ -306,11 +306,11 @@
   <data name="EaseOfUse" xml:space="preserve">
     <value>Ease of use</value>
   </data>
-  <data name="Intuitive" xml:space="preserve">
-    <value>Intuitive</value>
+  <data name="Intuitiveness" xml:space="preserve">
+    <value>Intuitiveness</value>
   </data>
-  <data name="User-Friendliness" xml:space="preserve">
-    <value>User-friendliness</value>
+  <data name="UserFriendliness" xml:space="preserve">
+    <value>User friendliness</value>
   </data>
   <data name="UserAssistance" xml:space="preserve">
     <value>User assistance</value>
@@ -342,11 +342,11 @@
   <data name="ConsistencyOfGoalsAndRequirements" xml:space="preserve">
     <value>Consistency of goals and requirements</value>
   </data>
-  <data name="Non-ContradictoryRequirements" xml:space="preserve">
+  <data name="NonContradictoryRequirements" xml:space="preserve">
     <value>Non-contradictory requirements</value>
   </data>
-  <data name="HowToDescribe" xml:space="preserve">
-    <value>How to describe</value>
+  <data name="DescriptionStyle" xml:space="preserve">
+    <value>Description style</value>
   </data>
   <data name="ClarityOfDescriptions" xml:space="preserve">
     <value>Clarity of descriptions</value>
@@ -377,9 +377,6 @@
   </data>
   <data name="RequirementsTestability" xml:space="preserve">
     <value>Requirements testability</value>
-  </data>
-  <data name="Requirements&quot;ForFuture&quot;" xml:space="preserve">
-    <value>Requirements "for future"</value>
   </data>
   <data name="ClassModelCompleteness" xml:space="preserve">
     <value>Class model completeness</value>
@@ -687,11 +684,11 @@
   <data name="ConsistencyOfUiDesignAndRequirementsSpecifications" xml:space="preserve">
     <value>Consistency of ui design and requirements specifications</value>
   </data>
-  <data name="UiAndStaticModelDesignConsistency" xml:space="preserve">
-    <value>Ui and static model design consistency</value>
+  <data name="UIAndStaticModelDesignConsistency" xml:space="preserve">
+    <value>UI and static model design consistency</value>
   </data>
-  <data name="UiAndFunctionalModelDesignConsistency" xml:space="preserve">
-    <value>Ui and functional model design consistency</value>
+  <data name="UIAndFunctionalModelDesignConsistency" xml:space="preserve">
+    <value>UI and functional model design consistency</value>
   </data>
   <data name="DataModelCompleteness" xml:space="preserve">
     <value>Data model completeness</value>
@@ -741,9 +738,6 @@
   <data name="CompletenessOfInterfaceImplementations" xml:space="preserve">
     <value>Completeness of interface implementations</value>
   </data>
-  <data name="ItWillUseParallels" xml:space="preserve">
-    <value>It will use parallels</value>
-  </data>
   <data name="FunctionalReliability" xml:space="preserve">
     <value>Functional reliability</value>
   </data>
@@ -773,5 +767,14 @@
   </data>
   <data name="InternalConnections" xml:space="preserve">
     <value>Internal connections</value>
+  </data>
+  <data name="Modifiability" xml:space="preserve">
+    <value>Modifiability</value>
+  </data>
+  <data name="RequirementsForFuture" xml:space="preserve">
+    <value>Requirements "for future"</value>
+  </data>
+  <data name="Clearness" xml:space="preserve">
+    <value>Clearness</value>
   </data>
 </root>

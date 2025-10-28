@@ -208,7 +208,7 @@ Kompletność implementacji systemu
 Kompletność implementacji interfejsów
 Wykorzysta równoległości
 Niezawodność funkcjonalna
-Zgodność z doświadczem
+Zgodność z doświadczeniem
 Poprawność funkcjonalna
 Poprawność dokumentacji
 Spójność funkcjonalna

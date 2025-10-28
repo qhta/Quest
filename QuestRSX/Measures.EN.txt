@@ -1,0 +1,634 @@
+Have the goals of the system been defined? How exactly?
+Have the problems been defined? How exactly?
+Have the benefits been defined? How exactly?
+Have the basic shareholders been defined? How exhaustive?
+Have additional shareholders been defined? How exhaustive?
+Are external shareholders defined? How exhaustive?
+Have the core users been determined? How exhaustive?
+Have additional users been identified? How exhaustive?
+Have user tasks been specified? How exactly?
+Have all the required functions been defined? How exhaustive?
+Does each feature have a complete description? How exhaustive?
+Have features been assigned to users? How precisely?
+Have inputs been defined? How precisely?
+Is the output defined? How precisely?
+Is stored data defined? How precisely?
+Are the methods of data processing defined? How precisely?
+Have the core processes been defined? How exactly?
+Are basic operations defined? In how much detail?
+Is the system architecture specified? In how much detail?
+Is the operating environment of the system specified? How precisely?
+Are there any other interoperable systems? How exhaustive?
+Is there a way to interact with the user? How precisely?
+Is the user interface example shown? In how much detail?
+Are there any interfaces to other systems? How precisely?
+Are there requirements for processing time?
+Are there any requirements for response time?
+Have potentially parallel processes been identified?
+Have potentially parallel operations been identified?
+Has the number of users using the system at the same time been estimated?
+Have you estimated the number of transactions per unit of time?
+Has the initial number of records (files) been estimated?
+Has the increase in records (files) of data been estimated?
+Has the volume of data been estimated?
+Is data archiving planned?
+Have the optimal requirements for the equipment been determined?
+Are there minimum requirements for the hardware?
+Has the permissible loss of performance under suboptimal conditions been determined?
+Have the optimal requirements for the software been determined?
+Are there minimum requirements for the software?
+Has the maximum number of users been estimated?
+Has the maximum number of transactions per unit of time been estimated?
+Is it planned to expand the system when the maximum values are exceeded?
+Has the maximum number of records (files) been estimated?
+Has the maximum data volume been estimated?
+Are there any emergency situations?
+Have emergency responses been defined?
+Are critical situations foreseen?
+Have critical responses been specified?
+Is there a way to prevent failures?
+Has there been a way to minimize the effects of failures?
+Is the required level of user fault tolerance specified?
+Are there measures in place to minimize the possibility of user error?
+Are there any specific methods for verifying your data?
+Are there any specific ways to repair the data?
+Are there any ways to verify the processing results?
+Are there any ways to deal with processing errors?
+Have you identified threats from the system to the user?
+Has the risk been assessed in this aspect?
+Are there any security measures in this aspect?
+Have system threats to other systems been identified?
+Have threats to the system been identified from users?
+Have you identified threats to your system from other systems?
+Is there a verification of input data?
+Is there a verification of the output?
+Is it possible to view the stored data?
+Is it possible to verify the stored data?
+Are there any control procedures?
+Are there any test procedures?
+Is there a hardware platform on which the system will run?
+Is it possible to run on different hardware platforms?
+Is there a specific operating system on which the system will run?
+Is it possible to run on different operating systems?
+Are import file formats specified?
+Are there any export file formats specified?
+Are acceptable (different) database systems specified?
+Are there language versions for Western countries? How much?
+Are there language versions for other European countries? How much?
+Are there language versions for Middle Eastern countries? How much?
+Are there language versions for the Far Eastern countries? How much?
+Is there a change in the date format?
+Is there a change in the time format?
+Is there a change in the number format?
+Is there a change in the currency symbol and its position?
+Is there a change in quotation marks?
+Is it possible for the user to write macros (scripts)?
+Is the macro (script) language specified?
+Is there a possibility of introducing additives?
+Is there a specific language for writing add-ons?
+Is there an interface for add-ons?
+Is there a choice of file format?
+Is there a possibility to change the database system?
+Is it possible to change the layout of the windows?
+Is it possible to change the appearance of windows?
+Is there a possibility to choose a user profile?
+Is there a way to configure menus?
+Is there a way to configure toolbars?
+Is there a way to configure keyboard shortcuts?
+Is there a system architecture configuration to be adjusted during installation?
+Is there a system architecture configuration adjustment after installation?
+Are the goals adequate to the problems?
+Are the goals adequate to the benefits?
+Are the features fit for purpose?
+Have the requirements been evaluated by the customer? How high?
+Have the requirements been evaluated by future users? How high?
+Have the requirements been assessed by the contractors? How high?
+Are there any requirements for the interface to be compliant with the standards?
+Is the expected way of working up to standards?
+Are there any hints for the user?
+Are there explanations for inexperienced users?
+Is there a system of assistance?
+Is autofill provided?
+Is there an autocorrect?
+Has the scope of the aid scheme been defined?
+Is the scope of the hint system specified?
+Is there any technical support for the user?
+Is the expected way of working consistent with the current way of working?
+Is it planned to produce a demo version?
+Are there any plans to produce teaching programs?
+Are training courses planned?
+Is it possible to perform certain activities automatically?
+Is there a possibility to record and repeat user commands?
+Is there a possibility of recording and repeating a sequence of commands?
+Are there hints?
+Are there any means of autocorrection or autocompletion?
+Are there any keyboard shortcuts?
+Is the mouse properly functional?
+Was the requirements specification made in accordance with the standards?
+Have requirements been separated from design decisions (proposals)?
+Has a prototype been made?
+Have the requirements been analyzed and accepted by the customer?
+Have the requirements been accepted by users?
+Have the requirements been analysed and accepted by the contractor?
+Are the declared goals internally consistent?
+Are the requirements consistent with the goals?
+Are the required features internally consistent?
+Are functional requirements not in conflict with performance requirements?
+Are performance requirements not in conflict with credibility requirements?
+Are the performance requirements not in conflict with the required flexibility?
+Does each requirement have a description?
+Are the requirements descriptions short?
+Is the vocabulary in the descriptions understandable?
+Has a glossary been included? Is it useful?
+Is the use of synonyms and abbreviations limited?
+Do more complicated descriptions have additional graphical explanation?
+Are the necessary external sources of information referenced?
+Do functional requirements leave room for the contractor?
+Do non-functional requirements leave room for the contractor?
+Are there executives among the shareholders?
+Have executives set goals?
+Have all the goals been accepted?
+Does the contract specify the possibility of renegotiating the client's requirements?
+Does the contract specify the possibility of renegotiating the requirements on the part of the contractor?
+Have the goals been linked to shareholders?
+Are the requirements linked to the goals?
+Are the functional requirements interrelated?
+Have functional requirements been linked to non-functional ones?
+Are non-functional requirements interrelated?
+Have the functional requirements been numbered (identified with identifiers)?
+Have non-functional requirements been numbered (identified with identifiers)?
+Do all functional requirements have specific results?
+Are all non-functional requirements specifically specified?
+Are the acceptance criteria specified?
+Are there conditions for testing for emergency situations?
+Are the requirements for critical situations testable?
+Are the failure requirements testable?
+Do the requirements refer to non-existent or inaccessible systems?
+Do the requirements not refer to non-existent legal solutions?
+Do the requirements not refer to unspecified development opportunities?
+Have all the classes in the glossary been identified?
+Have all classes from the requirements specification been identified?
+Have all classes from additional sources been identified?
+Have all the properties in the glossary been identified?
+Have all properties from the requirements specification been identified?
+Have all properties from additional sources been identified?
+Have all the possibilities from the glossary been identified?
+Have all the possibilities from the requirements specification been identified?
+Have all the opportunities from additional sources been identified?
+Are property types specified?
+Are multiplicity properties specified?
+Are property values (default/calculated expressions) specified?
+Have stereotypes of possibility been defined?
+Are arguments specified?
+Are types of results specified?
+Are enumeration types defined?
+Are structural types defined?
+Are interface types defined?
+Have generalized classes been identified?
+Have specialized classes been identified?
+Has the full class hierarchy been identified?
+Have aggregation classes been identified?
+Is the obligation/optionality of the relationship specified?
+Is the multiplicity of the relationship defined?
+Have associations between classes been identified?
+Are the names of the associations specified
+Has the direction of the association been determined
+Have all identified classes been specified?
+Does each class have a short description?
+Have all identified properties been specified?
+Do the specified properties have a complete specification?
+Have all identified opportunities been specified?
+Do the specified capabilities have a complete specification?
+Have all identified relationships been specified?
+Do the specified relationships have a complete specification?
+Are the classes correctly defined?
+Are the properties correctly defined?
+Are the possibilities correctly defined?
+Are the relationships correctly defined?
+Are the parameters correctly defined?
+Are the types correctly defined?
+Was the class model made according to the standards?
+Was the class diagram made according to formal rules?
+Was the class specification made in accordance with the standards?
+Are all classes related by relationships?
+Are properties that illustrate relationships defined?
+Are class diagrams consistent?
+Is there one consistent class diagram?
+Are the class names consistent with the names in the requirements specification?
+Are the property names consistent with the names in the requirements specification?
+Are the capability names consistent with the names in the requirements specification?
+Are the relationship types and names consistent with the requirements specification?
+Does each property have a short description?
+Does each option have a short description?
+Does each account have a short description?
+Are the descriptions understandable?
+Are the names understandable?
+Aren't they too long?
+Are synonyms solved correctly?
+Are generalized types used?
+Is there a generalized notation of container types?
+Aren't generalized classes too specifically?
+Aren't aggregation classes defined in too much detail?
+Aren't the diagrams too tightly drawn?
+Does the specification allow for easy addition/removal of classes?
+Do classes have glossary references?
+Do properties have specific references?
+Do the capabilities have specific references?
+Do relationships have specific references?
+Do classes have separate identifiers in addition to names?
+Do relationships have separate identifiers in addition to names?
+Are all users mapped into actors?
+Are there still some actors missing?
+Are all functional requirements mapped in use cases?
+Are there still some use cases missing?
+Have generalized actors been identified?
+Have specialized actors been identified? Or exhaustive?
+Is the relationship between generalized and specialized actors shown?
+Have generalized use cases been identified?
+Have specialized use cases been identified? Or exhaustive?
+Are the relationships between generalized and specialized cases shown?
+Have complex use cases been identified?
+Have component use cases been identified? Or exhaustive?
+Are the relationships between complex and component cases shown?
+Have you identified extensible use cases?
+Have extensible component use cases been identified? Or exhaustive?
+Have all identified actors been specified?
+Does each actor have a short description?
+Have all identified use cases been specified?
+Do the specified use cases have a complete specification?
+Are the use cases defined correctly?
+Are the actors defined correctly?
+Are the relationships of actors and use cases correctly defined?
+Was the use case model made to standards?
+Was the use case diagram made according to formal rules?
+Is the use case specification done to the standards?
+Is every actor connected to some kind of use case?
+Is each use case connected to an actor (even indirectly)?
+Is the specification consistent with the diagram?
+Are the use cases aligned with the functional requirements?
+Do the actor definitions match the user definitions?
+Do actor definitions appear as classes in the class model?
+Are use cases tied to the respective capabilities of the actors?
+Does each use case have a brief description?
+Does the specification allow for easy addition/removal of elements?
+Do the use cases have references to functional requirements?
+Do use cases have references between them?
+Do use cases have separate identifiers in addition to names?
+Do actors have separate IDs in addition to their names?
+Does each case have a specific interaction?
+Are there still some interactions missing?
+Is every actor a shareholder in the interaction?
+Are the defined system components involved in the interaction?
+Aren't there any shareholders missing?
+Is all the data passed mapped in the messages?
+Are the feedback messages (confirmations, replies, notifications) specified?
+Are there any other messages missing?
+Does each message have a specific effect?
+Are all flow conditions fixed?
+Does every message from an actor have a feedback message?
+Have all identified interactions been specified?
+Does each interaction have specific circumstances?
+Does each interaction have a specific purpose?
+Does every interaction have a short description?
+Are interactions defined correctly?
+Are the shareholders of the interaction correctly defined?
+Are message flows valid?
+Was the interaction model made according to standards?
+Were the interaction diagrams made according to formal rules?
+Was the interaction specification made in accordance with formal rules?
+Do the names and classes used in all interactions match each other?
+Is the message flow internally consistent?
+Do the number and classes of actors in interactions and use cases match each other?
+Does the interaction content match the descriptions of the use cases?
+Do the definitions of interaction participants conform to the requirements specification?
+Do the message definitions conform to the requirements specification?
+Do interaction participant definitions appear as classes in the class model?
+Does message processing have the right capabilities for recipients?
+Are messages related to events?
+Are sequence and collaboration diagrams compatible with each other?
+Do the interactions have references to use cases/functional requirements?
+Do interactions have mutual references?
+Do interactions have separate identifiers in addition to names?
+Do messages have separate identifiers in addition to names?
+Does each case have a specific activity?
+Are there any other activities missing?
+Does each shareholder (animated) have their own area of responsibility?
+Is each activity in a specific area of responsibility?
+Is there an interface for each transition between activity areas?
+Is there a specific start for each flow?
+Is there an end for each flow?
+Is each reflowing condition specified?
+Have all identified activities been specified?
+Does each activity have specific circumstances?
+Does each activity have a specific goal?
+Does each activity have a short description?
+Are the activities defined correctly?
+Are the shareholders of the activity correctly defined?
+Are activity flows correct?
+Was the activity model made in accordance with the standards?
+Were the activity diagrams made according to formal rules?
+Was the activity specification made in accordance with formal rules?
+Do the names and classes used in all activities match each other?
+Is the flow of activity internally consistent?
+Do the amount and names of activities and use cases match?
+Does the activity content match the descriptions of the use cases?
+Do the definitions of activity participants comply with the requirements specification?
+Are the activity flows aligned with the requirements specification?
+Do activity participant definitions appear as classes in the class model?
+Do the activities have the right capabilities for the audience?
+Are activity transitions related to events?
+Do the activities have references for use cases/functional requirements?
+Do activities have mutual references?
+Do activities have separate IDs in addition to names?
+Do interfaces have separate identifiers in addition to names?
+Have all active classes been identified?
+Are state machines defined for all active classes?
+Are the required recessed state machines defined?
+Have all active class states been identified?
+Have all property related states been identified?
+Have all capability states been identified?
+Have all the states related to message forwarding been defined?
+Is there an initial state for each state machine?
+Have all message forwarding events been identified?
+Have all termination events been identified?
+Have all temporal events been identified?
+Have all exceptional events been identified?
+Does every event have a transition?
+Does every pass have an event?
+Do transitions with the same events from the same state have conditions?
+Are there any required actions for transitions?
+Is there a specification for each machine?
+Does each state machine have a short description?
+Have all identified states been specified?
+Do the specified states have a complete specification?
+Have all identified events been specified?
+Do the specified events have a complete specification?
+Have all identified passages been specified?
+Do the specified passages have a complete specification?
+Are state machines correctly defined?
+Are states defined correctly?
+Are the events correctly defined?
+Are transitions correctly defined?
+Was the state model made to standards?
+Was the state diagram made according to formal rules?
+Was the condition specification made in accordance with the standards?
+Are all state diagrams internally consistent?
+Are the recessed state machines consistent with the parent ones?
+Are the state names consistent with the names in the requirements specification?
+Are the event names consistent with the names in the requirements specification?
+Are the action names consistent with the requirements specification?
+Are state machines assigned to classes?
+Are class properties defined to store states?
+Are event classes defined?
+Have capabilities been defined to handle events?
+Have the capabilities corresponding to the actions been defined?
+Does each state have a short description?
+Does each event have a short description?
+Does each passage have a short description?
+Do state machines have class references?
+Do states have specific references?
+Do the events have specific references?
+Do the transitions have specific references?
+Do state machines have separate identifiers in addition to names?
+Do states have separate identifiers in addition to names?
+Do events have separate IDs in addition to names?
+Are association names specified?
+Has the direction of association been determined?
+Is there a component defined for each functional requirement?
+Have all the relationships between components been identified?
+Have all classes been assigned to components?
+Have all components been specified?
+Does each component have a short description?
+Are the component specifications complete?
+Are component definitions correct?
+Was the component model made to standards?
+Was the component diagram made according to formal rules?
+Was the component specification made in accordance with formal rules?
+Are all components related by relationships?
+Aren't dependencies cyclical?
+Is the component model consistent with the functional requirements?
+Is the component model consistent with the class model?
+Is the component model consistent with the functional model?
+Are there any diagrams?
+Is the division into modules (packages) appropriate?
+Does the specification allow for easy addition/removal of components?
+Do the components have references to the requirements specification?
+Do components have separate identifiers in addition to names?
+Have all forms resulting from the functional model been defined?
+Have all forms resulting from the data model been defined?
+Are basic dialogues defined?
+Are auxiliary dialogues defined?
+Are basic reports defined?
+Are secondary reports defined?
+Is there a definition of navigation between forms?
+Are user commands defined?
+Is there a menu structure defined?
+Are toolbars defined?
+Have navigation diagrams been made?
+Are navigation diagrams complete?
+Have drafts of forms been made?
+Are the form designs complete?
+Have draft reports been prepared?
+Are the draft reports complete?
+Have all commands been specified?
+Does each command have a short description?
+Are the command specifications complete?
+Have all forms been specified?
+Does each form have a short description?
+Are the form specifications complete?
+Have all reports been specified?
+Does each report have a short description?
+Are the report specifications complete?
+Are the form definitions correct?
+Are the dialogue definitions correct?
+Are the report definitions correct?
+Are the control definitions correct?
+Is the user interface design done according to standards?
+Were the designs of the I.U. components made in accordance with the formal rules?
+Was the specification of the components i.u. made in accordance with the formal rules?
+Are all components of the I.U related by relationships?
+Is the i.u. design consistent with the requirements specification?
+Is the i.u. design consistent with the static model?
+Is the i.u. design consistent with the functional model?
+Does each i.u. component have a short description?
+Is the division into components of the I.U. appropriate?
+Does the specification allow for easy addition/removal of i.u. components?
+Do the components have the appropriate references?
+Do i.u. components have separate identifiers in addition to names?
+Are persistent classes defined?
+Is there a data structure defined for each persistent class?
+Have all relationships between data structures been identified?
+Have you created data structure diagrams?
+Are data structure diagrams complete?
+Have all data structures been specified?
+Does each data structure have a short description?
+Are the specifications of the data structures complete?
+Are the data structure definitions correct?
+Is the data structure model made in accordance with the standards?
+Was the data structure diagram made according to formal rules?
+Was the specification of the data structures made according to formal rules?
+Are all data structures related by relationships?
+Is the data structure model consistent with the requirements specification?
+Is the data structure model consistent with the class model?
+Is the division into data modules appropriate?
+Does the specification allow easy addition/removal of data structures?
+Do the data structures have the right references?
+Do data structures have separate identifiers in addition to names?
+Have all the objectives of the system been achieved?
+Are the issues resolved?
+Have the benefits been provided?
+Have the requirements of the core shareholders been met?
+Have the requirements of additional shareholders been met?
+Have the requirements of external shareholders been met?
+Have the requirements of the basic users been met?
+Have the requirements of additional users been met?
+Is all user tasks assured?
+Have all the required features been implemented?
+Has each feature been implemented completely?
+Have the features been properly assigned to users?
+Are all data inputs (all files) implemented?
+Have all data outputs (all files) been implemented?
+Have all stored data (tables, files) been implemented?
+Have all data processing methods been implemented?
+Have all processes been implemented?
+Have all operations been implemented?
+Has the full system architecture been implemented?
+Does the system work in the assumed work environment?
+Has interoperability with other systems been implemented?
+Is the user interface (all windows/dialogs) fully implemented?
+Is the UI functionality appropriate?
+Have the interfaces to other systems been fully implemented?
+Is the processing time appropriate?
+Is the response time adequate?
+Have parallel processes been used?
+Have parallel operations been used?
+Is the number of users using the system at the same time appropriate?
+Is the number of transactions handled per unit of time appropriate?
+Is the initial number of records (files) of data appropriate?
+Is the increment of records (files) of data appropriate?
+Is the data volume appropriate?
+Have data archiving and data dearchiving been implemented?
+How does the system work with equipment that meets optimal requirements?
+How does the system work with equipment that meets the minimum requirements?
+Is it acceptable to lose performance under optimal conditions?
+How does the system work with software that meets optimal requirements?
+How does the system work with software that meets the minimum requirements?
+How does the system work with a large number of users?
+How does the system work with a large number of transactions per unit of time?
+Is it possible to expand the system in this regard?
+How does the system work with a large number of records (files)?
+How does the system work with a large volume of data?
+Is the system functioning properly under normal conditions?
+Is the number of errors acceptable?
+Does the system handle emergencies correctly?
+Have all emergencies been tested?
+Is the system handling critical situations correctly?
+Have all critical situations been tested?
+Are you in place to prevent failures?
+Have mechanisms been implemented to minimize the effects of failures?
+Is the system adequately resilient to user errors?
+Have measures been implemented to minimize the possibility of user error?
+Have data verification methods been implemented?
+Have you implemented ways to repair your data?
+Have you implemented ways to verify the processing results?
+Are there any ways to deal with processing errors?
+Have security methods been implemented in this aspect?
+Has input validation been implemented?
+Has output validation been implemented?
+Has the ability to preview stored data been implemented?
+Has the ability to verify stored data been implemented?
+Have control procedures been implemented?
+Have test procedures been implemented?
+Can the system run on different hardware platforms?
+Or all the required ones?
+Can the system run in different software environments?
+Have you implemented the import of files in all required formats?
+Has you implemented the export of files in all required formats?
+Has the ability to exchange data with different systems been implemented?
+Have language versions for Western countries been implemented?
+Have language versions for other European countries been implemented?
+Have languages for Middle Eastern countries been implemented?
+Have language versions for Far Eastern countries been implemented?
+Is the ability to change the date format implemented?
+Has the ability to change the time format been implemented?
+Has the ability to change the number format been implemented?
+Has the ability to change the currency symbol and its position implemented?
+Has the ability to change quotation marks been implemented?
+Has the ability to write macros (scripts) by the user been implemented?
+Has a macro (scripting) language specification been created?
+Has the ability to introduce add-ons been implemented?
+Has an add-on writing language specification been created?
+Have you created an interface specification for add-ons?
+Is there a way to choose the format of the files to be saved?
+Has the ability to change the database system been implemented?
+Has the ability to change the layout of windows been implemented?
+Has the ability to change the appearance of windows been implemented?
+Is the ability to select a user profile implemented?
+Is the ability to configure menus implemented?
+Is the ability to configure toolbars implemented?
+Is the ability to configure keyboard shortcuts implemented?
+Has the system architecture configuration adjustment been implemented during installation?
+Has the system architecture configuration adjustment been implemented after installation?
+Are the implemented functions adequate for specific problems?
+Are the implemented functions adequate to the expected benefits?
+Are the implemented functions adequate to the goals?
+Has the implementation been evaluated by the customer? How high?
+Has the implementation been evaluated by users? How high?
+Is the implemented interface compliant with the standards?
+Is the implemented way of working compliant with the standards?
+Have user hints been implemented?
+Have explanations for inexperienced users been implemented?
+Has a support system been implemented?
+Has autocomplete been implemented?
+Has autocorrect been implemented?
+Is the scope of the aid scheme adequate?
+Is the scope of the hint system appropriate?
+Have user support measures been implemented?
+Is the implemented way of working consistent with the current one?
+Has a demo been implemented?
+Have training programs been implemented?
+Have training courses been organized?
+Is the ability to perform certain actions automatically implemented?
+Is the ability to record and repeat user commands implemented?
+Is the ability to record and repeat sequences of commands implemented?
+Have hints been implemented?
+Have autocorrects or autocompletes been implemented?
+Have keyboard shortcuts been implemented?
+Have you implemented the appropriate mouse functionality?
+Have all the features been implemented correctly?
+Does the user interface have the correct functionality?
+Are the interfaces to other systems working properly?
+Has the implementation been tested and accepted by experts?
+Has implementation documentation been made?
+Is the implementation documentation compliant with the standards?
+Is the implementation documentation understandable?
+Have test documentation been provided?
+Are the functions performed in the same way in different modules?
+Is the interface look the same in different modules?
+Is the functionality of the interface in different modules the same?
+How were functional and performance requirements reconciled?
+How were performance and reliability requirements reconciled?
+How are performance requirements reconciled with the required flexibility?
+Is the way the function is implemented understandable?
+Does the way the interface is set up make it easier to understand the functionality?
+Was the implementation done in a modular way?
+Is the division into modules appropriate?
+Are the dependencies between modules appropriate?
+Are execution modules used?
+Is the division into executive modules appropriate?
+Are the dependencies between the execution modules appropriate?
+Is the source code available?
+Is the source code consistent with the documentation?
+Is the source code formatted according to standards?
+Is the source code understandable?
+Is the implementation linked to the project?
+Is the implementation linked to the requirements specification?
+Have the implemented functions been properly interconnected?
+Have functional implementations been linked to functional implementations?
+Are the functional implementations interrelated?
+Are the input and output conditions of the operation specified
+Have the input and output conditions of the processes been specified?
+Is there a specific way to test for emergencies?
+Is it possible to test critical situations?
+Is it possible to test emergency situations?
+

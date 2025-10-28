@@ -160,6 +160,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clearness.
+        /// </summary>
+        public static string Clearness {
+            get {
+                return ResourceManager.GetString("Clearness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compatibility with experience.
         /// </summary>
         public static string CompatibilityWithExperience {
@@ -1204,6 +1213,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description style.
+        /// </summary>
+        public static string DescriptionStyle {
+            get {
+                return ResourceManager.GetString("DescriptionStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Documentation comprehensibility.
         /// </summary>
         public static string DocumentationComprehensibility {
@@ -1420,15 +1438,6 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How to describe.
-        /// </summary>
-        public static string HowToDescribe {
-            get {
-                return ResourceManager.GetString("HowToDescribe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Immutability of goals.
         /// </summary>
         public static string ImmutabilityOfGoals {
@@ -1519,20 +1528,11 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Intuitive.
+        ///   Looks up a localized string similar to Intuitiveness.
         /// </summary>
-        public static string Intuitive {
+        public static string Intuitiveness {
             get {
-                return ResourceManager.GetString("Intuitive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to It will use parallels.
-        /// </summary>
-        public static string ItWillUseParallels {
-            get {
-                return ResourceManager.GetString("ItWillUseParallels", resourceCulture);
+                return ResourceManager.GetString("Intuitiveness", resourceCulture);
             }
         }
         
@@ -1569,6 +1569,15 @@ namespace QuestRSX {
         public static string Localizability {
             get {
                 return ResourceManager.GetString("Localizability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifiability.
+        /// </summary>
+        public static string Modifiability {
+            get {
+                return ResourceManager.GetString("Modifiability", resourceCulture);
             }
         }
         
@@ -1611,9 +1620,9 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Non-contradictory requirements.
         /// </summary>
-        public static string Non_ContradictoryRequirements {
+        public static string NonContradictoryRequirements {
             get {
-                return ResourceManager.GetString("Non-ContradictoryRequirements", resourceCulture);
+                return ResourceManager.GetString("NonContradictoryRequirements", resourceCulture);
             }
         }
         
@@ -1728,9 +1737,9 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Requirements &quot;for future&quot;.
         /// </summary>
-        public static string Requirements_ForFuture_ {
+        public static string RequirementsForFuture {
             get {
-                return ResourceManager.GetString("Requirements\"ForFuture\"", resourceCulture);
+                return ResourceManager.GetString("RequirementsForFuture", resourceCulture);
             }
         }
         
@@ -1942,20 +1951,29 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ui and functional model design consistency.
+        ///   Looks up a localized string similar to UI and functional model design consistency.
         /// </summary>
-        public static string UiAndFunctionalModelDesignConsistency {
+        public static string UIAndFunctionalModelDesignConsistency {
             get {
-                return ResourceManager.GetString("UiAndFunctionalModelDesignConsistency", resourceCulture);
+                return ResourceManager.GetString("UIAndFunctionalModelDesignConsistency", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ui and static model design consistency.
+        ///   Looks up a localized string similar to UI and static model design consistency.
         /// </summary>
-        public static string UiAndStaticModelDesignConsistency {
+        public static string UIAndStaticModelDesignConsistency {
             get {
-                return ResourceManager.GetString("UiAndStaticModelDesignConsistency", resourceCulture);
+                return ResourceManager.GetString("UIAndStaticModelDesignConsistency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usability.
+        /// </summary>
+        public static string Usability {
+            get {
+                return ResourceManager.GetString("Usability", resourceCulture);
             }
         }
         
@@ -1978,15 +1996,6 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User-friendliness.
-        /// </summary>
-        public static string User_Friendliness {
-            get {
-                return ResourceManager.GetString("User-Friendliness", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to User assistance.
         /// </summary>
         public static string UserAssistance {
@@ -2005,6 +2014,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User friendliness.
+        /// </summary>
+        public static string UserFriendliness {
+            get {
+                return ResourceManager.GetString("UserFriendliness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User modifiability.
         /// </summary>
         public static string UserModifiability {
@@ -2019,15 +2037,6 @@ namespace QuestRSX {
         public static string UserRisks {
             get {
                 return ResourceManager.GetString("UserRisks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Utility.
-        /// </summary>
-        public static string Utility {
-            get {
-                return ResourceManager.GetString("Utility", resourceCulture);
             }
         }
     }
