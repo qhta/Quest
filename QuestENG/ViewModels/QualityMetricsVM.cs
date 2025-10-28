@@ -113,9 +113,20 @@ public class QualityMetricsVM : ViewModel<QualityMetrics>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Display Name from the model preceding with ordering number.
+  /// Display Name preceding with ordering number.
   /// </summary>
-  public string? DisplayNameWithNumbering => TextWithNumbering;
+  public string? DisplayNameWithNumbering
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      var text = DisplayName;
+      var numbering = Numbering;
+      if (numbering != null)
+        text = numbering + " " + text;
+      return text;
+    }
+  }
 
 
   /// <summary>

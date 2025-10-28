@@ -1,4 +1,5 @@
 ﻿using Qhta.TextUtils;
+
 using QuestRSX;
 
 namespace QuestIMP;
@@ -292,6 +293,8 @@ public class WorkbookImporter : IDisposable
             }
             else
             {
+              if (c >= gradesColumn)
+                continue;
               var text = s;
               var name = GetMeasureName(text);
               var qualityMeasure = new QualityMeasure { Name = name, Text = text };
@@ -300,6 +303,7 @@ public class WorkbookImporter : IDisposable
               {
                 //qualityMeasure.Level = lastMetricsNode.Level + 1;
                 lastMetricsNode.Add(qualityMeasure);
+                qualityMeasure.Name ??= GetMeasureName(qualityMeasure);
               }
               else
                 throw new InvalidOperationException("Invalid structure of questionnaire");
@@ -358,7 +362,7 @@ public class WorkbookImporter : IDisposable
   private string? GetMetricsName(string text)
   {
     // Special error correction
-    if (text== "Wykorzysta równoległości")
+    if (text == "Wykorzysta równoległości")
       text = "Wykorzystanie równoległości";
     else if (text == "Zgodność z doświadczem")
       text = "Zgodność z doświadczeniem";
@@ -374,18 +378,36 @@ public class WorkbookImporter : IDisposable
 
   private string? GetMeasureName(string text)
   {
+    if (text.StartsWith("Ocena"))
+      Debug.Assert(true);
     return null;
-    //var allMeasureStrings = MeasureStringsHelper.Instance.GetAllCultureSpecificVariants();
-    //var name = allMeasureStrings.Values.SelectMany(d => d).FirstOrDefault(kvp => kvp.Value == text).Key;
-    //if (name == null)
-    //{
-    //  name = TranslationHelper.TranslateText(text, "pl", "en");
-    //  if (name != null)
-    //    name = name.CamelCase();
-    //}
-    //return name;
   }
 
+  private readonly Dictionary<string, int> MetricsNames = new Dictionary<string, int>();
+
+  private string? GetMeasureName(QualityMeasure measure)
+  {
+    if (measure.Parent != null)
+    {
+      var parentName = measure.Parent.Name;
+      if (parentName != null)
+      {
+        if (!MetricsNames.TryGetValue(parentName, out var n))
+        {
+          n = 1;
+          MetricsNames[parentName] = n;
+        }
+        else
+        {
+          n++;
+          MetricsNames[parentName] = n;
+        }
+        var name = $"{parentName}_M{n}";
+        Debug.WriteLine($"{name};{measure.Text}");
+      }
+    }
+    return null;
+  }
 
   /// <summary>
   /// Gets the document title from the given worksheet by searching for the first non-empty cell over the weights table.

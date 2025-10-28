@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Quality of a single document.

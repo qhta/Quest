@@ -695,7 +695,7 @@
         </member>
         <member name="P:Quest.QualityMetricsVM.DisplayNameWithNumbering">
             <summary>
-            Display Name from the model preceding with ordering number.
+            Display Name preceding with ordering number.
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.FactorType">

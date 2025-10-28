@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Observable collection of <see cref="DocumentQuality"/> objects.

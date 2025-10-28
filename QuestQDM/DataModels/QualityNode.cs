@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Serialization;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Represents an abstract node of a quality tree.
@@ -66,5 +62,5 @@ public abstract class QualityNode : QualityObject
   /// Gets or sets the parent node associated with this quality metrics node.
   /// </summary>
   [XmlIgnore]
-  public QualityMetricsNode Parent { get; set; } = null!;
+  public QualityMetricsNode? Parent { get; set; }
 }

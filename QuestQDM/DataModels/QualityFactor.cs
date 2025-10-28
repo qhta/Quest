@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Top level quality factor with weight and grade value.
