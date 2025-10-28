@@ -404,6 +404,7 @@ public class WorkbookImporter : IDisposable
         }
         var name = $"{parentName}_M{n}";
         Debug.WriteLine($"{name};{measure.Text}");
+        return name;
       }
     }
     return null;
