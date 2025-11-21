@@ -19,10 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestWASM", "QuestWASM\Ques
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestRSX", "QuestRSX\QuestRSX.csproj", "{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickTest", "QuickTest\QuickTest.csproj", "{584A15D5-23E4-432D-B07D-5AD9A41E675D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationTest", "TranslationTest\TranslationTest.csproj", "{34063731-6EA7-483F-9E13-1B65646D9C9B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,14 +57,6 @@ Global
 		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E1B2ED1-0367-4B0B-91D7-649AE12583E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{584A15D5-23E4-432D-B07D-5AD9A41E675D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{584A15D5-23E4-432D-B07D-5AD9A41E675D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{584A15D5-23E4-432D-B07D-5AD9A41E675D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{584A15D5-23E4-432D-B07D-5AD9A41E675D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34063731-6EA7-483F-9E13-1B65646D9C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34063731-6EA7-483F-9E13-1B65646D9C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34063731-6EA7-483F-9E13-1B65646D9C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34063731-6EA7-483F-9E13-1B65646D9C9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,12 +19,19 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
     DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
   }
 
+  ///// <summary>
+  ///// Gets the quality object associated with the model.
+  ///// </summary>
+  //public QualityObject QualityObject => Model;
+
   /// <summary>
-  /// Gets the quality object associated with the model.
+  /// Filename associated with the project quality.
   /// </summary>
-  public QualityObject QualityObject => Model;
+  public string? Filename { get; set; }
 
 
+
+  private bool InClear;
   private void FactorTypes_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
   {
     if (sender == FactorTypes)
@@ -32,29 +39,35 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       if (e.Action == NotifyCollectionChangedAction.Add)
         foreach (var qualityFactorTypeVM in e.NewItems?.OfType<QualityFactorTypeVM>() ?? [])
         {
-          FactorTypes.Add(new QualityFactorTypeVM(qualityFactorTypeVM.Model));
+          FactorTypes?.Add(new QualityFactorTypeVM(qualityFactorTypeVM.Model));
         }
       else if (e.Action == NotifyCollectionChangedAction.Remove)
         foreach (var qualityFactorTypeVM in e.OldItems?.OfType<QualityFactorTypeVM>() ?? [])
         {
-          var toRemove = FactorTypes.FirstOrDefault(qft => qft.Model == qualityFactorTypeVM.Model);
+          var toRemove = FactorTypes?.FirstOrDefault(qft => qft.Model == qualityFactorTypeVM.Model);
           if (toRemove != null)
-            FactorTypes.Remove(toRemove);
+            FactorTypes?.Remove(toRemove);
         }
       else if (e.Action == NotifyCollectionChangedAction.Reset)
-        FactorTypes.Clear();
+      {
+        if (!InClear)
+        {
+          InClear = true;
+          FactorTypes?.Clear();
+        }
+      }
     }
   }
 
   private void DocumentQualities_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
   {
-    if (sender == DocumentQualities)
+    if (sender == DocumentQualities && FactorTypes != null)
     {
       if (e.Action == NotifyCollectionChangedAction.Add)
         foreach (var documentQualityVM in e.NewItems?.OfType<DocumentQualityVM>() ?? [])
         {
           documentQualityVM.BindFactorTypes(FactorTypes);
-          ViewItems.Add(new QuestItemViewModel{Header = documentQualityVM.DocumentType, Content=documentQualityVM});
+          ViewItems.Add(new QuestItemViewModel { Header = documentQualityVM.DocumentType, Content = documentQualityVM });
         }
     }
   }
@@ -105,7 +118,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// <summary>
   /// Collection of quality factor types used in the project.
   /// </summary>
-  public QualityFactorTypeVMCollection FactorTypes
+  public QualityFactorTypeVMCollection? FactorTypes
   {
     [DebuggerStepThrough]
     get => _qualityTypes;
@@ -118,7 +131,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       }
     }
   }
-  private QualityFactorTypeVMCollection _qualityTypes = null!;
+  private QualityFactorTypeVMCollection? _qualityTypes = null!;
 
   /// <summary>
   /// Individual document qualities within the project.
@@ -245,8 +258,27 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
         _IsLoaded = value;
         NotifyPropertyChanged(nameof(IsLoaded));
         EvaluateValue();
+        IsChanged = false;
       }
     }
   }
   private bool _IsLoaded;
+
+  ///  <inheritdoc/>
+  public override bool? IsChanged
+  {
+    get => base.IsChanged == true || Scale?.IsChanged == true || FactorTypes?.IsChanged == true;
+    set
+    {
+      base.IsChanged = value;
+      if (Scale != null)
+        Scale.IsChanged = value;
+      if (FactorTypes != null)
+        FactorTypes.IsChanged = value;
+    }
+  }
+  /// <summary>
+  /// Gets the quality object associated with the model.
+  /// </summary>
+  public QualityObject QualityObject => Model;
 };

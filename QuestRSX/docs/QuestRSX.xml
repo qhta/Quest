@@ -1266,14 +1266,14 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.AllFilesFilter">
+            <summary>
+              Looks up a localized string similar to All files (*.*)|*.*.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.Comment">
             <summary>
               Looks up a localized string similar to Comment.
-            </summary>
-        </member>
-        <member name="P:QuestRSX.Strings.CreateQuestFileTitle">
-            <summary>
-              Looks up a localized string similar to Create Quest file.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.EmptyProjectTitle">
@@ -1283,7 +1283,22 @@
         </member>
         <member name="P:QuestRSX.Strings.ExcelFilesFilter">
             <summary>
-              Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls|All files|*.*.
+              Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.ExcelXlsFilesFilter">
+            <summary>
+              Looks up a localized string similar to Old Excel files (*.xls)|*.xls.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.ExcelXlsxFilesFilter">
+            <summary>
+              Looks up a localized string similar to Excel Workbook files (*.xlsx)|*.xlsx.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.ExcelXslmFilesFilter">
+            <summary>
+              Looks up a localized string similar to Excel Workbook with macros files (*.xlsm)|*.xlsm.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.GradeScale">
@@ -1306,9 +1321,24 @@
               Looks up a localized string similar to Open Excel file.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.QuestFilesTitle">
+        <member name="P:QuestRSX.Strings.QuestFilesFilter">
             <summary>
-              Looks up a localized string similar to Quest XML files|*.qxml|SQLite database files|*.qdb|All files|*.*.
+              Looks up a localized string similar to Quest files (*.quest)|*.quest.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.SaveExcelFileAs">
+            <summary>
+              Looks up a localized string similar to Save Excel file as ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.SaveFileAs">
+            <summary>
+              Looks up a localized string similar to Save file as ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.SaveQuestFileAs">
+            <summary>
+              Looks up a localized string similar to Save Quest file as ....
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.Text">
@@ -1324,6 +1354,11 @@
         <member name="P:QuestRSX.Strings.Weight">
             <summary>
               Looks up a localized string similar to Weight.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.XmlFilesFilter">
+            <summary>
+              Looks up a localized string similar to XML files (*.xml)|*.xml.
             </summary>
         </member>
         <member name="T:QuestRSX.StringsHelper`1">

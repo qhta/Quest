@@ -3,7 +3,7 @@
 /// <summary>
 /// Observable collection of <see cref="QualityFactorVM"/> objects.
 /// </summary>
-public class QualityFactorVMCollection : ObservableList<QualityFactorVM>
+public class QualityFactorVMCollection : ObservableList<QualityFactorVM>, IChangeable
 {
   /// <summary>
   /// Parent view model
@@ -21,6 +21,17 @@ public class QualityFactorVMCollection : ObservableList<QualityFactorVM>
     foreach (var item in items)
       Add(new QualityFactorVM(parent, this, item));
     Parent = parent;
+  }
+
+
+  /// <summary>
+  /// Gets or sets a value indicating whether any item in the collection has been modified.
+  /// </summary>
+  /// <remarks>Setting this property to false updates the <c>IsChanged</c> state of all items in the collection to false.</remarks>
+  public bool? IsChanged
+  {
+    get => this.Any(g => g.IsChanged == true);
+    set { if (value == false) this.ForEach(g => g.IsChanged = value); }
   }
 
   private bool _isRefreshing = false;
@@ -72,4 +83,5 @@ public class QualityFactorVMCollection : ObservableList<QualityFactorVM>
     _isRefreshing = false;
     return weightSum > 0 ? valueSum / weightSum : null;
   }
+
 }

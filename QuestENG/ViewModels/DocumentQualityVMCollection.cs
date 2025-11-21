@@ -3,7 +3,7 @@
 /// <summary>
 /// Observable collection of <see cref="DocumentQualityVM"/> objects.
 /// </summary>
-public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>
+public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>, IChangeable
 {
   private ProjectQualityVM Parent { get; }
 
@@ -16,6 +16,16 @@ public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>
     base(items.Select(item => new DocumentQualityVM(parent, item)))
   {
     Parent = parent;
+  }
+
+  /// <summary>
+  /// Gets or sets a value indicating whether any item in the collection has been modified.
+  /// </summary>
+  /// <remarks>Setting this property to false updates the <c>IsChanged</c> state of all items in the collection to false.</remarks>
+  public bool? IsChanged
+  {
+    get => this.Any(g => g.IsChanged == true);
+    set { if (value == false) this.ForEach(g => g.IsChanged = value); }
   }
 
   /// <summary>

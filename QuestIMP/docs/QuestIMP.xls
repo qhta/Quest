@@ -19,6 +19,11 @@
             Project title associated with the workbook.
             </summary>
         </member>
+        <member name="P:QuestIMP.WorkbookInfo.Workbook">
+            <summary>
+            Workbook interface
+            </summary>
+        </member>
         <member name="P:QuestIMP.WorkbookInfo.Worksheets">
             <summary>
             Information about the worksheets contained in the workbook.
@@ -350,6 +355,11 @@
         <member name="P:QuestIMP.WorkbookInfoVM.ProjectTitle">
             <summary>
             Represents the project title of the workbook.
+            </summary>
+        </member>
+        <member name="P:QuestIMP.WorkbookInfoVM.Workbook">
+            <summary>
+            Represents the workbook interface.
             </summary>
         </member>
         <member name="P:QuestIMP.WorkbookInfoVM.Worksheets">

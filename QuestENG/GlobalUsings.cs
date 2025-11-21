@@ -9,3 +9,4 @@ global using Qhta.MVVM;
 global using Qhta.ObservableObjects;
 global using QuestRDM;
 global using QuestRSX;
+global using System.Windows.Input;

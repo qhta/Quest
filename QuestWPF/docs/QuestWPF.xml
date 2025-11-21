@@ -33,6 +33,123 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:QuestWPF.FileSaveCommand">
+            <summary>
+            Command to save a file.
+            A parameter should be of <see cref="T:Qhta.MVVM.IFileSaveData"/> type.
+            Handles saving an Excel file as a Quest file.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.FileSaveCommand.CanExecute(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:QuestWPF.FileSaveCommand.Execute(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:QuestWPF.FileSaveData">
+            <summary>
+            Data class for file save operations.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.FileSaveData.#ctor(QuestWPF.MainWindow)">
+            <summary>
+            Data class for file save operations.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.FileSaveData.DataObject">
+            <summary>
+            Gets the data object associated with the currently active view in the main window.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.FileSaveData.Filename">
+            <summary>
+            Filename to save the data to. If null or empty, a file dialog should be used to prompt the user.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.FileSaveData.UseDialog">
+            <summary>
+            Gets or sets a value indicating whether a dialog should be used for user interactions.
+            </summary>
+        </member>
+        <member name="T:QuestWPF.OpenSpreadsheetCommand">
+            <summary>
+            Command to open an Excel spreadsheet file.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.OpenSpreadsheetCommand.Execute(System.Object)">
+            <summary>
+            A method to execute the command. If the parameter is null, it opens a file dialog to select an Excel file.
+            First, it creates a WorkbookInfoVM instance and subscribes to its PropertyChanged event to monitor loading status.
+            Before executing, it instructs CommandCenter to execute "AddFloatingView" command to add a floating view for the ExcelView.
+            After that, it calls OpenSpreadsheetAsync on the ExcelView to load the selected spreadsheet asynchronously.
+            When the WorkbookInfoVM's IsLoaded property changes, it notifies CommandCenter to update the CanExecute status of "StartImportCommand".
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="T:QuestWPF.StartImportCommand">
+            <summary>
+            Command to start the import process from the loaded spreadsheet.
+            A parameter is expected to be an ExcelView instance with a loaded WorkbookInfoVM as its DataContext.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.StartImportCommand.CanExecute(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:QuestWPF.StartImportCommand.Execute(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:QuestWPF._Commander">
+            <summary>
+            Main commander responsible for managing operations within the system.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.MainWindow">
+            <summary>
+            Required reference to the MainWindow instance.
+            </summary>
+        </member>
+        <member name="M:QuestWPF._Commander.#ctor(QuestWPF.MainWindow)">
+            <summary>
+            Default constructor creating the commander and registering commands.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.AddFloatingViewCommand">
+            <summary>
+            Command to add a floating view to the MainWindow.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.OpenSpreadsheetCommand">
+            <summary>
+            Command to open a spreadsheet. If a parameter is null, the user will be prompted to select a file.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.StartImportCommand">
+            <summary>
+            Command to start the import process from the loaded spreadsheet.
+            A parameter is expected to be an ExcelView instance with a loaded WorkbookInfoVM as its DataContext.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.FileSaveCommand">
+            <summary>
+            Command to save a file.
+            A parameter should be of <see cref="T:Qhta.MVVM.IFileSaveData"/> type.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.FileSaveData">
+            <summary>
+            Parameter for the <see cref="P:QuestWPF._Commander.FileSaveCommand"/>.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.ClearQuestionnaireCommand">
+            <summary>
+            Command to open an Excel spreadsheet file.
+            </summary>
+        </member>
+        <member name="M:QuestWPF._Commander.AddFloatingViewExecute(Qhta.MVVM.WindowOpenData)">
+            <summary>
+            Add a view to the docking manager.
+            </summary>
+        </member>
         <member name="T:QuestWPF.Helpers.GradeValuesProvider">
             <summary>
             Data source provider for retrieving grade values from a ProjectQualityVM instance.
@@ -129,22 +246,23 @@
             Ensure that the Syncfusion license key is valid and properly configured before using this application.
             </remarks>
         </member>
-        <member name="P:QuestWPF.MainWindow.OpenSpreadsheetCommand">
+        <member name="P:QuestWPF.MainWindow.Commander">
             <summary>
-            Command to open an Excel spreadsheet file.
+            Gets the commander responsible for managing operations within the system.
             </summary>
         </member>
-        <member name="P:QuestWPF.MainWindow.StartImportCommand">
-            <summary>
-            Command to open an Excel spreadsheet file.
-            </summary>
-        </member>
-        <member name="M:QuestWPF.MainWindow.AddFloatingView(System.Windows.Controls.Control,System.String)">
+        <member name="M:QuestWPF.MainWindow.AddFloatingView(System.Windows.Controls.Control,System.String,System.String)">
             <summary>
             Add a view to the docking manager.
             </summary>
             <param name="view"></param>
+            <param name="windowName"></param>
             <param name="header"></param>
+        </member>
+        <member name="P:QuestWPF.MainWindow.ActiveView">
+            <summary>
+            Gets or sets the currently active view in the MainWindow.
+            </summary>
         </member>
         <member name="M:QuestWPF.MainWindow.InitializeComponent">
             <summary>
@@ -171,19 +289,20 @@
             Initializing constructor,
             </summary>
         </member>
+        <member name="M:QuestWPF.MDIViewModel.ActiveViewChangedOn(Syncfusion.Windows.Tools.Controls.DockingManager)">
+            <summary>
+            Observe active view changes on the docking manager.
+            </summary>
+            <param name="dockingManager"></param>
+        </member>
+        <member name="E:QuestWPF.MDIViewModel.ActiveViewChanged">
+            <summary>
+            Bridge event to notify when the active view has changed in the docking manager.
+            </summary>
+        </member>
         <member name="P:QuestWPF.MDIViewModel.DockCollections">
             <summary>
             Collection of DockItems for managing dockable panels in the UI.
-            </summary>
-        </member>
-        <member name="T:QuestWPF._ViewModels">
-            <summary>
-            Static class to hold all ViewModel instances for easy access.
-            </summary>
-        </member>
-        <member name="P:QuestWPF._ViewModels.All">
-            <summary>
-            An observable list containing all ViewModel instances.
             </summary>
         </member>
         <member name="T:QuestWPF.Views.DocumentQualityView">

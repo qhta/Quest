@@ -3,8 +3,10 @@
 global using System;
 global using System.Collections;
 global using System.Collections.Generic;
+global using System.ComponentModel;
 global using System.Diagnostics;
 global using System.Globalization;
+global using System.IO;
 global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
@@ -22,6 +24,7 @@ global using Qhta.MVVM;
 global using Quest;
 global using QuestWPF;
 global using QuestIMP;
+global using QuestRSX;
 global using QuestWPF.Views;
 global using Syncfusion.Licensing;
 global using Syncfusion.UI.Xaml.CellGrid;

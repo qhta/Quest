@@ -403,7 +403,7 @@ public class WorkbookImporter : IDisposable
           MetricsNames[parentName] = n;
         }
         var name = $"{parentName}_M{n}";
-        Debug.WriteLine($"{name};{measure.Text}");
+        //Debug.WriteLine($"{name};{measure.Text}");
         return name;
       }
     }

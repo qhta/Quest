@@ -55,6 +55,11 @@ public class WorkbookInfoVM: ViewModel<WorkbookInfo>
   }
 
   /// <summary>
+  /// Represents the workbook interface.
+  /// </summary>
+  public IWorkbook? Workbook => Model.Workbook;
+
+  /// <summary>
   /// Collection of worksheet information associated with the workbook.
   /// </summary>
   public WorksheetInfoCollection Worksheets { get; private set; }

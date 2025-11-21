@@ -117,17 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateQuestFileTitle" xml:space="preserve">
-    <value>Utwórz plik Quest</value>
-  </data>
-  <data name="QuestFilesTitle" xml:space="preserve">
-    <value>Pliki Quest XML|*.qxml|Pliki bazy danych SQLite|*.qb|Wszystkie pliki|*.*</value>
+  <data name="SaveFileAs" xml:space="preserve">
+    <value>Zapisz plik jako ...</value>
   </data>
   <data name="EmptyProjectTitle" xml:space="preserve">
     <value>&lt;Tytuł projektu&gt;</value>
   </data>
   <data name="ExcelFilesFilter" xml:space="preserve">
-    <value>Pliki programu Excel|*.xlsx;*.xlsm;*.xls|Wszystkie pliki|*.*</value>
+    <value>Pliki programu Excel|*.xlsx;*.xlsm;*.xls</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Tekst</value>
@@ -152,5 +149,29 @@
   </data>
   <data name="Comment" xml:space="preserve">
     <value>Komentarz</value>
+  </data>
+  <data name="QuestFilesFilter" xml:space="preserve">
+    <value>Pliki Quest (*.quest)|*.quest</value>
+  </data>
+  <data name="AllFilesFilter" xml:space="preserve">
+    <value>Wszystkie pliki (*.*)|*.*</value>
+  </data>
+  <data name="XmlFilesFilter" xml:space="preserve">
+    <value>Pliki XML (*.xml)|*.xml</value>
+  </data>
+  <data name="SaveExcelFileAs" xml:space="preserve">
+    <value>Zapisz plik Excel jako ...</value>
+  </data>
+  <data name="SaveQuestFileAs" xml:space="preserve">
+    <value>Zapisz plik Quest jako ...</value>
+  </data>
+  <data name="ExcelXlsFilesFilter" xml:space="preserve">
+    <value>Stare pliki Excel (*.xls)|*.xls</value>
+  </data>
+  <data name="ExcelXlsxFilesFilter" xml:space="preserve">
+    <value>Skoroszyty Excel (*.xlsx)|*.xlsx</value>
+  </data>
+  <data name="ExcelXslmFilesFilter" xml:space="preserve">
+    <value>Skoroszyty Excel z makrami (*.xlsm)|*.xlsm</value>
   </data>
 </root>

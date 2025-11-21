@@ -3,7 +3,7 @@
 /// <summary>
 /// Observable collection of <see cref="QualityGradeVM"/> objects.
 /// </summary>
-public class QualityScaleVM : ObservableList<QualityGradeVM>
+public class QualityScaleVM : ObservableList<QualityGradeVM>, IChangeable
 {
   /// <summary>
   /// Parent view model
@@ -27,4 +27,14 @@ public class QualityScaleVM : ObservableList<QualityGradeVM>
   /// <returns></returns>
   /// <exception cref="KeyNotFoundException"></exception>
   public QualityGradeVM? GetGradeByName(string name) => this.FirstOrDefault(g => g.Text == name);
+
+  /// <summary>
+  /// Gets or sets a value indicating whether any item in the collection has been modified.
+  /// </summary>
+  /// <remarks>Setting this property to false updates the <c>IsChanged</c> state of all items in the collection to false.</remarks>
+  public bool? IsChanged
+  {
+    get => this.Any(g => g.IsChanged == true);
+    set { if (value == false) this.ForEach(g => g.IsChanged = value); }
+  }
 }

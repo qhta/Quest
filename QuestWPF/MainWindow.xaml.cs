@@ -1,12 +1,4 @@
-﻿using System.ComponentModel;
-using System.IO;
-using Polenter.Serialization;
-using Quest.Data.QDM;
-using QuestRSX;
-
-using QuestWPF.Views;
-
-namespace QuestWPF;
+﻿namespace QuestWPF;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -22,127 +14,48 @@ public partial class MainWindow : Window
   /// </remarks>
   public MainWindow()
   {
-    OpenSpreadsheetCommand = new RelayCommand<Object>(OpenSpreadsheet);
-    StartImportCommand = new RelayCommand<Object>(StartImport, CanStartImport);
+    Commander = new _Commander ( this );
     InitializeComponent();
+    //if (DataContext is MDIViewModel viewModel)
+    //{
+    //  viewModel.ActiveViewChangedOn(dockingManager);
+    //  viewModel.ActiveViewChanged += ViewModel_ActiveViewChanged;
+    //}
   }
 
-  #region Open Spreadsheet Command
+  private void ViewModel_ActiveViewChanged(object sender, DependencyPropertyChangedEventArgs e)
+  {
+    ActiveView = (e.NewValue as DockItem)?.Content as Control;
+  }
+
   /// <summary>
-  /// Command to open an Excel spreadsheet file.
+  /// Gets the commander responsible for managing operations within the system.
   /// </summary>
-  public ICommand OpenSpreadsheetCommand { get; }
-
-  private async void OpenSpreadsheet(object? parameter)
-  {
-    try
-    {
-      // Open a file dialog to select an Excel file
-      var openFileDialog = new OpenFileDialog
-      {
-        Filter = Strings.ExcelFilesFilter,
-        Title = Strings.OpenExcelFileTitle
-      };
-
-      if (openFileDialog.ShowDialog() == true)
-      {
-        string newFilename = openFileDialog.FileName;
-        var workbookInfoVM = new WorkbookInfoVM();
-        workbookInfoVM.PropertyChanged += WorkbookInfoVM_PropertyChanged;
-        var excelView = new ExcelView { FileName = newFilename, DataContext = workbookInfoVM};
-        AddFloatingView(excelView, newFilename);
-        await excelView.OpenSpreadsheetAsync(newFilename, workbookInfoVM);
-      }
-    }
-    catch (Exception e)
-    {
-      MessageBox.Show(e.Message);
-    }
-
-  }
-  #endregion
-
-  private void WorkbookInfoVM_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-  {
-    if (e.PropertyName == nameof(WorkbookInfoVM.IsLoaded))
-    {
-      // Notify that CanExecute status has changed
-      (StartImportCommand as RelayCommand<object>)?.NotifyCanExecuteChanged();
-    }
-  }
-  #region Start Import Command
-  /// <summary>
-  /// Command to open an Excel spreadsheet file.
-  /// </summary>
-  public ICommand StartImportCommand { get; }
-
-  private bool CanStartImport(object? parameter)
-  {
-    if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
-    {
-      return false;
-    }
-    return workbookInfoVM.IsLoaded && workbookInfoVM.Model.Worksheets.Any(item => item.IsSelected);
-  }
-
-  private async void StartImport(object? parameter)
-  {
-    try
-    {
-      if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
-      {
-        MessageBox.Show("No workbook to import from.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        return;
-      }
-      // Open a file dialog to select an Excel file
-      var saveFileDialog = new SaveFileDialog
-      {
-        FileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".qxml")),
-        Filter = Strings.QuestFilesTitle,
-        Title = Strings.CreateQuestFileTitle
-      };
-
-      if (saveFileDialog.ShowDialog() == true)
-      {
-        string newFilename = saveFileDialog.FileName;
-        var questView = new QuestView { FileName = newFilename };
-        AddFloatingView(questView, newFilename);
-        var projectQuality = await questView.ImportExcelFileAsync(excelView.FileName, workbookInfoVM.Model);
-        new SharpSerializer().Serialize(projectQuality, newFilename);
-        newFilename = System.IO.Path.ChangeExtension(newFilename, ".xml");
-        await using (var writer = new StreamWriter(newFilename))
-        {
-          var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
-          xmlSerializer.Serialize(writer, projectQuality);
-        }
-
-        //var qdmContext = new QuestQDMDbContext();
-
-
-      }
-    }
-    catch (Exception e)
-    {
-      MessageBox.Show(e.Message);
-    }
-  }
-  #endregion
+  public _Commander Commander { get; }
 
   /// <summary>
   /// Add a view to the docking manager.
   /// </summary>
   /// <param name="view"></param>
+  /// <param name="windowName"></param>
   /// <param name="header"></param>
-  public void AddFloatingView(Control view, string? header)
+  public void AddFloatingView(Control view, string windowName, string? header)
   {
     if (DataContext is MDIViewModel viewModel)
     {
+      if (windowName.Contains('#'))
+      {
+        var nameCount = viewModel.DockCollections.Count(dockItem => dockItem.Name.StartsWith(windowName))+1;
+        windowName =windowName.Replace("#",nameCount.ToString()).Replace(" ","_");
+      }
+
       var dockItem = new DockItem
       {
+        Name =  windowName,
         Header = header,
         State = DockState.Float,
         CanFloatMaximize = true,
-        Content = view
+        Content = view,
       };
 
       viewModel.DockCollections.Add(dockItem);
@@ -171,6 +84,23 @@ public partial class MainWindow : Window
         screenTopLeftPx.Y + offset,
         width,
         height);
+      dockingManager.ActivateWindow(windowName);
+    }
+  }
+
+  /// <summary>
+  /// Gets or sets the currently active view in the MainWindow.
+  /// </summary>
+  public Control? ActiveView { get; set; }
+
+
+  private void DockingManager_OnActiveWindowChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+  {
+    var activeWindow = e.NewValue;
+    if (activeWindow is ContentControl contentControl)
+    {
+      ActiveView = contentControl.Content as Control;
+      Commander.FileSaveCommand.NotifyCanExecuteChanged();
     }
   }
 }

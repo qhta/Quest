@@ -3,7 +3,7 @@
 /// <summary>
 /// List of quality factor types.
 /// </summary>
-public class QualityFactorTypeVMCollection: ObservableList<QualityFactorTypeVM>
+public class QualityFactorTypeVMCollection: ObservableList<QualityFactorTypeVM>, IChangeable
 {
   private ProjectQualityVM Parent { get; }
 
@@ -18,4 +18,13 @@ public class QualityFactorTypeVMCollection: ObservableList<QualityFactorTypeVM>
     Parent = parent;
   }
 
+  /// <summary>
+  /// Gets or sets a value indicating whether any item in the collection has been modified.
+  /// </summary>
+  /// <remarks>Setting this property to false updates the <c>IsChanged</c> state of all items in the collection to false.</remarks>
+  public bool? IsChanged
+  {
+    get => this.Any(g => g.IsChanged == true);
+    set { if (value == false) this.ForEach(g => g.IsChanged = value); }
+  }
 }

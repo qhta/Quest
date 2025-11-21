@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:QuestWPF"
         xmlns:Views="clr-namespace:QuestWPF.Views"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:mvvm="clr-namespace:Qhta.MVVM;assembly=QuestENG"
         x:Class="QuestWPF.MainWindow"
         mc:Ignorable="d"
         Title="QuestAPP" Height="450" Width="800" WindowState="Maximized">
@@ -21,8 +22,13 @@
       <MenuItem Header="File">
         <MenuItem 
           Header="Import Excel workbook" 
-          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=OpenSpreadsheetCommand}"          />
-      </MenuItem>
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.OpenSpreadsheetCommand}" />
+        <MenuItem 
+          Header="Save"
+          InputGestureText="Ctrl+S"
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveCommand}" 
+          CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveData}" />
+        </MenuItem>
       <MenuItem Header="Edit"/>
       <MenuItem Header="Tools"/>
       <MenuItem Header="Windows"/>
@@ -41,6 +47,7 @@
       ContainerMode="MDI"
       UseNativeFloatWindow="True"
       UseDocumentContainer="False"
+      ActiveWindowChanged="DockingManager_OnActiveWindowChanged"
       >
 
       <!--  Customized Header Template  -->

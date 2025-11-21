@@ -35,6 +35,7 @@ public class MDIViewModel: ViewModel
     MDILayoutChangedCommand = new DelegateCommand<object>(MDILayoutChanged);
   }
 
+
   private void MDILayoutChanged(object obj)
   {
     if (obj is object?[] parameters && parameters[0] is not null && parameters[1] is DockingManager dockingManager)
@@ -45,21 +46,46 @@ public class MDIViewModel: ViewModel
         {
           case "Cascade":
             documentContainer.SetLayout(MDILayout.Cascade);
+            documentContainer.ActiveDocumentChanged += DocumentContainer_ActiveDocumentChanged;
             break;
           case "Horizontal":
             documentContainer.SetLayout(MDILayout.Horizontal);
+            documentContainer.ActiveDocumentChanged += DocumentContainer_ActiveDocumentChanged;
             break;
           case "Vertical":
             documentContainer.SetLayout(MDILayout.Vertical);
+            documentContainer.ActiveDocumentChanged += DocumentContainer_ActiveDocumentChanged;
             break;
         }
       }
     }
   }
 
+  /// <summary>
+  /// Observe active view changes on the docking manager.
+  /// </summary>
+  /// <param name="dockingManager"></param>
+  public void ActiveViewChangedOn(DockingManager dockingManager)
+  {
+    if (dockingManager.DocContainer is DocumentContainer documentContainer)
+    {
+      documentContainer.ActiveDocumentChanged += DocumentContainer_ActiveDocumentChanged;
+    }
+  }
+
+  private void DocumentContainer_ActiveDocumentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+  {
+    ActiveViewChanged?.Invoke(d, e);
+  }
+
+  /// <summary>
+  /// Bridge event to notify when the active view has changed in the docking manager.
+  /// </summary>
+  public event DependencyPropertyChangedEventHandler? ActiveViewChanged;
 
   /// <summary>
   /// Collection of DockItems for managing dockable panels in the UI.
   /// </summary>
   public ObservableCollection<DockItem> DockCollections { get; } = new ObservableCollection<DockItem>();
+
 }

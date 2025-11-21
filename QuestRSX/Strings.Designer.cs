@@ -61,20 +61,20 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All files (*.*)|*.*.
+        /// </summary>
+        public static string AllFilesFilter {
+            get {
+                return ResourceManager.GetString("AllFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {
             get {
                 return ResourceManager.GetString("Comment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create Quest file.
-        /// </summary>
-        public static string CreateQuestFileTitle {
-            get {
-                return ResourceManager.GetString("CreateQuestFileTitle", resourceCulture);
             }
         }
         
@@ -88,11 +88,38 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls|All files|*.*.
+        ///   Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls.
         /// </summary>
         public static string ExcelFilesFilter {
             get {
                 return ResourceManager.GetString("ExcelFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Excel files (*.xls)|*.xls.
+        /// </summary>
+        public static string ExcelXlsFilesFilter {
+            get {
+                return ResourceManager.GetString("ExcelXlsFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel Workbook files (*.xlsx)|*.xlsx.
+        /// </summary>
+        public static string ExcelXlsxFilesFilter {
+            get {
+                return ResourceManager.GetString("ExcelXlsxFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel Workbook with macros files (*.xlsm)|*.xlsm.
+        /// </summary>
+        public static string ExcelXslmFilesFilter {
+            get {
+                return ResourceManager.GetString("ExcelXslmFilesFilter", resourceCulture);
             }
         }
         
@@ -133,11 +160,38 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quest XML files|*.qxml|SQLite database files|*.qdb|All files|*.*.
+        ///   Looks up a localized string similar to Quest files (*.quest)|*.quest.
         /// </summary>
-        public static string QuestFilesTitle {
+        public static string QuestFilesFilter {
             get {
-                return ResourceManager.GetString("QuestFilesTitle", resourceCulture);
+                return ResourceManager.GetString("QuestFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Excel file as ....
+        /// </summary>
+        public static string SaveExcelFileAs {
+            get {
+                return ResourceManager.GetString("SaveExcelFileAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save file as ....
+        /// </summary>
+        public static string SaveFileAs {
+            get {
+                return ResourceManager.GetString("SaveFileAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Quest file as ....
+        /// </summary>
+        public static string SaveQuestFileAs {
+            get {
+                return ResourceManager.GetString("SaveQuestFileAs", resourceCulture);
             }
         }
         
@@ -165,6 +219,15 @@ namespace QuestRSX {
         public static string Weight {
             get {
                 return ResourceManager.GetString("Weight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XML files (*.xml)|*.xml.
+        /// </summary>
+        public static string XmlFilesFilter {
+            get {
+                return ResourceManager.GetString("XmlFilesFilter", resourceCulture);
             }
         }
     }

@@ -65,8 +65,10 @@ public partial class ExcelView : UserControl
     SpreadsheetControl.Open(fileName);
     workbookInfoVM.IsLoading = true;
     var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
+    workbookInfoVM.Model.Workbook = workbook; 
     workbookInfoVM.TotalCount = workbook.Worksheets.Count;
     await GetWorkbookInfoAsync(workbook, workbookInfoVM);
+    workbookInfoVM.FileName = fileName;
     workbookInfoVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
     workbookInfoVM.IsLoading = false;
     workbookInfoVM.IsLoaded = true;
