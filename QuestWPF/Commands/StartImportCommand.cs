@@ -32,7 +32,7 @@ public class StartImportCommand : Command
       }
       string newFilename = Path.GetFileNameWithoutExtension(excelView.FileName);
       var questView = new QuestView { FileName = newFilename };
-      CommandCenter.ExecuteCommand(WindowsCommands.OpenWindow, new WindowOpenData(questView, "Quest #", newFilename));
+      CommandCenter.ExecuteCommand(WindowCommands.OpenWindow, new WindowOpenData(questView, "Quest #", newFilename));
       var projectQuality = await questView.ImportExcelFileAsync(excelView.FileName, workbookInfoVM.Model);
     }
     catch (Exception e)

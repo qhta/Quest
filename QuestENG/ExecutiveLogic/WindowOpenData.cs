@@ -1,7 +1,7 @@
 ﻿namespace Qhta.MVVM;
 
 /// <summary>
-/// Data structure used as a parameter to <see cref="WindowsCommands.OpenWindow"/> command.
+/// Data structure used as a parameter to <see cref="WindowCommands.OpenWindow"/> command.
 /// </summary>
 /// <param name="Content">Content of the window</param>
 /// <param name="Name">Name of the window</param>

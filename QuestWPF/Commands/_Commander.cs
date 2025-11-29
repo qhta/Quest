@@ -16,10 +16,12 @@ public class _Commander
   public _Commander(MainWindow mainWindow)
   {
     MainWindow = mainWindow;
-    CommandCenter.RegisterCommand(WindowsCommands.OpenWindow, AddFloatingViewCommand = new RelayCommand<WindowOpenData>(AddFloatingViewExecute));
-    CommandCenter.RegisterCommand(ApplicationCommands.Open, OpenSpreadsheetCommand);
-    CommandCenter.RegisterCommand(QuestCommands.Import, StartImportCommand);
-    CommandCenter.RegisterCommand(FileCommands.Save, FileSaveCommand = FileSaveCommand, FileSaveData = new FileSaveData (MainWindow = mainWindow));
+    CommandCenter.RegisterCommand(FileCommands.Import, FileImportCommand = new FileImportCommand());
+    CommandCenter.RegisterCommand(FileCommands.Open, FileOpenCommand = new FileOpenCommand());
+    CommandCenter.RegisterCommand(WindowCommands.OpenWindow, AddFloatingViewCommand = new RelayCommand<WindowOpenData>(AddFloatingViewExecute));
+    CommandCenter.RegisterCommand(QuestCommands.Import, StartImportCommand = new StartImportCommand());
+    CommandCenter.RegisterCommand(FileCommands.Save, FileSaveCommand, FileSaveData = new FileSaveData (mainWindow));
+    CommandCenter.RegisterCommand(FileCommands.SaveAs, FileSaveCommand, FileSaveAsData = new FileSaveData(mainWindow, true));
     ClearQuestionnaireCommand = new RelayCommand<Object>(ClearQuestionnaire, CanClearQuestionnaire);
   }
 
@@ -32,149 +34,35 @@ public class _Commander
   /// <summary>
   /// Command to open a spreadsheet. If a parameter is null, the user will be prompted to select a file.
   /// </summary>
-  public OpenSpreadsheetCommand OpenSpreadsheetCommand { get; } = new OpenSpreadsheetCommand();
+  public FileImportCommand FileImportCommand { get; }
+
+  /// <summary>
+  /// Command to open a spreadsheet. If a parameter is null, the user will be prompted to select a file.
+  /// </summary>
+  public FileOpenCommand FileOpenCommand { get; }
 
   /// <summary>
   /// Command to start the import process from the loaded spreadsheet.
   /// A parameter is expected to be an ExcelView instance with a loaded WorkbookInfoVM as its DataContext.
   /// </summary>
-  public StartImportCommand StartImportCommand { get; } = new StartImportCommand();
+  public StartImportCommand StartImportCommand { get; }
 
   /// <summary>
   /// Command to save a file.
-  /// A parameter should be of <see cref="IFileSaveData"/> type.
+  /// A parameter should be of <see cref="FileSaveData"/> type.
   /// </summary>
-  public FileSaveCommand FileSaveCommand { get; } = new FileSaveCommand();
+  public FileSaveCommand FileSaveCommand { get; } = new ();
 
   /// <summary>
   /// Parameter for the <see cref="FileSaveCommand"/>.
   /// </summary>
   public FileSaveData FileSaveData { get; set; }
 
-  //private void OnCanExecute(object sender, CanExecuteRoutedEventArgs e)
-  //{
-  //  Debug.WriteLine($"MainWindow_OnCanExecute({(e.Command as RoutedUICommand)?.Text ?? e.Command.ToString()})");
-  //  _Commander.OnCanExecute(sender, e);
-  //  Debug.WriteLine($"MainWindow_OnCanExecute({(e.Command as RoutedUICommand)?.Text ?? e.Command.ToString()})={e.CanExecute}");
-  //}
+  /// <summary>
+  /// Parameter for the <see cref="FileSaveCommand"/> registered as <see cref="FileCommands.SaveAs"/>.
+  /// </summary>
+  public FileSaveData FileSaveAsData { get; set; }
 
-  //private void OnExecuted(object sender, ExecutedRoutedEventArgs e)
-  //{
-  //  // Delegate to the active UserControl
-  //  if (TabControl.SelectedContent is IRoutedCommandHandler handler)
-  //  {
-  //    handler.OnExecuted(sender, e);
-  //  }
-  //}
-
-  ///// <summary>
-  ///// Handles the <see cref="INotifyPropertyChanged.PropertyChanged"/> event for the <see cref="WorkbookInfoVM"/>
-  ///// instance.
-  ///// </summary>
-  ///// <remarks>This method listens for changes to the <see cref="WorkbookInfoVM.IsLoaded"/> property and
-  ///// triggers a notification to update the execution status of the <see cref="StartImportCommand"/>.</remarks>
-  ///// <param name="sender">The source of the event, typically the <see cref="WorkbookInfoVM"/> instance.</param>
-  ///// <param name="e">The event data containing the name of the property that changed.</param>
-  //public void WorkbookInfoVM_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-  //{
-  //  if (e.PropertyName == nameof(WorkbookInfoVM.IsLoaded))
-  //  {
-  //    // Notify that CanExecute status has changed
-  //    (StartImportCommand as RelayCommand<object>)?.NotifyCanExecuteChanged();
-  //  }
-  //}
-
-  //#region OpenSpreadsheet Command
-  ///// <summary>
-  ///// Command to open an Excel spreadsheet file.
-  ///// </summary>
-  //public ICommand OpenSpreadsheetCommand { get; }
-
-  //private async void OpenSpreadsheet(object? parameter)
-  //{
-  //  try
-  //  {
-  //    // Open a file dialog to select an Excel file
-  //    var openFileDialog = new OpenFileDialog
-  //    {
-  //      Filter = Strings.ExcelFilesFilter,
-  //      Title = Strings.OpenExcelFileTitle
-  //    };
-
-  //    if (openFileDialog.ShowDialog() == true)
-  //    {
-  //      string newFilename = openFileDialog.FileName;
-  //      var workbookInfoVM = new WorkbookInfoVM();
-  //      workbookInfoVM.PropertyChanged += WorkbookInfoVM_PropertyChanged;
-  //      var excelView = new ExcelView { FileName = newFilename, DataContext = workbookInfoVM};
-  //      AddFloatingView(excelView, newFilename);
-  //      await excelView.OpenSpreadsheetAsync(newFilename, workbookInfoVM);
-  //    }
-  //  }
-  //  catch (Exception e)
-  //  {
-  //    MessageBox.Show(e.Message);
-  //  }
-  //}
-  //#endregion
-
-  //#region StartImport Command
-  ///// <summary>
-  ///// Command to open an Excel spreadsheet file.
-  ///// </summary>
-  //public ICommand StartImportCommand { get; }
-
-  //private bool CanStartImport(object? parameter)
-  //{
-  //  if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
-  //  {
-  //    return false;
-  //  }
-  //  return workbookInfoVM.IsLoaded && workbookInfoVM.Model.Worksheets.Any(item => item.IsSelected);
-  //}
-
-  //private async void StartImport(object? parameter)
-  //{
-  //  try
-  //  {
-  //    if (parameter is not ExcelView excelView || excelView.DataContext is not WorkbookInfoVM workbookInfoVM)
-  //    {
-  //      MessageBox.Show("No workbook to import from.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-  //      return;
-  //    }
-  //    // Open a file dialog to select an Excel file
-  //    var saveFileDialog = new SaveFileDialog
-  //    {
-  //      FileName = System.IO.Path.GetFileName(System.IO.Path.ChangeExtension(excelView.FileName, ".qxml")),
-  //      Filter = Strings.QuestFilesTitle,
-  //      Title = Strings.CreateQuestFileTitle
-  //    };
-
-  //    if (saveFileDialog.ShowDialog() == true)
-  //    {
-  //      string newFilename = saveFileDialog.FileName;
-  //      var questView = new QuestView { FileName = newFilename };
-  //      AddFloatingView(questView, newFilename);
-  //      var projectQuality = await questView.ImportExcelFileAsync(excelView.FileName, workbookInfoVM.Model);
-  //      new SharpSerializer().Serialize(projectQuality, newFilename);
-  //      newFilename = System.IO.Path.ChangeExtension(newFilename, ".xml");
-  //      await using (var writer = new StreamWriter(newFilename))
-  //      {
-  //        var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
-  //        xmlSerializer.Serialize(writer, projectQuality);
-  //      }
-
-  //      //var qdmContext = new QuestQDMDbContext();
-
-
-  //    }
-  //  }
-  //  catch (Exception e)
-  //  {
-  //    MessageBox.Show(e.Message);
-  //  }
-  //}
-  //#endregion
 
   #region ClearQuestionnaire Command
   /// <summary>

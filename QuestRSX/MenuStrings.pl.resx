@@ -117,64 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SaveFileAs" xml:space="preserve">
-    <value>Save file as ...</value>
+  <data name="Close" xml:space="preserve">
+    <value>Zamknij</value>
   </data>
-  <data name="EmptyProjectTitle" xml:space="preserve">
-    <value>&lt;Project Title&gt;</value>
+  <data name="StartImport" xml:space="preserve">
+    <value>Zaimportuj</value>
   </data>
-  <data name="ExcelFilesFilter" xml:space="preserve">
-    <value>Excel Files|*.xlsx;*.xlsm;*.xls</value>
+  <data name="Edit" xml:space="preserve">
+    <value>_Edycja</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="Exit" xml:space="preserve">
+    <value>Wyjdź z aplikacji</value>
   </data>
-  <data name="OpenFileTitle" xml:space="preserve">
-    <value>Open file</value>
-  </data>
-  <data name="Value" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="Meaning" xml:space="preserve">
-    <value>Meaning</value>
-  </data>
-  <data name="GradeScale" xml:space="preserve">
-    <value>Grade scale</value>
-  </data>
-  <data name="Weight" xml:space="preserve">
-    <value>Weight</value>
-  </data>
-  <data name="Level" xml:space="preserve">
-    <value>Level</value>
-  </data>
-  <data name="Comment" xml:space="preserve">
-    <value>Comment</value>
-  </data>
-  <data name="QuestFilesFilter" xml:space="preserve">
-    <value>Quest XML files (*.qxml)|*.qxml</value>
-  </data>
-  <data name="AllFilesFilter" xml:space="preserve">
-    <value>All files (*.*)|*.*</value>
-  </data>
-  <data name="XmlFilesFilter" xml:space="preserve">
-    <value>XML files (*.xml)|*.xml</value>
-  </data>
-  <data name="SaveExcelFileAs" xml:space="preserve">
-    <value>Save Excel file as ...</value>
-  </data>
-  <data name="SaveQuestFileAs" xml:space="preserve">
-    <value>Save Quest file as ...</value>
-  </data>
-  <data name="ExcelXlsFilesFilter" xml:space="preserve">
-    <value>Old Excel files (*.xls)|*.xls</value>
-  </data>
-  <data name="ExcelXlsxFilesFilter" xml:space="preserve">
-    <value>Excel Workbook files (*.xlsx)|*.xlsx</value>
-  </data>
-  <data name="ExcelXslmFilesFilter" xml:space="preserve">
-    <value>Excel Workbook with macros files (*.xlsm)|*.xlsm</value>
+  <data name="Export" xml:space="preserve">
+    <value>_Eksportuj ...</value>
   </data>
   <data name="File" xml:space="preserve">
-    <value>File</value>
+    <value>_Plik</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>_Importuj ...</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>_Otwórz ...</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>_Drukuj</value>
+  </data>
+  <data name="PrintSetup" xml:space="preserve">
+    <value>Ustawienia druku ...</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>_Zapisz</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Zapisz _jako ...</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>_Narzędzia</value>
+  </data>
+  <data name="Window" xml:space="preserve">
+    <value>_Okno</value>
   </data>
 </root>

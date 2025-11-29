@@ -50,14 +50,42 @@
         </member>
         <member name="F:Qhta.MVVM.FileCommands.Open">
             <summary>
-            Opens a file.
-            A parameter should be of string or <see cref="T:Qhta.MVVM.IFileSaveData"/> type.
+            Open a file.
             </summary>
         </member>
         <member name="F:Qhta.MVVM.FileCommands.Save">
             <summary>
             Save a file.
-            A parameter should be of <see cref="T:Qhta.MVVM.IFileSaveData"/> type.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.FileCommands.SaveAs">
+            <summary>
+            Save a file.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.FileCommands.Import">
+            <summary>
+            Import a file.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.FileCommands.Export">
+            <summary>
+            Export a file.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.FileCommands.Print">
+            <summary>
+            Print a file.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.FileCommands.PrintSetup">
+            <summary>
+            Set options for a print job for a file.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.FileCommands.Close">
+            <summary>
+            Close a file.
             </summary>
         </member>
         <member name="T:Qhta.MVVM.FileOpenData">
@@ -75,26 +103,6 @@
             Optional flag indicating whether the file is to be opened in read-only mode.
             </summary>
         </member>
-        <member name="T:Qhta.MVVM.IFileSaveData">
-            <summary>
-            Structure used as a parameter to file save command.
-            </summary>
-        </member>
-        <member name="P:Qhta.MVVM.IFileSaveData.DataObject">
-            <summary>
-            Data object to save
-            </summary>
-        </member>
-        <member name="P:Qhta.MVVM.IFileSaveData.Filename">
-            <summary>
-            Filename to save to. If null, a file dialog should be shown.
-            </summary>
-        </member>
-        <member name="P:Qhta.MVVM.IFileSaveData.UseDialog">
-            <summary>
-            Optional flag indicating whether to perform "Save As" operation.
-            </summary>
-        </member>
         <member name="T:Qhta.MVVM.QuestCommands">
             <summary>
             Enumeration of command identifiers used in the Quest application.
@@ -107,9 +115,29 @@
             <remarks>This method supports common spreadsheet formats such as .xlsx and .csv. Ensure that the file is
             not open in another application to avoid access issues.</remarks>
         </member>
+        <member name="T:Qhta.MVVM.WindowCommands">
+            <summary>
+            Represents a set of commands commonly used in Windows-based applications.
+            </summary>
+            <remarks>This enumeration defines basic commands such as <see cref="F:Qhta.MVVM.WindowCommands.OpenWindow"/> and <see cref="F:Qhta.MVVM.WindowCommands.Close"/>  that can
+            be used to represent actions in a Windows application. It is intended for use in  scenarios where a standardized set
+            of commands is needed.</remarks>
+        </member>
+        <member name="F:Qhta.MVVM.WindowCommands.OpenWindow">
+            <summary>
+            Opens a window.
+            A parameter should be of <see cref="T:Qhta.MVVM.WindowOpenData"/> type.
+            </summary>
+        </member>
+        <member name="F:Qhta.MVVM.WindowCommands.Close">
+            <summary>
+            Closes a window.
+            A parameter should be a window instance.
+            </summary>
+        </member>
         <member name="T:Qhta.MVVM.WindowOpenData">
             <summary>
-            Data structure used as a parameter to <see cref="F:Qhta.MVVM.WindowsCommands.OpenWindow"/> command.
+            Data structure used as a parameter to <see cref="F:Qhta.MVVM.WindowCommands.OpenWindow"/> command.
             </summary>
             <param name="Content">Content of the window</param>
             <param name="Name">Name of the window</param>
@@ -117,7 +145,7 @@
         </member>
         <member name="M:Qhta.MVVM.WindowOpenData.#ctor(System.Object,System.String,System.String)">
             <summary>
-            Data structure used as a parameter to <see cref="F:Qhta.MVVM.WindowsCommands.OpenWindow"/> command.
+            Data structure used as a parameter to <see cref="F:Qhta.MVVM.WindowCommands.OpenWindow"/> command.
             </summary>
             <param name="Content">Content of the window</param>
             <param name="Name">Name of the window</param>
@@ -165,26 +193,6 @@
         <member name="P:Qhta.MVVM.WindowOpenData.State">
             <summary>
             Initial state of the window to be opened. Can be an enum value of e.g. System.Windows.WindowState.
-            </summary>
-        </member>
-        <member name="T:Qhta.MVVM.WindowsCommands">
-            <summary>
-            Represents a set of commands commonly used in Windows-based applications.
-            </summary>
-            <remarks>This enumeration defines basic commands such as <see cref="F:Qhta.MVVM.WindowsCommands.OpenWindow"/> and <see cref="F:Qhta.MVVM.WindowsCommands.Close"/>  that can
-            be used to represent actions in a Windows application. It is intended for use in  scenarios where a standardized set
-            of commands is needed.</remarks>
-        </member>
-        <member name="F:Qhta.MVVM.WindowsCommands.OpenWindow">
-            <summary>
-            Opens a window.
-            A parameter should be of <see cref="T:Qhta.MVVM.WindowOpenData"/> type.
-            </summary>
-        </member>
-        <member name="F:Qhta.MVVM.WindowsCommands.Close">
-            <summary>
-            Closes a window.
-            A parameter should be a window instance.
             </summary>
         </member>
         <member name="T:Quest.DocumentQualityVM">
@@ -378,7 +386,7 @@
             </summary>
             <param name="model"></param>
         </member>
-        <member name="P:Quest.ProjectQualityVM.Filename">
+        <member name="P:Quest.ProjectQualityVM.FileName">
             <summary>
             Filename associated with the project quality.
             </summary>

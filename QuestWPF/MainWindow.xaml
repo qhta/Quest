@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuestWPF"
         xmlns:Views="clr-namespace:QuestWPF.Views"
+        xmlns:rsx="clr-namespace:QuestRSX;assembly=QuestRSX"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:mvvm="clr-namespace:Qhta.MVVM;assembly=QuestENG"
         x:Class="QuestWPF.MainWindow"
@@ -13,26 +14,41 @@
   <Window.DataContext>
     <local:MDIViewModel/>
   </Window.DataContext>
+  <Window.InputBindings>
+    <KeyBinding 
+      Key="S" 
+      Modifiers="Control" 
+      Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveCommand}" 
+      CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveData}" />
+  </Window.InputBindings>
   <Grid Background="Silver">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
     <Menu>
-      <MenuItem Header="File">
+      <MenuItem Header="{x:Static rsx:MenuStrings.File}">
         <MenuItem 
-          Header="Import Excel workbook" 
-          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.OpenSpreadsheetCommand}" />
+          Header="{x:Static rsx:MenuStrings.Open}" 
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileOpenCommand}" />
         <MenuItem 
-          Header="Save"
+          Header="{x:Static rsx:MenuStrings.Save}"
           InputGestureText="Ctrl+S"
           Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveCommand}" 
           CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveData}" />
-        </MenuItem>
-      <MenuItem Header="Edit"/>
-      <MenuItem Header="Tools"/>
-      <MenuItem Header="Windows"/>
-      <MenuItem Header="Help"/>
+        <MenuItem 
+          Header="{x:Static rsx:MenuStrings.SaveAs}"
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveCommand}" 
+          CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileSaveAsData}" />
+        <Separator/>
+        <MenuItem 
+          Header="{x:Static rsx:MenuStrings.Import}" 
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileImportCommand}" />
+      </MenuItem>
+      <MenuItem Header="{x:Static rsx:MenuStrings.Edit}"/>
+      <MenuItem Header="{x:Static rsx:MenuStrings.Tools}"/>
+      <MenuItem Header="{x:Static rsx:MenuStrings.Window}"/>
+      <MenuItem Header="{x:Static rsx:MenuStrings.Help}"/>
     </Menu>
     <syncfusion:DockingManager 
       x:Name="dockingManager"

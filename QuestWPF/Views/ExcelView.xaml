@@ -8,10 +8,18 @@
              xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
              xmlns:views="clr-namespace:QuestWPF.Views"
              xmlns:internal="clr-namespace:Microsoft.EntityFrameworkCore.Metadata.Internal;assembly=Microsoft.EntityFrameworkCore.Relational"
+             xmlns:rsx="clr-namespace:QuestRSX;assembly=QuestRSX"
              x:Class="QuestWPF.Views.ExcelView"
              d:DataContext="{d:DesignInstance questImp:WorkbookInfoVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="810">
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Qhta.SF.WPF.Tools;component/Resources/SfDataGridTools.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </UserControl.Resources>
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -57,46 +65,58 @@
          >
           <syncfusion:SfDataGrid.Columns>
             <syncfusion:GridCheckBoxColumn 
-              HeaderText="Import"
+              HeaderText="{x:Static rsx:ExcelViewStrings.Import}"
               MappingName="IsSelected"
               Width="60"
               />
             <syncfusion:GridTextColumn 
-              HeaderText="Worksheet" 
-              MappingName="Name" 
-              />
-            <syncfusion:GridTextColumn 
-              HeaderText="Quest"
+              HeaderText="{x:Static rsx:ExcelViewStrings.Worksheet}"
               MappingName="QuestRange">
               <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock 
                     Text="{Binding QuestRange}"
                     Style="{StaticResource GridTextColumnStyle}"
+                    ToolTip="{x:Static rsx:ExcelViewStrings.WorksheetTooltip}"
+                    MouseLeftButtonDown="WorksheetTextBlock_OnMouseLeftButtonDown"/>
+                </DataTemplate>
+              </syncfusion:GridTextColumn.CellTemplate>
+            </syncfusion:GridTextColumn>
+            <syncfusion:GridTextColumn 
+              HeaderText="{x:Static rsx:ExcelViewStrings.Quest}"
+              MappingName="QuestRange">
+              <syncfusion:GridTextColumn.CellTemplate>
+                <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
+                  <TextBlock 
+                    Text="{Binding QuestRange}"
+                    Style="{StaticResource GridTextColumnStyle}"
+                    ToolTip="{x:Static rsx:ExcelViewStrings.QuestTooltip}"
                     MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
               </syncfusion:GridTextColumn.CellTemplate>
             </syncfusion:GridTextColumn>
             <syncfusion:GridTextColumn 
-              HeaderText="Weights"
+              HeaderText="{x:Static rsx:ExcelViewStrings.Weights}"
               MappingName="WeightsRange">
               <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock 
                     Text="{Binding WeightsRange}"
                     Style="{StaticResource GridTextColumnStyle}"
+                    ToolTip="{x:Static rsx:ExcelViewStrings.WeightsTooltip}"
                     MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
               </syncfusion:GridTextColumn.CellTemplate>
             </syncfusion:GridTextColumn>
             <syncfusion:GridTextColumn  
-              HeaderText="Scale"
+              HeaderText="{x:Static rsx:ExcelViewStrings.Scale}"
               MappingName="ScaleRange">
               <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock 
                     Text="{Binding ScaleRange}"
-                    Style="{StaticResource GridTextColumnStyle}"
+                    Style="{StaticResource GridTextColumnStyle}"   
+                    ToolTip="{x:Static rsx:ExcelViewStrings.ScaleTooltip}"
                     MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
                 </DataTemplate>
               </syncfusion:GridTextColumn.CellTemplate>
@@ -130,6 +150,7 @@
       x:Name="SpreadsheetControl"
       ShowSheetTabs="False"
       FormulaBarVisibility="Collapsed"
+      PropertyChanged="SpreadsheetControl_OnPropertyChanged"
       Grid.Row="1" />
       </Grid>
     </Grid>

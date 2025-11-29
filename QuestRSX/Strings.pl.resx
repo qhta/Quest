@@ -129,8 +129,8 @@
   <data name="Text" xml:space="preserve">
     <value>Tekst</value>
   </data>
-  <data name="OpenExcelFileTitle" xml:space="preserve">
-    <value>Otwórz plik programu Excel</value>
+  <data name="OpenFileTitle" xml:space="preserve">
+    <value>Otwórz plik</value>
   </data>
   <data name="Value" xml:space="preserve">
     <value>Wartość</value>
@@ -151,7 +151,7 @@
     <value>Komentarz</value>
   </data>
   <data name="QuestFilesFilter" xml:space="preserve">
-    <value>Pliki Quest (*.quest)|*.quest</value>
+    <value>Pliki Quest XML  (*.qxml)|*.qxml</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>Wszystkie pliki (*.*)|*.*</value>
@@ -173,5 +173,8 @@
   </data>
   <data name="ExcelXslmFilesFilter" xml:space="preserve">
     <value>Skoroszyty Excel z makrami (*.xlsm)|*.xlsm</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Plik</value>
   </data>
 </root>

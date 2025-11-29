@@ -21,6 +21,67 @@
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="T:QuestRSX.ExcelViewStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.Import">
+            <summary>
+              Looks up a localized string similar to Import.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.Quest">
+            <summary>
+              Looks up a localized string similar to Quest.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.QuestTooltip">
+            <summary>
+              Looks up a localized string similar to Cell range that contains a questionnaire table. Double click to view. Next you can change the selection..
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.Scale">
+            <summary>
+              Looks up a localized string similar to Scale.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.ScaleTooltip">
+            <summary>
+              Looks up a localized string similar to Cell range that contains a grade scale table. Double click to view. Next you can change the selection..
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.Weights">
+            <summary>
+              Looks up a localized string similar to Weights.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.WeightsTooltip">
+            <summary>
+              Looks up a localized string similar to Cell range that contains a grade weight table. Double click to view. Next you can change the selection..
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.Worksheet">
+            <summary>
+              Looks up a localized string similar to Worksheet.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.ExcelViewStrings.WorksheetTooltip">
+            <summary>
+              Looks up a localized string similar to Name of the worksheet in the workbook. Double click to view..
+            </summary>
+        </member>
         <member name="T:QuestRSX.FactorStrings">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -118,6 +179,97 @@
             </summary>
             <remarks>This property provides a globally accessible instance of the <see cref="T:QuestRSX.FactorStringsHelper"/>
             class, ensuring that only one instance is created and used throughout the application.</remarks>
+        </member>
+        <member name="T:QuestRSX.MenuStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Close">
+            <summary>
+              Looks up a localized string similar to Close.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Edit">
+            <summary>
+              Looks up a localized string similar to _Edit.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Exit">
+            <summary>
+              Looks up a localized string similar to _Exit.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Export">
+            <summary>
+              Looks up a localized string similar to _Export ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.File">
+            <summary>
+              Looks up a localized string similar to _File.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Help">
+            <summary>
+              Looks up a localized string similar to _Help.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Import">
+            <summary>
+              Looks up a localized string similar to _Import ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Open">
+            <summary>
+              Looks up a localized string similar to _Open ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Print">
+            <summary>
+              Looks up a localized string similar to _Print.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.PrintSetup">
+            <summary>
+              Looks up a localized string similar to Print setup ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Save">
+            <summary>
+              Looks up a localized string similar to _Save.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.SaveAs">
+            <summary>
+              Looks up a localized string similar to Save _as ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.StartImport">
+            <summary>
+              Looks up a localized string similar to Start Import.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Tools">
+            <summary>
+              Looks up a localized string similar to _Tools.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.MenuStrings.Window">
+            <summary>
+              Looks up a localized string similar to _Window.
+            </summary>
         </member>
         <member name="T:QuestRSX.MetricsStrings">
             <summary>
@@ -1301,6 +1453,11 @@
               Looks up a localized string similar to Excel Workbook with macros files (*.xlsm)|*.xlsm.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.File">
+            <summary>
+              Looks up a localized string similar to File.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.GradeScale">
             <summary>
               Looks up a localized string similar to Grade scale.
@@ -1316,14 +1473,14 @@
               Looks up a localized string similar to Meaning.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.OpenExcelFileTitle">
+        <member name="P:QuestRSX.Strings.OpenFileTitle">
             <summary>
-              Looks up a localized string similar to Open Excel file.
+              Looks up a localized string similar to Open file.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.QuestFilesFilter">
             <summary>
-              Looks up a localized string similar to Quest files (*.quest)|*.quest.
+              Looks up a localized string similar to Quest XML files (*.qxml)|*.qxml.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.SaveExcelFileAs">

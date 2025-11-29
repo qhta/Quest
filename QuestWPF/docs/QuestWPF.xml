@@ -33,10 +33,69 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:QuestWPF.FileImportCommand">
+            <summary>
+            Command to open an Excel workbook to import data.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.FileImportCommand.Execute(System.Object)">
+            <summary>
+            A method to execute the command. If the parameter is null, it opens a file dialog to select a file.
+            If the parameter is a string, it treats it as a file path.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:QuestWPF.FileImportCommand.OpenWorkbook(System.String)">
+            <summary>
+            Opens an Excel workbook given its filename.
+            First, it creates a WorkbookInfoVM instance and subscribes to its PropertyChanged event to monitor loading status.
+            Before executing, it instructs CommandCenter to execute "AddFloatingView" command to add a floating view for the ExcelView.
+            After that, it calls OpenSpreadsheetAsync on the ExcelView to load the selected spreadsheet asynchronously.
+            When the WorkbookInfoVM's IsLoaded property changes, it notifies CommandCenter to update the CanExecute status of "StartImportCommand".  /// </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuestWPF.FileOpenCommand">
+            <summary>
+            Command to open a Quest project file.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.FileOpenCommand.Execute(System.Object)">
+            <summary>
+            A method to execute the command. If the parameter is null, it opens a file dialog to select a file.
+            If the parameter is a string, it treats it as a file path.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:QuestWPF.FileOpenCommand.OpenProjectQuality(System.String)">
+            <summary>
+            Opens an Excel workbook given its filename.
+            First, it creates a WorkbookInfoVM instance and subscribes to its PropertyChanged event to monitor loading status.
+            Before executing, it instructs CommandCenter to execute "AddFloatingView" command to add a floating view for the ExcelView.
+            After that, it calls OpenSpreadsheetAsync on the ExcelView to load the selected spreadsheet asynchronously.
+            When the WorkbookInfoVM's IsLoaded property changes, it notifies CommandCenter to update the CanExecute status of "StartImportCommand".  /// </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuestWPF.FileOpenData">
+            <summary>
+            Structure used as a parameter to file open command.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.FileOpenData.#ctor(System.String)">
+            <summary>
+            Structure used as a parameter to file open command.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.FileOpenData.ReadOnly">
+            <summary>
+            Optional flag indicating whether the file is to be opened in read-only mode.
+            </summary>
+        </member>
         <member name="T:QuestWPF.FileSaveCommand">
             <summary>
             Command to save a file.
-            A parameter should be of <see cref="T:Qhta.MVVM.IFileSaveData"/> type.
+            A parameter should be of <see cref="T:QuestWPF.FileSaveData"/> type.
             Handles saving an Excel file as a Quest file.
             </summary>
         </member>
@@ -51,7 +110,7 @@
             Data class for file save operations.
             </summary>
         </member>
-        <member name="M:QuestWPF.FileSaveData.#ctor(QuestWPF.MainWindow)">
+        <member name="M:QuestWPF.FileSaveData.#ctor(QuestWPF.MainWindow,System.Boolean)">
             <summary>
             Data class for file save operations.
             </summary>
@@ -65,26 +124,6 @@
             <summary>
             Filename to save the data to. If null or empty, a file dialog should be used to prompt the user.
             </summary>
-        </member>
-        <member name="P:QuestWPF.FileSaveData.UseDialog">
-            <summary>
-            Gets or sets a value indicating whether a dialog should be used for user interactions.
-            </summary>
-        </member>
-        <member name="T:QuestWPF.OpenSpreadsheetCommand">
-            <summary>
-            Command to open an Excel spreadsheet file.
-            </summary>
-        </member>
-        <member name="M:QuestWPF.OpenSpreadsheetCommand.Execute(System.Object)">
-            <summary>
-            A method to execute the command. If the parameter is null, it opens a file dialog to select an Excel file.
-            First, it creates a WorkbookInfoVM instance and subscribes to its PropertyChanged event to monitor loading status.
-            Before executing, it instructs CommandCenter to execute "AddFloatingView" command to add a floating view for the ExcelView.
-            After that, it calls OpenSpreadsheetAsync on the ExcelView to load the selected spreadsheet asynchronously.
-            When the WorkbookInfoVM's IsLoaded property changes, it notifies CommandCenter to update the CanExecute status of "StartImportCommand".
-            </summary>
-            <param name="parameter"></param>
         </member>
         <member name="T:QuestWPF.StartImportCommand">
             <summary>
@@ -118,7 +157,12 @@
             Command to add a floating view to the MainWindow.
             </summary>
         </member>
-        <member name="P:QuestWPF._Commander.OpenSpreadsheetCommand">
+        <member name="P:QuestWPF._Commander.FileImportCommand">
+            <summary>
+            Command to open a spreadsheet. If a parameter is null, the user will be prompted to select a file.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.FileOpenCommand">
             <summary>
             Command to open a spreadsheet. If a parameter is null, the user will be prompted to select a file.
             </summary>
@@ -132,12 +176,17 @@
         <member name="P:QuestWPF._Commander.FileSaveCommand">
             <summary>
             Command to save a file.
-            A parameter should be of <see cref="T:Qhta.MVVM.IFileSaveData"/> type.
+            A parameter should be of <see cref="P:QuestWPF._Commander.FileSaveData"/> type.
             </summary>
         </member>
         <member name="P:QuestWPF._Commander.FileSaveData">
             <summary>
             Parameter for the <see cref="P:QuestWPF._Commander.FileSaveCommand"/>.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.FileSaveAsData">
+            <summary>
+            Parameter for the <see cref="P:QuestWPF._Commander.FileSaveCommand"/> registered as <see cref="F:Qhta.MVVM.FileCommands.SaveAs"/>.
             </summary>
         </member>
         <member name="P:QuestWPF._Commander.ClearQuestionnaireCommand">
@@ -384,9 +433,16 @@
             <param name="e">Even arguments</param>
             
         </member>
+        <member name="M:QuestWPF.Views.ExcelView.WorksheetTextBlock_OnMouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Method to handle mouse left button down event on the worksheet name text block.
+            </summary>
+            <param name="sender">Sender object</param>
+            <param name="e">Even arguments</param>
+        </member>
         <member name="M:QuestWPF.Views.ExcelView.RangeTextBlock_OnMouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
             <summary>
-            Method to handle mouse left button down event on the range text block.
+            Method to handle mouse left button down event on the cell range text block.
             </summary>
             <param name="sender">Sender object</param>
             <param name="e">Even arguments</param>

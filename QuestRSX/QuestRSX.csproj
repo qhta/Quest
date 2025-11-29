@@ -15,6 +15,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ExcelViewStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ExcelViewStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="MenuStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MenuStrings.resx</DependentUpon>
+    </Compile>
     <Compile Update="MetricsStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -33,6 +43,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ExcelViewStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExcelViewStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MenuStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="MetricsStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MetricsStrings.Designer.cs</LastGenOutput>

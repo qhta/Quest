@@ -5,6 +5,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 xmlns:views="clr-namespace:QuestWPF.Views"
+xmlns:rsx="clr-namespace:QuestRSX;assembly=QuestRSX"
 xmlns:questWpf="clr-namespace:QuestWPF"
 xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
 mc:Ignorable="d" 
@@ -29,7 +30,7 @@ d:DesignHeight="50" d:DesignWidth="800">
             Stretch="Uniform"
             Margin="0,0,6,0"/>
           <TextBlock 
-          Text="Start Import"
+          Text="{x:Static rsx:MenuStrings.StartImport}"
           VerticalAlignment="Center"
           FontWeight="SemiBold"/>
         </StackPanel>

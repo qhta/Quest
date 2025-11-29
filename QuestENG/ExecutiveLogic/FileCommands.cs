@@ -9,14 +9,42 @@
 public enum FileCommands
 {
   /// <summary>
-  /// Opens a file.
-  /// A parameter should be of string or <see cref="IFileSaveData"/> type.
+  /// Open a file.
   /// </summary>
   Open,
 
   /// <summary>
   /// Save a file.
-  /// A parameter should be of <see cref="IFileSaveData"/> type.
   /// </summary>
   Save,
+
+  /// <summary>
+  /// Save a file.
+  /// </summary>
+  SaveAs,
+
+  /// <summary>
+  /// Import a file.
+  /// </summary>
+  Import,
+
+  /// <summary>
+  /// Export a file.
+  /// </summary>
+  Export,
+
+  /// <summary>
+  /// Print a file.
+  /// </summary>
+  Print,
+
+  /// <summary>
+  /// Set options for a print job for a file.
+  /// </summary>
+  PrintSetup,
+
+  /// <summary>
+  /// Close a file.
+  /// </summary>
+  Close,
 }

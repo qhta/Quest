@@ -21,9 +21,7 @@ public partial class ExcelView : UserControl
   /// <summary>
   /// DependencyProperty for the <see cref="FileName"/> property.
   /// </summary>
-  public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register
-    (nameof(FileName), typeof(string), typeof(ExcelView),
-      new PropertyMetadata(null));
+  public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register(nameof(FileName), typeof(string), typeof(ExcelView), new PropertyMetadata(null));
 
   /// <summary>
   /// Name of the Excel file to be displayed.
@@ -48,8 +46,7 @@ public partial class ExcelView : UserControl
       var workbookVM = new WorkbookInfoVM(workbookInfo);
       workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
       DataContext = workbookVM;
-    }
-    catch (Exception e)
+    } catch (Exception e)
     {
       Debug.WriteLine(e);
     }
@@ -65,7 +62,7 @@ public partial class ExcelView : UserControl
     SpreadsheetControl.Open(fileName);
     workbookInfoVM.IsLoading = true;
     var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
-    workbookInfoVM.Model.Workbook = workbook; 
+    workbookInfoVM.Model.Workbook = workbook;
     workbookInfoVM.TotalCount = workbook.Worksheets.Count;
     await GetWorkbookInfoAsync(workbook, workbookInfoVM);
     workbookInfoVM.FileName = fileName;
@@ -126,7 +123,20 @@ public partial class ExcelView : UserControl
   }
 
   /// <summary>
-  /// Method to handle mouse left button down event on the range text block.
+  /// Method to handle mouse left button down event on the worksheet name text block.
+  /// </summary>
+  /// <param name="sender">Sender object</param>
+  /// <param name="e">Even arguments</param>
+  private void WorksheetTextBlock_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+  {
+    if (WorksheetListView.SelectedItem is WorksheetInfoVM worksheetInfo)
+    {
+      SpreadsheetControl.SetActiveSheet(worksheetInfo.Name);
+    }
+  }
+
+  /// <summary>
+  /// Method to handle mouse left button down event on the cell range text block.
   /// </summary>
   /// <param name="sender">Sender object</param>
   /// <param name="e">Even arguments</param>
@@ -139,7 +149,7 @@ public partial class ExcelView : UserControl
       {
         var text = textBlock.Text;
         //Debug.WriteLine($"RangeTextBlock_OnMouseLeftButton({worksheetInfo.Name},{text})");
-        if (text != null)
+        if (!string.IsNullOrEmpty(text))
         {
           var range = SpreadsheetControl.ActiveSheet.Range[text];
           SelectRange(range);
@@ -154,6 +164,7 @@ public partial class ExcelView : UserControl
   /// <param name="range">Range in a worksheet</param>
   private void SelectRange(IRange range)
   {
+    SfSpreadsheet spreadsheetControl = SpreadsheetControl;
     var parts = range.AddressR1C1Local.Split(':');
     var start = parts[0]; // e.g. R1C1
     var end = parts.Length > 1 ? parts[1] : parts[0]; // e.g. R20C4 or R1C1 if single cell
@@ -164,4 +175,22 @@ public partial class ExcelView : UserControl
     SpreadsheetControl.ActiveGrid.SelectionController.AddSelection(GridRangeInfo.Cells(startRow, startCol, endRow, endCol));
   }
 
+  private void SpreadsheetControl_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+  {
+    object? value = null;
+    try
+    {
+      value = sender?.GetType().GetProperty(e.PropertyName!)?.GetValue(sender);
+      if (value is IMigrantRange migrantRange)
+        value = migrantRange.AddressR1C1Local;
+      Debug.WriteLine($"Property changed: {e.PropertyName} = {value}");
+    } 
+    catch (Exception exception)
+    {
+      Debug.WriteLine($"Property changed: {e.PropertyName} = {value}");
+      Debug.WriteLine(exception);
+    }
+
+
+  }
 }

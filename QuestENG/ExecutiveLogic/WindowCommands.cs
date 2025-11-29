@@ -6,7 +6,7 @@
 /// <remarks>This enumeration defines basic commands such as <see cref="OpenWindow"/> and <see cref="Close"/>  that can
 /// be used to represent actions in a Windows application. It is intended for use in  scenarios where a standardized set
 /// of commands is needed.</remarks>
-public enum WindowsCommands
+public enum WindowCommands
 {
   /// <summary>
   /// Opens a window.

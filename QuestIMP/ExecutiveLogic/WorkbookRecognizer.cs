@@ -6,6 +6,7 @@
 public static class WorkbookRecognizer
 {
   private const string ProjectTitleLabel = "Ocena projektu";
+  private const string ProjectTitleDefaultLabel = "Tytuł projektu";
   private static readonly string[] ScaleTableHeaders = ["Ocena", "Wartość", "Znaczenie"];
   private const string WeightsFirstCellMarker = "L.p.";
   private const string QuestFirstCellMarker = "Cechy";
@@ -135,7 +136,7 @@ public static class WorkbookRecognizer
             found = true;
             for (int h = 1; h < headers.Length; h++)
             {
-              if (c+h >= row.Count || row.Cells[c + h].Value != headers[h] )
+              if (c + h >= row.Count || row.Cells[c + h].Value != headers[h])
               {
                 found = false;
                 break;
@@ -242,7 +243,17 @@ public static class WorkbookRecognizer
         if (labelFound)
         {
           if (!String.IsNullOrWhiteSpace(s))
-            return s;
+          {
+            if (s == ProjectTitleDefaultLabel && c < row.Count() - 1)
+            {
+              // Check next row in the same column but next row
+              s = worksheet.Rows[r + 1].Cells[c]?.Value?.ToString();
+            }
+            if (!String.IsNullOrWhiteSpace(s))
+              return s;
+            else
+              return null;
+          }
         }
       }
       if (labelFound)

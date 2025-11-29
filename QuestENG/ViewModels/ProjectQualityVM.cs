@@ -27,7 +27,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// <summary>
   /// Filename associated with the project quality.
   /// </summary>
-  public string? Filename { get; set; }
+  public string? FileName { get; set; }
 
 
 

@@ -124,6 +124,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grade scale.
         /// </summary>
         public static string GradeScale {
@@ -151,16 +160,16 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Excel file.
+        ///   Looks up a localized string similar to Open file.
         /// </summary>
-        public static string OpenExcelFileTitle {
+        public static string OpenFileTitle {
             get {
-                return ResourceManager.GetString("OpenExcelFileTitle", resourceCulture);
+                return ResourceManager.GetString("OpenFileTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quest files (*.quest)|*.quest.
+        ///   Looks up a localized string similar to Quest XML files (*.qxml)|*.qxml.
         /// </summary>
         public static string QuestFilesFilter {
             get {

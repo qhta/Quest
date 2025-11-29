@@ -13,7 +13,7 @@ namespace QuestWPF;
 
 /// <summary>
 /// Command to save a file.
-/// A parameter should be of <see cref="IFileSaveData"/> type.
+/// A parameter should be of <see cref="FileSaveData"/> type.
 /// Handles saving an Excel file as a Quest file.
 /// </summary>
 public class FileSaveCommand : Command
@@ -21,15 +21,14 @@ public class FileSaveCommand : Command
   /// <inheritdoc/>
   public override bool CanExecute(object? parameter)
   {
-    if (parameter is IFileSaveData data)
+    if (parameter is FileSaveData data)
     {
       if (data.DataObject is WorkbookInfoVM workbookInfoVM)
         return workbookInfoVM.IsLoaded;
 
       if (data.DataObject is ProjectQualityVM)
-      {
         return true;
-      }
+
     }
     return false;
   }
@@ -39,17 +38,14 @@ public class FileSaveCommand : Command
   {
     try
     {
-      if (parameter is IFileSaveData data)
+      if (parameter is FileSaveData data)
       {
         if (data.DataObject is WorkbookInfoVM workbookInfoVM)
-          await SaveWorkbook(workbookInfoVM, data.Filename, data.UseDialog);
+          await SaveWorkbook(workbookInfoVM, data.Filename, data.SaveAs);
         else
         if (data.DataObject is ProjectQualityVM projectQualityVM)
-          await SaveProjectQuality(projectQualityVM.Model, data.Filename, data.UseDialog);
+          await SaveProjectQuality(projectQualityVM, data.Filename, data.SaveAs);
       }
-
-      // Open a file dialog to select an Excel file
-
     }
     catch (Exception e)
     {
@@ -127,27 +123,34 @@ public class FileSaveCommand : Command
     }
   }
 
-  private async Task SaveProjectQuality(ProjectQuality projectQuality, string? filename, bool saveAs)
+  private async Task SaveProjectQuality(ProjectQualityVM projectQuality, string? filename, bool saveAs)
   {
     if (filename == null || saveAs)
     {
-      var fileTypes = new[] { Strings.QuestFilesFilter, Strings.AllFilesFilter };
+      if (filename == null)
+        filename = projectQuality.FileName;
+      var fileTypes = new[] { Strings.QuestFilesFilter};
+      //var ext = Path.GetExtension(filename)?.ToLowerInvariant();
+      int filterIndex = 1;
       var saveFileDialog = new SaveFileDialog
       {
+        Title = Strings.SaveQuestFileAs,
         FileName = filename ?? String.Empty,
         Filter = String.Join("|", fileTypes),
-        Title = Strings.SaveQuestFileAs
+        FilterIndex = filterIndex,
       };
       if (saveFileDialog.ShowDialog() == true)
         filename = saveFileDialog.FileName;
+      else
+        return;
     }
 
-    if (filename != null)
+    if (!String.IsNullOrEmpty(filename))
     {
       await using (var writer = new StreamWriter(filename))
       {
         var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
-        xmlSerializer.Serialize(writer, projectQuality);
+        xmlSerializer.Serialize(writer, projectQuality.Model);
       }
     }
   }
