@@ -1,4 +1,4 @@
-﻿namespace Qhta.MVVM;
+﻿namespace Quest;
 
 /// <summary>
 /// Enumeration of command identifiers used in the Quest application.

@@ -4,6 +4,19 @@
         <name>QuestENG</name>
     </assembly>
     <members>
+        <member name="T:Qhta.MVVM.AppCommands">
+            <summary>
+            Represents a set of commands commonly used in application environment.
+            </summary>
+            <remarks>This enumeration defines basic commands such as <see cref="F:Qhta.MVVM.AppCommands.ShowMessage"/>
+            
+            of commands is needed.</remarks>
+        </member>
+        <member name="F:Qhta.MVVM.AppCommands.ShowMessage">
+            <summary>
+            Show a message to the user.
+            </summary>
+        </member>
         <member name="T:Qhta.MVVM.CommandCenter">
             <summary>
             Static class enables dependency injection and centralized command management.
@@ -103,18 +116,6 @@
             Optional flag indicating whether the file is to be opened in read-only mode.
             </summary>
         </member>
-        <member name="T:Qhta.MVVM.QuestCommands">
-            <summary>
-            Enumeration of command identifiers used in the Quest application.
-            </summary>
-        </member>
-        <member name="F:Qhta.MVVM.QuestCommands.Import">
-            <summary>
-            Imports data from a spreadsheet file into the application.
-            </summary>
-            <remarks>This method supports common spreadsheet formats such as .xlsx and .csv. Ensure that the file is
-            not open in another application to avoid access issues.</remarks>
-        </member>
         <member name="T:Qhta.MVVM.WindowCommands">
             <summary>
             Represents a set of commands commonly used in Windows-based applications.
@@ -194,6 +195,18 @@
             <summary>
             Initial state of the window to be opened. Can be an enum value of e.g. System.Windows.WindowState.
             </summary>
+        </member>
+        <member name="T:Quest.QuestCommands">
+            <summary>
+            Enumeration of command identifiers used in the Quest application.
+            </summary>
+        </member>
+        <member name="F:Quest.QuestCommands.Import">
+            <summary>
+            Imports data from a spreadsheet file into the application.
+            </summary>
+            <remarks>This method supports common spreadsheet formats such as .xlsx and .csv. Ensure that the file is
+            not open in another application to avoid access issues.</remarks>
         </member>
         <member name="T:Quest.DocumentQualityVM">
             <summary>

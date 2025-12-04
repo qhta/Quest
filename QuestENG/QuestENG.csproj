@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Quest</RootNamespace>
@@ -19,11 +19,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ExecutiveLogic\Commands\**" />
+    <EmbeddedResource Remove="ExecutiveLogic\Commands\**" />
+    <None Remove="ExecutiveLogic\Commands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Qhta.MVVM" Version="4.18.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\QuestEXP\QuestEXP.csproj" />
+    <ProjectReference Include="..\QuestIMP\QuestIMP.csproj" />
     <ProjectReference Include="..\QuestQDM\QuestQDM.csproj" />
     <ProjectReference Include="..\QuestRDM\QuestRDM.csproj" />
     <ProjectReference Include="..\QuestRSX\QuestRSX.csproj" />

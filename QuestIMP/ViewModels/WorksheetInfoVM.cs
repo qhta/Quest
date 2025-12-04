@@ -44,17 +44,50 @@ public class WorksheetInfoVM: ViewModel<WorksheetInfo>
   /// <summary>
   /// Address range of the questionnaire in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
   /// </summary>
-  public string? QuestRange => Model.QuestRange;
+  public string? QuestRange
+  {
+    get => Model.QuestRange;
+    set
+    {
+      if (Model.QuestRange != value)
+      {
+        Model.QuestRange = value;
+        NotifyPropertyChanged(nameof(QuestRange));
+      }
+    }
+  }
 
   /// <summary>
   /// Address range of the weights table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
   /// </summary>
-  public string? WeightsRange => Model.WeightsRange;
+  public string? WeightsRange
+  {
+    get => Model.WeightsRange;
+    set
+    {
+      if (Model.WeightsRange != value)
+      {
+        Model.WeightsRange = value;
+        NotifyPropertyChanged(nameof(WeightsRange));
+      }
+    }
+  }
 
   /// <summary>
   /// Address range of the scale table in the format "Start:End", e.g. "A1:D20". Returns null if either start or end is not defined.
   /// </summary>
-  public string? ScaleRange => Model.ScaleRange;
+  public string? ScaleRange
+  {
+    get => Model.ScaleRange;
+    set
+    {
+      if (Model.ScaleRange != value)
+      {
+        Model.ScaleRange = value;
+        NotifyPropertyChanged(nameof(ScaleRange));
+      }
+    }
+  }
 
   /// <summary>
   /// Text to display.

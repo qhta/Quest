@@ -71,11 +71,11 @@
               />
             <syncfusion:GridTextColumn 
               HeaderText="{x:Static rsx:ExcelViewStrings.Worksheet}"
-              MappingName="QuestRange">
+              MappingName="Name">
               <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock 
-                    Text="{Binding QuestRange}"
+                    Text="{Binding Name}"
                     Style="{StaticResource GridTextColumnStyle}"
                     ToolTip="{x:Static rsx:ExcelViewStrings.WorksheetTooltip}"
                     MouseLeftButtonDown="WorksheetTextBlock_OnMouseLeftButtonDown"/>
@@ -110,11 +110,12 @@
             </syncfusion:GridTextColumn>
             <syncfusion:GridTextColumn  
               HeaderText="{x:Static rsx:ExcelViewStrings.Scale}"
-              MappingName="ScaleRange">
+              MappingName="ScaleRange"
+              >
               <syncfusion:GridTextColumn.CellTemplate>
                 <DataTemplate DataType="{x:Type questImp:WorksheetInfoVM}">
                   <TextBlock 
-                    Text="{Binding ScaleRange}"
+                    Text="{Binding ScaleRange }"
                     Style="{StaticResource GridTextColumnStyle}"   
                     ToolTip="{x:Static rsx:ExcelViewStrings.ScaleTooltip}"
                     MouseLeftButtonDown="RangeTextBlock_OnMouseLeftButtonDown"/>
@@ -150,7 +151,6 @@
       x:Name="SpreadsheetControl"
       ShowSheetTabs="False"
       FormulaBarVisibility="Collapsed"
-      PropertyChanged="SpreadsheetControl_OnPropertyChanged"
       Grid.Row="1" />
       </Grid>
     </Grid>

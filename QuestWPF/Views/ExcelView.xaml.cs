@@ -1,4 +1,11 @@
-﻿using Syncfusion.UI.Xaml.Grid;
+﻿using System.Reflection;
+
+using Qhta.WPF.Utils;
+
+using QuestIMP;
+
+using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.UI.Xaml.Spreadsheet.Helpers;
 
 namespace QuestWPF.Views;
 
@@ -46,7 +53,8 @@ public partial class ExcelView : UserControl
       var workbookVM = new WorkbookInfoVM(workbookInfo);
       workbookVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
       DataContext = workbookVM;
-    } catch (Exception e)
+    }
+    catch (Exception e)
     {
       Debug.WriteLine(e);
     }
@@ -110,17 +118,21 @@ public partial class ExcelView : UserControl
   /// <param name="e">Even arguments</param>
   /// 
   private void WorksheetListView_OnSelectionChanged(object? sender, GridSelectionChangedEventArgs e)
-
   {
-    if (sender is ListView listView)
+    //Debug.WriteLine($"WorksheetListView_OnSelectionChanged({sender})");
+    //Debug.WriteLine($"WorksheetListView.SelectedItem({WorksheetListView.SelectedItem})");
+    if (WorksheetListView.SelectedItem is WorksheetInfoVM worksheetInfo)
     {
-      if (listView.SelectedItem is WorksheetInfoVM worksheetInfo)
+      SetActiveSheet(worksheetInfo);
+      if (indirectSender != null)
       {
-        //Debug.WriteLine($"SelectionChanged({worksheetInfo.Name})");
-        SpreadsheetControl.SetActiveSheet(worksheetInfo.Name);
+        RangeTextBlock_SetRange(indirectSender);
+        indirectSender = null;
       }
     }
   }
+
+  private FrameworkElement? indirectSender;
 
   /// <summary>
   /// Method to handle mouse left button down event on the worksheet name text block.
@@ -129,9 +141,9 @@ public partial class ExcelView : UserControl
   /// <param name="e">Even arguments</param>
   private void WorksheetTextBlock_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
   {
-    if (WorksheetListView.SelectedItem is WorksheetInfoVM worksheetInfo)
+    if ((sender as Control)?.DataContext is WorksheetInfoVM worksheetInfo)
     {
-      SpreadsheetControl.SetActiveSheet(worksheetInfo.Name);
+      SetActiveSheet(worksheetInfo);
     }
   }
 
@@ -142,20 +154,64 @@ public partial class ExcelView : UserControl
   /// <param name="e">Even arguments</param>
   private void RangeTextBlock_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
   {
+    //Debug.WriteLine($"RangeTextBlock_OnMouseLeftButtonDown({sender})");
+    //Debug.WriteLine($"WorksheetListView.SelectedItem={WorksheetListView.SelectedItem}");
+    indirectSender = sender as FrameworkElement;
+  }
+
+  /// <summary>
+  /// Callback from WorksheetListView_OnSelectionChanged.
+  /// Selects the range in the active sheet.
+  /// </summary>
+  /// <param name="sender"></param>
+  private void RangeTextBlock_SetRange(object sender)
+  {
+    //Debug.WriteLine($"RangeTextBlock_SetRange({sender})");
     if (WorksheetListView.SelectedItem is WorksheetInfoVM worksheetInfo)
     {
       SpreadsheetControl.SetActiveSheet(worksheetInfo.Name);
+      ActiveRange = null;
+      ActiveRangeProperty = null;
       if (sender is TextBlock textBlock)
       {
         var text = textBlock.Text;
-        //Debug.WriteLine($"RangeTextBlock_OnMouseLeftButton({worksheetInfo.Name},{text})");
         if (!string.IsNullOrEmpty(text))
         {
-          var range = SpreadsheetControl.ActiveSheet.Range[text];
-          SelectRange(range);
+          try
+          {
+            var range = SpreadsheetControl.ActiveSheet.Range[text];
+            SelectRange(range);
+            var binding = textBlock.GetBindingExpression(TextBlock.TextProperty);
+            var bindingSourceItem = binding?.DataItem;
+            var bindingSourcePropertyName = binding?.ParentBinding.Path.Path;
+            if (bindingSourcePropertyName != null && bindingSourceItem != null)
+            {
+              ActiveWorkbookItem = bindingSourceItem as WorksheetInfoVM;
+              ActiveRangeProperty = bindingSourceItem.GetType().GetProperty(bindingSourcePropertyName);
+            }
+            SpreadsheetControl.ActiveGrid.SelectionChanged += ActiveGrid_SelectionChanged;
+          }
+          catch (Exception exception)
+          {
+            Debug.WriteLine($"Error selecting range: {exception.Message}");
+          }
         }
       }
     }
+  }
+
+  /// <summary>
+  /// Helper method to set active sheet based on given worksheet info.
+  /// </summary>
+  /// <param name="worksheetInfo"></param>
+  private void SetActiveSheet(WorksheetInfoVM worksheetInfo)
+  {
+    //Debug.WriteLine($"SetActiveSheet({worksheetInfo.Name})");
+    SpreadsheetControl.ActiveGrid.SelectionChanged -= ActiveGrid_SelectionChanged;
+    SpreadsheetControl.SetActiveSheet(worksheetInfo.Name);
+    SpreadsheetControl.ActiveGrid.SelectionController.ClearSelection();
+    ActiveRangeProperty = null;
+    ActiveRange = null;
   }
 
   /// <summary>
@@ -172,25 +228,25 @@ public partial class ExcelView : UserControl
     int startCol = int.Parse(start.Substring(start.IndexOf('C') + 1));
     int endRow = int.Parse(end.Substring(1, end.IndexOf('C') - 1));
     int endCol = int.Parse(end.Substring(end.IndexOf('C') + 1));
-    SpreadsheetControl.ActiveGrid.SelectionController.AddSelection(GridRangeInfo.Cells(startRow, startCol, endRow, endCol));
+    ActiveRange = GridRangeInfo.Cells(startRow, startCol, endRow, endCol);
+    SpreadsheetControl.ActiveGrid.SelectionController.AddSelection(ActiveRange);
   }
 
-  private void SpreadsheetControl_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+  private GridRangeInfo? ActiveRange;
+  private WorksheetInfoVM? ActiveWorkbookItem;
+  private PropertyInfo? ActiveRangeProperty;
+  private void ActiveGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.CellGrid.Helpers.SelectionChangedEventArgs e)
   {
-    object? value = null;
-    try
+    if (ActiveRange != e.NewRanges.ActiveRange && ActiveRangeProperty != null && ActiveWorkbookItem != null)
     {
-      value = sender?.GetType().GetProperty(e.PropertyName!)?.GetValue(sender);
-      if (value is IMigrantRange migrantRange)
-        value = migrantRange.AddressR1C1Local;
-      Debug.WriteLine($"Property changed: {e.PropertyName} = {value}");
-    } 
-    catch (Exception exception)
-    {
-      Debug.WriteLine($"Property changed: {e.PropertyName} = {value}");
-      Debug.WriteLine(exception);
+      ActiveRange = e.NewRanges.ActiveRange;
+      if (ActiveRangeProperty != null)
+      {
+        var str = ActiveRange.ConvertGridRangeToExcelRange(SpreadsheetControl.ActiveGrid);
+        //Debug.WriteLine($"{ActiveWorkbookItem.Name}.{ActiveRangeProperty.Name} <- {str}");
+        ActiveRangeProperty.SetValue(ActiveWorkbookItem, str);
+      }
     }
-
-
   }
+
 }

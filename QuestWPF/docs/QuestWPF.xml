@@ -447,6 +447,19 @@
             <param name="sender">Sender object</param>
             <param name="e">Even arguments</param>
         </member>
+        <member name="M:QuestWPF.Views.ExcelView.RangeTextBlock_SetRange(System.Object)">
+            <summary>
+            Callback from WorksheetListView_OnSelectionChanged.
+            Selects the range in the active sheet.
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="M:QuestWPF.Views.ExcelView.SetActiveSheet(QuestIMP.WorksheetInfoVM)">
+            <summary>
+            Helper method to set active sheet based on given worksheet info.
+            </summary>
+            <param name="worksheetInfo"></param>
+        </member>
         <member name="M:QuestWPF.Views.ExcelView.SelectRange(Syncfusion.XlsIO.IRange)">
             <summary>
             Helper method to select a range in the active sheet based on the given IRange object.
@@ -572,6 +585,36 @@
         <member name="M:QuestWPF.Views.QuestView.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>
