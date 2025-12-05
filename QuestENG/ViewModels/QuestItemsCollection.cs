@@ -14,15 +14,6 @@ public class QuestItemsCollection : ObservableList<QuestItemViewModel>, IChangea
   public QuestItemsCollection(ProjectQualityVM parent) : base([])
   {
     Parent = parent;
-    if (parent.Scale != null)
-      Add(new QuestItemViewModel { Header = QuestViewStrings.Scale, Content = parent.Scale });
-    if (parent.DocumentQualities != null)
-      foreach (var documentQualityVM in parent.DocumentQualities)
-      {
-        if (parent.FactorTypes != null)
-          documentQualityVM.BindFactorTypes(parent.FactorTypes);
-        Add(new QuestItemViewModel { Header = documentQualityVM.DocumentType, Content = documentQualityVM });
-      }
   }
 
 

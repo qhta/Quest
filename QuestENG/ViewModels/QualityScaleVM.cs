@@ -15,7 +15,7 @@ public class QualityScaleVM : ObservableList<QualityGradeVM>, IChangeable
   /// </summary>
   /// <param name="parent">Parent view model</param>
   /// <param name="items">Collection of entities to add their view models.</param>
-  public QualityScaleVM(ProjectQualityVM parent,IEnumerable<QualityGrade> items) : base(items.Select(item => new QualityGradeVM(item)))
+  public QualityScaleVM(ProjectQualityVM parent,IEnumerable<QualityGrade> items) : base(items?.Select(item => new QualityGradeVM(item)) ?? [])
   {
     Parent = parent;
   }

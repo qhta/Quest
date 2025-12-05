@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
+namespace Quest;
 
 /// <summary>
 /// ViewModel for a project quality assessment
@@ -12,10 +14,16 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   public ProjectQualityVM(ProjectQuality model) : base(model)
   {
     RootNode = [this];
+    ViewItems = new QuestItemsCollection(this);
+    Scale = new QualityScaleVM(this, model.Scale ?? []);
     FactorTypes = new QualityFactorTypeVMCollection(this, model.FactorTypes ?? []);
     FactorTypes.CollectionChanged += FactorTypes_CollectionChanged;
     DocumentQualities = new DocumentQualityVMCollection(this, model.DocumentQualities?.Cast<DocumentQuality>() ?? []);
-    ViewItems = new QuestItemsCollection(this);
+    foreach (var documentQualityVM in DocumentQualities)
+    {
+      if (FactorTypes != null)
+        ViewItems.Add(new QuestItemViewModel { Header = documentQualityVM.DocumentType, Content = documentQualityVM });
+    }
     DocumentQualities.CollectionChanged += DocumentQualities_CollectionChanged;
   }
 
@@ -107,9 +115,11 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       {
         _scale = value;
         NotifyPropertyChanged(nameof(Scale));
+        if (ViewItems == null)
+          ViewItems = new QuestItemsCollection(this);
         if (ViewItems.FirstOrDefault()?.Content is QualityScaleVM)
           ViewItems.RemoveAt(0);
-        ViewItems.Add(new QuestItemViewModel { Header = "Scale", Content = value });
+        ViewItems.Add(new QuestItemViewModel { Header = QuestViewStrings.Scale, Content = value });
       }
     }
   }
@@ -242,7 +252,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// <summary>
   /// Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
   /// </summary>
-  public QuestItemsCollection ViewItems { get; private set; }
+  public QuestItemsCollection? ViewItems { get; private set; }
 
   /// <summary>
   /// Evaluates whether all items are loaded.
