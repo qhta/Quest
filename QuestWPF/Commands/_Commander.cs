@@ -20,7 +20,7 @@ public class _Commander
     CommandCenter.RegisterCommand(FileCommands.Open, FileOpenCommand = new FileOpenCommand());
     CommandCenter.RegisterCommand(WindowCommands.OpenWindow, AddFloatingViewCommand = new RelayCommand<WindowOpenData>(AddFloatingViewExecute));
     CommandCenter.RegisterCommand(QuestCommands.Import, StartImportCommand = new StartImportCommand());
-    CommandCenter.RegisterCommand(FileCommands.Save, FileSaveCommand, FileSaveData = new FileSaveData (mainWindow));
+    CommandCenter.RegisterCommand(FileCommands.Save, FileSaveCommand, FileSaveData = new FileSaveData(mainWindow));
     CommandCenter.RegisterCommand(FileCommands.SaveAs, FileSaveCommand, FileSaveAsData = new FileSaveData(mainWindow, true));
     ClearQuestionnaireCommand = new RelayCommand<Object>(ClearQuestionnaire, CanClearQuestionnaire);
   }
@@ -51,7 +51,7 @@ public class _Commander
   /// Command to save a file.
   /// A parameter should be of <see cref="FileSaveData"/> type.
   /// </summary>
-  public FileSaveCommand FileSaveCommand { get; } = new ();
+  public FileSaveCommand FileSaveCommand { get; } = new();
 
   /// <summary>
   /// Parameter for the <see cref="FileSaveCommand"/>.
@@ -90,8 +90,9 @@ public class _Commander
       else
       if (parameter is ProjectQualityVM projectQualityVM)
       {
-        foreach (var item in projectQualityVM.DocumentQualities)
-          ClearQuestionnaire(item);
+        if (projectQualityVM.DocumentQualities != null)
+          foreach (var item in projectQualityVM.DocumentQualities)
+            ClearQuestionnaire(item);
       }
     }
     catch (Exception e)

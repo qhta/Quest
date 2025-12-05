@@ -13,30 +13,34 @@
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
   d:DesignHeight="450" d:DesignWidth="810">
   <UserControl.Resources>
-    <converters:DoubleValueConverter x:Key="MetricsValueConverter" />
-    <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
-      <ComboBox 
+    <ResourceDictionary>
+      <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+      <converters:DoubleValueConverter x:Key="MetricsValueConverter" />
+      <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
+        <ComboBox 
         Text="{Binding Path=Grade}"
         ItemsSource="{DynamicResource GradeValuesProvider}" 
         DisplayMemberPath="Text"
         SelectedValuePath="Text"
         HorizontalContentAlignment="Center"
         />
-    </DataTemplate>
-    <DataTemplate x:Key="QualityMetricsTemplate" DataType="{x:Type quest:QualityMetricsVM}">
-      <TextBlock 
+      </DataTemplate>
+      <DataTemplate x:Key="QualityMetricsTemplate" DataType="{x:Type quest:QualityMetricsVM}">
+        <TextBlock 
         Text="{Binding Path=Value, Converter={StaticResource MetricsValueConverter}, ConverterParameter='F2'}"
         HorizontalAlignment="Center"
         Margin="3"
         />
-    </DataTemplate>
-    <helpers:QualityNodeValueTemplateSelector 
+      </DataTemplate>
+      <helpers:QualityNodeValueTemplateSelector 
       x:Key="QualityNodeValueTemplateSelector"
       QualityMeasureTemplate="{StaticResource QualityMeasureTemplate}"
       QualityMetricsTemplate="{StaticResource QualityMetricsTemplate}"
       QualityFactorTemplate="{StaticResource QualityMetricsTemplate}"
     />
-    <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
+      <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
+    </ResourceDictionary>
   </UserControl.Resources>
   <Grid 
       DataContext="{Binding Content}" 
@@ -81,9 +85,17 @@
         />
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Comment}"
+          TextAlignment="Left"
           MappingName="Comment"
-          AllowEditing="True"
-        />
+          AllowEditing="True">
+          <syncfusion:TreeGridTextColumn.HeaderStyle>
+            <Style TargetType="syncfusion:TreeGridHeaderCell">
+              <Setter Property="Foreground" Value="#FF404040" />
+              <Setter Property="Background" Value="#FFC0C0C0" />
+              <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            </Style>
+          </syncfusion:TreeGridTextColumn.HeaderStyle>
+        </syncfusion:TreeGridTextColumn>
       </syncfusion:SfTreeGrid.Columns>
     </syncfusion:SfTreeGrid>
   </Grid>
