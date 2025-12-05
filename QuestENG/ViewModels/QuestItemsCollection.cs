@@ -3,7 +3,7 @@
 /// <summary>
 /// Collection of quest items. First item is quality scale, followed by phase qualities and document qualities.
 /// </summary>
-public class QuestItemsCollection: ObservableList<QuestItemViewModel>, IChangeable
+public class QuestItemsCollection : ObservableList<QuestItemViewModel>, IChangeable
 {
   private ProjectQualityVM Parent { get; }
 
@@ -14,6 +14,15 @@ public class QuestItemsCollection: ObservableList<QuestItemViewModel>, IChangeab
   public QuestItemsCollection(ProjectQualityVM parent) : base([])
   {
     Parent = parent;
+    if (parent.Scale != null)
+      Add(new QuestItemViewModel { Header = QuestViewStrings.Scale, Content = parent.Scale });
+    if (parent.DocumentQualities != null)
+      foreach (var documentQualityVM in parent.DocumentQualities)
+      {
+        if (parent.FactorTypes != null)
+          documentQualityVM.BindFactorTypes(parent.FactorTypes);
+        Add(new QuestItemViewModel { Header = documentQualityVM.DocumentType, Content = documentQualityVM });
+      }
   }
 
 

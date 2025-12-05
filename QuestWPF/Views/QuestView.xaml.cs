@@ -21,6 +21,20 @@ public partial class QuestView : UserControl
     DataContext = projectQualityVM;
   }
 
+  /// <summary>
+  /// Initializes a new instance of the <see cref="QuestView"/> class.
+  /// </summary>
+  public QuestView(ProjectQualityVM projectQualityVM)
+  {
+    SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZfdXRQQmlYWUB+WERWYEg=");
+    InitializeComponent();
+    FileName = projectQualityVM.FileName;
+    projectQualityVM.EvaluateValue();
+    DataContext = projectQualityVM;
+    projectQualityVM.IsExpanded = true;
+    ExpandTreeViewItem(projectQualityVM);
+  }
+
   #region FileName Dependency Property
   /// <summary>
   /// DependencyProperty for the <see cref="FileName"/> property.
@@ -85,7 +99,6 @@ public partial class QuestView : UserControl
       projectQualityVM.IsLoading = false;
       projectQualityVM.IsLoaded = true;
       projectQualityVM.IsExpanded = true;
-
       ExpandTreeViewItem(projectQualityVM);
       return projectQualityVM.Model;
     }
@@ -96,6 +109,7 @@ public partial class QuestView : UserControl
         projectQualityVM.Scale = new QualityScaleVM(projectQualityVM, qualityScale);
       else if (ar.AsyncState is DocumentQuality documentQuality)
       {
+        projectQualityVM.DocumentQualities ??= new DocumentQualityVMCollection(projectQualityVM, []);
         projectQualityVM.DocumentQualities.Add(new DocumentQualityVM(projectQualityVM, documentQuality));
         projectQualityVM.LoadedCount++;
       }

@@ -555,6 +555,11 @@
             Initializes a new instance of the <see cref="T:QuestWPF.Views.QuestView"/> class.
             </summary>
         </member>
+        <member name="M:QuestWPF.Views.QuestView.#ctor(Quest.ProjectQualityVM)">
+            <summary>
+            Initializes a new instance of the <see cref="T:QuestWPF.Views.QuestView"/> class.
+            </summary>
+        </member>
         <member name="F:QuestWPF.Views.QuestView.FileNameProperty">
             <summary>
             DependencyProperty for the <see cref="P:QuestWPF.Views.QuestView.FileName"/> property.

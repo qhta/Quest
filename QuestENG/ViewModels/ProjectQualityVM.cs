@@ -136,7 +136,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// <summary>
   /// Individual document qualities within the project.
   /// </summary>
-  public DocumentQualityVMCollection DocumentQualities
+  public DocumentQualityVMCollection? DocumentQualities
   {
     [DebuggerStepThrough]
     get => _documentQualities;
@@ -149,7 +149,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       }
     }
   }
-  private DocumentQualityVMCollection _documentQualities = null!;
+  private DocumentQualityVMCollection? _documentQualities = null!;
 
 
   /// <summary>
@@ -158,7 +158,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// <returns>double value or null if evaluation is not possible</returns>
   public double? EvaluateValue()
   {
-    if (DocumentQualities.Count != 0)
+    if (DocumentQualities != null && DocumentQualities.Count != 0)
     {
       return DocumentQualities.EvaluateValue(true);
     }

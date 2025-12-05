@@ -75,7 +75,7 @@ public class FileOpenCommand : Command
       if (projectQuality != null)
       {
         var projectQualityVM = new ProjectQualityVM(projectQuality);
-        var questView = new QuestView() { FileName = filename, DataContext = projectQualityVM };
+        var questView = new QuestView(projectQualityVM);
         CommandCenter.ExecuteCommand(WindowCommands.OpenWindow, new WindowOpenData(questView, "Quest #", filename));
         return projectQualityVM;
       }

@@ -101,7 +101,8 @@
       <Grid 
         Grid.Column="1"
         Margin="5,0,0,0">
-        <TabControl 
+        <TabControl
+          x:Name ="QuestViewsTabControl"
           ItemsSource="{Binding Path=ViewItems}"
           ContentTemplateSelector="{StaticResource QuestViewContentTemplateSelector}"
           >
