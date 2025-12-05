@@ -72,16 +72,12 @@
               <StackPanel Orientation="Horizontal" >
                 <TextBlock Text="{Binding ProjectTitle}" />
               </StackPanel>
-              <!--<TreeViewItem 
-                IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
-                <TreeViewItem.Header>
-
-                </TreeViewItem.Header>
-              </TreeViewItem>-->
             </HierarchicalDataTemplate>
             <DataTemplate 
               DataType="{x:Type quest:DocumentQualityVM}">
-              <StackPanel Orientation="Horizontal">
+              <StackPanel 
+                Orientation="Horizontal"
+                MouseLeftButtonDown="DocumentsTreeView_MouseLeftButtonDown"          >
                 <TextBlock 
                   Text="{Binding DocumentType}" 
                   FontWeight="Bold"/>

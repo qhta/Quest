@@ -136,4 +136,16 @@ public partial class QuestView : UserControl
       };
     }
   }
+
+  private void DocumentsTreeView_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+  {
+    if (sender is FrameworkElement frameworkElement)
+    {
+      if (frameworkElement.DataContext is DocumentQualityVM documentQualityVM)
+      {
+        var selectedItem = QuestViewsTabControl.Items.OfType<QuestItemViewModel>().FirstOrDefault(item => item.Content == documentQualityVM);
+        QuestViewsTabControl.SelectedItem = selectedItem;
+      }
+    }
+  }
 }
