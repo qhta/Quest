@@ -90,7 +90,7 @@ public class DocumentQualityVM : ViewModel<DocumentQuality>, IQualityObjectVM
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public double? EvaluateValue()
+  public double? Evaluate()
   {
     if (Factors.Count != 0)
     {

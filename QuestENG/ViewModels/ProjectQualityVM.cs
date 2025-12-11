@@ -166,7 +166,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public double? EvaluateValue()
+  public double? Evaluate()
   {
     if (DocumentQualities != null && DocumentQualities.Count != 0)
     {
@@ -267,7 +267,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       {
         _IsLoaded = value;
         NotifyPropertyChanged(nameof(IsLoaded));
-        EvaluateValue();
+        Evaluate();
         IsChanged = false;
       }
     }

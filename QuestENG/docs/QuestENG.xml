@@ -250,7 +250,7 @@
             Value of the assessment
             </summary>
         </member>
-        <member name="M:Quest.DocumentQualityVM.EvaluateValue">
+        <member name="M:Quest.DocumentQualityVM.Evaluate">
             <summary>
             Evaluates the value of the children collection.
             </summary>
@@ -357,16 +357,16 @@
             Comment added to assessment
             </summary>
         </member>
-        <member name="M:Quest.IQualityNodeVM.EvaluateValue">
-            <summary>
-            Evaluates the value of the node.
-            </summary>
-            <returns>double value or null if evaluation is not possible</returns>
-        </member>
         <member name="T:Quest.IQualityObjectVM">
             <summary>
             Interface of view model for a quality object (project, document, etc.)
             </summary>
+        </member>
+        <member name="M:Quest.IQualityObjectVM.Evaluate">
+            <summary>
+            Evaluates the value of the node.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
         </member>
         <member name="T:Quest.ProjectQualityVM">
             <summary>
@@ -409,7 +409,7 @@
             Individual document qualities within the project.
             </summary>
         </member>
-        <member name="M:Quest.ProjectQualityVM.EvaluateValue">
+        <member name="M:Quest.ProjectQualityVM.Evaluate">
             <summary>
             Evaluates the value of the children collection.
             </summary>
@@ -595,7 +595,7 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
-        <member name="M:Quest.QualityFactorVM.EvaluateValue">
+        <member name="M:Quest.QualityFactorVM.Evaluate">
             <summary>
             Evaluates the value of the children collection.
             </summary>
@@ -704,7 +704,7 @@
             Grade of the assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityMeasureVM.EvaluateValue">
+        <member name="M:Quest.QualityMeasureVM.Evaluate">
             <summary>
             Evaluates the value of the node if the grade is set.
             </summary>
@@ -745,7 +745,7 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
-        <member name="M:Quest.QualityMetricsVM.EvaluateValue">
+        <member name="M:Quest.QualityMetricsVM.Evaluate">
             <summary>
             Evaluates the value of the children collection.
             </summary>
@@ -828,7 +828,7 @@
             Comment added to assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityNodeVM`1.EvaluateValue">
+        <member name="M:Quest.QualityNodeVM`1.Evaluate">
             <summary>
             Evaluates the value of the children collection.
             </summary>

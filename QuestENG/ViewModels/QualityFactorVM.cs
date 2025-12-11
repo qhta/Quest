@@ -85,7 +85,7 @@ public class QualityFactorVM : QualityNodeVM<QualityFactor>, IQualityNodeVM
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public override double? EvaluateValue()
+  public override double? Evaluate()
   {
     if (Children.Count != 0)
     {

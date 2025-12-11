@@ -151,6 +151,7 @@ public abstract class QualityNodeVM<T>: ViewModel<T>, IQualityNodeVM where T: Qu
       {
         Model.Value = value;
         NotifyPropertyChanged(nameof(Value));
+        Parent?.Evaluate();
       }
     }
   }
@@ -176,7 +177,7 @@ public abstract class QualityNodeVM<T>: ViewModel<T>, IQualityNodeVM where T: Qu
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public abstract double? EvaluateValue();
+  public abstract double? Evaluate();
 
   #region Loading State Properties
   /// <summary>

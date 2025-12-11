@@ -105,7 +105,7 @@ public class QualityMeasureVM : QualityNodeVM<QualityMeasure>, IQualityNodeVM
   /// Evaluates the value of the node if the grade is set.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public override double? EvaluateValue()
+  public override double? Evaluate()
   {
     if (Grade!=null)
     {

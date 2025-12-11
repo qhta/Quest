@@ -69,7 +69,7 @@ public class QualityFactorVMCollection : ObservableList<QualityFactorVM>, IChang
     double? weightSum = null;
     foreach (var item in this)
     {
-      double? itemValue = (refreshDeep) ? item.EvaluateValue() : item.Value;
+      double? itemValue = (refreshDeep) ? item.Evaluate() : item.Value;
       if (itemValue != null)
       {
         if (valueSum == null)

@@ -97,7 +97,7 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
     double? weightSum = null;
     foreach (var item in this)
     {
-      double? itemValue = (refreshDeep) ? item.EvaluateValue() : item.Value;
+      double? itemValue = (refreshDeep) ? item.Evaluate() : item.Value;
       if (itemValue != null && itemValue != 0)
       {
         if (valueSum == null)

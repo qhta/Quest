@@ -8,4 +8,9 @@ namespace Quest;
 public interface IQualityObjectVM: INotifyPropertyChanged
 {
 
+  /// <summary>
+  /// Evaluates the value of the node.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? Evaluate();
 }
