@@ -1,4 +1,6 @@
-﻿namespace Quest;
+﻿using System.Diagnostics;
+
+namespace Quest;
 
 /// <summary>
 /// Represents an abstract node of a quality tree.
@@ -11,6 +13,12 @@ public abstract class QualityNode : QualityObject
   //[Key]
   //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
   //public int Id { get; set; }
+
+
+  ///// <summary>
+  ///// Factor type.
+  ///// </summary>
+  //public virtual QualityFactorType? FactorType { get; set; }
 
   /// <summary>
   ///  Level of the quality node in the tree (0 for root, 1 for factor).
@@ -51,6 +59,11 @@ public abstract class QualityNode : QualityObject
   /// Weight of the quality value in overall assessment.
   /// </summary>
   public int Weight { get; set; } = 10;
+
+  /// <summary>
+  /// Value of the node. Set method can be empty.
+  /// </summary>
+  public abstract double? Value { get; set; }
 
   /// <summary>
   /// A short comment or description about the quality node.

@@ -3,7 +3,7 @@
 /// <summary>
 /// ViewModel for a quality factor assessment
 /// </summary>
-public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
+public class QualityMeasureVM : QualityNodeVM<QualityMeasure>, IQualityNodeVM
 {
   /// <summary>
   /// Mandatory constructor
@@ -18,9 +18,21 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Required parent view model
+  /// Access to the model's factor type
   /// </summary>
-  public IQualityObjectVM Parent { get; set; }
+  public override QualityFactorType? FactorType
+  {
+    get
+    {
+      object? parent = Parent as IQualityNodeVM;
+      while (parent is IQualityNodeVM node && parent is not QualityFactorVM)
+        parent = node.Parent;
+      if (parent is QualityFactorVM factorVM)
+        return factorVM.FactorType;
+      return null;
+    }
+    set { }
+  }
 
   /// <summary>
   /// Gets the quality scale from the grandparent ProjectQualityVM
@@ -47,101 +59,15 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
     }
   }
 
-
-  /// <summary>
-  /// Collection to which this node belongs.
-  /// </summary>
-  public IList Collection { get; set; }
-
-  /// <summary>
-  /// Gets the quality object associated with the model.
-  /// </summary>
-  public QualityObject QualityObject => Model;
-
-  /// <summary>
-  /// Level of the node in the hierarchy (0 for root, 1 for factor)
-  /// </summary>
-  public int Level => Model.Level;
-
-  /// <summary>
-  /// Ordering number string ended with a dot.
-  /// </summary>
-  public string? Numbering
-  {
-    get
-    {
-      var text = "";
-      if (Parent is IQualityNodeVM parentNode)
-        text = parentNode.Numbering;
-      var number = Collection.IndexOf(this)+1;
-      text += number + ".";
-      return text;
-    }
-  }
-
-  /// <summary>
-  /// Text from the model
-  /// </summary>
-  public string? Text
-  {
-    [DebuggerStepThrough]
-    get => Model.Text;
-    set
-    {
-      if (Model.Text != value)
-      {
-        Model.Text = value;
-        NotifyPropertyChanged(nameof(Text));
-      }
-    }
-  }
-
-  /// <summary>
-  /// Text from the model preceding with ordering number.
-  /// </summary>
-  public string? TextWithNumbering
-  {
-    [DebuggerStepThrough]
-    get
-    {
-      var text = Model.Text;
-      var numbering = Numbering;
-      if (numbering != null)
-        text = numbering + " " + text;
-      return text;
-    }
-  }
-
   /// <summary>
   /// Display Name from the model
   /// </summary>
-  public string? DisplayName => Text;
-
-  /// <summary>
-  /// Display Name from the model preceding with ordering number.
-  /// </summary>
-  public string? DisplayNameWithNumbering => TextWithNumbering;
-
-  /// <summary>
-  /// Access to the model's factor type
-  /// </summary>
-  public QualityFactorType? FactorType
-  {
-    get
-    {
-      object? parent = Parent as IQualityNodeVM;
-      while (parent is IQualityNodeVM node && parent is not QualityFactorVM)
-        parent = node.Parent;
-      if (parent is QualityFactorVM factorVM)
-        return factorVM.FactorType;
-      return null;
-    }
-  }
+  public override string? DisplayName => Text;
 
   /// <summary>
   /// Gets the background color for display purposes.
   /// </summary>
-  public string? BackgroundColor
+  public override string? BackgroundColor
   {
     get
     {
@@ -149,40 +75,6 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
       if (colors == null || !colors.Any())
         return null;
       return colors[colors.Count() - 1];
-    }
-  }
-
-  /// <summary>
-  /// Weight of the value.  
-  /// </summary>
-  public int Weight
-  {
-    [DebuggerStepThrough]
-    get => Model.Weight;
-    set
-    {
-      if (Model.Weight != value)
-      {
-        Model.Weight = value;
-        NotifyPropertyChanged(nameof(Weight));
-      }
-    }
-  }
-
-  /// <summary>
-  /// Value of the assessment
-  /// </summary>
-  public double? Value
-  {
-    [DebuggerStepThrough]
-    get => Model.Value;
-    set
-    {
-      if (Model.Value != value)
-      {
-        Model.Value = value;
-        NotifyPropertyChanged(nameof(Value));
-      }
     }
   }
 
@@ -210,27 +102,10 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
   }
 
   /// <summary>
-  /// Comment added to assessment
-  /// </summary>
-  public string? Comment
-  {
-    [DebuggerStepThrough]
-    get => Model.Comment;
-    set
-    {
-      if (Model.Comment != value)
-      {
-        Model.Comment = value;
-        NotifyPropertyChanged(nameof(Comment));
-      }
-    }
-  }
-
-  /// <summary>
   /// Evaluates the value of the node if the grade is set.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public double? EvaluateValue()
+  public override double? EvaluateValue()
   {
     if (Grade!=null)
     {
@@ -244,61 +119,7 @@ public class QualityMeasureVM : ViewModel<QualityMeasure>, IQualityNodeVM
     return null;
   }
 
-  #region Loading State Properties
-  /// <summary>
-  /// Determines whether the workbook is currently in a loading state.
-  /// </summary>
-  public bool IsLoading
-  {
-    [DebuggerStepThrough]
-    get => _IsLoading;
-    set
-    {
-      if (_IsLoading != value)
-      {
-        _IsLoading = value;
-        NotifyPropertyChanged(nameof(IsLoading));
-      }
-    }
-  }
-  private bool _IsLoading;
 
-  /// <summary>
-  /// Determines the count of worksheets to load.
-  /// </summary>
-  public int TotalCount
-  {
-    [DebuggerStepThrough]
-    get => _totalCount;
-    set
-    {
-      if (_totalCount != value)
-      {
-        _totalCount = value;
-        NotifyPropertyChanged(nameof(TotalCount));
-      }
-    }
-  }
-  private int _totalCount;
-
-  /// <summary>
-  /// Currently loaded worksheets count
-  /// </summary>
-  public int LoadedCount
-  {
-    [DebuggerStepThrough]
-    get => _LoadedCount;
-    set
-    {
-      if (_LoadedCount != value)
-      {
-        _LoadedCount = value;
-        NotifyPropertyChanged(nameof(LoadedCount));
-      }
-    }
-  }
-  private int _LoadedCount;
-  #endregion
 
 
 }

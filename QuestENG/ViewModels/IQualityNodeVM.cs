@@ -1,7 +1,4 @@
-﻿using System.Drawing;
-using System.Net.Http.Headers;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// ViewModel for a quality metrics node
@@ -12,12 +9,12 @@ public interface IQualityNodeVM : IQualityObjectVM
   /// <summary>
   /// Required parent view model
   /// </summary>
-  public IQualityObjectVM Parent { get; set; }
+  public IQualityObjectVM? Parent { get; set; }
 
   /// <summary>
   /// Collection to which this node belongs.
   /// </summary>
-  public IList Collection { get; set; }
+  public IList? Collection { get; set; }
 
   /// <summary>
   /// Level of the node in the hierarchy (0 for root, 1 for factor)
@@ -75,20 +72,4 @@ public interface IQualityNodeVM : IQualityObjectVM
   /// <returns>double value or null if evaluation is not possible</returns>
   public double? EvaluateValue();
 
-  #region Loading State Properties
-  /// <summary>
-  /// Determines whether the workbook is currently in a loading state.
-  /// </summary>
-  public bool IsLoading { get; set; }
-
-  /// <summary>
-  /// Determines the count of worksheets to load.
-  /// </summary>
-  public int TotalCount { get; set; }
-
-  /// <summary>
-  /// Currently loaded worksheets count
-  /// </summary>
-  public int LoadedCount { get; set; }
-  #endregion
 };

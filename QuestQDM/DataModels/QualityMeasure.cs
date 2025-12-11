@@ -14,7 +14,7 @@ public class QualityMeasure: QualityNode
   /// <summary>
   /// Evaluated value computed from child nodes.
   /// </summary>
-  public double? Value { get; set; }
+  public override double? Value { get; set; }
 
   ///// <summary>
   ///// Collection of assessments contributing to this quality measure value.

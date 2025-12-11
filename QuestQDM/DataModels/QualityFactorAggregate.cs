@@ -13,5 +13,5 @@ public class QualityFactorAggregate: QualityNode
   /// <summary>
   /// Aggregated value.
   /// </summary>
-  public double? Value { get; set; }
+  public override double? Value { get; set; }
 }

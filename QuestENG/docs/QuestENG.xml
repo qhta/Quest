@@ -363,29 +363,9 @@
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
-        <member name="P:Quest.IQualityNodeVM.IsLoading">
-            <summary>
-            Determines whether the workbook is currently in a loading state.
-            </summary>
-        </member>
-        <member name="P:Quest.IQualityNodeVM.TotalCount">
-            <summary>
-            Determines the count of worksheets to load.
-            </summary>
-        </member>
-        <member name="P:Quest.IQualityNodeVM.LoadedCount">
-            <summary>
-            Currently loaded worksheets count
-            </summary>
-        </member>
         <member name="T:Quest.IQualityObjectVM">
             <summary>
             Interface of view model for a quality object (project, document, etc.)
-            </summary>
-        </member>
-        <member name="P:Quest.IQualityObjectVM.QualityObject">
-            <summary>
-            Gets the underlying quality object model.
             </summary>
         </member>
         <member name="T:Quest.ProjectQualityVM">
@@ -593,41 +573,6 @@
             <param name="collection">Collection to which this node belongs.</param>
             <param name="model">Required data entity</param>
         </member>
-        <member name="P:Quest.QualityFactorVM.Parent">
-            <summary>
-            Required parent view model
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Collection">
-            <summary>
-            Collection to which this node belongs.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.QualityObject">
-            <summary>
-            Gets the quality object associated with the model.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Level">
-            <summary>
-            Level of the node in the hierarchy (0 for root, 1 for factor)
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Numbering">
-            <summary>
-            Ordering number string ended with a dot.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Text">
-            <summary>
-            Text from the model
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.TextWithNumbering">
-            <summary>
-            Text from the model preceding with ordering number.
-            </summary>
-        </member>
         <member name="P:Quest.QualityFactorVM.FactorType">
             <summary>
             Access to the model's factor type
@@ -638,29 +583,9 @@
             Gets a display name for the factor.
             </summary>
         </member>
-        <member name="P:Quest.QualityFactorVM.DisplayNameWithNumbering">
-            <summary>
-            Gets a display name for the factor with numbering.
-            </summary>
-        </member>
         <member name="P:Quest.QualityFactorVM.BackgroundColor">
             <summary>
             Gets the background color for display purposes.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Weight">
-            <summary>
-            Weight of the value.  
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Value">
-            <summary>
-            Value of the assessment
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.Comment">
-            <summary>
-            Comment added to assessment
             </summary>
         </member>
         <member name="P:Quest.QualityFactorVM.Children">
@@ -675,21 +600,6 @@
             Evaluates the value of the children collection.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
-        </member>
-        <member name="P:Quest.QualityFactorVM.IsLoading">
-            <summary>
-            Determines whether the workbook is currently in a loading state.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.TotalCount">
-            <summary>
-            Determines the count of worksheets to load.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityFactorVM.LoadedCount">
-            <summary>
-            Currently loaded worksheets count
-            </summary>
         </member>
         <member name="T:Quest.QualityFactorVMCollection">
             <summary>
@@ -769,9 +679,9 @@
             <param name="collection">Collection to which this node belongs.</param>
             <param name="model">Required data entity</param>
         </member>
-        <member name="P:Quest.QualityMeasureVM.Parent">
+        <member name="P:Quest.QualityMeasureVM.FactorType">
             <summary>
-            Required parent view model
+            Access to the model's factor type
             </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.Scale">
@@ -779,49 +689,9 @@
             Gets the quality scale from the grandparent ProjectQualityVM
             </summary>
         </member>
-        <member name="P:Quest.QualityMeasureVM.Collection">
-            <summary>
-            Collection to which this node belongs.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.QualityObject">
-            <summary>
-            Gets the quality object associated with the model.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.Level">
-            <summary>
-            Level of the node in the hierarchy (0 for root, 1 for factor)
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.Numbering">
-            <summary>
-            Ordering number string ended with a dot.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.Text">
-            <summary>
-            Text from the model
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.TextWithNumbering">
-            <summary>
-            Text from the model preceding with ordering number.
-            </summary>
-        </member>
         <member name="P:Quest.QualityMeasureVM.DisplayName">
             <summary>
             Display Name from the model
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.DisplayNameWithNumbering">
-            <summary>
-            Display Name from the model preceding with ordering number.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.FactorType">
-            <summary>
-            Access to the model's factor type
             </summary>
         </member>
         <member name="P:Quest.QualityMeasureVM.BackgroundColor">
@@ -829,24 +699,9 @@
             Gets the background color for display purposes.
             </summary>
         </member>
-        <member name="P:Quest.QualityMeasureVM.Weight">
-            <summary>
-            Weight of the value.  
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.Value">
-            <summary>
-            Value of the assessment
-            </summary>
-        </member>
         <member name="P:Quest.QualityMeasureVM.Grade">
             <summary>
             Grade of the assessment
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.Comment">
-            <summary>
-            Comment added to assessment
             </summary>
         </member>
         <member name="M:Quest.QualityMeasureVM.EvaluateValue">
@@ -854,21 +709,6 @@
             Evaluates the value of the node if the grade is set.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.IsLoading">
-            <summary>
-            Determines whether the workbook is currently in a loading state.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.TotalCount">
-            <summary>
-            Determines the count of worksheets to load.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMeasureVM.LoadedCount">
-            <summary>
-            Currently loaded worksheets count
-            </summary>
         </member>
         <member name="T:Quest.QualityMetricsVM">
             <summary>
@@ -883,39 +723,9 @@
             <param name="collection">Collection to which this node belongs.</param>
             <param name="model">Required data entity</param>
         </member>
-        <member name="P:Quest.QualityMetricsVM.Parent">
+        <member name="P:Quest.QualityMetricsVM.FactorType">
             <summary>
-            Required parent view model
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Collection">
-            <summary>
-            Collection to which this node belongs.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.QualityObject">
-            <summary>
-            Gets the quality object associated with the model.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Level">
-            <summary>
-            Level of the node in the hierarchy (0 for root, 1 for factor)
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Numbering">
-            <summary>
-            Ordering number string ended with a dot.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Text">
-            <summary>
-            Text from the model
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.TextWithNumbering">
-            <summary>
-            Text from the model preceding with ordering number.
+            Access to the model's factor type
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.DisplayName">
@@ -923,34 +733,9 @@
             Gets a display name for the metrics.
             </summary>
         </member>
-        <member name="P:Quest.QualityMetricsVM.DisplayNameWithNumbering">
-            <summary>
-            Display Name preceding with ordering number.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.FactorType">
-            <summary>
-            Access to the model's factor type
-            </summary>
-        </member>
         <member name="P:Quest.QualityMetricsVM.BackgroundColor">
             <summary>
             Gets the background color for display purposes.
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Weight">
-            <summary>
-            Weight of the value.  
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Value">
-            <summary>
-            Value of the assessment
-            </summary>
-        </member>
-        <member name="P:Quest.QualityMetricsVM.Comment">
-            <summary>
-            Comment added to assessment
             </summary>
         </member>
         <member name="P:Quest.QualityMetricsVM.Children">
@@ -966,17 +751,100 @@
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
-        <member name="P:Quest.QualityMetricsVM.IsLoading">
+        <member name="T:Quest.QualityNodeVM`1">
+            <summary>
+            Generalized class for QualityFactorVM, QualityMetricsVM, and QualityMeasureVM
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Quest.QualityNodeVM`1.#ctor(`0)">
+            <summary>
+            Passes constructor call to base class
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Parent">
+            <summary>
+            Required parent view model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Collection">
+            <summary>
+            Collection to which this node belongs.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.FactorType">
+            <summary>
+            Access to the model's factor type
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Level">
+            <summary>
+            Level of the node in the hierarchy (0 for root, 1 for factor)
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Numbering">
+            <summary>
+            Ordering number string ended with a dot.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Text">
+            <summary>
+            Text from the model
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.TextWithNumbering">
+            <summary>
+            Text from the model preceding with ordering number.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.DisplayName">
+            <summary>
+            Gets a display name for the factor.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.DisplayNameWithNumbering">
+            <summary>
+            Gets a display name for the factor with numbering.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.BackgroundColor">
+            <summary>
+            Gets the background color for display purposes.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Weight">
+            <summary>
+            Weight of the value.  
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Value">
+            <summary>
+            Value of the assessment
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.Comment">
+            <summary>
+            Comment added to assessment
+            </summary>
+        </member>
+        <member name="M:Quest.QualityNodeVM`1.EvaluateValue">
+            <summary>
+            Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="P:Quest.QualityNodeVM`1.IsLoading">
             <summary>
             Determines whether the workbook is currently in a loading state.
             </summary>
         </member>
-        <member name="P:Quest.QualityMetricsVM.TotalCount">
+        <member name="P:Quest.QualityNodeVM`1.TotalCount">
             <summary>
             Determines the count of worksheets to load.
             </summary>
         </member>
-        <member name="P:Quest.QualityMetricsVM.LoadedCount">
+        <member name="P:Quest.QualityNodeVM`1.LoadedCount">
             <summary>
             Currently loaded worksheets count
             </summary>

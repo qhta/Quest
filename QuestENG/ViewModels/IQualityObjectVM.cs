@@ -7,8 +7,5 @@ namespace Quest;
 /// </summary>
 public interface IQualityObjectVM: INotifyPropertyChanged
 {
-  /// <summary>
-  /// Gets the underlying quality object model.
-  /// </summary>
-  public QualityObject QualityObject { get; }
+
 }

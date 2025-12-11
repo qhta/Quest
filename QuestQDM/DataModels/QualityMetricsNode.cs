@@ -4,7 +4,7 @@
 /// Quality metrics node in a hierarchical structure of quality nodes.
 /// </summary>
 [XmlContentProperty("Children")]
-public class QualityMetricsNode: QualityNode
+public abstract class QualityMetricsNode: QualityNode
 {
   /// <summary>
   /// Gets or sets the collection of child nodes associated with this node.
@@ -33,7 +33,7 @@ public class QualityMetricsNode: QualityNode
   /// <summary>
   /// Evaluated value computed from child nodes.
   /// </summary>
-  public double? Value { get; set; }
+  public override double? Value { get; set; }
 
   public void Add(QualityNode childNode)
   {

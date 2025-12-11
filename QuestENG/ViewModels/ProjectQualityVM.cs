@@ -75,7 +75,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
         foreach (var documentQualityVM in e.NewItems?.OfType<DocumentQualityVM>() ?? [])
         {
           documentQualityVM.BindFactorTypes(FactorTypes);
-          ViewItems.Add(new QuestItemViewModel { Header = documentQualityVM.DocumentType, Content = documentQualityVM });
+          ViewItems?.Add(new QuestItemViewModel { Header = documentQualityVM.DocumentType, Content = documentQualityVM });
         }
     }
   }
