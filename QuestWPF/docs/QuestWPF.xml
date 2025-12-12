@@ -372,6 +372,42 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:QuestWPF.Views.DocumentQuestResultsView">
+            <summary>
+            Interaction logic for DocumentQuestView.xaml
+            </summary>
+            <summary>
+            DocumentQuestResultsView
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQuestResultsView.#ctor">
+            <summary>
+            Initializing constructor.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQuestResultsView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:QuestWPF.Views.DocumentQuestView">
+            <summary>
+            Interaction logic for DocumentQuestView.xaml
+            </summary>
+            <summary>
+            DocumentQuestView
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQuestView.#ctor">
+            <summary>
+            Initializing constructor.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQuestView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:QuestWPF.Views.ExcelView">
             <summary>
             Interaction logic for ExcelView.xaml
@@ -590,6 +626,36 @@
         <member name="M:QuestWPF.Views.QuestView.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

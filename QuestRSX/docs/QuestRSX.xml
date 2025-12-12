@@ -1418,6 +1418,26 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:QuestRSX.QuestViewStrings.Factor">
+            <summary>
+              Looks up a localized string similar to Factor.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.QuestViewStrings.Item">
+            <summary>
+              Looks up a localized string similar to Factor / Metrics /Measure.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.QuestViewStrings.Measure">
+            <summary>
+              Looks up a localized string similar to Measure.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.QuestViewStrings.Metrics">
+            <summary>
+              Looks up a localized string similar to Metrics.
+            </summary>
+        </member>
         <member name="P:QuestRSX.QuestViewStrings.Scale">
             <summary>
               Looks up a localized string similar to Scale.

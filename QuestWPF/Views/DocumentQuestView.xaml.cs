@@ -1,13 +1,13 @@
 ﻿namespace QuestWPF.Views;
 /// <summary>
-/// Interaction logic for DocumentQualityView.xaml
+/// Interaction logic for DocumentQuestView.xaml
 /// </summary>
-public partial class DocumentQualityView : UserControl
+public partial class DocumentQuestView : UserControl
 {
   /// <summary>
-  /// Initializing constructor
+  /// Initializing constructor.
   /// </summary>
-  public DocumentQualityView()
+  public DocumentQuestView()
   {
     InitializeComponent();
     DataContextChanged += DocumentQualityView_DataContextChanged;
@@ -26,6 +26,4 @@ public partial class DocumentQualityView : UserControl
       }
     }
   }
-
-
 }

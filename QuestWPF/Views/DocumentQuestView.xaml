@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="QuestWPF.Views.DocumentQuestView"
+  xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
+  xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
+  xmlns:helpers="clr-namespace:QuestWPF.Helpers"
+  xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
+  mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
+  d:DesignHeight="450" d:DesignWidth="810">
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+      <converters:DoubleValueConverter x:Key="MetricsValueConverter" />
+      <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
+        <ComboBox 
+        Text="{Binding Path=Grade}"
+        ItemsSource="{DynamicResource GradeValuesProvider}" 
+        DisplayMemberPath="Text"
+        SelectedValuePath="Text"
+        HorizontalContentAlignment="Center"
+        />
+      </DataTemplate>
+      <DataTemplate x:Key="QualityMetricsTemplate" DataType="{x:Type quest:QualityMetricsVM}">
+        <TextBlock 
+        Text="{Binding Path=Value, Converter={StaticResource MetricsValueConverter}, ConverterParameter='F2'}"
+        HorizontalAlignment="Center"
+        Margin="3"
+        />
+      </DataTemplate>
+      <helpers:QualityNodeValueTemplateSelector 
+      x:Key="QualityNodeValueTemplateSelector"
+      QualityMeasureTemplate="{StaticResource QualityMeasureTemplate}"
+      QualityMetricsTemplate="{StaticResource QualityMetricsTemplate}"
+      QualityFactorTemplate="{StaticResource QualityMetricsTemplate}"
+    />
+      <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
+    </ResourceDictionary>
+  </UserControl.Resources>
+  <Grid 
+      d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
+    <syncfusion:SfTreeGrid
+      ChildPropertyName="Children"
+      AutoExpandMode="AllNodesExpanded"
+      ItemsSource="{Binding Factors}"
+      AutoGenerateColumns="False"
+      AllowResizingColumns="True"
+      AllowSorting="False"
+      AllowFiltering="False"
+      EditorSelectionBehavior="SelectAll"
+      EditTrigger="OnTap"
+      ColumnSizer="AutoFillColumn"
+      RowStyleSelector="{StaticResource QuestRowStyleSelector}"
+      >
+      <syncfusion:SfTreeGrid.Columns>
+        <syncfusion:TreeGridTextColumn
+          HeaderText="{x:Static questRsx:QuestViewStrings.Item}"
+          MappingName="DisplayNameWithNumbering"
+        />
+        <syncfusion:TreeGridNumericColumn
+          HeaderText="{x:Static questRsx:Strings.Weight}"
+          MappingName="Weight"
+          NullValue="0"
+          NumberDecimalDigits="0"
+          AllowEditing="True"
+        />
+        <syncfusion:TreeGridTemplateColumn
+          HeaderText="{x:Static questRsx:Strings.Value}"
+          MappingName="Value"
+          CellTemplateSelector="{StaticResource QualityNodeValueTemplateSelector}"
+        />
+        <syncfusion:TreeGridTextColumn
+          HeaderText="{x:Static questRsx:Strings.Comment}"
+          TextAlignment="Left"
+          MappingName="Comment"
+          AllowEditing="True">
+          <syncfusion:TreeGridTextColumn.HeaderStyle>
+            <Style TargetType="syncfusion:TreeGridHeaderCell">
+              <Setter Property="Foreground" Value="#FF404040" />
+              <Setter Property="Background" Value="#FFC0C0C0" />
+              <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            </Style>
+          </syncfusion:TreeGridTextColumn.HeaderStyle>
+        </syncfusion:TreeGridTextColumn>
+      </syncfusion:SfTreeGrid.Columns>
+    </syncfusion:SfTreeGrid>
+  </Grid>
+</UserControl>
+
