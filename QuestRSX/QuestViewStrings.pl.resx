@@ -120,6 +120,9 @@
   <data name="Factor" xml:space="preserve">
     <value>Czynnik</value>
   </data>
+  <data name="Grade" xml:space="preserve">
+    <value>Ocena</value>
+  </data>
   <data name="Item" xml:space="preserve">
     <value>Czynnik / Metryka /Miara</value>
   </data>
@@ -129,7 +132,16 @@
   <data name="Metrics" xml:space="preserve">
     <value>Metryka</value>
   </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Wiarygodność</value>
+  </data>
+  <data name="ReliabilityTooltip" xml:space="preserve">
+    <value>Wiarygodność oceny. Liczona jako liczba ocen wiarygodnych dzielona przez liczbę wymaganych ocen.</value>
+  </data>
   <data name="Scale" xml:space="preserve">
     <value>Skala</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Waga</value>
   </data>
 </root>

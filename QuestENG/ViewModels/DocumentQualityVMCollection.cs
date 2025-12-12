@@ -49,6 +49,16 @@ public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>, IC
   private double? _Value;
 
   /// <summary>
+  /// Evaluates both value and reliability.
+  /// </summary>
+  public void Evaluate()
+  {
+    bool refreshDeep = true;
+    EvaluateValue(refreshDeep);
+    EvaluateReliability(refreshDeep);
+  }
+
+  /// <summary>
   /// Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
   /// </summary>
   /// <returns></returns>
@@ -58,7 +68,7 @@ public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>, IC
     double? weightSum = null;
     foreach (var item in this)
     {
-      double? itemValue = (refreshDeep) ? item.Evaluate() : item.Value;
+      double? itemValue = (refreshDeep) ? item.EvaluateValue() : item.Value;
       if (itemValue != null)
       {
         if (valueSum == null)
@@ -70,5 +80,47 @@ public class DocumentQualityVMCollection : ObservableList<DocumentQualityVM>, IC
       }
     }
     return weightSum > 0 ? valueSum / weightSum : null;
+  }
+
+  /// <summary>
+  /// Evaluated reliability;
+  /// </summary>
+  public double? Reliability
+  {
+    [DebuggerStepThrough]
+    get => _Reliability;
+    set
+    {
+      if (_Reliability != value)
+      {
+        _Reliability = value;
+        NotifyPropertyChanged(nameof(Reliability));
+      }
+    }
+  }
+  private double? _Reliability;
+
+  /// <summary>
+  /// Evaluates the weighted mean Reliability of all items in the collection that have a defined Reliability and a positive weight.
+  /// </summary>
+  /// <returns></returns>
+  public double? EvaluateReliability(bool refreshDeep)
+  {
+    double? ReliabilitySum = null;
+    double? weightSum = null;
+    foreach (var item in this)
+    {
+      double? itemReliability = (refreshDeep) ? item.EvaluateReliability() : item.Reliability;
+      if (itemReliability != null)
+      {
+        if (ReliabilitySum == null)
+          ReliabilitySum = 0;
+        if (weightSum == null)
+          weightSum = 0;
+        ReliabilitySum += itemReliability;
+        weightSum += 1;
+      }
+    }
+    return weightSum > 0 ? ReliabilitySum / weightSum : null;
   }
 }

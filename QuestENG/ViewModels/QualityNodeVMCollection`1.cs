@@ -6,7 +6,7 @@ namespace Quest;
 /// <summary>
 /// Observable collection of <see cref="IQualityNodeVM"/> objects.
 /// </summary>
-public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
+public class QualityNodeVMCollection<T> : ObservableList<T> where T: IQualityNodeVM
 {
   /// <summary>
   /// Parent view model
@@ -25,11 +25,11 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
     foreach (var item in items)
     {
       if (item is QualityFactor qualityFactor) 
-        Add(new QualityFactorVM(parent, this, qualityFactor));
+        Add((T)(object)new QualityFactorVM(parent, this, qualityFactor));
       else if (item is QualityMetrics qualityMetrics) 
-        Add(new QualityMetricsVM(parent, this, qualityMetrics));
+        Add((T)(object)new QualityMetricsVM(parent, this, qualityMetrics));
       else if (item is QualityMeasure qualityMeasure) 
-        Add(new QualityMeasureVM(parent, this, qualityMeasure));
+        Add((T)(object)new QualityMeasureVM(parent, this, qualityMeasure));
       else throw new NotImplementedException("Invalid item type when creating ViewModel");
     }
   }
@@ -40,7 +40,7 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
   /// </summary>
   /// <param name="index">The zero-based index at which the item should be inserted.</param>
   /// <param name="item">The item to insert into the collection. Cannot be <see langword="null"/>.</param>
-  protected override void InsertItem(int index, IQualityNodeVM item)
+  protected override void InsertItem(int index, T item)
   {
     base.InsertItem(index, item);
     if (item.Parent != Parent)
@@ -60,9 +60,18 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
   {
     if (!_isRefreshing)
       if (e.PropertyName == "Value" || e.PropertyName == "Weight")
-        Value = EvaluateValue(false);
+        Evaluate();
   }
 
+  /// <summary>
+  /// Evaluates both value and reliability.
+  /// </summary>
+  public void Evaluate()
+  {
+    EvaluateValue(false);
+    EvaluateReliability(false);
+
+  }
   /// <summary>
   /// Weighted mean value of items.
   /// </summary>
@@ -97,7 +106,7 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
     double? weightSum = null;
     foreach (var item in this)
     {
-      double? itemValue = (refreshDeep) ? item.Evaluate() : item.Value;
+      double? itemValue = (refreshDeep) ? item.EvaluateValue() : item.Value;
       if (itemValue != null && itemValue != 0)
       {
         if (valueSum == null)
@@ -113,4 +122,50 @@ public class QualityNodeVMCollection : ObservableList<IQualityNodeVM>
     return Value;
   }
 
+  /// <summary>
+  /// Reliability of grades in the collection.
+  /// </summary>
+  public double? Reliability
+  {
+    [DebuggerStepThrough]
+    get
+    {
+      if (_isRefreshing)
+        _Reliability = EvaluateReliability(true);
+      return _Reliability;
+    }
+    set
+    {
+      if (_Reliability != value)
+      {
+        _Reliability = value;
+        NotifyPropertyChanged(nameof(Reliability));
+      }
+    }
+  }
+  private double? _Reliability;
+
+  /// <summary>
+  /// Evaluates the percent of all items in the collection that have a defined grade.
+  /// </summary>
+  /// <returns></returns>
+  public double? EvaluateReliability(bool refreshDeep)
+  {
+    _isRefreshing = refreshDeep;
+    double? valueSum = null;
+    int count = this.Count;
+    foreach (var item in this)
+    {
+      double? itemValue = (refreshDeep) ? item.EvaluateReliability() : item.Reliability;
+      if (itemValue != null && itemValue != 0)
+      {
+        if (valueSum == null)
+          valueSum = 0;
+        valueSum += itemValue;
+      }
+    }
+    _isRefreshing = false;
+    Reliability = count > 0 ? valueSum / count : null;
+    return Reliability;
+  }
 }

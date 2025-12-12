@@ -120,6 +120,9 @@
   <data name="Factor" xml:space="preserve">
     <value>Factor</value>
   </data>
+  <data name="Grade" xml:space="preserve">
+    <value>Grade</value>
+  </data>
   <data name="Item" xml:space="preserve">
     <value>Factor / Metrics /Measure</value>
   </data>
@@ -129,7 +132,16 @@
   <data name="Metrics" xml:space="preserve">
     <value>Metrics</value>
   </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Reliability</value>
+  </data>
+  <data name="ReliabilityTooltip" xml:space="preserve">
+    <value>Assessment reliability. Evaluated as reliable grades count times all required grades count.</value>
+  </data>
   <data name="Scale" xml:space="preserve">
     <value>Scale</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
   </data>
 </root>

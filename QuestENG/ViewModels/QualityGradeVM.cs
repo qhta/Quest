@@ -56,6 +56,24 @@ public class QualityGradeVM: ViewModel<QualityGrade>
     }
   }
 
+
+  /// <summary>
+  /// Is the grade reliable?
+  /// </summary>
+  public bool Reliable
+  {
+    [DebuggerStepThrough]
+    get => Model.Reliable;
+    //set
+    //{
+    //  if (Model.Reliable != value)
+    //  {
+    //    Model.Reliable = value;
+    //    NotifyPropertyChanged(nameof(Reliable));
+    //  }
+    //}
+  }
+
   /// <summary>
   /// Textual meaning of the grade.
   /// </summary>

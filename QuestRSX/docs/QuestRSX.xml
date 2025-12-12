@@ -1423,6 +1423,11 @@
               Looks up a localized string similar to Factor.
             </summary>
         </member>
+        <member name="P:QuestRSX.QuestViewStrings.Grade">
+            <summary>
+              Looks up a localized string similar to Grade.
+            </summary>
+        </member>
         <member name="P:QuestRSX.QuestViewStrings.Item">
             <summary>
               Looks up a localized string similar to Factor / Metrics /Measure.
@@ -1438,9 +1443,24 @@
               Looks up a localized string similar to Metrics.
             </summary>
         </member>
+        <member name="P:QuestRSX.QuestViewStrings.Reliability">
+            <summary>
+              Looks up a localized string similar to Reliability.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.QuestViewStrings.ReliabilityTooltip">
+            <summary>
+              Looks up a localized string similar to Assessment reliability. Evaluated as reliable grades count times all required grades count..
+            </summary>
+        </member>
         <member name="P:QuestRSX.QuestViewStrings.Scale">
             <summary>
               Looks up a localized string similar to Scale.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.QuestViewStrings.Weight">
+            <summary>
+              Looks up a localized string similar to Weight.
             </summary>
         </member>
         <member name="T:QuestRSX.Strings">

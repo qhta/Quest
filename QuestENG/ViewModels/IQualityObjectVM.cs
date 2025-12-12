@@ -9,8 +9,19 @@ public interface IQualityObjectVM: INotifyPropertyChanged
 {
 
   /// <summary>
+  /// Evaluates the value and the reliability of the node.
+  /// </summary>
+  public void Evaluate();
+
+  /// <summary>
   /// Evaluates the value of the node.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public double? Evaluate();
+  public double? EvaluateValue();
+
+  /// <summary>
+  /// Evaluates the reliability of the assessment.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateReliability();
 }

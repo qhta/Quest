@@ -62,6 +62,11 @@ public interface IQualityNodeVM : IQualityObjectVM
   public double? Value { get; set; }
 
   /// <summary>
+  /// Assessment reliability
+  /// </summary>
+  public double? Reliability { get; set; }
+
+  /// <summary>
   /// Comment added to assessment
   /// </summary>
   public string? Comment { get; set; }

@@ -17,7 +17,7 @@ public class QualityFactorVM : QualityNodeVM<QualityFactor>, IQualityNodeVM
   {
     Parent = parent;
     Collection = collection;
-    Children = new QualityNodeVMCollection(this, model.Children?.Cast<QualityNode>() ?? []);
+    Children = new QualityNodeVMCollection<IQualityNodeVM>(this, model.Children?.Cast<QualityNode>() ?? []);
     Children.PropertyChanged += Children_PropertyChanged;
   }
 
@@ -79,13 +79,13 @@ public class QualityFactorVM : QualityNodeVM<QualityFactor>, IQualityNodeVM
   /// </summary>
   /// <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
   /// be null.</remarks>
-  public QualityNodeVMCollection Children { get; }
+  public QualityNodeVMCollection<IQualityNodeVM> Children { [DebuggerStepThrough] get; }
 
   /// <summary>
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public override double? Evaluate()
+  public override double? EvaluateValue()
   {
     if (Children.Count != 0)
     {
@@ -96,4 +96,18 @@ public class QualityFactorVM : QualityNodeVM<QualityFactor>, IQualityNodeVM
     return null;
   }
 
+  /// <summary>
+  /// Evaluates the reliability of assessment of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public override double? EvaluateReliability()
+  {
+    if (Children.Count != 0)
+    {
+      Reliability = Children.EvaluateReliability(true);
+      return Reliability;
+    }
+    Reliability = null;
+    return null;
+  }
 }

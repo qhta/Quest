@@ -70,6 +70,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grade.
+        /// </summary>
+        public static string Grade {
+            get {
+                return ResourceManager.GetString("Grade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Factor / Metrics /Measure.
         /// </summary>
         public static string Item {
@@ -97,11 +106,38 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reliability.
+        /// </summary>
+        public static string Reliability {
+            get {
+                return ResourceManager.GetString("Reliability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assessment reliability. Evaluated as reliable grades count times all required grades count..
+        /// </summary>
+        public static string ReliabilityTooltip {
+            get {
+                return ResourceManager.GetString("ReliabilityTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scale.
         /// </summary>
         public static string Scale {
             get {
                 return ResourceManager.GetString("Scale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
     }

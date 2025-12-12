@@ -2,6 +2,8 @@
 
 using QuestRSX;
 
+using static System.Net.Mime.MediaTypeNames;
+
 namespace QuestIMP;
 
 /// <summary>
@@ -127,11 +129,11 @@ public class WorkbookImporter : IDisposable
       var row = worksheet.Rows[r];
       if (!row.Cells.Any()) continue; // Skip rows without cells
       if (row.Cells.Count() <= startCellIndex + 2) continue; // Skip rows without not enough cells
-      var gradeId = row.Cells[startCellIndex + 0].Value;
+      var text = row.Cells[startCellIndex + 0].Value;
       var gradeValueStr = row.Cells[startCellIndex + 1].Value;
       var gradeValue = (gradeValueStr == "-") ? 0 : int.Parse(gradeValueStr ?? "0");
       var gradeMeaning = row.Cells[startCellIndex + 2].Value;
-      var qualityGrade = new QualityGrade { Text = gradeId, Value = gradeValue, Meaning = gradeMeaning };
+      var qualityGrade = new QualityGrade { Text = text, Value = gradeValue, Reliable = (text.Length == 1) && text[0] >= '0' && text[0] <= '9', Meaning = gradeMeaning };
       resultList.Add(qualityGrade);
     }
     return resultList;

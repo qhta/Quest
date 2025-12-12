@@ -62,16 +62,22 @@
           MappingName="DisplayNameWithNumbering"
         />
         <syncfusion:TreeGridNumericColumn
-          HeaderText="{x:Static questRsx:Strings.Weight}"
+          HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
           MappingName="Weight"
           NullValue="0"
           NumberDecimalDigits="0"
           AllowEditing="True"
         />
         <syncfusion:TreeGridTemplateColumn
-          HeaderText="{x:Static questRsx:Strings.Value}"
+          HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
           MappingName="Value"
           CellTemplateSelector="{StaticResource QualityNodeValueTemplateSelector}"
+        />
+        <syncfusion:TreeGridNumericColumn
+          HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
+          MappingName="Reliability"
+          NumberDecimalDigits="2"
+          AllowEditing="False"
         />
         <syncfusion:TreeGridTextColumn
           HeaderText="{x:Static questRsx:Strings.Comment}"

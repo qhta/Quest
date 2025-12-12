@@ -163,14 +163,38 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
 
 
   /// <summary>
+  /// Evaluates both value and reliability of the children collection.
+  /// </summary>
+  public void Evaluate()
+  {
+    if (DocumentQualities != null && DocumentQualities.Count != 0)
+    { 
+      DocumentQualities.Evaluate();
+    }
+  }
+
+  /// <summary>
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public double? Evaluate()
+  public double? EvaluateValue()
   {
     if (DocumentQualities != null && DocumentQualities.Count != 0)
     {
       return DocumentQualities.EvaluateValue(true);
+    }
+    return null;
+  }
+
+  /// <summary>
+  /// Evaluates the reliability of assessment of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateReliability()
+  {
+    if (DocumentQualities != null && DocumentQualities.Count != 0)
+    {
+      return DocumentQualities.EvaluateReliability(true);
     }
     return null;
   }
@@ -267,7 +291,7 @@ public class ProjectQualityVM : ViewModel<ProjectQuality>, IQualityObjectVM
       {
         _IsLoaded = value;
         NotifyPropertyChanged(nameof(IsLoaded));
-        Evaluate();
+        EvaluateValue();
         IsChanged = false;
       }
     }

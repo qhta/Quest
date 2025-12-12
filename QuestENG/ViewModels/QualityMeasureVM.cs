@@ -105,7 +105,7 @@ public class QualityMeasureVM : QualityNodeVM<QualityMeasure>, IQualityNodeVM
   /// Evaluates the value of the node if the grade is set.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public override double? Evaluate()
+  public override double? EvaluateValue()
   {
     if (Grade!=null)
     {
@@ -119,7 +119,23 @@ public class QualityMeasureVM : QualityNodeVM<QualityMeasure>, IQualityNodeVM
     return null;
   }
 
-
-
-
+  /// <summary>
+  /// Evaluates the reliability of the assessment of the node if the grade is set.
+  /// Reliability is 1 if the grade is reliable, 0 otherwise.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public override double? EvaluateReliability()
+  {
+    double result = 0;
+    if (Grade != null)
+    {
+      var gradeObject = Scale?.GetGradeByName(Grade);
+      if (gradeObject != null)
+      {
+        Reliability = gradeObject.Reliable ? 1 : 0;
+        return Reliability;
+      }
+    }
+    return result;
+  }
 }

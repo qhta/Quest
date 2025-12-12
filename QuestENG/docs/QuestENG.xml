@@ -250,7 +250,25 @@
             Value of the assessment
             </summary>
         </member>
+        <member name="P:Quest.DocumentQualityVM.Reliability">
+            <summary>
+            Reliability of the assessment
+            </summary>
+        </member>
         <member name="M:Quest.DocumentQualityVM.Evaluate">
+            <summary>
+            Evaluates both value and reliability.
+            </summary>
+            <remarks>Call this method to update or recalculate the relevant evaluation metrics for the current
+            instance.  The method may update internal state based on the results of the evaluation.</remarks>
+        </member>
+        <member name="M:Quest.DocumentQualityVM.EvaluateValue">
+            <summary>
+            Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.DocumentQualityVM.EvaluateReliability">
             <summary>
             Evaluates the value of the children collection.
             </summary>
@@ -286,9 +304,25 @@
             Evaluated value;
             </summary>
         </member>
+        <member name="M:Quest.DocumentQualityVMCollection.Evaluate">
+            <summary>
+            Evaluates both value and reliability.
+            </summary>
+        </member>
         <member name="M:Quest.DocumentQualityVMCollection.EvaluateValue(System.Boolean)">
             <summary>
             Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Quest.DocumentQualityVMCollection.Reliability">
+            <summary>
+            Evaluated reliability;
+            </summary>
+        </member>
+        <member name="M:Quest.DocumentQualityVMCollection.EvaluateReliability(System.Boolean)">
+            <summary>
+            Evaluates the weighted mean Reliability of all items in the collection that have a defined Reliability and a positive weight.
             </summary>
             <returns></returns>
         </member>
@@ -352,6 +386,11 @@
             Value of the assessment
             </summary>
         </member>
+        <member name="P:Quest.IQualityNodeVM.Reliability">
+            <summary>
+            Assessment reliability
+            </summary>
+        </member>
         <member name="P:Quest.IQualityNodeVM.Comment">
             <summary>
             Comment added to assessment
@@ -364,7 +403,18 @@
         </member>
         <member name="M:Quest.IQualityObjectVM.Evaluate">
             <summary>
+            Evaluates the value and the reliability of the node.
+            </summary>
+        </member>
+        <member name="M:Quest.IQualityObjectVM.EvaluateValue">
+            <summary>
             Evaluates the value of the node.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.IQualityObjectVM.EvaluateReliability">
+            <summary>
+            Evaluates the reliability of the assessment.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
@@ -411,7 +461,18 @@
         </member>
         <member name="M:Quest.ProjectQualityVM.Evaluate">
             <summary>
+            Evaluates both value and reliability of the children collection.
+            </summary>
+        </member>
+        <member name="M:Quest.ProjectQualityVM.EvaluateValue">
+            <summary>
             Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.ProjectQualityVM.EvaluateReliability">
+            <summary>
+            Evaluates the reliability of assessment of the children collection.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
@@ -595,9 +656,15 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
-        <member name="M:Quest.QualityFactorVM.Evaluate">
+        <member name="M:Quest.QualityFactorVM.EvaluateValue">
             <summary>
             Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.QualityFactorVM.EvaluateReliability">
+            <summary>
+            Evaluates the reliability of assessment of the children collection.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
@@ -624,17 +691,6 @@
             </summary>
             <remarks>Setting this property to false updates the <c>IsChanged</c> state of all items in the collection to false.</remarks>
         </member>
-        <member name="P:Quest.QualityFactorVMCollection.Value">
-            <summary>
-            Weighted mean value of items.
-            </summary>
-        </member>
-        <member name="M:Quest.QualityFactorVMCollection.EvaluateValue(System.Boolean)">
-            <summary>
-            Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Quest.QualityGradeVM">
             <summary>
             Grade definition with text, numeric value, and optional meaning.
@@ -659,6 +715,11 @@
         <member name="P:Quest.QualityGradeVM.Value">
             <summary>
             Numeric value of the grade, e.g. 1, 2, 0 (for "b.o.")
+            </summary>
+        </member>
+        <member name="P:Quest.QualityGradeVM.Reliable">
+            <summary>
+            Is the grade reliable?
             </summary>
         </member>
         <member name="P:Quest.QualityGradeVM.Meaning">
@@ -704,9 +765,16 @@
             Grade of the assessment
             </summary>
         </member>
-        <member name="M:Quest.QualityMeasureVM.Evaluate">
+        <member name="M:Quest.QualityMeasureVM.EvaluateValue">
             <summary>
             Evaluates the value of the node if the grade is set.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.QualityMeasureVM.EvaluateReliability">
+            <summary>
+            Evaluates the reliability of the assessment of the node if the grade is set.
+            Reliability is 1 if the grade is reliable, 0 otherwise.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
@@ -745,9 +813,15 @@
             <remarks>This property provides access to the hierarchical structure of nodes. It is read-only and cannot
             be null.</remarks>
         </member>
-        <member name="M:Quest.QualityMetricsVM.Evaluate">
+        <member name="M:Quest.QualityMetricsVM.EvaluateValue">
             <summary>
             Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.QualityMetricsVM.EvaluateReliability">
+            <summary>
+            Evaluates the reliability of the assessment of the children collection.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
@@ -823,6 +897,11 @@
             Value of the assessment
             </summary>
         </member>
+        <member name="P:Quest.QualityNodeVM`1.Reliability">
+            <summary>
+            Reliability of the assessment. Counted as a percentage of not null children values times total children count.
+            </summary>
+        </member>
         <member name="P:Quest.QualityNodeVM`1.Comment">
             <summary>
             Comment added to assessment
@@ -830,7 +909,19 @@
         </member>
         <member name="M:Quest.QualityNodeVM`1.Evaluate">
             <summary>
+            Evaluates both the value and the reliability of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.QualityNodeVM`1.EvaluateValue">
+            <summary>
             Evaluates the value of the children collection.
+            </summary>
+            <returns>double value or null if evaluation is not possible</returns>
+        </member>
+        <member name="M:Quest.QualityNodeVM`1.EvaluateReliability">
+            <summary>
+            Evaluates the reliability of the assessment.
             </summary>
             <returns>double value or null if evaluation is not possible</returns>
         </member>
@@ -849,24 +940,24 @@
             Currently loaded worksheets count
             </summary>
         </member>
-        <member name="T:Quest.QualityNodeVMCollection">
+        <member name="T:Quest.QualityNodeVMCollection`1">
             <summary>
             Observable collection of <see cref="T:Quest.IQualityNodeVM"/> objects.
             </summary>
         </member>
-        <member name="P:Quest.QualityNodeVMCollection.Parent">
+        <member name="P:Quest.QualityNodeVMCollection`1.Parent">
             <summary>
             Parent view model
             </summary>
         </member>
-        <member name="M:Quest.QualityNodeVMCollection.#ctor(Quest.IQualityObjectVM,System.Collections.Generic.IEnumerable{Quest.QualityNode})">
+        <member name="M:Quest.QualityNodeVMCollection`1.#ctor(Quest.IQualityObjectVM,System.Collections.Generic.IEnumerable{Quest.QualityNode})">
             <summary>
             Initializing constructor.
             </summary>
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
         </member>
-        <member name="M:Quest.QualityNodeVMCollection.InsertItem(System.Int32,Quest.IQualityNodeVM)">
+        <member name="M:Quest.QualityNodeVMCollection`1.InsertItem(System.Int32,`0)">
             <summary>
             Inserts the specified item into the collection at the specified index setting its parent if necessary
             and subscribing to its PropertyChanged event.
@@ -874,7 +965,7 @@
             <param name="index">The zero-based index at which the item should be inserted.</param>
             <param name="item">The item to insert into the collection. Cannot be <see langword="null"/>.</param>
         </member>
-        <member name="M:Quest.QualityNodeVMCollection.Item_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+        <member name="M:Quest.QualityNodeVMCollection`1.Item_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
             If an item's PropertyChanged event signals a change of the "Value" property,
             the collection will be notified to refresh its state.
@@ -882,14 +973,30 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="P:Quest.QualityNodeVMCollection.Value">
+        <member name="M:Quest.QualityNodeVMCollection`1.Evaluate">
+            <summary>
+            Evaluates both value and reliability.
+            </summary>
+        </member>
+        <member name="P:Quest.QualityNodeVMCollection`1.Value">
             <summary>
             Weighted mean value of items.
             </summary>
         </member>
-        <member name="M:Quest.QualityNodeVMCollection.EvaluateValue(System.Boolean)">
+        <member name="M:Quest.QualityNodeVMCollection`1.EvaluateValue(System.Boolean)">
             <summary>
             Evaluates the weighted mean value of all items in the collection that have a defined value and a positive weight.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Quest.QualityNodeVMCollection`1.Reliability">
+            <summary>
+            Reliability of grades in the collection.
+            </summary>
+        </member>
+        <member name="M:Quest.QualityNodeVMCollection`1.EvaluateReliability(System.Boolean)">
+            <summary>
+            Evaluates the percent of all items in the collection that have a defined grade.
             </summary>
             <returns></returns>
         </member>

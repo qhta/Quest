@@ -22,6 +22,12 @@ public class QualityGrade()
   public int Value { get; set; }
 
   /// <summary>
+  /// Is this grade considered reliable?
+  /// Values marked as unreliable may be treated differently in evaluations.
+  /// </summary>
+  public bool Reliable { get; set; } = true;
+
+  /// <summary>
   /// Textual meaning of the grade.
   /// </summary>
   [MaxLength(255)]

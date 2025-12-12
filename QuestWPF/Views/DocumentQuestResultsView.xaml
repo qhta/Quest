@@ -34,18 +34,24 @@
           MappingName="DisplayNameWithNumbering"
         />
         <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:Strings.Weight}"
+          HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
           MappingName="Weight"
           NullValue="0"
           NumberDecimalDigits="0"
           AllowEditing="True"
         />
         <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:Strings.Value}"
+          HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
           MappingName="Value"
           AllowEditing="False"
           NumberDecimalDigits="2"
           />
+        <syncfusion:GridNumericColumn
+          HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
+          MappingName="Reliability"
+          AllowEditing="False"
+          NumberDecimalDigits="2"
+        />
       </syncfusion:SfDataGrid.Columns>
     </syncfusion:SfDataGrid>
   </Grid>

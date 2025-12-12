@@ -87,16 +87,58 @@ public class DocumentQualityVM : ViewModel<DocumentQuality>, IQualityObjectVM
   private double? _Value;
 
   /// <summary>
+  /// Reliability of the assessment
+  /// </summary>
+  public double? Reliability
+  {
+    [DebuggerStepThrough]
+    get => _Reliability;
+    set
+    {
+      if (_Reliability != value)
+      {
+        _Reliability = value;
+        NotifyPropertyChanged(nameof(Reliability));
+      }
+    }
+  }
+  private double? _Reliability;
+
+  /// <summary>
+  /// Evaluates both value and reliability.
+  /// </summary>
+  /// <remarks>Call this method to update or recalculate the relevant evaluation metrics for the current
+  /// instance.  The method may update internal state based on the results of the evaluation.</remarks>
+  public void Evaluate()
+  {
+    EvaluateValue();
+    EvaluateReliability();
+  }
+
+  /// <summary>
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public double? Evaluate()
+  public double? EvaluateValue()
   {
     if (Factors.Count != 0)
     {
       Value = Factors.EvaluateValue(true);
     }
     return Value;
+  }
+
+  /// <summary>
+  /// Evaluates the value of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public double? EvaluateReliability()
+  {
+    if (Factors.Count != 0)
+    {
+      Reliability = Factors.EvaluateReliability(true);
+    }
+    return Reliability;
   }
 
   /// <summary>

@@ -157,6 +157,24 @@ public abstract class QualityNodeVM<T>: ViewModel<T>, IQualityNodeVM where T: Qu
   }
 
   /// <summary>
+  /// Reliability of the assessment. Counted as a percentage of not null children values times total children count.
+  /// </summary>
+  public double? Reliability
+  {
+    [DebuggerStepThrough]
+    get => _reliability;
+    set
+    {
+      if (_reliability != value)
+      {
+        _reliability = value;
+        NotifyPropertyChanged(nameof(Reliability));
+      }
+    }
+  }
+  private double? _reliability;
+
+  /// <summary>
   /// Comment added to assessment
   /// </summary>
   public string? Comment
@@ -174,10 +192,26 @@ public abstract class QualityNodeVM<T>: ViewModel<T>, IQualityNodeVM where T: Qu
   }
 
   /// <summary>
+  /// Evaluates both the value and the reliability of the children collection.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public void Evaluate()
+  {
+    EvaluateValue();
+    EvaluateReliability();
+  }
+
+  /// <summary>
   /// Evaluates the value of the children collection.
   /// </summary>
   /// <returns>double value or null if evaluation is not possible</returns>
-  public abstract double? Evaluate();
+  public abstract double? EvaluateValue();
+
+  /// <summary>
+  /// Evaluates the reliability of the assessment.
+  /// </summary>
+  /// <returns>double value or null if evaluation is not possible</returns>
+  public abstract double? EvaluateReliability();
 
   #region Loading State Properties
   /// <summary>

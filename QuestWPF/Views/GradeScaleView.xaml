@@ -34,6 +34,10 @@
           NullValue="0"
           NumberDecimalDigits="0"
         />
+        <syncfusion:GridCheckBoxColumn
+          HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
+          MappingName="Reliable"
+        />
         <syncfusion:GridTextColumn
           HeaderText="{x:Static questRsx:Strings.Meaning}"
           MappingName="Meaning"
