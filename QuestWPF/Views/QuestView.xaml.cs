@@ -1,11 +1,7 @@
-﻿using Quest.Data.QDM;
-
-using QuestWPF.Helpers;
-
-namespace QuestWPF.Views;
+﻿namespace QuestWPF.Views;
 
 /// <summary>
-/// View for displaying and interacting with questionnaires.
+/// View for displaying and interacting with quality questionnaires.
 /// </summary>
 public partial class QuestView : UserControl
 {

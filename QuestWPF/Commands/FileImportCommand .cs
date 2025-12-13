@@ -63,7 +63,7 @@ public class FileImportCommand : Command
     var excelView = new ExcelView { FileName = filename, DataContext = workbookInfoVM };
     CommandCenter.ExecuteCommand(WindowCommands.OpenWindow, new WindowOpenData(excelView, "Workbook #", filename));
 
-    await excelView.OpenSpreadsheetAsync(filename, workbookInfoVM);
+    await excelView.OpenWorkbookAsync(filename, workbookInfoVM);
     return workbookInfoVM;
   }
 

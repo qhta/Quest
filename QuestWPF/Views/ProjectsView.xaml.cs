@@ -1,6 +1,6 @@
 ﻿namespace QuestWPF.Views;
 /// <summary>
-/// Interaction logic for ProjectsView.xaml
+/// View for displaying and managing projects list.
 /// </summary>
 public partial class ProjectsView : UserControl
 {

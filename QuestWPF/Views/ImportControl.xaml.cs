@@ -1,7 +1,7 @@
 ﻿namespace QuestWPF.Views;
 
 /// <summary>
-/// Import control for handling data import operations.
+/// Import control for starting data import operations.
 /// </summary>
 public partial class ImportControl : UserControl
 {

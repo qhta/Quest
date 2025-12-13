@@ -1,6 +1,6 @@
 ﻿namespace QuestWPF.Views;
 /// <summary>
-/// Interaction logic for DocumentQuestView.xaml
+/// Document quest results view. Contains a table for viewing results of the document's factors evaluation.
 /// </summary>
 public partial class DocumentQuestResultsView : UserControl
 {

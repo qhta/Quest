@@ -356,7 +356,8 @@
         </member>
         <member name="T:QuestWPF.Views.DocumentQualityView">
             <summary>
-            Interaction logic for DocumentQualityView.xaml
+            View of the document quality.
+            Consists of a DocumentQuestView, DocumentQuestResultsView and DocumentQuestGraphView.
             </summary>
             <summary>
             DocumentQualityView
@@ -372,9 +373,27 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:QuestWPF.Views.DocumentQuestGraphView">
+            <summary>
+            Document quest graph view. Contains a graph for visualizing results of the document's factors evaluation.
+            </summary>
+            <summary>
+            DocumentQuestGraphView
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQuestGraphView.#ctor">
+            <summary>
+            Initializing constructor.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.DocumentQuestGraphView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:QuestWPF.Views.DocumentQuestResultsView">
             <summary>
-            Interaction logic for DocumentQuestView.xaml
+            Document quest results view. Contains a table for viewing results of the document's factors evaluation.
             </summary>
             <summary>
             DocumentQuestResultsView
@@ -392,7 +411,8 @@
         </member>
         <member name="T:QuestWPF.Views.DocumentQuestView">
             <summary>
-            Interaction logic for DocumentQuestView.xaml
+            Document quest view. Contains a tree grid for viewing and editing the document's quest items
+            starting from factors, through metrics down to measures.
             </summary>
             <summary>
             DocumentQuestView
@@ -410,7 +430,7 @@
         </member>
         <member name="T:QuestWPF.Views.ExcelView">
             <summary>
-            Interaction logic for ExcelView.xaml
+            View for displaying and interacting with Excel workbooks.
             </summary>
             <summary>
             ExcelView
@@ -433,13 +453,13 @@
             Name of the Excel file to be displayed.
             </summary>
         </member>
-        <member name="M:QuestWPF.Views.ExcelView.OpenSpreadsheet(System.String)">
+        <member name="M:QuestWPF.Views.ExcelView.OpenWorkbook(System.String)">
             <summary>
             Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
             </summary>
             <param name="fileName">Full path to Excel file</param>
         </member>
-        <member name="M:QuestWPF.Views.ExcelView.OpenSpreadsheetAsync(System.String,QuestIMP.WorkbookInfoVM)">
+        <member name="M:QuestWPF.Views.ExcelView.OpenWorkbookAsync(System.String,QuestIMP.WorkbookInfoVM)">
             <summary>
             Opens the specified Excel file asynchronously and updates the SpreadsheetControl and DataContext accordingly.
             </summary>
@@ -509,7 +529,7 @@
         </member>
         <member name="T:QuestWPF.Views.GradeScaleView">
             <summary>
-            Interaction logic for GradeScaleView.xaml
+            View for displaying and editing the grade scale.
             </summary>
             <summary>
             GradeScaleView
@@ -527,7 +547,7 @@
         </member>
         <member name="T:QuestWPF.Views.ImportControl">
             <summary>
-            Import control for handling data import operations.
+            Import control for starting data import operations.
             </summary>
             <summary>
             ImportControl
@@ -562,7 +582,7 @@
         </member>
         <member name="T:QuestWPF.Views.ProjectsView">
             <summary>
-            Interaction logic for ProjectsView.xaml
+            View for displaying and managing projects list.
             </summary>
             <summary>
             ProjectsView
@@ -580,7 +600,7 @@
         </member>
         <member name="T:QuestWPF.Views.QuestView">
             <summary>
-            View for displaying and interacting with questionnaires.
+            View for displaying and interacting with quality questionnaires.
             </summary>
             <summary>
             QuestView

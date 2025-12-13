@@ -1,14 +1,13 @@
 ﻿namespace QuestWPF.Views;
 /// <summary>
-/// Document quest view. Contains a tree grid for viewing and editing the document's quest items
-/// starting from factors, through metrics down to measures.
+/// Document quest graph view. Contains a graph for visualizing results of the document's factors evaluation.
 /// </summary>
-public partial class DocumentQuestView : UserControl
+public partial class DocumentQuestGraphView : UserControl
 {
   /// <summary>
   /// Initializing constructor.
   /// </summary>
-  public DocumentQuestView()
+  public DocumentQuestGraphView()
   {
     InitializeComponent();
     DataContextChanged += DocumentQualityView_DataContextChanged;

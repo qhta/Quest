@@ -1,6 +1,7 @@
 ﻿namespace QuestWPF.Views;
 /// <summary>
-/// Interaction logic for DocumentQualityView.xaml
+/// View of the document quality.
+/// Consists of a DocumentQuestView, DocumentQuestResultsView and DocumentQuestGraphView.
 /// </summary>
 public partial class DocumentQualityView : UserControl
 {

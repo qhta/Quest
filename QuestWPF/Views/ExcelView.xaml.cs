@@ -1,16 +1,11 @@
 ﻿using System.Reflection;
-
-using Qhta.WPF.Utils;
-
-using QuestIMP;
-
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.Spreadsheet.Helpers;
 
 namespace QuestWPF.Views;
 
 /// <summary>
-/// Interaction logic for ExcelView.xaml
+/// View for displaying and interacting with Excel workbooks.
 /// </summary>
 public partial class ExcelView : UserControl
 {
@@ -43,7 +38,7 @@ public partial class ExcelView : UserControl
   /// Opens the specified Excel file and updates the SpreadsheetControl and DataContext accordingly.
   /// </summary>
   /// <param name="fileName">Full path to Excel file</param>
-  public void OpenSpreadsheet(string fileName)
+  public void OpenWorkbook(string fileName)
   {
     try
     {
@@ -65,7 +60,7 @@ public partial class ExcelView : UserControl
   /// </summary>
   /// <param name="fileName">Full path to Excel file</param>
   /// <param name="workbookInfoVM">Filled workbook info</param>
-  public async Task OpenSpreadsheetAsync(string fileName, WorkbookInfoVM workbookInfoVM)
+  public async Task OpenWorkbookAsync(string fileName, WorkbookInfoVM workbookInfoVM)
   {
     SpreadsheetControl.Open(fileName);
     workbookInfoVM.IsLoading = true;

@@ -10,15 +10,6 @@
              d:DataContext="{d:DesignInstance quest:ProjectsViewModel}"
              d:DesignHeight="450" d:DesignWidth="300">
   <Grid>
-    <!--<Syncfusion:SfDataGrid x:Name="ProjectsDataGrid"                             ciasto filo
-                           AutoGenerateColumns="False" 
-                           ItemsSource="{Binding}"
-                           HeaderRowHeight="0"
-                           Background="White">
-      <Syncfusion:SfDataGrid.Columns>
-        <Syncfusion:GridTextColumn MappingName="Title" HeaderText="Title" />
-      </Syncfusion:SfDataGrid.Columns>
-    </Syncfusion:SfDataGrid>-->
     <ListView 
       x:Name="ProjectsListView"
       SelectedItem="{Binding SelectedProject}"

@@ -1,6 +1,6 @@
 ﻿namespace QuestWPF.Views;
 /// <summary>
-/// Interaction logic for GradeScaleView.xaml
+/// View for displaying and editing the grade scale.
 /// </summary>
 public partial class GradeScaleView : UserControl
 {

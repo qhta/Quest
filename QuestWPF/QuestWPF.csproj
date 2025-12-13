@@ -62,6 +62,9 @@
     <Compile Update="Views\DocumentQualityView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DocumentQuestGraphView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DocumentQuestResultsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
