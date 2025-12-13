@@ -6,6 +6,8 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
+  xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
+
   xmlns:helpers="clr-namespace:QuestWPF.Helpers"
   xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
   mc:Ignorable="d" 
@@ -13,47 +15,39 @@
   d:DesignHeight="450" d:DesignWidth="810">
   <UserControl.Resources>
     <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Resources/ColorModel.xaml" />
+      </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </UserControl.Resources>
   <Grid 
       d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
-    <syncfusion:SfDataGrid
-      ItemsSource="{Binding Factors}"
-      AutoGenerateColumns="False"
-      AllowResizingColumns="True"
-      AllowSorting="False"
-      AllowFiltering="False"
-      EditorSelectionBehavior="SelectAll"
-      EditTrigger="OnTap"
-      ColumnSizer="Auto"
-      ShowRowHeader="False"
-      >
-      <syncfusion:SfDataGrid.Columns>
-        <syncfusion:GridTextColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Factor}"
-          MappingName="DisplayNameWithNumbering"
-        />
-        <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
-          MappingName="Weight"
-          NullValue="0"
-          NumberDecimalDigits="0"
-          AllowEditing="True"
-        />
-        <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
-          MappingName="Value"
-          AllowEditing="False"
-          NumberDecimalDigits="2"
-          />
-        <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
-          MappingName="Reliability"
-          AllowEditing="False"
-          NumberDecimalDigits="2"
-        />
-      </syncfusion:SfDataGrid.Columns>
-    </syncfusion:SfDataGrid>
+    <chart:SfChart x:Name="columnChart" ColorModel="{StaticResource CustomPalette}" Palette="Custom" Margin="5">
+
+      <chart:SfChart.PrimaryAxis>
+        <chart:CategoryAxis ShowGridLines="False" LabelPlacement="BetweenTicks">
+          <chart:CategoryAxis.LabelStyle>
+            <chart:LabelStyle FontSize="12"/>
+          </chart:CategoryAxis.LabelStyle>
+        </chart:CategoryAxis>
+      </chart:SfChart.PrimaryAxis>
+
+      <chart:SfChart.SecondaryAxis>
+        <chart:NumericalAxis Interval="1" TickLineSize="10" LabelFormat="0.0" Margin="5,0,0,0">
+          <chart:NumericalAxis.LabelStyle>
+            <chart:LabelStyle FontSize="12"/>
+          </chart:NumericalAxis.LabelStyle>
+        </chart:NumericalAxis>
+      </chart:SfChart.SecondaryAxis>
+
+      <chart:ColumnSeries ItemsSource="{Binding Factors}" XBindingPath="Text" YBindingPath="Value" EnableAnimation="False">
+        <chart:ColumnSeries.AdornmentsInfo>
+          <chart:ChartAdornmentInfo ShowLabel="True" LabelPosition="Inner" SegmentLabelFormat="0.00">
+          </chart:ChartAdornmentInfo>
+        </chart:ColumnSeries.AdornmentsInfo>
+      </chart:ColumnSeries>
+    </chart:SfChart>
+
   </Grid>
 </UserControl>
 

@@ -28,8 +28,19 @@
       HorizontalAlignment="Stretch"
       Background="Silver"
       Height="5"/>
-    <Grid Grid.Row="2">
+    <Grid Grid.Row="2" Margin="0,5,0,0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
       <views:DocumentQuestResultsView/>
+      <syncfusion:SfGridSplitter 
+        Grid.Column="1" 
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Left"
+        Background="Silver"
+        Width="5"/>
+      <views:DocumentQuestGraphView Grid.Column="1" Margin="5,0,0,0"/>
     </Grid>
   </Grid>
 </UserControl>
