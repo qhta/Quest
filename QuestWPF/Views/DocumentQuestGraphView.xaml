@@ -22,13 +22,12 @@
   </UserControl.Resources>
   <Grid 
       d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
-    <chart:SfChart x:Name="columnChart" ColorModel="{StaticResource CustomPalette}" Palette="Custom" Margin="5">
+    <chart:SfChart x:Name="columnChart" ColorModel="{StaticResource CustomPalette}" 
+                   Palette="Custom" Margin="5,5,5,5">
 
       <chart:SfChart.PrimaryAxis>
-        <chart:CategoryAxis ShowGridLines="False" LabelPlacement="BetweenTicks">
-          <chart:CategoryAxis.LabelStyle>
-            <chart:LabelStyle FontSize="12"/>
-          </chart:CategoryAxis.LabelStyle>
+        <chart:CategoryAxis ShowGridLines="False" LabelPlacement="OnTicks" 
+                            FontSize="12" LabelRotationAngle="90" >
         </chart:CategoryAxis>
       </chart:SfChart.PrimaryAxis>
 

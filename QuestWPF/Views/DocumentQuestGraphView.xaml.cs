@@ -9,6 +9,7 @@ public partial class DocumentQuestGraphView : UserControl
   /// </summary>
   public DocumentQuestGraphView()
   {
+    //Syncfusion.UI.Xaml.Charts.ChartAxisLabel
     InitializeComponent();
     DataContextChanged += DocumentQualityView_DataContextChanged;
   }
