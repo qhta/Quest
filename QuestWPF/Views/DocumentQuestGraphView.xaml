@@ -40,8 +40,20 @@
       </chart:SfChart.SecondaryAxis>
 
       <chart:ColumnSeries ItemsSource="{Binding Factors}" XBindingPath="Text" YBindingPath="Value" EnableAnimation="False">
+        <chart:ColumnSeries.CustomTemplate>
+          <DataTemplate>
+            <Canvas>
+              <Rectangle Fill="{Binding Item.BackgroundColor}"  Canvas.Left="{Binding RectX}" Canvas.Top="{Binding RectY}" Width="{Binding Width}" Height="{Binding Height}"/>
+            </Canvas>
+          </DataTemplate>
+        </chart:ColumnSeries.CustomTemplate>
         <chart:ColumnSeries.AdornmentsInfo>
           <chart:ChartAdornmentInfo ShowLabel="True" LabelPosition="Inner" SegmentLabelFormat="0.00">
+            <chart:ChartAdornmentInfo.LabelTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding}" FontSize="12" Foreground="White"/>
+              </DataTemplate> 
+            </chart:ChartAdornmentInfo.LabelTemplate>
           </chart:ChartAdornmentInfo>
         </chart:ColumnSeries.AdornmentsInfo>
       </chart:ColumnSeries>

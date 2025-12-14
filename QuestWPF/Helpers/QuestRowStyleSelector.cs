@@ -1,3 +1,6 @@
+using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.Windows.Controls.Grid;
+
 namespace QuestWPF.Helpers
 {
   /// <summary>
@@ -13,27 +16,36 @@ namespace QuestWPF.Helpers
     /// <returns></returns>
     public override Style? SelectStyle(object item, DependencyObject container)
     {
-      if (item is TreeDataRow treeDataRow && treeDataRow.RowData is IQualityNodeVM node)
+      string? backgroundColor = null;
+      Style? style = null;
+      if (item is TreeDataRow treeDataRow && treeDataRow.RowData is IQualityNodeVM node1)
       {
+
         // Convert System.Drawing.Color to System.Windows.Media.Color
-        var backgroundColor = node.BackgroundColor;
-        if (backgroundColor != null)
-        {
-          var mediaColor = (Color)System.Windows.Media.ColorConverter.ConvertFromString(backgroundColor);
-          var style = new Style(typeof(TreeGridRowControl));
-          style.Setters.Add(new Setter(Control.BackgroundProperty, new SolidColorBrush(mediaColor)));
-          if (IsColorDark(mediaColor))
-          {
-            style.Setters.Add(new Setter(Control.ForegroundProperty, Brushes.White));
-          }
-          else
-          {
-            style.Setters.Add(new Setter(Control.ForegroundProperty, Brushes.Black));
-          }
-          return style;
-        }
+        backgroundColor = node1.BackgroundColor;
+        style = new Style(typeof(TreeGridRowControl));
+      }
+      else
+      if (item is DataRow gridDataRow && gridDataRow.RowData is IQualityNodeVM node2)
+      {
+        backgroundColor = node2.BackgroundColor;
+        style = new Style(typeof(VirtualizingCellsControl));
       }
 
+      if (backgroundColor != null && style!=null)
+      {
+        var mediaColor = (Color)System.Windows.Media.ColorConverter.ConvertFromString(backgroundColor);
+        style.Setters.Add(new Setter(Control.BackgroundProperty, new SolidColorBrush(mediaColor)));
+        if (IsColorDark(mediaColor))
+        {
+          style.Setters.Add(new Setter(Control.ForegroundProperty, Brushes.White));
+        }
+        else
+        {
+          style.Setters.Add(new Setter(Control.ForegroundProperty, Brushes.Black));
+        }
+        return style;
+      }
       return base.SelectStyle(item, container);
     }
 

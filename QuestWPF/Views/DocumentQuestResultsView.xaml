@@ -12,8 +12,7 @@
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
   d:DesignHeight="450" d:DesignWidth="810">
   <UserControl.Resources>
-    <ResourceDictionary>
-    </ResourceDictionary>
+    <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
   </UserControl.Resources>
   <Grid 
       d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
@@ -27,6 +26,7 @@
       EditTrigger="OnTap"
       ColumnSizer="Auto"
       ShowRowHeader="False"
+      RowStyleSelector="{StaticResource QuestRowStyleSelector}"
       >
       <syncfusion:SfDataGrid.Columns>
         <syncfusion:GridTextColumn
