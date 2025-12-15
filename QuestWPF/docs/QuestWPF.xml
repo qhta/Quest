@@ -473,13 +473,13 @@
             <param name="fileName">The full path to the workbook file to be analyzed.</param>
             <returns>A <see cref="T:QuestIMP.WorkbookInfo"/> object containing metadata and details about the workbook.</returns>
         </member>
-        <member name="M:QuestWPF.Views.ExcelView.GetWorkbookInfoAsync(Syncfusion.XlsIO.IWorkbook,QuestIMP.WorkbookInfoVM)">
+        <member name="M:QuestWPF.Views.ExcelView.GetWorkbookInfoAsync(QuestIMP.WorkbookRecognizer,QuestIMP.WorkbookInfoVM)">
             <summary>
             Retrieves and populates the workbook information asynchronously.
             </summary>
-            <param name="workbook">Opened Excel workbook interface</param>
+            <param name="recognizer">Workbook recognizer instance </param>
             <param name="workbookVM">View model of workbook information</param>
-            <returns></returns>
+            <returns>A task representing the asynchronous operation.</returns>
         </member>
         <member name="M:QuestWPF.Views.ExcelView.WorksheetListView_OnSelectionChanged(System.Object,Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs)">
             <summary>

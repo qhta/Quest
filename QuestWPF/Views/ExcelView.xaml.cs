@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿extern alias ExcelTypes;
+
+using ExcelTypes::Syncfusion.XlsIO;
+
+using System.Reflection;
+
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.Spreadsheet.Helpers;
 
@@ -64,10 +69,14 @@ public partial class ExcelView : UserControl
   {
     SpreadsheetControl.Open(fileName);
     workbookInfoVM.IsLoading = true;
-    var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
-    workbookInfoVM.Model.Workbook = workbook;
-    workbookInfoVM.TotalCount = workbook.Worksheets.Count;
-    await GetWorkbookInfoAsync(workbook, workbookInfoVM);
+    using (var recognizer = new WorkbookRecognizer(fileName))
+    {
+      var workbook = recognizer.GetWorkbookInfo();
+      workbookInfoVM.Model = workbook;
+      workbookInfoVM.TotalCount = workbook.Worksheets.Count;
+      await GetWorkbookInfoAsync(recognizer, workbookInfoVM);
+    }
+
     workbookInfoVM.FileName = fileName;
     workbookInfoVM.ProjectTitle ??= QuestRSX.Strings.EmptyProjectTitle;
     workbookInfoVM.IsLoading = false;
@@ -81,21 +90,23 @@ public partial class ExcelView : UserControl
   /// <returns>A <see cref="WorkbookInfo"/> object containing metadata and details about the workbook.</returns>
   private WorkbookInfo GetWorkbookInfo(string fileName)
   {
-    var workbook = WorkbookRecognizer.OpenWorkbook(fileName);
-    var workbookInfo = WorkbookRecognizer.GetWorkbookInfo(workbook, fileName);
-    return workbookInfo;
+    using (var recognizer = new WorkbookRecognizer(fileName))
+    {
+      var workbookInfo = recognizer.GetWorkbookInfo();
+      return workbookInfo;
+    }
   }
 
   /// <summary>
   /// Retrieves and populates the workbook information asynchronously.
   /// </summary>
-  /// <param name="workbook">Opened Excel workbook interface</param>
+  /// <param name="recognizer">Workbook recognizer instance </param>
   /// <param name="workbookVM">View model of workbook information</param>
-  /// <returns></returns>
-  private async Task GetWorkbookInfoAsync(IWorkbook workbook, WorkbookInfoVM workbookVM)
+  /// <returns>A task representing the asynchronous operation.</returns>
+  private static async Task GetWorkbookInfoAsync(WorkbookRecognizer recognizer, WorkbookInfoVM workbookVM)
   {
-    workbookVM.ProjectTitle = await WorkbookRecognizer.ScanForProjectTitleAsync(workbook);
-    var worksheetInfos = WorkbookRecognizer.GetWorksheetsAsync(workbook);
+    workbookVM.ProjectTitle = await recognizer.ScanForProjectTitleAsync();
+    var worksheetInfos = recognizer.GetWorksheetsAsync();
 
     await foreach (var worksheetInfo in worksheetInfos)
     {
@@ -213,7 +224,7 @@ public partial class ExcelView : UserControl
   /// Helper method to select a range in the active sheet based on the given IRange object.
   /// </summary>
   /// <param name="range">Range in a worksheet</param>
-  private void SelectRange(IRange range)
+  private void SelectRange(ExcelTypes::Syncfusion.XlsIO.IRange range)
   {
     SfSpreadsheet spreadsheetControl = SpreadsheetControl;
     var parts = range.AddressR1C1Local.Split(':');

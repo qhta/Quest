@@ -19,11 +19,6 @@
             Project title associated with the workbook.
             </summary>
         </member>
-        <member name="P:QuestIMP.WorkbookInfo.Workbook">
-            <summary>
-            Workbook interface
-            </summary>
-        </member>
         <member name="P:QuestIMP.WorkbookInfo.Worksheets">
             <summary>
             Information about the worksheets contained in the workbook.
@@ -244,90 +239,89 @@
             Class for import Excel Workbooks.
             </summary>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.OpenWorkbook(System.String)">
+        <member name="M:QuestIMP.WorkbookRecognizer.#ctor(System.String)">
             <summary>
             Opens an Excel workbook from the specified file and returns the IWorkbook instance.
             </summary>
             <param name="fileName">Filename of the workbook</param>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.GetWorkbookInfo(Syncfusion.XlsIO.IWorkbook,System.String)">
+        <member name="M:QuestIMP.WorkbookRecognizer.Dispose">
+            <summary>
+            Must be called to close the opened workbook.
+            </summary>
+        </member>
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorkbookInfo">
             <summary>
             Gets information about the opened workbook, including its file name, project title, and associated worksheets.
             </summary>
-            <param name="workbook">Opened Excel workbook interface</param>
-            <param name="fileName">Filename of the workbook</param>
             <returns></returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheets(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheets">
             <summary>
             Gets the list of worksheets. Specifies if they contain questionnaires.
             </summary>
-            <param name="workbook">Opened Excel workbook interface</param>
             <returns>List of <see cref="T:QuestIMP.WorksheetInfo"/>. Can be empty.</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetsAsync(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetsAsync">
             <summary>
             Asynchronously gets the list of worksheets from previously opened workbook.
             </summary>
-            <param name="workbook">Opened Excel workbook interface</param>
             <returns>Asynchronously filled list of <see cref="T:QuestIMP.WorksheetInfo"/>. Can be empty.</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetInfo(Syncfusion.XlsIO.IWorksheet)">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetInfo(System.String)">
             <summary>
             Gets a single worksheet info.
             </summary>
-            <param name="worksheet">Opened Excel worksheet interface</param>
+              /// <param name="worksheetName">Name of the worksheet</param>
             <returns>Object of <see cref="T:QuestIMP.WorksheetInfo"/></returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetInfoAsync(Syncfusion.XlsIO.IWorksheet)">
+        <member name="M:QuestIMP.WorkbookRecognizer.GetWorksheetInfoAsync(System.String)">
             <summary>
             Asynchronously gets a single worksheet info.
             </summary>
-            <param name="worksheet">Opened Excel worksheet interface</param>
+            <param name="worksheetName">Name of the worksheet</param>
             <returns>Task with the result of <see cref="T:QuestIMP.WorksheetInfo"/> object</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.ScanForTable(Syncfusion.XlsIO.IWorksheet,System.String)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForTable(System.String,System.String)">
             <summary>
             Scans the specified worksheet for a table starting with the given marker.
             </summary>
-            <param name="worksheet">Excel worksheet interface</param>
+            <param name="worksheetName">Name of the worksheet</param>
             <param name="marker">string content of left-top cell of the table</param>
             <returns>Range string or null if not found</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.ScanForTable(Syncfusion.XlsIO.IWorksheet,System.String[])">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForTable(System.String,System.String[])">
             <summary>
             Scans the specified worksheet for a table starting with the given marker.
             </summary>
-            <param name="worksheet">Excel worksheet interface</param>
+            <param name="worksheetName">Name of the worksheet</param>
             <param name="headers">string content of the header row</param>
             <returns>Range string or null if not found</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle">
             <summary>
             Scans all worksheets for the project title.
             </summary>
-            <param name="workbook">Interface for the Excel worksheet.</param>
             <returns>The project title as a string if found; otherwise null</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitleAsync(Syncfusion.XlsIO.IWorkbook)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitleAsync">
             <summary>
             Asynchronously scans all worksheets for the project title.
             </summary>
-            <param name="workbook">Interface for the Excel worksheet.</param>
             <returns>Task with whe project title as a string result, null if not found</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle(Syncfusion.XlsIO.IWorksheet)">
+        <member name="M:QuestIMP.WorkbookRecognizer.ScanForProjectTitle(System.String)">
             <summary>
             Scans the specified worksheet for a project title following a predefined label.
             </summary>
-            <param name="worksheet">Interface for the Excel worksheet</param>
+            <param name="worksheetName">Name of the worksheet</param>
             <returns>The project title as a string if found; otherwise null</returns>
         </member>
-        <member name="M:QuestIMP.WorkbookRecognizer.CheckForGrades(Syncfusion.XlsIO.IWorksheet,System.String)">
+        <member name="M:QuestIMP.WorkbookRecognizer.CheckForGrades(System.String,System.String)">
             <summary>
             Checks the worksheet for the presence of grades in the specified range.
             </summary>
-            <param name="worksheet">Interface for the Excel worksheet</param>
+            <param name="worksheetName">Name of the worksheet</param>
             <param name="questRange">Range of the top left cell with questionnaire</param>
             <returns>A pair of: 1. bool - true if any grade is found, otherwise false, 2. int - recognized grades column or null if not found.</returns>
         </member>

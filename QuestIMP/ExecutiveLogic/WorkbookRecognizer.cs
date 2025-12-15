@@ -3,7 +3,7 @@
 /// <summary>
 /// Class for import Excel Workbooks.
 /// </summary>
-public static class WorkbookRecognizer
+public class WorkbookRecognizer: IDisposable
 {
   private const string ProjectTitleLabel = "Ocena projektu";
   private const string ProjectTitleDefaultLabel = "Tytuł projektu";
@@ -16,28 +16,38 @@ public static class WorkbookRecognizer
   /// Opens an Excel workbook from the specified file and returns the IWorkbook instance.
   /// </summary>
   /// <param name="fileName">Filename of the workbook</param>
-  public static IWorkbook OpenWorkbook(string fileName)
+  public WorkbookRecognizer (string fileName)
   {
     ExcelEngine excelEngine = new ExcelEngine();
     IApplication application = excelEngine.Excel;
     IWorkbook workbook = application.Workbooks.Open(fileName);
-    return workbook;
+    Workbook = workbook;
+    FileName = fileName;
   }
+
+  /// <summary>
+  /// Must be called to close the opened workbook.
+  /// </summary>
+  public void Dispose()
+  {
+    Workbook?.Close();
+  }
+
+  private IWorkbook Workbook {  get; }
+  private string FileName { get; }
 
   /// <summary>
   /// Gets information about the opened workbook, including its file name, project title, and associated worksheets.
   /// </summary>
-  /// <param name="workbook">Opened Excel workbook interface</param>
-  /// <param name="fileName">Filename of the workbook</param>
   /// <returns></returns>
 
-  public static WorkbookInfo GetWorkbookInfo(IWorkbook workbook, string fileName)
+  public WorkbookInfo GetWorkbookInfo()
   {
     var info = new WorkbookInfo
     {
-      FileName = fileName,
-      ProjectTitle = ScanForProjectTitle(workbook),
-      Worksheets = GetWorksheets(workbook)
+      FileName = FileName,
+      ProjectTitle = ScanForProjectTitle(),
+      Worksheets = GetWorksheets()
     };
     return info;
   }
@@ -45,14 +55,13 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Gets the list of worksheets. Specifies if they contain questionnaires.
   /// </summary>
-  /// <param name="workbook">Opened Excel workbook interface</param>
   /// <returns>List of <see cref="WorksheetInfo"/>. Can be empty.</returns>
-  private static List<WorksheetInfo> GetWorksheets(IWorkbook workbook)
+  private List<WorksheetInfo> GetWorksheets()
   {
     var resultList = new List<WorksheetInfo>();
-    foreach (var worksheet in workbook.Worksheets)
+    foreach (var worksheet in Workbook.Worksheets)
     {
-      var info = GetWorksheetInfo(worksheet);
+      var info = GetWorksheetInfo(worksheet.Name);
       resultList.Add(info);
     }
     return resultList;
@@ -61,13 +70,12 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Asynchronously gets the list of worksheets from previously opened workbook.
   /// </summary>
-  /// <param name="workbook">Opened Excel workbook interface</param>
   /// <returns>Asynchronously filled list of <see cref="WorksheetInfo"/>. Can be empty.</returns>
-  public static async IAsyncEnumerable<WorksheetInfo> GetWorksheetsAsync(IWorkbook workbook)
+  public async IAsyncEnumerable<WorksheetInfo> GetWorksheetsAsync()
   {
-    foreach (var worksheet in workbook.Worksheets)
+    foreach (var worksheet in Workbook.Worksheets)
     {
-      var info = await GetWorksheetInfoAsync(worksheet);
+      var info = await GetWorksheetInfoAsync(worksheet.Name);
       yield return info;
     }
   }
@@ -75,48 +83,49 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Gets a single worksheet info.
   /// </summary>
-  /// <param name="worksheet">Opened Excel worksheet interface</param>
+  ///   /// <param name="worksheetName">Name of the worksheet</param>
   /// <returns>Object of <see cref="WorksheetInfo"/></returns>
-  public static WorksheetInfo GetWorksheetInfo(IWorksheet worksheet)
+  public WorksheetInfo GetWorksheetInfo(string worksheetName)
   {
     var info = new WorksheetInfo
     {
-      Name = worksheet.Name,
+      Name = worksheetName,
     };
-    info.QuestRange = ScanForTable(worksheet, QuestFirstCellMarker);
-    info.WeightsRange = ScanForTable(worksheet, WeightsFirstCellMarker);
-    if (info.QuestRange != null) (info.HasGrades, info.GradesColumn) = CheckForGrades(worksheet, info.QuestRange!);
-    info.ScaleRange = ScanForTable(worksheet, ScaleTableHeaders);
+    info.QuestRange = ScanForTable(worksheetName, QuestFirstCellMarker);
+    info.WeightsRange = ScanForTable(worksheetName, WeightsFirstCellMarker);
+    if (info.QuestRange != null) (info.HasGrades, info.GradesColumn) = CheckForGrades(worksheetName, info.QuestRange!);
+    info.ScaleRange = ScanForTable(worksheetName, ScaleTableHeaders);
     return info;
   }
 
   /// <summary>
   /// Asynchronously gets a single worksheet info.
   /// </summary>
-  /// <param name="worksheet">Opened Excel worksheet interface</param>
+  /// <param name="worksheetName">Name of the worksheet</param>
   /// <returns>Task with the result of <see cref="WorksheetInfo"/> object</returns>
-  public static async Task<WorksheetInfo> GetWorksheetInfoAsync(IWorksheet worksheet)
+  public async Task<WorksheetInfo> GetWorksheetInfoAsync(string worksheetName)
   {
-    return await Task.Run(() => GetWorksheetInfo(worksheet));
+    return await Task.Run(() => GetWorksheetInfo(worksheetName));
   }
 
   /// <summary>
   /// Scans the specified worksheet for a table starting with the given marker.
   /// </summary>
-  /// <param name="worksheet">Excel worksheet interface</param>
+  /// <param name="worksheetName">Name of the worksheet</param>
   /// <param name="marker">string content of left-top cell of the table</param>
   /// <returns>Range string or null if not found</returns>
-  private static string? ScanForTable(IWorksheet worksheet, string marker)
-  => ScanForTable(worksheet, [marker]);
+  private string? ScanForTable(string worksheetName, string marker)
+  => ScanForTable(worksheetName, [marker]);
 
   /// <summary>
   /// Scans the specified worksheet for a table starting with the given marker.
   /// </summary>
-  /// <param name="worksheet">Excel worksheet interface</param>
+  /// <param name="worksheetName">Name of the worksheet</param>
   /// <param name="headers">string content of the header row</param>
   /// <returns>Range string or null if not found</returns>
-  private static string? ScanForTable(IWorksheet worksheet, string[] headers)
+  private string? ScanForTable(string worksheetName, string[] headers)
   {
+    var worksheet = Workbook.Worksheets[worksheetName];
     var found = false;
     string? rangeStart = null;
     string? rangeEnd = null;
@@ -186,13 +195,12 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Scans all worksheets for the project title.
   /// </summary>
-  /// <param name="workbook">Interface for the Excel worksheet.</param>
   /// <returns>The project title as a string if found; otherwise null</returns>
-  public static string? ScanForProjectTitle(IWorkbook workbook)
+  public string? ScanForProjectTitle()
   {
-    foreach (var worksheet in workbook.Worksheets)
+    foreach (var worksheet in Workbook.Worksheets)
     {
-      var projectTitle = ScanForProjectTitle(worksheet);
+      var projectTitle = ScanForProjectTitle(worksheet.Name);
       if (projectTitle != null)
         return projectTitle;
     }
@@ -202,15 +210,14 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Asynchronously scans all worksheets for the project title.
   /// </summary>
-  /// <param name="workbook">Interface for the Excel worksheet.</param>
   /// <returns>Task with whe project title as a string result, null if not found</returns>
-  public static async Task<string?> ScanForProjectTitleAsync(IWorkbook workbook)
+  public async Task<string?> ScanForProjectTitleAsync()
   {
     return await Task.Run(() =>
     {
-      foreach (var worksheet in workbook.Worksheets)
+      foreach (var worksheet in Workbook.Worksheets)
       {
-        var projectTitle = ScanForProjectTitle(worksheet);
+        var projectTitle = ScanForProjectTitle(worksheet.Name);
         if (projectTitle != null)
           return projectTitle;
       }
@@ -221,10 +228,11 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Scans the specified worksheet for a project title following a predefined label.
   /// </summary>
-  /// <param name="worksheet">Interface for the Excel worksheet</param>
+  /// <param name="worksheetName">Name of the worksheet</param>
   /// <returns>The project title as a string if found; otherwise null</returns>
-  public static string? ScanForProjectTitle(IWorksheet worksheet)
-  {
+  public string? ScanForProjectTitle(string worksheetName)
+  {                
+    var worksheet = Workbook.Worksheets[worksheetName]; 
     var labelFound = false;
     for (int r = 0; r < worksheet.Rows.Count(); r++)
     {
@@ -265,11 +273,12 @@ public static class WorkbookRecognizer
   /// <summary>
   /// Checks the worksheet for the presence of grades in the specified range.
   /// </summary>
-  /// <param name="worksheet">Interface for the Excel worksheet</param>
+  /// <param name="worksheetName">Name of the worksheet</param>
   /// <param name="questRange">Range of the top left cell with questionnaire</param>
   /// <returns>A pair of: 1. bool - true if any grade is found, otherwise false, 2. int - recognized grades column or null if not found.</returns>
-  public static (bool, int?) CheckForGrades(IWorksheet worksheet, string questRange)
+  public (bool, int?) CheckForGrades(string worksheetName, string questRange)
   {
+    var worksheet = Workbook.Worksheets[worksheetName];
     int? gradesColumn = null;
     var gradesFound = false;
     var (questStart, questEnd) = WorkbookHelper.SplitRange(questRange);
@@ -306,5 +315,6 @@ public static class WorkbookRecognizer
     }
     return (gradesFound, gradesColumn);
   }
+
 
 }

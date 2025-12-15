@@ -16,11 +16,6 @@ public record WorkbookInfo
   public string? ProjectTitle { get; set; }
 
   /// <summary>
-  /// Workbook interface
-  /// </summary>
-  public IWorkbook? Workbook { get; set; }
-
-  /// <summary>
   /// Information about the worksheets contained in the workbook.
   /// </summary>
   public List<WorksheetInfo> Worksheets { get; set; } = new List<WorksheetInfo>();

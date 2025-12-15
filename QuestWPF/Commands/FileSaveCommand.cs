@@ -1,14 +1,9 @@
-﻿
-using Microsoft.Win32;
-
-using QuestIMP;
-
-using QuestWPF.Views;
-
-using Syncfusion.XlsIO;
+﻿extern alias ExcelTypes;
+using ExcelVersion = ExcelTypes::Syncfusion.XlsIO.ExcelVersion;
+using ExcelSaveType = ExcelTypes::Syncfusion.XlsIO.ExcelSaveType;
 
 using Path = System.IO.Path;
-
+using IWorkbook = ExcelTypes::Syncfusion.XlsIO.IWorkbook;
 namespace QuestWPF;
 
 /// <summary>
@@ -40,8 +35,8 @@ public class FileSaveCommand : Command
     {
       if (parameter is FileSaveData data)
       {
-        if (data.DataObject is WorkbookInfoVM workbookInfoVM)
-          await SaveWorkbook(workbookInfoVM, data.Filename, data.SaveAs);
+        if (data.DataObject is WorkbookInfoVM workbookInfoVM && workbookInfoVM.IsLoaded)
+{          await SaveWorkbook(workbookInfoVM, data.Filename, data.SaveAs);}
         else
         if (data.DataObject is ProjectQualityVM projectQualityVM)
           await SaveProjectQuality(projectQualityVM, data.Filename, data.SaveAs);
@@ -55,8 +50,8 @@ public class FileSaveCommand : Command
 
   private async Task SaveWorkbook(WorkbookInfoVM workbookInfo, string? filename, bool saveAs)
   {
-    if (workbookInfo.Workbook == null)
-      throw new InvalidOperationException("Workbook is not loaded.");
+    IWorkbook workbook = (IWorkbook)workbookInfo.Workbook!;
+
     if (filename == null || saveAs)
     {
       if (filename == null)
@@ -88,7 +83,7 @@ public class FileSaveCommand : Command
     {
       await Task.Run(() =>
       {
-        workbookInfo.Workbook.Save();
+        workbook.Save();
       });
     }
     else 
@@ -97,26 +92,26 @@ public class FileSaveCommand : Command
       ExcelSaveType excelSaveType;
       if (ext == ".xlsx")
       {
-        if (workbookInfo.Workbook.Version == ExcelVersion.Excel97to2003)
-          workbookInfo.Workbook.Version = ExcelVersion.Excel2016;
+        if (workbook.Version == ExcelVersion.Excel97to2003)
+          workbook.Version = ExcelVersion.Excel2016;
         excelSaveType = ExcelSaveType.SaveAsXLS;
       }      
       else if (ext == ".xlsm")
       {
-        if (workbookInfo.Workbook.Version == ExcelVersion.Excel97to2003)
-          workbookInfo.Workbook.Version = ExcelVersion.Excel2016;
+        if (workbook.Version == ExcelVersion.Excel97to2003)
+            workbook.Version = ExcelVersion.Excel2016;
         excelSaveType = ExcelSaveType.SaveAsMacro;
       } 
       else if (ext == ".xls")
       {
-        workbookInfo.Workbook.Version = ExcelVersion.Excel97to2003;
+        workbook.Version = ExcelVersion.Excel97to2003;
         excelSaveType = ExcelSaveType.SaveAsXLS;
       } 
       else
         throw new InvalidOperationException($"Invalid file extension");
 
       await using (var fileStream = File.Create(filename))
-        workbookInfo.Workbook.SaveAs(fileStream, excelSaveType);
+        workbook.SaveAs(fileStream, excelSaveType);
       workbookInfo.FileName = filename;
       workbookInfo.ProjectTitle = filename;
 

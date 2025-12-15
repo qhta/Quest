@@ -1,4 +1,6 @@
-﻿using Syncfusion.XlsIO.Implementation.Exceptions;
+﻿extern alias ExcelTypes;
+
+using ExcelTypes::Syncfusion.XlsIO.Implementation.Exceptions;
 
 namespace QuestIMP;
 
