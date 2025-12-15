@@ -177,4 +177,7 @@
   <data name="File" xml:space="preserve">
     <value>Plik</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Witamy</value>
+  </data>
 </root>

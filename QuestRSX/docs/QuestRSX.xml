@@ -1574,6 +1574,11 @@
               Looks up a localized string similar to Weight.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.Welcome">
+            <summary>
+              Looks up a localized string similar to Welcome.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.XmlFilesFilter">
             <summary>
               Looks up a localized string similar to XML files (*.xml)|*.xml.

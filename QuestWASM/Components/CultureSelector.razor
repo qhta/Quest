@@ -1,0 +1,16 @@
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+
+<select @onchange="ChangeCulture">
+    <option value="en-US">English</option>
+    <option value="pl-PL">Polski</option>
+</select>
+
+@code {
+    private async Task ChangeCulture(ChangeEventArgs e)
+    {
+        var culture = e.Value?.ToString() ?? "en-US";
+        await JS.InvokeVoidAsync("blazorCulture.set", culture);
+        Nav.NavigateTo(Nav.Uri, forceLoad: true);
+    }
+}
