@@ -129,7 +129,7 @@
   <data name="Text" xml:space="preserve">
     <value>Tekst</value>
   </data>
-  <data name="OpenFileTitle" xml:space="preserve">
+  <data name="OpenFile" xml:space="preserve">
     <value>Otwórz plik</value>
   </data>
   <data name="Value" xml:space="preserve">
@@ -139,7 +139,7 @@
     <value>Znaczenie</value>
   </data>
   <data name="GradeScale" xml:space="preserve">
-    <value>Skala ocen</value>
+    <value>s</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Waga</value>
@@ -179,5 +179,23 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Witamy</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="SelectFile_" xml:space="preserve">
+    <value>Wybierz plik:</value>
+  </data>
+  <data name="SelectedFile_" xml:space="preserve">
+    <value>Wybrany plik:</value>
+  </data>
+  <data name="FileContentPreview_" xml:space="preserve">
+    <value>Podgląd treści pliku:</value>
+  </data>
+  <data name="Error_" xml:space="preserve">
+    <value>Błąd:</value>
+  </data>
+  <data name="ExcelFileContent_" xml:space="preserve">
+    <value>Plik programu Excel:</value>
   </data>
 </root>

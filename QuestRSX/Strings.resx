@@ -129,7 +129,7 @@
   <data name="Text" xml:space="preserve">
     <value>Text</value>
   </data>
-  <data name="OpenFileTitle" xml:space="preserve">
+  <data name="OpenFile" xml:space="preserve">
     <value>Open file</value>
   </data>
   <data name="Value" xml:space="preserve">
@@ -179,5 +179,23 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="SelectFile_" xml:space="preserve">
+    <value>Select a file:</value>
+  </data>
+  <data name="SelectedFile_" xml:space="preserve">
+    <value>Selected file:</value>
+  </data>
+  <data name="FileContentPreview_" xml:space="preserve">
+    <value>File Content Preview:</value>
+  </data>
+  <data name="Error_" xml:space="preserve">
+    <value>Error:</value>
+  </data>
+  <data name="ExcelFileContent_" xml:space="preserve">
+    <value>Excel file content:</value>
   </data>
 </root>

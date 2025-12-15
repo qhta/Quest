@@ -26,7 +26,7 @@ public class FileImportCommand : Command
         int filterIndex = 1;
         var openFileDialog = new OpenFileDialog
         {
-          Title = Strings.OpenFileTitle,
+          Title = Strings.OpenFile,
           Filter = String.Join("|", fileTypes),
           FilterIndex = filterIndex,
         };

@@ -88,6 +88,24 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error:.
+        /// </summary>
+        public static string Error_ {
+            get {
+                return ResourceManager.GetString("Error_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel file content:.
+        /// </summary>
+        public static string ExcelFileContent_ {
+            get {
+                return ResourceManager.GetString("ExcelFileContent_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls.
         /// </summary>
         public static string ExcelFilesFilter {
@@ -133,6 +151,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File Content Preview:.
+        /// </summary>
+        public static string FileContentPreview_ {
+            get {
+                return ResourceManager.GetString("FileContentPreview_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grade scale.
         /// </summary>
         public static string GradeScale {
@@ -162,9 +189,9 @@ namespace QuestRSX {
         /// <summary>
         ///   Looks up a localized string similar to Open file.
         /// </summary>
-        public static string OpenFileTitle {
+        public static string OpenFile {
             get {
-                return ResourceManager.GetString("OpenFileTitle", resourceCulture);
+                return ResourceManager.GetString("OpenFile", resourceCulture);
             }
         }
         
@@ -201,6 +228,33 @@ namespace QuestRSX {
         public static string SaveQuestFileAs {
             get {
                 return ResourceManager.GetString("SaveQuestFileAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected file:.
+        /// </summary>
+        public static string SelectedFile_ {
+            get {
+                return ResourceManager.GetString("SelectedFile_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a file:.
+        /// </summary>
+        public static string SelectFile_ {
+            get {
+                return ResourceManager.GetString("SelectFile_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
             }
         }
         

@@ -1,7 +1,72 @@
 ﻿@page "/"
+@inject IStringLocalizer<Strings> Strings
+@using System.IO
 
-<PageTitle>Home</PageTitle>
+<PageTitle>@Strings["Start"]</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>@Strings["OpenFile"]</h1>
 
-Welcome to your new app.
+<div class="mb-3">
+    <label for="fileInput" class="form-label">@Strings["SelectFile_"]</label>
+    <InputFile id="fileInput" OnChange="HandleFileSelected" accept="@acceptedFileTypes" />
+</div>
+
+@if (!string.IsNullOrEmpty(fileName))
+{
+    <div class="alert alert-info">
+        <strong>@Strings["SelectedFile_"]</strong> @fileName (@fileSize bytes)
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(fileContent))
+{
+    <div class="mt-3">
+        <h3>@Strings["FileContentPreview_"]</h3>
+        <pre>@fileContent</pre>
+    </div>
+}
+
+@code {
+    private string? acceptedFileTypes = ".xls,.xlsx,.xlsm,.qxml";
+    private string? fileName;
+    private long fileSize;
+    private string? fileContent;
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        fileName = file.Name;
+        fileSize = file.Size;
+
+        var ext = Path.GetExtension(file.Name).ToLowerInvariant();
+        if (ext.StartsWith(".xls"))
+        {
+            await HandleExcelFile(file);
+        }
+        else
+        {
+            using var reader = new StreamReader(file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024)); // 10MB limit
+            fileContent = await reader.ReadToEndAsync();
+        }
+
+    }
+
+    private async Task HandleExcelFile(IBrowserFile file)
+    {
+        try
+        {
+            // Read file into memory stream
+            using var memoryStream = new MemoryStream();
+            await file.OpenReadStream(maxAllowedSize: 50 * 1024 * 1024).CopyToAsync(memoryStream); // 50MB limit
+            memoryStream.Position = 0;
+
+            // Process Excel file (you'll need to adapt your WorkbookImporter for WebAssembly)
+            // Note: Syncfusion.XlsIO works in Blazor WASM with some limitations
+            fileContent = $"{QuestRSX.Strings.ExcelFileContent_}: {file.Name} ({file.Size} bytes)";
+        }
+        catch (Exception ex)
+        {
+            fileContent = $"{QuestRSX.Strings.Error_}: {ex.Message}";
+        }
+    }
+}

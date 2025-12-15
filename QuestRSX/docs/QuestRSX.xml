@@ -1494,6 +1494,16 @@
               Looks up a localized string similar to &lt;Project Title&gt;.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.Error_">
+            <summary>
+              Looks up a localized string similar to Error:.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.ExcelFileContent_">
+            <summary>
+              Looks up a localized string similar to Excel file content:.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.ExcelFilesFilter">
             <summary>
               Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls.
@@ -1519,6 +1529,11 @@
               Looks up a localized string similar to File.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.FileContentPreview_">
+            <summary>
+              Looks up a localized string similar to File Content Preview:.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.GradeScale">
             <summary>
               Looks up a localized string similar to Grade scale.
@@ -1534,7 +1549,7 @@
               Looks up a localized string similar to Meaning.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.OpenFileTitle">
+        <member name="P:QuestRSX.Strings.OpenFile">
             <summary>
               Looks up a localized string similar to Open file.
             </summary>
@@ -1557,6 +1572,21 @@
         <member name="P:QuestRSX.Strings.SaveQuestFileAs">
             <summary>
               Looks up a localized string similar to Save Quest file as ....
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.SelectedFile_">
+            <summary>
+              Looks up a localized string similar to Selected file:.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.SelectFile_">
+            <summary>
+              Looks up a localized string similar to Select a file:.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.Start">
+            <summary>
+              Looks up a localized string similar to Start.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.Text">
