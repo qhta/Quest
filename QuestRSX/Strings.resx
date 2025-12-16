@@ -198,4 +198,10 @@
   <data name="ExcelFileContent_" xml:space="preserve">
     <value>Excel file content:</value>
   </data>
+  <data name="NoFactorsDefined" xml:space="preserve">
+    <value>No quality factors defined</value>
+  </data>
+  <data name="BackToHome" xml:space="preserve">
+    <value>Back to Start</value>
+  </data>
 </root>

@@ -1484,6 +1484,11 @@
               Looks up a localized string similar to All files (*.*)|*.*.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.BackToHome">
+            <summary>
+              Looks up a localized string similar to Back to Start.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.Comment">
             <summary>
               Looks up a localized string similar to Comment.
@@ -1547,6 +1552,11 @@
         <member name="P:QuestRSX.Strings.Meaning">
             <summary>
               Looks up a localized string similar to Meaning.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.NoFactorsDefined">
+            <summary>
+              Looks up a localized string similar to No quality factors defined.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.OpenFile">

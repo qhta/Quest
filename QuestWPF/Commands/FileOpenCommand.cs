@@ -40,7 +40,7 @@ public class FileOpenCommand : Command
       }
       if (!String.IsNullOrEmpty(filename))
       {
-        await OpenProjectQuality(filename);
+        await OpenQxmlFile(filename);
       }
 
     }
@@ -51,14 +51,14 @@ public class FileOpenCommand : Command
   }
 
   /// <summary>
-  /// Opens an Excel workbook given its filename.
-  /// First, it creates a WorkbookInfoVM instance and subscribes to its PropertyChanged event to monitor loading status.
-  /// Before executing, it instructs CommandCenter to execute "AddFloatingView" command to add a floating view for the ExcelView.
-  /// After that, it calls OpenSpreadsheetAsync on the ExcelView to load the selected spreadsheet asynchronously.
-  /// When the WorkbookInfoVM's IsLoaded property changes, it notifies CommandCenter to update the CanExecute status of "StartImportCommand".  /// </summary>
+  /// Opens an Qxml file given its filename.
+  /// First, it deserializes the file into a ProjectQuality object. 
+  /// Next, it creates a ProjectQualityVM from the ProjectQuality object
+  /// and then opens a new QuestView window to display the project.
+  /// </summary>
   /// <param name="filename"></param>
   /// <returns></returns>
-  public async Task<ProjectQualityVM?> OpenProjectQuality(string filename)
+  public async Task<ProjectQualityVM?> OpenQxmlFile(string filename)
   {
     ProjectQuality? projectQuality = null;
     try
@@ -69,7 +69,6 @@ public class FileOpenCommand : Command
         {
           var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
           projectQuality = xmlSerializer.Deserialize(reader) as ProjectQuality;
-          //projectQualityVM.PropertyChanged += WorkbookInfoVM_PropertyChanged;
         }
       });
       if (projectQuality != null)

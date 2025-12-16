@@ -1,0 +1,78 @@
+@using Quest
+
+<div class="quality-factors-view">
+    @if (Factors != null && Factors.Any())
+    {
+        <table class="table table-sm table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>@Strings["Item"]</th>
+                    <th style="width: 80px;">@Strings["Weight"]</th>
+                    <th style="width: 120px;">@Strings["Grade"]</th>
+                    <th style="width: 100px;">@Strings["Reliability"]</th>
+                    <th>@Strings["Comment"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var factor in Factors)
+                {
+                    <QualityFactorRow Factor="factor" Level="0" Scale="Scale" />
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">@Strings["NoFactorsDefined"]</div>
+    }
+</div>
+
+<style>
+    .quality-factors-view {
+        overflow-x: auto;
+    }
+    
+    .quality-factors-view table {
+        font-size: 0.9rem;
+    }
+    
+    .factor-row-level-1 {
+        font-weight: 600;
+    }
+    
+    .factor-row-level-2 {
+        padding-left: 20px;
+    }
+    
+    .factor-row-level-3 {
+        padding-left: 40px;
+    }
+    
+    .factor-row-level-4 {
+        padding-left: 60px;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public QualityFactorVMCollection? Factors { get; set; }
+    
+    [Inject]
+    private IStringLocalizer<Strings> Strings { get; set; } = default!;
+    
+    private QualityScaleVM? Scale
+    {
+        get
+        {
+            // Get scale from the first factor's parent hierarchy
+            if (Factors?.FirstOrDefault()?.Parent is DocumentQualityVM docQuality)
+            {
+                if (docQuality.Parent is ProjectQualityVM projectQuality)
+                {
+                    return projectQuality.Scale;
+                }
+            }
+            return null;
+        }
+    }
+}

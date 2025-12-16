@@ -1,0 +1,91 @@
+@using Quest
+
+@if (Factor != null)
+{
+    <tr class="factor-row-level-@Level" style="background-color: @GetBackgroundColor()">
+        <td style="padding-left: @(Level * 20)px;">
+            @Factor.DisplayNameWithNumbering
+        </td>
+        <td class="text-center">
+            <input type="number" 
+                   class="form-control form-control-sm" 
+                   @bind="Factor.Weight" 
+                   min="0" 
+                   max="100" 
+                   style="width: 70px;" />
+        </td>
+        <td>
+            @if (Factor is QualityMeasureVM measure)
+            {
+                <!-- Grade selector for measures -->
+                <select class="form-select form-select-sm" @bind="measure.Grade">
+                    <option value="">--</option>
+                    @if (Scale != null)
+                    {
+                        @foreach (var grade in Scale)
+                        {
+                            <option value="@grade.Text">@grade.Text</option>
+                        }
+                    }
+                </select>
+            }
+            else
+            {
+                <!-- Calculated value for factors/metrics -->
+                <span class="d-block text-center">
+                    @(Factor.Value?.ToString("F2") ?? "-")
+                </span>
+            }
+        </td>
+        <td class="text-center">
+            @(Factor.Reliability?.ToString("F2") ?? "-")
+        </td>
+        <td>
+            <input type="text" 
+                   class="form-control form-control-sm" 
+                   @bind="Factor.Comment" 
+                   placeholder="@Strings["Comment"]" />
+        </td>
+    </tr>
+    
+    <!-- Render children recursively -->
+    @if (Factor is QualityFactorVM factorVM && factorVM.Children.Any())
+    {
+        @foreach (var child in factorVM.Children)
+        {
+            <QualityFactorRow Factor="child" Level="Level + 1" Scale="Scale" />
+        }
+    }
+    else if (Factor is QualityMetricsVM metricsVM && metricsVM.Children.Any())
+    {
+        @foreach (var child in metricsVM.Children)
+        {
+            <QualityFactorRow Factor="child" Level="Level + 1" Scale="Scale" />
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public IQualityNodeVM? Factor { get; set; }
+    
+    [Parameter]
+    public int Level { get; set; }
+    
+    [Parameter]
+    public QualityScaleVM? Scale { get; set; }
+    
+    [Inject]
+    private IStringLocalizer<Strings> Strings { get; set; } = default!;
+    
+    private string? GetBackgroundColor()
+    {
+        var color = Factor?.BackgroundColor;
+        if (string.IsNullOrEmpty(color))
+            return null;
+            
+        // Convert named colors to hex or keep as-is
+        // You might need to add color mapping here
+        return color;
+    }
+}

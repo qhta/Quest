@@ -1,0 +1,173 @@
+@page "/quest/{fileName?}"
+@inject NavigationManager Navigation
+@inject ProjectQualityService ProjectService
+@using Quest
+@using QuestRDM
+@inject IStringLocalizer<Strings> Strings
+@implements IDisposable
+
+<PageTitle>@(projectQualityVM?.ProjectTitle ?? Strings["Quest"])</PageTitle>
+
+@if (isLoading)
+{
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 400px;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}
+else if (projectQualityVM == null)
+{
+  <div class="alert alert-warning">
+    <h4>@Strings["NoProjectLoaded"]</h4>
+    <p>
+      <a href="/" class="btn btn-primary">@Strings["BackToHome"]</a>
+    </p>
+  </div>
+}
+else
+{
+  <div class="container-fluid">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>@projectQualityVM.ProjectTitle</h2>
+          <a href="/" class="btn btn-secondary">@Strings["BackToHome"]</a>
+        </div>
+      </div>
+    </div>
+
+    @if (projectQualityVM.IsLoading)
+    {
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <div class="progress">
+            <div class="progress-bar"
+                 role="progressbar"
+                 style="width: @GetProgressPercentage()%"
+                 aria-valuenow="@projectQualityVM.LoadedCount"
+                 aria-valuemin="0"
+                 aria-valuemax="@projectQualityVM.TotalCount">
+              @projectQualityVM.LoadedCount / @projectQualityVM.TotalCount
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <div class="row">
+      <!-- Left Panel: TreeView -->
+      <div class="col-md-3 border-end">
+        <ProjectTreeView ProjectQuality="projectQualityVM"
+                         OnDocumentSelected="SelectDocument" />
+      </div>
+
+      <!-- Right Panel: Tabs -->
+      <div class="col-md-9">
+        @if (projectQualityVM.ViewItems != null && projectQualityVM.ViewItems.Any())
+        {
+          <ul class="nav nav-tabs" role="tablist">
+            @foreach (var item in projectQualityVM.ViewItems)
+            {
+              <li class="nav-item" role="presentation">
+                <button class="nav-link @(IsActiveTab(item) ? "active" : "")"
+                        @onclick="() => SelectTab(item)"
+                        type="button">
+                  @item.Header
+                </button>
+              </li>
+            }
+          </ul>
+
+          <div class="tab-content mt-3">
+            @if (selectedTab?.Content is QualityScaleVM scaleVM)
+            {
+              <GradeScaleView Scale="scaleVM" />
+            }
+            else if (selectedTab?.Content is DocumentQualityVM docVM)
+            {
+              <DocumentQualityView DocumentQuality="docVM" />
+            }
+          </div>
+        }
+        else
+        {
+          <div class="alert alert-info mt-3">
+            <p>@Strings["NoViewItemsAvailable"]</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
+
+@code {
+  [Parameter]
+  public string? FileName { get; set; }
+
+  private ProjectQualityVM? projectQualityVM;
+  private QuestItemViewModel? selectedTab;
+  private bool isLoading = true;
+
+  protected override void OnInitialized()
+  {
+    // Load from service
+    projectQualityVM = ProjectService.CurrentProject;
+    
+    // Select first tab if available
+    if (projectQualityVM?.ViewItems?.Any() == true)
+    {
+      selectedTab = projectQualityVM.ViewItems.First();
+    }
+    
+    // Subscribe to changes
+    ProjectService.OnProjectChanged += OnProjectChanged;
+    
+    isLoading = false;
+  }
+
+  private void OnProjectChanged()
+  {
+    projectQualityVM = ProjectService.CurrentProject;
+    
+    // Select first tab if available
+    if (projectQualityVM?.ViewItems?.Any() == true)
+    {
+      selectedTab = projectQualityVM.ViewItems.First();
+    }
+    
+    StateHasChanged();
+  }
+
+  private void SelectDocument(DocumentQualityVM documentQuality)
+  {
+    var item = projectQualityVM?.ViewItems?.FirstOrDefault(i => i.Content == documentQuality);
+    if (item != null)
+    {
+      selectedTab = item;
+      StateHasChanged();
+    }
+  }
+
+  private void SelectTab(QuestItemViewModel item)
+  {
+    selectedTab = item;
+  }
+
+  private bool IsActiveTab(QuestItemViewModel item)
+  {
+    return selectedTab == item;
+  }
+
+  private string GetProgressPercentage()
+  {
+    if (projectQualityVM == null || projectQualityVM.TotalCount == 0)
+      return "0";
+    return ((double)projectQualityVM.LoadedCount / projectQualityVM.TotalCount * 100).ToString("F0");
+  }
+
+  public void Dispose()
+  {
+    ProjectService.OnProjectChanged -= OnProjectChanged;
+  }
+}

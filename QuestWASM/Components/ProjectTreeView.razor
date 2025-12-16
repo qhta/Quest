@@ -1,0 +1,83 @@
+@using Quest
+
+<div class="project-tree">
+    @if (ProjectQuality != null)
+    {
+        <div class="tree-node">
+            <div class="node-content fw-bold" @onclick="ToggleExpanded">
+                <i class="bi bi-@(isExpanded ? "chevron-down" : "chevron-right")"></i>
+                @ProjectQuality.ProjectTitle
+            </div>
+            @if (isExpanded && ProjectQuality.DocumentQualities != null)
+            {
+                <div class="tree-children ms-3">
+                    @foreach (var doc in ProjectQuality.DocumentQualities)
+                    {
+                        <div class="tree-node document-node" @onclick="() => OnDocumentClick(doc)">
+                            <span class="fw-bold">@doc.DocumentType</span>
+                            @if (!string.IsNullOrEmpty(doc.DocumentTitle))
+                            {
+                                <span class="ms-2">@doc.DocumentTitle</span>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .project-tree {
+        font-size: 0.9rem;
+    }
+    
+    .tree-node {
+        padding: 5px;
+        cursor: pointer;
+    }
+    
+    .tree-node:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .document-node {
+        padding: 3px 5px;
+    }
+    
+    .tree-children {
+        margin-top: 5px;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public ProjectQualityVM? ProjectQuality { get; set; }
+
+    [Parameter]
+    public EventCallback<DocumentQualityVM> OnDocumentSelected { get; set; }
+
+    private bool isExpanded = true;
+
+    protected override void OnParametersSet()
+    {
+        if (ProjectQuality != null)
+        {
+            isExpanded = ProjectQuality.IsExpanded;
+        }
+    }
+
+    private void ToggleExpanded()
+    {
+        isExpanded = !isExpanded;
+        if (ProjectQuality != null)
+        {
+            ProjectQuality.IsExpanded = isExpanded;
+        }
+    }
+
+    private async Task OnDocumentClick(DocumentQualityVM document)
+    {
+        await OnDocumentSelected.InvokeAsync(document);
+    }
+}

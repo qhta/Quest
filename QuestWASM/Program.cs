@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 
+
 namespace QuestWASM;
 
 public class Program
@@ -16,6 +17,7 @@ public class Program
     builder.RootComponents.Add<HeadOutlet>("head::after");
 
     builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+    builder.Services.AddSingleton<ProjectQualityService>();
 
     // Add localization services
     builder.Services.AddLocalization();

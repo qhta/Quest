@@ -1,0 +1,40 @@
+@using Quest
+
+<div class="grade-scale-view">
+    <h3>@Strings["QualityScale"]</h3>
+    
+    @if (Scale != null && Scale.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Strings["Grade"]</th>
+                    <th>@Strings["Value"]</th>
+                    <th>@Strings["Meaning"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var grade in Scale)
+                {
+                    <tr>
+                        <td>@grade.Text</td>
+                        <td>@grade.Value</td>
+                        <td>@grade.Meaning</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">@Strings["NoScaleDefined"]</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public QualityScaleVM? Scale { get; set; }
+    
+    [Inject]
+    private IStringLocalizer<Strings> Strings { get; set; } = default!;
+}

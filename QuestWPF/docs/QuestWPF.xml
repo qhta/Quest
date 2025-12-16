@@ -67,13 +67,13 @@
             </summary>
             <param name="parameter"></param>
         </member>
-        <member name="M:QuestWPF.FileOpenCommand.OpenProjectQuality(System.String)">
+        <member name="M:QuestWPF.FileOpenCommand.OpenQxmlFile(System.String)">
             <summary>
-            Opens an Excel workbook given its filename.
-            First, it creates a WorkbookInfoVM instance and subscribes to its PropertyChanged event to monitor loading status.
-            Before executing, it instructs CommandCenter to execute "AddFloatingView" command to add a floating view for the ExcelView.
-            After that, it calls OpenSpreadsheetAsync on the ExcelView to load the selected spreadsheet asynchronously.
-            When the WorkbookInfoVM's IsLoaded property changes, it notifies CommandCenter to update the CanExecute status of "StartImportCommand".  /// </summary>
+            Opens an Qxml file given its filename.
+            First, it deserializes the file into a ProjectQuality object. 
+            Next, it creates a ProjectQualityVM from the ProjectQuality object
+            and then opens a new QuestView window to display the project.
+            </summary>
             <param name="filename"></param>
             <returns></returns>
         </member>

@@ -1,72 +1,112 @@
 ﻿@page "/"
 @inject IStringLocalizer<Strings> Strings
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@inject ProjectQualityService ProjectService
 @using System.IO
+@using Qhta.Xml.Serialization
+@using QuestRDM
+@using Quest
 
 <PageTitle>@Strings["Start"]</PageTitle>
 
 <h1>@Strings["OpenFile"]</h1>
 
 <div class="mb-3">
-    <label for="fileInput" class="form-label">@Strings["SelectFile_"]</label>
-    <InputFile id="fileInput" OnChange="HandleFileSelected" accept="@acceptedFileTypes" />
+  <label for="fileInput" class="form-label">@Strings["SelectFile_"]</label>
+  <InputFile id="fileInput" OnChange="HandleFileSelected" accept="@acceptedFileTypes" />
 </div>
 
 @if (!string.IsNullOrEmpty(fileName))
 {
-    <div class="alert alert-info">
-        <strong>@Strings["SelectedFile_"]</strong> @fileName (@fileSize bytes)
-    </div>
+  <div class="alert alert-info">
+    <strong>@Strings["SelectedFile_"]</strong> @fileName (@fileSize bytes)
+  </div>
 }
 
-@if (!string.IsNullOrEmpty(fileContent))
+@if (!string.IsNullOrEmpty(errorMessage))
 {
-    <div class="mt-3">
-        <h3>@Strings["FileContentPreview_"]</h3>
-        <pre>@fileContent</pre>
-    </div>
+  <div class="alert alert-danger">
+    <strong>@Strings["Error_"]:</strong> @errorMessage
+  </div>
 }
 
 @code {
-    private string? acceptedFileTypes = ".xls,.xlsx,.xlsm,.qxml";
-    private string? fileName;
-    private long fileSize;
-    private string? fileContent;
+  private string? acceptedFileTypes = ".xls,.xlsx,.xlsm,.qxml";
+  private string? fileName;
+  private long fileSize;
+  private string? errorMessage;
 
-    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+  private async Task HandleFileSelected(InputFileChangeEventArgs e)
+  {
+    errorMessage = null;
+    var file = e.File;
+    fileName = file.Name;
+    fileSize = file.Size;
+
+    var ext = Path.GetExtension(file.Name).ToLowerInvariant();
+    if (ext.StartsWith(".xls"))
     {
-        var file = e.File;
-        fileName = file.Name;
-        fileSize = file.Size;
-
-        var ext = Path.GetExtension(file.Name).ToLowerInvariant();
-        if (ext.StartsWith(".xls"))
-        {
-            await HandleExcelFile(file);
-        }
-        else
-        {
-            using var reader = new StreamReader(file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024)); // 10MB limit
-            fileContent = await reader.ReadToEndAsync();
-        }
-
+      await HandleExcelFile(file);
     }
-
-    private async Task HandleExcelFile(IBrowserFile file)
+    else if (ext == ".qxml")
     {
-        try
-        {
-            // Read file into memory stream
-            using var memoryStream = new MemoryStream();
-            await file.OpenReadStream(maxAllowedSize: 50 * 1024 * 1024).CopyToAsync(memoryStream); // 50MB limit
-            memoryStream.Position = 0;
-
-            // Process Excel file (you'll need to adapt your WorkbookImporter for WebAssembly)
-            // Note: Syncfusion.XlsIO works in Blazor WASM with some limitations
-            fileContent = $"{QuestRSX.Strings.ExcelFileContent_}: {file.Name} ({file.Size} bytes)";
-        }
-        catch (Exception ex)
-        {
-            fileContent = $"{QuestRSX.Strings.Error_}: {ex.Message}";
-        }
+      await HandleQxmlFile(file);
     }
+    else
+    {
+      errorMessage = "Unsupported file type";
+    }
+  }
+
+  private async Task HandleExcelFile(IBrowserFile file)
+  {
+    try
+    {
+      using var memoryStream = new MemoryStream();
+      await file.OpenReadStream(maxAllowedSize: 50 * 1024 * 1024).CopyToAsync(memoryStream);
+      memoryStream.Position = 0;
+
+      errorMessage = "Excel import not yet implemented. Please use .qxml files.";
+    }
+    catch (Exception ex)
+    {
+      errorMessage = ex.Message;
+    }
+  }
+
+  private async Task HandleQxmlFile(IBrowserFile file)
+  {
+    try
+    {
+      using var memoryStream = new MemoryStream();
+      await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(memoryStream);
+      memoryStream.Position = 0;
+
+      ProjectQuality? projectQuality = null;
+      using (var reader = new StreamReader(memoryStream))
+      {
+        var xmlSerializer = new QXmlSerializer(typeof(ProjectQuality));
+        projectQuality = xmlSerializer.Deserialize(reader) as ProjectQuality;
+      }
+
+      if (projectQuality != null)
+      {
+        // Use the service to store the project
+        ProjectService.LoadProject(projectQuality, fileName);
+
+        // Navigate to QuestView
+        Navigation.NavigateTo("/quest");
+      }
+      else
+      {
+        errorMessage = "Failed to deserialize project quality data";
+      }
+    }
+    catch (Exception ex)
+    {
+      errorMessage = ex.Message;
+      await JS.InvokeVoidAsync("console.error", "Error loading QXML file:", ex.ToString());
+    }
+  }
 }

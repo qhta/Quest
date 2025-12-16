@@ -1,0 +1,40 @@
+@using Quest
+
+<div class="document-quality-view">
+    @if (DocumentQuality != null)
+    {
+        <h3>@DocumentQuality.DocumentType</h3>
+        
+        @if (!string.IsNullOrEmpty(DocumentQuality.DocumentTitle))
+        {
+            <p class="lead">@DocumentQuality.DocumentTitle</p>
+        }
+        
+        @if (DocumentQuality.Value.HasValue)
+        {
+            <div class="alert alert-info">
+                <strong>@Strings["Value"]:</strong> @DocumentQuality.Value.Value.ToString("F2")
+                @if (DocumentQuality.Reliability.HasValue)
+                {
+                    <span class="ms-3">
+                        <strong>@Strings["Reliability"]:</strong> @DocumentQuality.Reliability.Value.ToString("F2")
+                    </span>
+                }
+            </div>
+        }
+        
+        @if (DocumentQuality.Factors != null && DocumentQuality.Factors.Any())
+        {
+            <h4>@Strings["QualityFactors"]</h4>
+            <QualityFactorsView Factors="DocumentQuality.Factors" />
+        }
+    }
+</div>
+
+@code {
+    [Parameter]
+    public DocumentQualityVM? DocumentQuality { get; set; }
+    
+    [Inject]
+    private IStringLocalizer<Strings> Strings { get; set; } = default!;
+}

@@ -70,6 +70,15 @@ namespace QuestRSX {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to Start.
+        /// </summary>
+        public static string BackToHome {
+            get {
+                return ResourceManager.GetString("BackToHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {
@@ -183,6 +192,15 @@ namespace QuestRSX {
         public static string Meaning {
             get {
                 return ResourceManager.GetString("Meaning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No quality factors defined.
+        /// </summary>
+        public static string NoFactorsDefined {
+            get {
+                return ResourceManager.GetString("NoFactorsDefined", resourceCulture);
             }
         }
         
