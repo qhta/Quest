@@ -1,8 +1,10 @@
 @page "/quest/{fileName?}"
 @inject NavigationManager Navigation
 @inject ProjectQualityService ProjectService
+@inject FileDownloadService FileDownloadService
 @using Quest
 @using QuestRDM
+@using QuestWASM.Components
 @inject IStringLocalizer<Strings> Strings
 @implements IDisposable
 
@@ -32,7 +34,12 @@ else
       <div class="col-md-12">
         <div class="d-flex justify-content-between align-items-center">
           <h2>@projectQualityVM.ProjectTitle</h2>
-          <a href="/" class="btn btn-secondary">@Strings["BackToHome"]</a>
+          <div>
+            <button class="btn btn-primary me-2" @onclick="SaveProjectAsync" disabled="@ProjectService.CannotSave()">
+              <i class="bi bi-save"></i> @Strings["Save"]
+            </button>
+            <a href="/" class="btn btn-secondary">@Strings["BackToHome"]</a>
+          </div>
         </div>
       </div>
     </div>
@@ -44,7 +51,7 @@ else
           <div class="progress">
             <div class="progress-bar"
                  role="progressbar"
-                 style="width: @GetProgressPercentage()%"
+                 style="width: @GetProgressPercentage()%;"
                  aria-valuenow="@projectQualityVM.LoadedCount"
                  aria-valuemin="0"
                  aria-valuemax="@projectQualityVM.TotalCount">
@@ -165,6 +172,44 @@ else
       return "0";
     return ((double)projectQualityVM.LoadedCount / projectQualityVM.TotalCount * 100).ToString("F0");
   }
+
+  /// <summary>
+  /// Saves the current project
+  /// </summary>
+  private async Task SaveProjectAsync()
+  {
+    if (projectQualityVM == null || !ProjectService.CanSave())
+      return;
+
+    try
+    {
+      isLoading = true;
+      StateHasChanged();
+
+      // Serialize project
+      var data = await ProjectService.SerializeProjectAsync();
+
+      // Generate filename
+      var fileName = ProjectService.CurrentFileName ?? "Project.quest";
+      if (!fileName.EndsWith(".quest", StringComparison.OrdinalIgnoreCase))
+        fileName += ".quest";
+
+      // Trigger download
+      await FileDownloadService.SaveAsAsync(fileName, "application/xml", data);
+    }
+    catch (Exception ex)
+    {
+      // In Blazor, you might want to use a toast notification or modal
+      Console.Error.WriteLine($"Error saving project: {ex.Message}");
+      // TODO: Show error to user via UI component
+    }
+    finally
+    {
+      isLoading = false;
+      StateHasChanged();
+    }
+  }
+
 
   public void Dispose()
   {

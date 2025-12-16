@@ -18,6 +18,8 @@ public class Program
 
     builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
     builder.Services.AddSingleton<ProjectQualityService>();
+    builder.Services.AddScoped<FileDownloadService>();
+    builder.Services.AddScoped<FileUploadService>();
 
     // Add localization services
     builder.Services.AddLocalization();

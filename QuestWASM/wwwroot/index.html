@@ -37,6 +37,60 @@
   </script>
   <script src="_framework/blazor.webassembly.js"></script>
   <script>navigator.serviceWorker.register('service-worker.js');</script>
+  <script>
+    // Add this function for file download
+    window.downloadFile = function (filename, contentType, base64Data) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = `data:${contentType};base64,${base64Data}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  </script>
+
+  <script>
+    // Existing download function
+    window.downloadFile = function (filename, contentType, base64Data) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = `data:${contentType};base64,${base64Data}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+
+    // New file open function
+    window.openFileDialog = function (accept) {
+      return new Promise((resolve) => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = accept;
+
+        input.onchange = (e) => {
+          const file = e.target.files[0];
+          if (!file) {
+            resolve(null);
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const base64 = event.target.result.split(',')[1];
+            resolve({
+              fileName: file.name,
+              base64Content: base64
+            });
+          };
+          reader.onerror = () => resolve(null);
+          reader.readAsDataURL(file);
+        };
+
+        input.oncancel = () => resolve(null);
+        input.click();
+      });
+    };
+  </script>
 </body>
 
 </html>
