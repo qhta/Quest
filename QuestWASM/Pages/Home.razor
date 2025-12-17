@@ -32,7 +32,7 @@
 }
 
 @code {
-  private string? acceptedFileTypes = ".qxml,.quest,.xls,.xlsx,.xlsm";
+  private string? acceptedFileTypes = ".xml,.zip,.xls,.xlsx,.xlsm";
   private string? fileName;
   private long fileSize;
   private string? errorMessage;
@@ -49,13 +49,9 @@
     {
       await HandleExcelFile(file);
     }
-    else if (ext == ".qxml")
-    {
-      await HandleQxmlFile(file);
-    }
     else
     {
-      errorMessage = "Unsupported file type";
+      await HandleQuestFile(file);
     }
   }
 
@@ -75,21 +71,19 @@
     }
   }
 
-  private async Task HandleQxmlFile(IBrowserFile file)
+  private async Task HandleQuestFile(IBrowserFile file)
   {
     try
     {
       using var memoryStream = new MemoryStream();
       await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(memoryStream);
       memoryStream.Position = 0;
+      var bytes = memoryStream.ToArray();
 
-      ProjectQuality? projectQuality = null;
-      using (var reader = new StreamReader(memoryStream))
-      {
-        var xmlSerializer = new QXmlSerializer(typeof(ProjectQuality));
-        projectQuality = xmlSerializer.Deserialize(reader) as ProjectQuality;
-      }
-
+      ProjectQuality? projectQuality = 
+      Path.GetExtension(file.Name).ToLowerInvariant().EndsWith("xml") ?
+        await FileCommandHelper.DeserializeProjectAsync(bytes) :
+        await FileCommandHelper.UnpackProjectAsync(bytes);
       if (projectQuality != null)
       {
         // Use the service to store the project
@@ -106,7 +100,7 @@
     catch (Exception ex)
     {
       errorMessage = ex.Message;
-      await JS.InvokeVoidAsync("console.error", "Error loading QXML file:", ex.ToString());
+      await JS.InvokeVoidAsync("console.error", "Error loading Quest file:", ex.ToString());
     }
   }
 }

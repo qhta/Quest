@@ -35,14 +35,6 @@ public class ProjectQualityService
   }
 
   /// <summary>
-  /// Deserializes project from XML data
-  /// </summary>
-  public async Task<ProjectQuality?> DeserializeProjectAsync(byte[] data)
-  {
-    return await FileCommandHelper.DeserializeProjectAsync(data);
-  }
-
-  /// <summary>
   /// Checks if project can be saved
   /// </summary>
   public bool CanSave()
@@ -66,7 +58,9 @@ public class ProjectQualityService
   {
     try
     {
-      var projectQuality = await DeserializeProjectAsync(fileData);
+      var projectQuality = Path.GetExtension(fileName).ToLower().EndsWith("xml") ?
+                await FileCommandHelper.DeserializeProjectAsync(fileData) :
+                await FileCommandHelper.UnpackProjectAsync(fileData);
       if (projectQuality != null)
       {
         LoadProject(projectQuality, fileName);
