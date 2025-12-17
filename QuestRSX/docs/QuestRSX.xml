@@ -1509,24 +1509,24 @@
               Looks up a localized string similar to Excel file content:.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.ExcelFilesFilter">
+        <member name="P:QuestRSX.Strings.ExcelFiles">
             <summary>
-              Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls.
+              Looks up a localized string similar to Excel Files.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.ExcelXlsFilesFilter">
+        <member name="P:QuestRSX.Strings.ExcelXlsFiles">
             <summary>
-              Looks up a localized string similar to Old Excel files (*.xls)|*.xls.
+              Looks up a localized string similar to Old Excel files.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.ExcelXlsxFilesFilter">
+        <member name="P:QuestRSX.Strings.ExcelXlsmFiles">
             <summary>
-              Looks up a localized string similar to Excel Workbook files (*.xlsx)|*.xlsx.
+              Looks up a localized string similar to Excel Workbook with macros files.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.ExcelXslmFilesFilter">
+        <member name="P:QuestRSX.Strings.ExcelXlsxFiles">
             <summary>
-              Looks up a localized string similar to Excel Workbook with macros files (*.xlsm)|*.xlsm.
+              Looks up a localized string similar to Excel Workbook files.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.File">
@@ -1564,9 +1564,14 @@
               Looks up a localized string similar to Open file.
             </summary>
         </member>
-        <member name="P:QuestRSX.Strings.QuestFilesFilter">
+        <member name="P:QuestRSX.Strings.QuestXmlFiles">
             <summary>
-              Looks up a localized string similar to Quest XML files (*.qxml)|*.qxml.
+              Looks up a localized string similar to Quest XML files.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.QuestZipFiles">
+            <summary>
+              Looks up a localized string similar to Quest ZIP files.
             </summary>
         </member>
         <member name="P:QuestRSX.Strings.SaveExcelFileAs">

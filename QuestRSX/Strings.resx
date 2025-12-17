@@ -123,8 +123,8 @@
   <data name="EmptyProjectTitle" xml:space="preserve">
     <value>&lt;Project Title&gt;</value>
   </data>
-  <data name="ExcelFilesFilter" xml:space="preserve">
-    <value>Excel Files|*.xlsx;*.xlsm;*.xls</value>
+  <data name="ExcelFiles" xml:space="preserve">
+    <value>Excel Files</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
@@ -150,8 +150,8 @@
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>
   </data>
-  <data name="QuestFilesFilter" xml:space="preserve">
-    <value>Quest XML files (*.qxml)|*.qxml</value>
+  <data name="QuestXmlFiles" xml:space="preserve">
+    <value>Quest XML files</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>All files (*.*)|*.*</value>
@@ -165,14 +165,14 @@
   <data name="SaveQuestFileAs" xml:space="preserve">
     <value>Save Quest file as ...</value>
   </data>
-  <data name="ExcelXlsFilesFilter" xml:space="preserve">
-    <value>Old Excel files (*.xls)|*.xls</value>
+  <data name="ExcelXlsFiles" xml:space="preserve">
+    <value>Old Excel files</value>
   </data>
-  <data name="ExcelXlsxFilesFilter" xml:space="preserve">
-    <value>Excel Workbook files (*.xlsx)|*.xlsx</value>
+  <data name="ExcelXlsxFiles" xml:space="preserve">
+    <value>Excel Workbook files</value>
   </data>
-  <data name="ExcelXslmFilesFilter" xml:space="preserve">
-    <value>Excel Workbook with macros files (*.xlsm)|*.xlsm</value>
+  <data name="ExcelXlsmFiles" xml:space="preserve">
+    <value>Excel Workbook with macros files</value>
   </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
@@ -203,5 +203,8 @@
   </data>
   <data name="BackToHome" xml:space="preserve">
     <value>Back to Start</value>
+  </data>
+  <data name="QuestZipFiles" xml:space="preserve">
+    <value>Quest ZIP files</value>
   </data>
 </root>

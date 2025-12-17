@@ -11,7 +11,7 @@ public partial class App : Application
   public App()
   {
     // Register the Syncfusion license key
-    SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXZfdXRQQmlYWUB+WERWYEg=");
+    SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWH1fd3RcR2hYU0R3XEFWYEs=");
     //Syncfusion.Diagnostics.DebugLogger.EnableLogging = true;
   }
 

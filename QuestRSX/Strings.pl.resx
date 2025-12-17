@@ -123,8 +123,8 @@
   <data name="EmptyProjectTitle" xml:space="preserve">
     <value>&lt;Tytuł projektu&gt;</value>
   </data>
-  <data name="ExcelFilesFilter" xml:space="preserve">
-    <value>Pliki programu Excel|*.xlsx;*.xlsm;*.xls</value>
+  <data name="ExcelFiles" xml:space="preserve">
+    <value>Pliki programu Excel</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Tekst</value>
@@ -150,8 +150,8 @@
   <data name="Comment" xml:space="preserve">
     <value>Komentarz</value>
   </data>
-  <data name="QuestFilesFilter" xml:space="preserve">
-    <value>Pliki Quest XML  (*.qxml)|*.qxml</value>
+  <data name="QuestXmlFiles" xml:space="preserve">
+    <value>Pliki Quest XML</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>Wszystkie pliki (*.*)|*.*</value>
@@ -165,14 +165,14 @@
   <data name="SaveQuestFileAs" xml:space="preserve">
     <value>Zapisz plik Quest jako ...</value>
   </data>
-  <data name="ExcelXlsFilesFilter" xml:space="preserve">
-    <value>Stare pliki Excel (*.xls)|*.xls</value>
+  <data name="ExcelXlsFiles" xml:space="preserve">
+    <value>Stare pliki Excel</value>
   </data>
-  <data name="ExcelXlsxFilesFilter" xml:space="preserve">
-    <value>Skoroszyty Excel (*.xlsx)|*.xlsx</value>
+  <data name="ExcelXlsxFiles" xml:space="preserve">
+    <value>Skoroszyty Excel</value>
   </data>
-  <data name="ExcelXslmFilesFilter" xml:space="preserve">
-    <value>Skoroszyty Excel z makrami (*.xlsm)|*.xlsm</value>
+  <data name="ExcelXlsmFiles" xml:space="preserve">
+    <value>Skoroszyty Excel z makrami</value>
   </data>
   <data name="File" xml:space="preserve">
     <value>Plik</value>
@@ -203,5 +203,8 @@
   </data>
   <data name="BackToHome" xml:space="preserve">
     <value>Wstecz na Start</value>
+  </data>
+  <data name="QuestZipFiles" xml:space="preserve">
+    <value>Pliki Quest ZIP</value>
   </data>
 </root>

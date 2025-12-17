@@ -196,6 +196,31 @@
             Initial state of the window to be opened. Can be an enum value of e.g. System.Windows.WindowState.
             </summary>
         </member>
+        <member name="T:Quest.FileCommandHelper">
+            <summary>
+            Helper class for ProjectQuality serialization and deserialization
+            </summary>
+        </member>
+        <member name="M:Quest.FileCommandHelper.SerializeProjectAsync(Quest.ProjectQuality)">
+            <summary>
+            Serializes the current project to XML format
+            </summary>
+        </member>
+        <member name="M:Quest.FileCommandHelper.DeserializeProjectAsync(System.Byte[])">
+            <summary>
+            Deserializes project from XML data
+            </summary>
+        </member>
+        <member name="M:Quest.FileCommandHelper.PackProjectAsync(Quest.ProjectQuality)">
+            <summary>
+            Packs the current project to XML format inside a ZIP archive
+            </summary>
+        </member>
+        <member name="M:Quest.FileCommandHelper.UnpackProjectAsync(System.Byte[])">
+            <summary>
+            Unpack ZIP archive and deserializes project from XML data
+            </summary>
+        </member>
         <member name="T:Quest.QuestCommands">
             <summary>
             Enumeration of command identifiers used in the Quest application.

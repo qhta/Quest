@@ -21,7 +21,7 @@ public class FileImportCommand : Command
       if (filename == null)
       {
         // Open a file dialog to select a file
-        var fileTypes = new[] { Strings.ExcelFilesFilter };
+        var fileTypes = new[] { FilenameTools.MakeFilterString(Strings.ExcelFiles, ".xls",".xlsx",".xlsm") };
         //var ext = Path.GetExtension(filename)?.ToLowerInvariant();
         int filterIndex = 1;
         var openFileDialog = new OpenFileDialog

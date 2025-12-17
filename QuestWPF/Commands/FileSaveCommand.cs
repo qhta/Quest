@@ -36,10 +36,10 @@ public class FileSaveCommand : Command
       if (parameter is FileSaveData data)
       {
         if (data.DataObject is WorkbookInfoVM workbookInfoVM && workbookInfoVM.IsLoaded)
-{          await SaveWorkbook(workbookInfoVM, data.Filename, data.SaveAs);}
+{          await SaveWorkbook(workbookInfoVM, data.Filename ?? workbookInfoVM.FileName, data.SaveAs);}
         else
         if (data.DataObject is ProjectQualityVM projectQualityVM)
-          await SaveProjectQuality(projectQualityVM, data.Filename, data.SaveAs);
+          await SaveProjectQuality(projectQualityVM, data.Filename ?? projectQualityVM.FileName, data.SaveAs);
       }
     }
     catch (Exception e)
@@ -56,7 +56,10 @@ public class FileSaveCommand : Command
     {
       if (filename == null)
         filename = workbookInfo.FileName;
-      var fileTypes = new[] { Strings.ExcelXlsxFilesFilter, Strings.ExcelXslmFilesFilter, Strings.ExcelXlsFilesFilter };
+      var fileTypes = new[] { FilenameTools.MakeFilterString(Strings.ExcelXlsFiles, ".xls"), 
+                              FilenameTools.MakeFilterString(Strings.ExcelXlsxFiles, ".xlsx"),
+                              FilenameTools.MakeFilterString(Strings.ExcelXlsmFiles, ".xlsm"),
+      };
       var ext = Path.GetExtension(filename)?.ToLowerInvariant() ?? ".xlsx";
       int filterIndex = 1;
       if (ext == ".xlsx")
@@ -124,7 +127,9 @@ public class FileSaveCommand : Command
     {
       if (filename == null)
         filename = projectQuality.FileName;
-      var fileTypes = new[] { Strings.QuestFilesFilter};
+      var fileTypes = new[] { FilenameTools.MakeFilterString(Strings.QuestXmlFiles, ".xml"),
+                              FilenameTools.MakeFilterString(Strings.QuestZipFiles, ".zip")
+      };
       //var ext = Path.GetExtension(filename)?.ToLowerInvariant();
       int filterIndex = 1;
       var saveFileDialog = new SaveFileDialog
@@ -140,12 +145,17 @@ public class FileSaveCommand : Command
         return;
     }
 
-    if (!String.IsNullOrEmpty(filename))
+    if (!String.IsNullOrEmpty(filename))              
     {
+      var ext = Path.GetExtension(filename).ToLowerInvariant();
+      var bytes = ext.EndsWith("xml") ?
+                    await FileCommandHelper.SerializeProjectAsync(projectQuality.Model):
+                    await FileCommandHelper.PackProjectAsync(projectQuality.Model);
+
       await using (var writer = new StreamWriter(filename))
       {
-        var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
-        xmlSerializer.Serialize(writer, projectQuality.Model);
+
+        writer.BaseStream.Write(bytes, 0, bytes.Length);
       }
     }
   }

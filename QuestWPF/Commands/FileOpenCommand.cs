@@ -23,7 +23,8 @@ public class FileOpenCommand : Command
       if (filename == null)
       {
         // Open a file dialog to select a file
-        var fileTypes = new[] { Strings.QuestFilesFilter };
+        var fileTypes = new[] { FilenameTools.MakeFilterString(Strings.QuestXmlFiles, ".xml"),
+                                FilenameTools.MakeFilterString(Strings.QuestZipFiles, ".zip")};
         //var ext = Path.GetExtension(filename)?.ToLowerInvariant();
         int filterIndex = 1;
         var openFileDialog = new OpenFileDialog
@@ -63,23 +64,21 @@ public class FileOpenCommand : Command
     ProjectQuality? projectQuality = null;
     try
     {
-      await Task.Run(() =>
-      {
-        using (var reader = new StreamReader(filename))
-        {
-          var xmlSerializer = new Qhta.Xml.Serialization.QXmlSerializer(typeof(ProjectQuality));
-          projectQuality = xmlSerializer.Deserialize(reader) as ProjectQuality;
-        }
-      });
+      projectQuality = (Path.GetFileNameWithoutExtension(filename).EndsWith(".xml", StringComparison.OrdinalIgnoreCase)) ?
+        await FileCommandHelper.DeserializeProjectAsync(await File.ReadAllBytesAsync(filename)) :
+        await FileCommandHelper.UnpackProjectAsync(await File.ReadAllBytesAsync(filename));
+
       if (projectQuality != null)
       {
         var projectQualityVM = new ProjectQualityVM(projectQuality);
+        projectQualityVM.FileName = filename;
         var questView = new QuestView(projectQualityVM);
         CommandCenter.ExecuteCommand(WindowCommands.OpenWindow, new WindowOpenData(questView, "Quest #", filename));
         return projectQualityVM;
       }
 
-    } catch (Exception e)
+    }
+    catch (Exception e)
     {
       MessageBox.Show(e.Message);
     }

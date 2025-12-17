@@ -115,38 +115,38 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excel Files|*.xlsx;*.xlsm;*.xls.
+        ///   Looks up a localized string similar to Excel Files.
         /// </summary>
-        public static string ExcelFilesFilter {
+        public static string ExcelFiles {
             get {
-                return ResourceManager.GetString("ExcelFilesFilter", resourceCulture);
+                return ResourceManager.GetString("ExcelFiles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Old Excel files (*.xls)|*.xls.
+        ///   Looks up a localized string similar to Old Excel files.
         /// </summary>
-        public static string ExcelXlsFilesFilter {
+        public static string ExcelXlsFiles {
             get {
-                return ResourceManager.GetString("ExcelXlsFilesFilter", resourceCulture);
+                return ResourceManager.GetString("ExcelXlsFiles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excel Workbook files (*.xlsx)|*.xlsx.
+        ///   Looks up a localized string similar to Excel Workbook with macros files.
         /// </summary>
-        public static string ExcelXlsxFilesFilter {
+        public static string ExcelXlsmFiles {
             get {
-                return ResourceManager.GetString("ExcelXlsxFilesFilter", resourceCulture);
+                return ResourceManager.GetString("ExcelXlsmFiles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excel Workbook with macros files (*.xlsm)|*.xlsm.
+        ///   Looks up a localized string similar to Excel Workbook files.
         /// </summary>
-        public static string ExcelXslmFilesFilter {
+        public static string ExcelXlsxFiles {
             get {
-                return ResourceManager.GetString("ExcelXslmFilesFilter", resourceCulture);
+                return ResourceManager.GetString("ExcelXlsxFiles", resourceCulture);
             }
         }
         
@@ -214,11 +214,20 @@ namespace QuestRSX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quest XML files (*.qxml)|*.qxml.
+        ///   Looks up a localized string similar to Quest XML files.
         /// </summary>
-        public static string QuestFilesFilter {
+        public static string QuestXmlFiles {
             get {
-                return ResourceManager.GetString("QuestFilesFilter", resourceCulture);
+                return ResourceManager.GetString("QuestXmlFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quest ZIP files.
+        /// </summary>
+        public static string QuestZipFiles {
+            get {
+                return ResourceManager.GetString("QuestZipFiles", resourceCulture);
             }
         }
         

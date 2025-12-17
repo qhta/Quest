@@ -1,7 +1,3 @@
-using System.Text;
-
-using Qhta.Xml.Serialization;
-
 using Quest;
 
 namespace QuestWASM;
@@ -35,19 +31,7 @@ public class ProjectQualityService
   /// </summary>
   public async Task<byte[]> SerializeProjectAsync()
   {
-    if (CurrentProject == null)
-      throw new InvalidOperationException("No project loaded");
-
-    return await Task.Run(() =>
-    {
-      using var memoryStream = new MemoryStream();
-      using (var writer = new StreamWriter(memoryStream, Encoding.UTF8, leaveOpen: true))
-      {
-        var xmlSerializer = new QXmlSerializer(typeof(ProjectQuality));
-        xmlSerializer.Serialize(writer, CurrentProject.Model);
-      }
-      return memoryStream.ToArray();
-    });
+    return await FileCommandHelper.SerializeProjectAsync(CurrentProject!.Model);
   }
 
   /// <summary>
@@ -55,13 +39,7 @@ public class ProjectQualityService
   /// </summary>
   public async Task<ProjectQuality?> DeserializeProjectAsync(byte[] data)
   {
-    return await Task.Run(() =>
-    {
-      using var memoryStream = new MemoryStream(data);
-      using var reader = new StreamReader(memoryStream);
-      var xmlSerializer = new QXmlSerializer(typeof(ProjectQuality));
-      return xmlSerializer.Deserialize(reader) as ProjectQuality;
-    });
+    return await FileCommandHelper.DeserializeProjectAsync(data);
   }
 
   /// <summary>

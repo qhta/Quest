@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Qhta.MVVM" Version="4.18.0" />
+    <PackageReference Include="Qhta.Xml.Serialization" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
