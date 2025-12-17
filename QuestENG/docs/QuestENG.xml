@@ -957,13 +957,13 @@
             <param name="parent">Parent view model</param>
             <param name="items">Collection of entities to add their view models.</param>
         </member>
-        <member name="M:Quest.QualityNodeVMCollection`1.InsertItem(System.Int32,`0)">
+        <member name="M:Quest.QualityNodeVMCollection`1.QualityNodeVMCollection_CollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
             <summary>
-            Inserts the specified item into the collection at the specified index setting its parent if necessary
-            and subscribing to its PropertyChanged event.
+            If new item is added, its parent is set to the collection's parent and its PropertyChanged event is subscribed to.
             </summary>
-            <param name="index">The zero-based index at which the item should be inserted.</param>
-            <param name="item">The item to insert into the collection. Cannot be <see langword="null"/>.</param>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Quest.QualityNodeVMCollection`1.Item_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>

@@ -32,7 +32,7 @@
 }
 
 @code {
-  private string? acceptedFileTypes = ".xls,.xlsx,.xlsm,.qxml";
+  private string? acceptedFileTypes = ".qxml,.quest,.xls,.xlsx,.xlsm";
   private string? fileName;
   private long fileSize;
   private string? errorMessage;
@@ -67,7 +67,7 @@
       await file.OpenReadStream(maxAllowedSize: 50 * 1024 * 1024).CopyToAsync(memoryStream);
       memoryStream.Position = 0;
 
-      errorMessage = "Excel import not yet implemented. Please use .qxml files.";
+      errorMessage = "Excel import not yet implemented.";
     }
     catch (Exception ex)
     {

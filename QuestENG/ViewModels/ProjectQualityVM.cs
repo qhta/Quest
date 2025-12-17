@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// ViewModel for a project quality assessment

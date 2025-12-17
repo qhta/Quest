@@ -8,7 +8,7 @@ public class QualityFactorVMCollection : QualityNodeVMCollection<QualityFactorVM
   /// <summary>
   /// Parent view model
   /// </summary>
-  public new DocumentQualityVM Parent { get; set; }
+  public new DocumentQualityVM Parent { get => (DocumentQualityVM)base.Parent; set => base.Parent = value; }
 
   /// <summary>
   /// Initializes a new instance of the <see cref="QualityFactorVMCollection"/> class with a list of <see cref="QualityFactor"/>.
@@ -20,7 +20,6 @@ public class QualityFactorVMCollection : QualityNodeVMCollection<QualityFactorVM
   {
     foreach (var item in items)
       Add(new QualityFactorVM(parent, this, item));
-    Parent = parent;
   }
 
 

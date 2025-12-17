@@ -1,12 +1,9 @@
-﻿using System.Linq;
-using System.Runtime.CompilerServices;
-
-namespace Quest;
+﻿namespace Quest;
 
 /// <summary>
 /// Observable collection of <see cref="IQualityNodeVM"/> objects.
 /// </summary>
-public class QualityNodeVMCollection<T> : ObservableList<T> where T: IQualityNodeVM
+public class QualityNodeVMCollection<T> : ObservableList<T> where T : IQualityNodeVM
 {
   /// <summary>
   /// Parent view model
@@ -22,30 +19,36 @@ public class QualityNodeVMCollection<T> : ObservableList<T> where T: IQualityNod
     base([])
   {
     Parent = parent;
+    CollectionChanged += QualityNodeVMCollection_CollectionChanged;
     foreach (var item in items)
     {
-      if (item is QualityFactor qualityFactor) 
+      if (item is QualityFactor qualityFactor)
         Add((T)(object)new QualityFactorVM(parent, this, qualityFactor));
-      else if (item is QualityMetrics qualityMetrics) 
+      else if (item is QualityMetrics qualityMetrics)
         Add((T)(object)new QualityMetricsVM(parent, this, qualityMetrics));
-      else if (item is QualityMeasure qualityMeasure) 
+      else if (item is QualityMeasure qualityMeasure)
         Add((T)(object)new QualityMeasureVM(parent, this, qualityMeasure));
       else throw new NotImplementedException("Invalid item type when creating ViewModel");
     }
   }
 
   /// <summary>
-  /// Inserts the specified item into the collection at the specified index setting its parent if necessary
-  /// and subscribing to its PropertyChanged event.
+  /// If new item is added, its parent is set to the collection's parent and its PropertyChanged event is subscribed to.
   /// </summary>
-  /// <param name="index">The zero-based index at which the item should be inserted.</param>
-  /// <param name="item">The item to insert into the collection. Cannot be <see langword="null"/>.</param>
-  protected override void InsertItem(int index, T item)
+  /// <param name="sender"></param>
+  /// <param name="e"></param>
+  /// <exception cref="NotImplementedException"></exception>
+  private void QualityNodeVMCollection_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
   {
-    base.InsertItem(index, item);
-    if (item.Parent != Parent)
-      item.Parent = Parent;
-    item.PropertyChanged += Item_PropertyChanged;
+    if (e.NewItems != null)
+    {
+      foreach (T item in e.NewItems)
+      {
+        if (item.Parent != Parent)
+          item.Parent = Parent;
+        item.PropertyChanged += Item_PropertyChanged;
+      }
+    }
   }
 
   private bool _isRefreshing;
