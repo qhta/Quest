@@ -22,6 +22,7 @@ public class _Commander
     CommandCenter.RegisterCommand(QuestCommands.Import, StartImportCommand = new StartImportCommand());
     CommandCenter.RegisterCommand(FileCommands.Save, FileSaveCommand, FileSaveData = new FileSaveData(mainWindow));
     CommandCenter.RegisterCommand(FileCommands.SaveAs, FileSaveCommand, FileSaveAsData = new FileSaveData(mainWindow, true));
+    CommandCenter.RegisterCommand(ApplicationCommands.Copy, ViewCopyCommand, ViewCopyData = new ViewCopyData(mainWindow));
     ClearQuestionnaireCommand = new RelayCommand<Object>(ClearQuestionnaire, CanClearQuestionnaire);
   }
 
@@ -56,13 +57,22 @@ public class _Commander
   /// <summary>
   /// Parameter for the <see cref="FileSaveCommand"/>.
   /// </summary>
-  public FileSaveData FileSaveData { get; set; }
+  public FileSaveData FileSaveData { get; }
 
   /// <summary>
   /// Parameter for the <see cref="FileSaveCommand"/> registered as <see cref="FileCommands.SaveAs"/>.
   /// </summary>
-  public FileSaveData FileSaveAsData { get; set; }
+  public FileSaveData FileSaveAsData { get; }
 
+  /// <summary>
+  /// Command to copy current view to clipboard.
+  /// </summary>
+  public ViewCopyCommand ViewCopyCommand { get; } = new();
+
+  /// <summary>
+  /// Parameter for the <see cref="ViewCopyCommand"/>.
+  /// </summary>
+  public ViewCopyData ViewCopyData { get; }
 
   #region ClearQuestionnaire Command
   /// <summary>

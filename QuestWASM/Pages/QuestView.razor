@@ -190,9 +190,9 @@ else
       var data = await ProjectService.SerializeProjectAsync();
 
       // Generate filename
-      var fileName = ProjectService.CurrentFileName ?? "Project.quest";
-      if (!fileName.EndsWith(".quest", StringComparison.OrdinalIgnoreCase))
-        fileName += ".quest";
+      var fileName = ProjectService.CurrentFileName ?? "Project.xml";
+      if (!fileName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
+        fileName += ".xml";
 
       // Trigger download
       await FileDownloadService.SaveAsAsync(fileName, "application/xml", data);

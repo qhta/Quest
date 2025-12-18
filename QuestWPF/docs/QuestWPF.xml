@@ -67,11 +67,11 @@
             </summary>
             <param name="parameter"></param>
         </member>
-        <member name="M:QuestWPF.FileOpenCommand.OpenQxmlFile(System.String)">
+        <member name="M:QuestWPF.FileOpenCommand.OpenQuestFile(System.String)">
             <summary>
-            Opens an Qxml file given its filename.
-            First, it deserializes the file into a ProjectQuality object. 
-            Next, it creates a ProjectQualityVM from the ProjectQuality object
+            Opens a Quest file given its filename.
+            It uses the appropriate method of FileCommandHelper to read the file contents.
+            Then, it creates a ProjectQualityVM from the ProjectQuality object
             and then opens a new QuestView window to display the project.
             </summary>
             <param name="filename"></param>
@@ -137,6 +137,43 @@
         <member name="M:QuestWPF.StartImportCommand.Execute(System.Object)">
             <inheritdoc/>
         </member>
+        <member name="T:QuestWPF.ViewCopyCommand">
+            <summary>
+            Command to copy current view to clipboard.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.CanExecute(System.Object)">
+            <summary>
+            Determines whether the command can execute with the specified parameter.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.Execute(System.Object)">
+            <summary>
+            A method to execute the command. The parameter should be a reference to current QuestView.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuestView(QuestWPF.Views.DocumentQuestView)">
+            <summary>
+            Copies the current DocumentQuestView to clipboard as XML text.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:QuestWPF.ViewCopyData">
+            <summary>
+            Data class for view copy operations.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.ViewCopyData.#ctor(QuestWPF.MainWindow)">
+            <summary>
+            Data class for view copy operations.
+            </summary>
+        </member>
+        <member name="P:QuestWPF.ViewCopyData.ActiveView">
+            <summary>
+            Gets the data object associated with the currently active view in the main window.
+            </summary>
+        </member>
         <member name="T:QuestWPF._Commander">
             <summary>
             Main commander responsible for managing operations within the system.
@@ -187,6 +224,16 @@
         <member name="P:QuestWPF._Commander.FileSaveAsData">
             <summary>
             Parameter for the <see cref="P:QuestWPF._Commander.FileSaveCommand"/> registered as <see cref="F:Qhta.MVVM.FileCommands.SaveAs"/>.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.ViewCopyCommand">
+            <summary>
+            Command to copy current view to clipboard.
+            </summary>
+        </member>
+        <member name="P:QuestWPF._Commander.ViewCopyData">
+            <summary>
+            Parameter for the <see cref="P:QuestWPF._Commander.ViewCopyCommand"/>.
             </summary>
         </member>
         <member name="P:QuestWPF._Commander.ClearQuestionnaireCommand">
@@ -665,6 +712,36 @@
             empty.</param>
             <returns>A filter string in the format "Description (*.ext1;*.ext2)|*.ext1;*.ext2" that can be used with file dialog
             filters.</returns>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
         </member>
     </members>
 </doc>

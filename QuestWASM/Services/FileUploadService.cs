@@ -19,7 +19,7 @@ public class FileUploadService
     /// </summary>
     /// <param name="accept">File type filter (e.g., ".quest,.xml")</param>
     /// <returns>Tuple of filename and file content, or null if cancelled</returns>
-    public async Task<(string FileName, byte[] Content)?> OpenFileAsync(string accept = ".qxml,.quest")
+    public async Task<(string FileName, byte[] Content)?> OpenFileAsync(string accept = ".xml,.zip")
     {
         try
         {

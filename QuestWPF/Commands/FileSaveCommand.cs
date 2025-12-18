@@ -147,8 +147,7 @@ public class FileSaveCommand : Command
 
     if (!String.IsNullOrEmpty(filename))              
     {
-      var ext = Path.GetExtension(filename).ToLowerInvariant();
-      var bytes = ext.EndsWith("xml") ?
+      var bytes = filename.ToLower().EndsWith("xml") ?
                     await FileCommandHelper.SerializeProjectAsync(projectQuality.Model):
                     await FileCommandHelper.PackProjectAsync(projectQuality.Model);
 

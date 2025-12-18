@@ -45,7 +45,12 @@
           Header="{x:Static rsx:MenuStrings.Import}" 
           Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.FileImportCommand}" />
       </MenuItem>
-      <MenuItem Header="{x:Static rsx:MenuStrings.Edit}"/>
+      <MenuItem Header="{x:Static rsx:MenuStrings.Edit}">
+        <MenuItem 
+          Header="{x:Static rsx:MenuStrings.Copy}" 
+          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.ViewCopyCommand}"
+          CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, Path=Commander.ViewCopyData}" />
+      </MenuItem>
       <MenuItem Header="{x:Static rsx:MenuStrings.Tools}"/>
       <MenuItem Header="{x:Static rsx:MenuStrings.Window}"/>
       <MenuItem Header="{x:Static rsx:MenuStrings.Help}"/>

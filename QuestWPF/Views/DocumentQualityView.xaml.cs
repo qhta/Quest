@@ -23,7 +23,13 @@ public partial class DocumentQualityView : UserControl
     {
       if (documentQualityVM.Parent is ProjectQualityVM projectQualityVM)
       {
+        if (Resources.Contains("GradeValuesProvider"))
+          Resources.Remove("GradeValuesProvider");
         Resources["GradeValuesProvider"] = projectQualityVM.Scale;
+        if (projectQualityVM.Scale is not null)
+        {
+          Debug.WriteLine($"DocumentQualityView: Setting GradeValuesProvider for Document '{documentQualityVM.DocumentTitle}' to Scale");
+        }
       }
     }
   }

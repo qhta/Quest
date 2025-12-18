@@ -41,7 +41,7 @@ public class FileOpenCommand : Command
       }
       if (!String.IsNullOrEmpty(filename))
       {
-        await OpenQxmlFile(filename);
+        await OpenQuestFile(filename);
       }
 
     }
@@ -52,19 +52,19 @@ public class FileOpenCommand : Command
   }
 
   /// <summary>
-  /// Opens an Qxml file given its filename.
-  /// First, it deserializes the file into a ProjectQuality object. 
-  /// Next, it creates a ProjectQualityVM from the ProjectQuality object
+  /// Opens a Quest file given its filename.
+  /// It uses the appropriate method of FileCommandHelper to read the file contents.
+  /// Then, it creates a ProjectQualityVM from the ProjectQuality object
   /// and then opens a new QuestView window to display the project.
   /// </summary>
   /// <param name="filename"></param>
   /// <returns></returns>
-  public async Task<ProjectQualityVM?> OpenQxmlFile(string filename)
+  public async Task<ProjectQualityVM?> OpenQuestFile(string filename)
   {
     ProjectQuality? projectQuality = null;
     try
     {
-      projectQuality = (Path.GetFileNameWithoutExtension(filename).EndsWith(".xml", StringComparison.OrdinalIgnoreCase)) ?
+      projectQuality = filename.ToLower().EndsWith("xml") ?
         await FileCommandHelper.DeserializeProjectAsync(await File.ReadAllBytesAsync(filename)) :
         await FileCommandHelper.UnpackProjectAsync(await File.ReadAllBytesAsync(filename));
 

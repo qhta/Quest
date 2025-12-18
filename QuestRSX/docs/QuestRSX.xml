@@ -201,6 +201,11 @@
               Looks up a localized string similar to Close.
             </summary>
         </member>
+        <member name="P:QuestRSX.MenuStrings.Copy">
+            <summary>
+              Looks up a localized string similar to _Copy.
+            </summary>
+        </member>
         <member name="P:QuestRSX.MenuStrings.Edit">
             <summary>
               Looks up a localized string similar to _Edit.

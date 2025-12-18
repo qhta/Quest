@@ -162,4 +162,7 @@
   <data name="Window" xml:space="preserve">
     <value>_Okno</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>_Kopiuj</value>
+  </data>
 </root>

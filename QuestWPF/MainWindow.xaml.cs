@@ -14,7 +14,7 @@ public partial class MainWindow : Window
   /// </remarks>
   public MainWindow()
   {
-    Commander = new _Commander ( this );
+    Commander = new _Commander(this);
     InitializeComponent();
     //if (DataContext is MDIViewModel viewModel)
     //{
@@ -45,13 +45,13 @@ public partial class MainWindow : Window
     {
       if (windowName.Contains('#'))
       {
-        var nameCount = viewModel.DockCollections.Count(dockItem => dockItem.Name.StartsWith(windowName))+1;
-        windowName =windowName.Replace("#",nameCount.ToString()).Replace(" ","_");
+        var nameCount = viewModel.DockCollections.Count(dockItem => dockItem.Name.StartsWith(windowName)) + 1;
+        windowName = windowName.Replace("#", nameCount.ToString()).Replace(" ", "_");
       }
 
       var dockItem = new DockItem
       {
-        Name =  windowName,
+        Name = windowName,
         Header = header,
         State = DockState.Float,
         CanFloatMaximize = true,
@@ -97,10 +97,9 @@ public partial class MainWindow : Window
   private void DockingManager_OnActiveWindowChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
   {
     var activeWindow = e.NewValue;
-    if (activeWindow is ContentControl contentControl)
-    {
-      ActiveView = contentControl.Content as Control;
-      Commander.FileSaveCommand.NotifyCanExecuteChanged();
-    }
+    ActiveView = (activeWindow as ContentControl)?.Content as Control;
+    Commander.FileSaveCommand.NotifyCanExecuteChanged();
+    Commander.ViewCopyCommand.NotifyCanExecuteChanged();
+
   }
 }

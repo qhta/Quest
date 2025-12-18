@@ -58,7 +58,7 @@ public class ProjectQualityService
   {
     try
     {
-      var projectQuality = Path.GetExtension(fileName).ToLower().EndsWith("xml") ?
+      var projectQuality = fileName.ToLower().EndsWith("xml") ?
                 await FileCommandHelper.DeserializeProjectAsync(fileData) :
                 await FileCommandHelper.UnpackProjectAsync(fileData);
       if (projectQuality != null)
