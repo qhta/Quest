@@ -19,7 +19,7 @@
       <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
         <ComboBox 
         Text="{Binding Path=Grade}"
-        ItemsSource="{DynamicResource GradeValuesProvider}" 
+       ItemsSource="{Binding Path=Scale}"  
         DisplayMemberPath="Text"
         SelectedValuePath="Text"
         HorizontalContentAlignment="Center"
