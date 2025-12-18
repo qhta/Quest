@@ -148,8 +148,8 @@ public class FileSaveCommand : Command
     if (!String.IsNullOrEmpty(filename))              
     {
       var bytes = filename.ToLower().EndsWith("xml") ?
-                    await FileCommandHelper.SerializeProjectAsync(projectQuality.Model):
-                    await FileCommandHelper.PackProjectAsync(projectQuality.Model);
+                    await FileCommandHelper.SerializeProjectQualityAsync(projectQuality.Model):
+                    await FileCommandHelper.PackProjectQualityAsync(projectQuality.Model);
 
       await using (var writer = new StreamWriter(filename))
       {

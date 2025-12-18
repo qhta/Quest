@@ -33,16 +33,40 @@ public class ViewCopyCommand : Command
         var projectQualityVM = questView.DataContext as ProjectQualityVM;
         if (projectQualityVM != null)
         {
-          var bytes = await FileCommandHelper.SerializeProjectAsync(projectQualityVM.Model);
-          Clipboard.SetData(DataFormats.Serializable, bytes);
-          var memoryStream = new MemoryStream(bytes);
-          using (var reader = new StreamReader(memoryStream))
+          if (questView.ModelTreeView.SelectedItem is DocumentQualityVM documentQualityVM)
           {
-            var str = reader.ReadToEnd();
-            Clipboard.SetText(str);
+            CopyDocumentQuality(documentQualityVM);
           }
+          else
+            CopyProjectQuality(projectQualityVM);
         }
       }
+    }
+    catch (Exception e)
+    {
+      MessageBox.Show(e.Message);
+    }
+  }
+  /// <summary>
+  /// Copies the current ProjectQualityVM to clipboard as  serializable and as XML text.
+  /// </summary>
+  /// <returns></returns>
+  public async void CopyProjectQuality(ProjectQualityVM projectQualityVM)
+  {
+    ProjectQuality? model = projectQualityVM.Model;
+    if (model == null)
+      return;
+    try
+    {
+      var bytes = await FileCommandHelper.SerializeProjectQualityAsync(model);
+      Clipboard.SetData(DataFormats.Serializable, bytes);
+      var memoryStream = new MemoryStream(bytes);
+      using (var reader = new StreamReader(memoryStream))
+      {
+        var str = reader.ReadToEnd();
+        Clipboard.SetText(str);
+      }
+
     }
     catch (Exception e)
     {
@@ -54,15 +78,21 @@ public class ViewCopyCommand : Command
   /// Copies the current DocumentQuestView to clipboard as XML text.
   /// </summary>
   /// <returns></returns>
-  public async void CopyDocumentQuestView(DocumentQuestView view)
+  public async void CopyDocumentQuality(DocumentQualityVM documentQualityVM)
   {
-    DocumentQuality? model = (view.DataContext as DocumentQualityVM)?.Model;
+    DocumentQuality? model = documentQualityVM.Model;
     if (model == null)
       return;
     try
     {
-      //var serializedData = await FileCommandHelper.SerializeProjectAsync(model);
-      //Clipboard.SetData(DataFormats.Serializable, serializedData);
+      var bytes = await FileCommandHelper.SerializeDocumentQualityAsync(model);
+      Clipboard.SetData(DataFormats.Serializable, bytes);
+      var memoryStream = new MemoryStream(bytes);
+      using (var reader = new StreamReader(memoryStream))
+      {
+        var str = reader.ReadToEnd();
+        Clipboard.SetText(str);
+      }
 
     }
     catch (Exception e)

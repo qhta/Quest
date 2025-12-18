@@ -82,8 +82,8 @@
 
       ProjectQuality? projectQuality = 
       Path.GetExtension(file.Name).ToLowerInvariant().EndsWith("xml") ?
-        await FileCommandHelper.DeserializeProjectAsync(bytes) :
-        await FileCommandHelper.UnpackProjectAsync(bytes);
+        await FileCommandHelper.DeserializeProjectQualityAsync(bytes) :
+        await FileCommandHelper.UnpackProjectQualityAsync(bytes);
       if (projectQuality != null)
       {
         // Use the service to store the project

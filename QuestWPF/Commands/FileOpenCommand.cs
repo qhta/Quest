@@ -65,8 +65,8 @@ public class FileOpenCommand : Command
     try
     {
       projectQuality = filename.ToLower().EndsWith("xml") ?
-        await FileCommandHelper.DeserializeProjectAsync(await File.ReadAllBytesAsync(filename)) :
-        await FileCommandHelper.UnpackProjectAsync(await File.ReadAllBytesAsync(filename));
+        await FileCommandHelper.DeserializeProjectQualityAsync(await File.ReadAllBytesAsync(filename)) :
+        await FileCommandHelper.UnpackProjectQualityAsync(await File.ReadAllBytesAsync(filename));
 
       if (projectQuality != null)
       {

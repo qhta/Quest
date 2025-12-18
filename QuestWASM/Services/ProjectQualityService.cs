@@ -31,7 +31,7 @@ public class ProjectQualityService
   /// </summary>
   public async Task<byte[]> SerializeProjectAsync()
   {
-    return await FileCommandHelper.SerializeProjectAsync(CurrentProject!.Model);
+    return await FileCommandHelper.SerializeProjectQualityAsync(CurrentProject!.Model);
   }
 
   /// <summary>
@@ -59,8 +59,8 @@ public class ProjectQualityService
     try
     {
       var projectQuality = fileName.ToLower().EndsWith("xml") ?
-                await FileCommandHelper.DeserializeProjectAsync(fileData) :
-                await FileCommandHelper.UnpackProjectAsync(fileData);
+                await FileCommandHelper.DeserializeProjectQualityAsync(fileData) :
+                await FileCommandHelper.UnpackProjectQualityAsync(fileData);
       if (projectQuality != null)
       {
         LoadProject(projectQuality, fileName);

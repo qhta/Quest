@@ -153,7 +153,13 @@
             </summary>
             <param name="parameter"></param>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuestView(QuestWPF.Views.DocumentQuestView)">
+        <member name="M:QuestWPF.ViewCopyCommand.CopyProjectQuality(Quest.ProjectQualityVM)">
+            <summary>
+            Copies the current ProjectQualityVM to clipboard as  serializable and as XML text.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuality(Quest.DocumentQualityVM)">
             <summary>
             Copies the current DocumentQuestView to clipboard as XML text.
             </summary>
@@ -712,36 +718,6 @@
             empty.</param>
             <returns>A filter string in the format "Description (*.ext1;*.ext2)|*.ext1;*.ext2" that can be used with file dialog
             filters.</returns>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
-            </summary>
         </member>
     </members>
 </doc>

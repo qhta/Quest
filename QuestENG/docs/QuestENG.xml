@@ -198,27 +198,37 @@
         </member>
         <member name="T:Quest.FileCommandHelper">
             <summary>
-            Helper class for ProjectQuality serialization and deserialization
+            Helper class for project quality serialization and deserialization
             </summary>
         </member>
-        <member name="M:Quest.FileCommandHelper.SerializeProjectAsync(Quest.ProjectQuality)">
+        <member name="M:Quest.FileCommandHelper.SerializeProjectQualityAsync(Quest.ProjectQuality)">
             <summary>
-            Serializes the current project to XML format
+            Serializes the project quality to XML format
             </summary>
         </member>
-        <member name="M:Quest.FileCommandHelper.DeserializeProjectAsync(System.Byte[])">
+        <member name="M:Quest.FileCommandHelper.DeserializeProjectQualityAsync(System.Byte[])">
             <summary>
-            Deserializes project from XML data
+            Deserializes project quality from XML data
             </summary>
         </member>
-        <member name="M:Quest.FileCommandHelper.PackProjectAsync(Quest.ProjectQuality)">
+        <member name="M:Quest.FileCommandHelper.PackProjectQualityAsync(Quest.ProjectQuality)">
             <summary>
-            Packs the current project to XML format inside a ZIP archive
+            Packs the project quality to XML format inside a ZIP archive
             </summary>
         </member>
-        <member name="M:Quest.FileCommandHelper.UnpackProjectAsync(System.Byte[])">
+        <member name="M:Quest.FileCommandHelper.UnpackProjectQualityAsync(System.Byte[])">
             <summary>
-            Unpack ZIP archive and deserializes project from XML data
+            Unpack ZIP archive and deserializes project quality from XML data
+            </summary>
+        </member>
+        <member name="M:Quest.FileCommandHelper.SerializeDocumentQualityAsync(Quest.DocumentQuality)">
+            <summary>
+            Serializes the document quality to XML format
+            </summary>
+        </member>
+        <member name="M:Quest.FileCommandHelper.DeserializeDocumentQUalityAsync(System.Byte[])">
+            <summary>
+            Deserializes document quality from XML data
             </summary>
         </member>
         <member name="T:Quest.QuestCommands">
