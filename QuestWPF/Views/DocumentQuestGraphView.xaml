@@ -12,7 +12,8 @@
   xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
-  d:DesignHeight="450" d:DesignWidth="810">
+  d:DesignHeight="450" d:DesignWidth="810"
+  Focusable="True">
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -20,45 +21,47 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </UserControl.Resources>
-  <Grid 
-      d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
-    <chart:SfChart x:Name="columnChart" ColorModel="{StaticResource CustomPalette}" 
-                   Palette="Custom" Margin="5,5,5,5">
+  <Border x:Name="FocusBorder" BorderThickness="2" BorderBrush="Gray">
+    <Grid 
+        d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
+      <chart:SfChart x:Name="columnChart" ColorModel="{StaticResource CustomPalette}" 
+                     Palette="Custom" Margin="5,5,5,5"
+                     GotFocus="OnGotFocus">
 
-      <chart:SfChart.PrimaryAxis>
-        <chart:CategoryAxis ShowGridLines="False" LabelPlacement="OnTicks" 
-                            FontSize="12" LabelRotationAngle="90" >
-        </chart:CategoryAxis>
-      </chart:SfChart.PrimaryAxis>
+        <chart:SfChart.PrimaryAxis>
+          <chart:CategoryAxis ShowGridLines="False" LabelPlacement="OnTicks" 
+                              FontSize="12" LabelRotationAngle="90" >
+          </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
 
-      <chart:SfChart.SecondaryAxis>
-        <chart:NumericalAxis Interval="1" TickLineSize="10" LabelFormat="0.0" Margin="5,0,0,0">
-          <chart:NumericalAxis.LabelStyle>
-            <chart:LabelStyle FontSize="12"/>
-          </chart:NumericalAxis.LabelStyle>
-        </chart:NumericalAxis>
-      </chart:SfChart.SecondaryAxis>
+        <chart:SfChart.SecondaryAxis>
+          <chart:NumericalAxis Interval="1" TickLineSize="10" LabelFormat="0.0" Margin="5,0,0,0">
+            <chart:NumericalAxis.LabelStyle>
+              <chart:LabelStyle FontSize="12"/>
+            </chart:NumericalAxis.LabelStyle>
+          </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
 
-      <chart:ColumnSeries ItemsSource="{Binding Factors}" XBindingPath="Text" YBindingPath="Value" EnableAnimation="False">
-        <chart:ColumnSeries.CustomTemplate>
-          <DataTemplate>
-            <Canvas>
-              <Rectangle Fill="{Binding Item.BackgroundColor}"  Canvas.Left="{Binding RectX}" Canvas.Top="{Binding RectY}" Width="{Binding Width}" Height="{Binding Height}"/>
-            </Canvas>
-          </DataTemplate>
-        </chart:ColumnSeries.CustomTemplate>
-        <chart:ColumnSeries.AdornmentsInfo>
-          <chart:ChartAdornmentInfo ShowLabel="True" LabelPosition="Inner" SegmentLabelFormat="0.00">
-            <chart:ChartAdornmentInfo.LabelTemplate>
-              <DataTemplate>
-                <TextBlock Text="{Binding}" FontSize="12" Foreground="White"/>
-              </DataTemplate> 
-            </chart:ChartAdornmentInfo.LabelTemplate>
-          </chart:ChartAdornmentInfo>
-        </chart:ColumnSeries.AdornmentsInfo>
-      </chart:ColumnSeries>
-    </chart:SfChart>
-
-  </Grid>
+        <chart:ColumnSeries ItemsSource="{Binding Factors}" XBindingPath="Text" YBindingPath="Value" EnableAnimation="False">
+          <chart:ColumnSeries.CustomTemplate>
+            <DataTemplate>
+              <Canvas>
+                <Rectangle Fill="{Binding Item.BackgroundColor}"  Canvas.Left="{Binding RectX}" Canvas.Top="{Binding RectY}" Width="{Binding Width}" Height="{Binding Height}"/>
+              </Canvas>
+            </DataTemplate>
+          </chart:ColumnSeries.CustomTemplate>
+          <chart:ColumnSeries.AdornmentsInfo>
+            <chart:ChartAdornmentInfo ShowLabel="True" LabelPosition="Inner" SegmentLabelFormat="0.00">
+              <chart:ChartAdornmentInfo.LabelTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding}" FontSize="12" Foreground="White"/>
+                </DataTemplate> 
+              </chart:ChartAdornmentInfo.LabelTemplate>
+            </chart:ChartAdornmentInfo>
+          </chart:ColumnSeries.AdornmentsInfo>
+        </chart:ColumnSeries>
+      </chart:SfChart>
+    </Grid>
+  </Border>
 </UserControl>
 

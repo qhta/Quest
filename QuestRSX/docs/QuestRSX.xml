@@ -1499,6 +1499,16 @@
               Looks up a localized string similar to Comment.
             </summary>
         </member>
+        <member name="P:QuestRSX.Strings.Copy">
+            <summary>
+              Looks up a localized string similar to Copy.
+            </summary>
+        </member>
+        <member name="P:QuestRSX.Strings.CopyToClipboard">
+            <summary>
+              Looks up a localized string similar to Copy to clipboard.
+            </summary>
+        </member>
         <member name="P:QuestRSX.Strings.EmptyProjectTitle">
             <summary>
               Looks up a localized string similar to &lt;Project Title&gt;.

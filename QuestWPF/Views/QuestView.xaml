@@ -89,7 +89,7 @@
           </TreeView.Resources>
         </TreeView>
       </Grid>
-      <syncfusion:SfGridSplitter 
+      <GridSplitter 
         Grid.Column="1" 
         HorizontalAlignment="Left"
         Background="Silver"

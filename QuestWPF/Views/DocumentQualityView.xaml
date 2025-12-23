@@ -22,7 +22,7 @@
       <TextBlock Text="{Binding Path=DocumentTitle}" FontWeight="Bold" Margin="5"/>
     </Border>
     <views:DocumentQuestView Grid.Row="1"/>
-    <syncfusion:SfGridSplitter 
+    <GridSplitter 
       Grid.Row="2" 
       VerticalAlignment="Top"
       HorizontalAlignment="Stretch"
@@ -34,7 +34,7 @@
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
       <views:DocumentQuestResultsView/>
-      <syncfusion:SfGridSplitter 
+      <GridSplitter 
         Grid.Column="1" 
         VerticalAlignment="Stretch"
         HorizontalAlignment="Left"

@@ -8,52 +8,77 @@
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
   xmlns:helpers="clr-namespace:QuestWPF.Helpers"
   xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
+  xmlns:views="clr-namespace:QuestWPF.Views"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
-  d:DesignHeight="450" d:DesignWidth="810">
+  d:DesignHeight="450" d:DesignWidth="810"
+  Focusable="True">
   <UserControl.Resources>
     <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
   </UserControl.Resources>
-  <Grid 
-      d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
-    <syncfusion:SfDataGrid
-      ItemsSource="{Binding Factors}"
-      AutoGenerateColumns="False"
-      AllowResizingColumns="True"
-      AllowSorting="False"
-      AllowFiltering="False"
-      EditorSelectionBehavior="SelectAll"
-      EditTrigger="OnTap"
-      ColumnSizer="Auto"
-      ShowRowHeader="False"
-      RowStyleSelector="{StaticResource QuestRowStyleSelector}"
-      >
-      <syncfusion:SfDataGrid.Columns>
-        <syncfusion:GridTextColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Factor}"
-          MappingName="DisplayNameWithNumbering"
-        />
-        <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
-          MappingName="Weight"
-          NullValue="0"
-          NumberDecimalDigits="0"
-          AllowEditing="True"
-        />
-        <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
-          MappingName="Value"
-          AllowEditing="False"
-          NumberDecimalDigits="2"
+  <Border x:Name="FocusBorder" BorderThickness="2" BorderBrush="Gray">
+    <Grid 
+        d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
+      <syncfusion:SfDataGrid
+        x:Name ="DocumentQuestResultsGrid"
+        ItemsSource="{Binding Factors}"
+        AutoGenerateColumns="False"
+        AllowResizingColumns="True"
+        AllowSorting="False"
+        AllowFiltering="False"
+        EditorSelectionBehavior="SelectAll"
+        EditTrigger="OnTap"
+        ColumnSizer="Auto"
+        ShowRowHeader="False"
+        RowStyleSelector="{StaticResource QuestRowStyleSelector}"
+        GotFocus="OnGotFocus"
+        GridCopyOption="CopyData,IncludeHeaders, IncludeFormat"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        >
+        <syncfusion:SfDataGrid.Columns>
+          <syncfusion:GridTextColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Factor}"
+            MappingName="DisplayNameWithNumbering"
           />
-        <syncfusion:GridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
-          MappingName="Reliability"
-          AllowEditing="False"
-          NumberDecimalDigits="2"
-        />
-      </syncfusion:SfDataGrid.Columns>
-    </syncfusion:SfDataGrid>
-  </Grid>
+          <syncfusion:GridNumericColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
+            MappingName="Weight"
+            NullValue="0"
+            NumberDecimalDigits="0"
+            AllowEditing="True"
+          />
+          <syncfusion:GridNumericColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
+            MappingName="Value"
+            AllowEditing="False"
+            NumberDecimalDigits="2"
+            />
+          <syncfusion:GridNumericColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
+            MappingName="Reliability"
+            AllowEditing="False"
+            NumberDecimalDigits="2"
+          />
+        </syncfusion:SfDataGrid.Columns>
+      </syncfusion:SfDataGrid>
+      <Button 
+        x:Name="CopyButton"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Top"
+        Width="24"
+        Height="24"
+        Margin="0,0,0,0"
+        Padding="2"
+        ToolTip="{x:Static questRsx:Strings.CopyToClipboard}"
+        Background="Transparent"
+        BorderThickness="0"
+        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:DocumentQuestResultsView}}, Path=MainWindow.Commander.ViewCopyCommand}"
+        CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:DocumentQuestResultsView}}, BindsDirectlyToSource=True}"
+      >
+        <Image Source="pack://application:,,,/Assets/Copy.png" Stretch="Uniform"/>
+      </Button>
+    </Grid>
+  </Border>
 </UserControl>
 

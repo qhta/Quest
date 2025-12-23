@@ -165,6 +165,27 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQualityResults(QuestWPF.Views.DocumentQuestResultsView)">
+            <summary>
+            Copies the current DocumentQuestView to clipboard as XML text.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.ConvertToHtmlClipboardFormat(System.String)">
+            <summary>
+            Converts HTML content to the HTML Clipboard Format required by Microsoft Office applications.
+            </summary>
+            <param name="html">The HTML content to convert.</param>
+            <returns>HTML content with proper clipboard format headers.</returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.GetCellValue(Syncfusion.UI.Xaml.Grid.GridColumn,System.Object)">
+            <summary>
+            Gets the cell value for a specific column from a grid record.
+            </summary>
+            <param name="column">The grid column.</param>
+            <param name="record">The record object containing the data.</param>
+            <returns>The formatted cell value as a string.</returns>
+        </member>
         <member name="T:QuestWPF.ViewCopyData">
             <summary>
             Data class for view copy operations.
@@ -428,7 +449,7 @@
         </member>
         <member name="T:QuestWPF.Views.DocumentQuestGraphView">
             <summary>
-            Document quest graph view. Contains a graph for visualizing results of the document's factors evaluation.
+            View for displaying quest graph.
             </summary>
             <summary>
             DocumentQuestGraphView
@@ -436,7 +457,7 @@
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestGraphView.#ctor">
             <summary>
-            Initializing constructor.
+            Initializing constructor
             </summary>
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestGraphView.InitializeComponent">
@@ -446,7 +467,7 @@
         </member>
         <member name="T:QuestWPF.Views.DocumentQuestResultsView">
             <summary>
-            Document quest results view. Contains a table for viewing results of the document's factors evaluation.
+            View for displaying quest results in a data grid.
             </summary>
             <summary>
             DocumentQuestResultsView
@@ -454,7 +475,12 @@
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestResultsView.#ctor">
             <summary>
-            Initializing constructor.
+            Initializing constructor
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Views.DocumentQuestResultsView.MainWindow">
+            <summary>
+            Reference to the main window
             </summary>
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestResultsView.InitializeComponent">
@@ -464,8 +490,7 @@
         </member>
         <member name="T:QuestWPF.Views.DocumentQuestView">
             <summary>
-            Document quest view. Contains a tree grid for viewing and editing the document's quest items
-            starting from factors, through metrics down to measures.
+            View for displaying quest items in a tree grid.
             </summary>
             <summary>
             DocumentQuestView
@@ -473,7 +498,12 @@
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestView.#ctor">
             <summary>
-            Initializing constructor.
+            Initializing constructor
+            </summary>
+        </member>
+        <member name="P:QuestWPF.Views.DocumentQuestView.MainWindow">
+            <summary>
+            Reference to the main window
             </summary>
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestView.InitializeComponent">
@@ -718,6 +748,36 @@
             empty.</param>
             <returns>A filter string in the format "Description (*.ext1;*.ext2)|*.ext1;*.ext2" that can be used with file dialog
             filters.</returns>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
         </member>
     </members>
 </doc>

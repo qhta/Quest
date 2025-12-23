@@ -207,4 +207,10 @@
   <data name="QuestZipFiles" xml:space="preserve">
     <value>Pliki Quest ZIP</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Kopiuj</value>
+  </data>
+  <data name="CopyToClipboard" xml:space="preserve">
+    <value>Kopiuj do schowka</value>
+  </data>
 </root>

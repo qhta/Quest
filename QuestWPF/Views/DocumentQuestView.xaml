@@ -8,9 +8,12 @@
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
   xmlns:helpers="clr-namespace:QuestWPF.Helpers"
   xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
+  xmlns:questWpf="clr-namespace:QuestWPF"
+  xmlns:views="clr-namespace:QuestWPF.Views"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
-  d:DesignHeight="450" d:DesignWidth="810">
+  d:DesignHeight="450" d:DesignWidth="810"
+  Focusable="True">
   <UserControl.Resources>
     <ResourceDictionary>
       <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -19,7 +22,7 @@
       <DataTemplate x:Key="QualityMeasureTemplate" DataType="{x:Type quest:QualityMeasureVM}">
         <ComboBox 
         Text="{Binding Path=Grade}"
-       ItemsSource="{Binding Path=Scale}"  
+        ItemsSource="{Binding Path=Scale}" 
         DisplayMemberPath="Text"
         SelectedValuePath="Text"
         HorizontalContentAlignment="Center"
@@ -41,59 +44,78 @@
       <helpers:QuestRowStyleSelector x:Key="QuestRowStyleSelector" />
     </ResourceDictionary>
   </UserControl.Resources>
-  <Grid 
-      d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
-    <syncfusion:SfTreeGrid
-      ChildPropertyName="Children"
-      AutoExpandMode="AllNodesExpanded"
-      ItemsSource="{Binding Factors}"
-      AutoGenerateColumns="False"
-      AllowResizingColumns="True"
-      AllowSorting="False"
-      AllowFiltering="False"
-      EditorSelectionBehavior="SelectAll"
-      EditTrigger="OnTap"
-      ColumnSizer="AutoFillColumn"
-      RowStyleSelector="{StaticResource QuestRowStyleSelector}"
+  <Border x:Name="FocusBorder" BorderThickness="2" BorderBrush="Gray">
+    <Grid 
+        d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
+      <syncfusion:SfTreeGrid
+        ChildPropertyName="Children"
+        AutoExpandMode="AllNodesExpanded"
+        ItemsSource="{Binding Factors}"
+        AutoGenerateColumns="False"
+        AllowResizingColumns="True"
+        AllowSorting="False"
+        AllowFiltering="False"
+        EditorSelectionBehavior="SelectAll"
+        EditTrigger="OnTap"
+        ColumnSizer="AutoFillColumn"
+        RowStyleSelector="{StaticResource QuestRowStyleSelector}"
+        GotFocus="OnGotFocus"
+        >
+        <syncfusion:SfTreeGrid.Columns>
+          <syncfusion:TreeGridTextColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Item}"
+            MappingName="DisplayNameWithNumbering"
+          />
+          <syncfusion:TreeGridNumericColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
+            MappingName="Weight"
+            NullValue="0"
+            NumberDecimalDigits="0"
+            AllowEditing="True"
+          />
+          <syncfusion:TreeGridTemplateColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
+            MappingName="Value"
+            CellTemplateSelector="{StaticResource QualityNodeValueTemplateSelector}"
+          />
+          <syncfusion:TreeGridNumericColumn
+            HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
+            MappingName="Reliability"
+            NumberDecimalDigits="2"
+            AllowEditing="False"
+          />
+          <syncfusion:TreeGridTextColumn
+            HeaderText="{x:Static questRsx:Strings.Comment}"
+            TextAlignment="Left"
+            MappingName="Comment"
+            AllowEditing="True">
+            <syncfusion:TreeGridTextColumn.HeaderStyle>
+              <Style TargetType="syncfusion:TreeGridHeaderCell">
+                <Setter Property="Foreground" Value="#FF404040" />
+                <Setter Property="Background" Value="#FFC0C0C0" />
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+              </Style>
+            </syncfusion:TreeGridTextColumn.HeaderStyle>
+          </syncfusion:TreeGridTextColumn>
+        </syncfusion:SfTreeGrid.Columns>
+      </syncfusion:SfTreeGrid>
+      <Button 
+      x:Name="CopyButton"
+      HorizontalAlignment="Right"
+      VerticalAlignment="Top"
+      Width="24"
+      Height="24"
+      Margin="0,0,20,0"
+      Padding="2"
+      ToolTip="{x:Static questRsx:Strings.CopyToClipboard}"
+      Background="Transparent"
+      BorderThickness="0"
+      Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:DocumentQuestView}}, Path=MainWindow.Commander.ViewCopyCommand}"
+      CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:DocumentQuestView}}, BindsDirectlyToSource=True}"
       >
-      <syncfusion:SfTreeGrid.Columns>
-        <syncfusion:TreeGridTextColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Item}"
-          MappingName="DisplayNameWithNumbering"
-        />
-        <syncfusion:TreeGridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Weight}"
-          MappingName="Weight"
-          NullValue="0"
-          NumberDecimalDigits="0"
-          AllowEditing="True"
-        />
-        <syncfusion:TreeGridTemplateColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Grade}"
-          MappingName="Value"
-          CellTemplateSelector="{StaticResource QualityNodeValueTemplateSelector}"
-        />
-        <syncfusion:TreeGridNumericColumn
-          HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
-          MappingName="Reliability"
-          NumberDecimalDigits="2"
-          AllowEditing="False"
-        />
-        <syncfusion:TreeGridTextColumn
-          HeaderText="{x:Static questRsx:Strings.Comment}"
-          TextAlignment="Left"
-          MappingName="Comment"
-          AllowEditing="True">
-          <syncfusion:TreeGridTextColumn.HeaderStyle>
-            <Style TargetType="syncfusion:TreeGridHeaderCell">
-              <Setter Property="Foreground" Value="#FF404040" />
-              <Setter Property="Background" Value="#FFC0C0C0" />
-              <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            </Style>
-          </syncfusion:TreeGridTextColumn.HeaderStyle>
-        </syncfusion:TreeGridTextColumn>
-      </syncfusion:SfTreeGrid.Columns>
-    </syncfusion:SfTreeGrid>
-  </Grid>
+        <Image Source="pack://application:,,,/Assets/Copy.png" Stretch="Uniform"/>
+      </Button>
+    </Grid>
+  </Border>
 </UserControl>
 
