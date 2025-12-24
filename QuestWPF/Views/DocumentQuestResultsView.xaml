@@ -35,6 +35,8 @@
         GridCopyOption="CopyData,IncludeHeaders, IncludeFormat"
         BorderBrush="Transparent"
         BorderThickness="0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
         >
         <syncfusion:SfDataGrid.Columns>
           <syncfusion:GridTextColumn

@@ -186,6 +186,42 @@
             <param name="record">The record object containing the data.</param>
             <returns>The formatted cell value as a string.</returns>
         </member>
+        <member name="M:QuestWPF.ViewCopyCommand.GetRowStyle(System.Object)">
+            <summary>
+            Gets the inline CSS style for a row based on its background color.
+            </summary>
+            <param name="record">The record object containing the data.</param>
+            <returns>CSS style string with background and foreground colors, or null if no color is defined.</returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.IsColorDark(System.Windows.Media.Color)">
+            <summary>
+            Determines if a color is dark based on its luminance.
+            </summary>
+            <param name="color">The color to check.</param>
+            <returns>True if the color is dark, false otherwise.</returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.GetHeaderColors(Syncfusion.UI.Xaml.Grid.SfDataGrid)">
+            <summary>
+            Gets the header background and foreground colors from the grid's visual tree.
+            </summary>
+            <param name="grid">The SfDataGrid instance.</param>
+            <returns>A tuple containing the background and foreground colors as HTML color strings.</returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.FindVisualChild``1(System.Windows.DependencyObject)">
+            <summary>
+            Finds a child visual element of the specified type in the visual tree.
+            </summary>
+            <typeparam name="T">The type of visual element to find.</typeparam>
+            <param name="parent">The parent element to start the search from.</param>
+            <returns>The first child element of the specified type, or null if not found.</returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.ColorToHex(System.Windows.Media.Color)">
+            <summary>
+            Converts a Color to a hex string format (#RRGGBB).
+            </summary>
+            <param name="color">The color to convert.</param>
+            <returns>A hex color string.</returns>
+        </member>
         <member name="T:QuestWPF.ViewCopyData">
             <summary>
             Data class for view copy operations.
