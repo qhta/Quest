@@ -116,8 +116,8 @@ public class ViewCopyCommand : Command
   {
     var grid = documentQuestView.DocumentQuestGrid;
     DataObject dataObject = new();
-    SfTreeGridHelper.GetTreeGridAsText(grid, dataObject);
-    SfTreeGridHelper.GetTreeGridAsHtml(grid, dataObject);
+    DataGridReflectorHelper.GetGridAsText(grid, dataObject);
+    DataGridReflectorHelper.GetGridAsHtml(grid, dataObject);
     Clipboard.SetDataObject(dataObject, true);
   }
 
@@ -130,8 +130,8 @@ public class ViewCopyCommand : Command
     var grid = documentQuestResultsView.DocumentQuestResultsGrid;
     DataObject dataObject = new();
     GetFrameworkElementAsImage(grid, dataObject);
-    SfDataGridHelper.GetDataGridAsText(grid, dataObject);
-    SfDataGridHelper.GetDataGridAsHtml(grid, dataObject);
+    DataGridReflectorHelper.GetGridAsText(grid, dataObject);
+    DataGridReflectorHelper.GetGridAsHtml(grid, dataObject);
     Clipboard.SetDataObject(dataObject, true);
   }
 

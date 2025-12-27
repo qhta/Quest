@@ -1,35 +1,35 @@
-﻿using Syncfusion.Data;
-using Syncfusion.UI.Xaml.Grid;
+﻿using Syncfusion.UI.Xaml.Grid;
+
 using ColorConverter = System.Windows.Media.ColorConverter;
-using GridColumn = Syncfusion.UI.Xaml.Grid.GridColumn;
 
 namespace QuestWPF.Helpers;
 
 /// <summary>
-/// Helper methods for SfDataGrid.
+/// Helper methods to reflect properties from SfDataGrid and SfTreeGrid.
 /// </summary>
-public static class SfDataGridHelper
+public static class DataGridReflectorHelper
 {
+
   /// <summary>
-  /// Gets the text representation of a SfDataGrid.
+  /// Gets the text representation of a SfTreeGrid.
   /// Fills the provided DataObject with the text data.
   /// </summary>
   /// <param name="grid"></param>
   /// <param name="data"></param>
-  public static void GetDataGridAsText(SfDataGrid grid, DataObject data)
+  public static void GetGridAsText(SfGridBase grid, DataObject data)
   {
     var lines = new List<string>();
     var line = new List<string>();
-    foreach (var column in grid.Columns)
+    foreach (var column in GetColumns(grid))
     {
       line.Add(column.HeaderText);
     }
     lines.Add(String.Join("\t", line));
     line.Clear();
-    foreach (var row in grid.View.Records)
+    foreach (var row in GetRows(grid))
     {
 
-      foreach (var column in grid.Columns)
+      foreach (var column in GetColumns(grid))
       {
         var cellValue = GetCellValue(column, row);
         line.Add(cellValue);
@@ -42,17 +42,18 @@ public static class SfDataGridHelper
     data.SetText(str);
   }
 
+
   /// <summary>
-  /// Gets the HTML representation of a SfDataGrid.
+  /// Gets the HTML representation of a SfTreeGrid.
   /// Fills the provided DataObject with the HTML data.
   /// </summary>
   /// <param name="grid"></param>
   /// <param name="data"></param>
-  public static void GetDataGridAsHtml(SfDataGrid grid, DataObject data)
+  public static void GetGridAsHtml(SfGridBase grid, DataObject data)
   {
     var html = new StringBuilder();
     // Get header colors from grid styles
-    var (headerBackground, headerForeground) = GetHeaderColors(grid);
+    var (headerBackground, headerForeground) = DataGridReflectorHelper.GetHeaderColors(grid);
 
     // Build the HTML content
     html.AppendLine("<html>");
@@ -72,7 +73,7 @@ public static class SfDataGridHelper
     // Add header row
     html.AppendLine("<thead>");
     html.AppendLine("<tr>");
-    foreach (var column in grid.Columns)
+    foreach (var column in GetColumns(grid))
     {
       html.Append("<th>");
       html.Append(System.Net.WebUtility.HtmlEncode(column.HeaderText));
@@ -83,20 +84,20 @@ public static class SfDataGridHelper
 
     // Add data rows
     html.AppendLine("<tbody>");
-    foreach (var row in grid.View.Records)
+    foreach (var row in GetRows(grid))
     {
       // Get background and foreground colors from the row data
-      string? rowStyle = GetRowStyle(row);
+      string? rowStyle = (row is IQualityNodeVM viewModel) ? GetRowStyle(viewModel) : null;
       html.Append("<tr");
       if (!string.IsNullOrEmpty(rowStyle))
       {
         html.Append($" style=\"{rowStyle}\"");
       }
       html.AppendLine(">");
-      foreach (var column in grid.Columns)
+      foreach (var column in GetColumns(grid))
       {
         var cellValue = GetCellValue(column, row);
-        var isNumeric = column is GridNumericColumn;
+        var isNumeric = IsNumericColumn(column);
 
         html.Append(isNumeric ? "<td class=\"numeric\">" : "<td>");
         html.Append(System.Net.WebUtility.HtmlEncode(cellValue));
@@ -113,127 +114,112 @@ public static class SfDataGridHelper
 
     // Convert to HTML Clipboard Format required by Office applications
     string htmlContent = html.ToString();
-    string htmlClipboardFormat = ConvertToHtmlClipboardFormat(htmlContent);
+    string htmlClipboardFormat = HtmlClipboardHelper.ConvertToHtmlClipboardFormat(htmlContent);
     // Set HTML data in clipboard
     data.SetData(DataFormats.Html, htmlClipboardFormat);
   }
 
-  /// <summary>
-  /// Converts HTML content to the HTML Clipboard Format required by Microsoft Office applications.
-  /// </summary>
-  /// <param name="html">The HTML content to convert.</param>
-  /// <returns>HTML content with proper clipboard format headers.</returns>
-  public static string ConvertToHtmlClipboardFormat(string html)
+  private static IEnumerable<GridColumnBase> GetColumns(SfGridBase grid)
   {
-    // Encode to UTF-8
-    byte[] utf8Bytes = Encoding.UTF8.GetBytes(html);
-    string utf8Html = Encoding.UTF8.GetString(utf8Bytes);
-
-    // Build the clipboard format header
-    StringBuilder sb = new StringBuilder();
-
-    // Version
-    sb.AppendLine("Version:0.9");
-
-    // Calculate byte positions (header + content)
-    string header = sb.ToString();
-    int startHTML = header.Length + 100; // Approximate header size
-    int endHTML = startHTML + utf8Bytes.Length;
-
-    // Find fragment markers
-    int startFragment = utf8Html.IndexOf("<!--StartFragment-->", StringComparison.Ordinal);
-    int endFragment = utf8Html.IndexOf("<!--EndFragment-->", StringComparison.Ordinal);
-
-    if (startFragment >= 0)
-      startFragment = startHTML + startFragment + "<!--StartFragment-->".Length;
-    else
-      startFragment = startHTML;
-
-    if (endFragment >= 0)
-      endFragment = startHTML + endFragment;
-    else
-      endFragment = endHTML;
-
-    // Build complete header
-    sb.Clear();
-    sb.AppendLine("Version:0.9");
-    sb.AppendLine($"StartHTML:{startHTML:D10}");
-    sb.AppendLine($"EndHTML:{endHTML:D10}");
-    sb.AppendLine($"StartFragment:{startFragment:D10}");
-    sb.AppendLine($"EndFragment:{endFragment:D10}");
-    sb.Append(utf8Html);
-
-    return sb.ToString();
+    if (grid is SfDataGrid dataGrid)
+      return dataGrid.Columns;
+    if (grid is SfTreeGrid treeGrid)
+      return treeGrid.Columns;
+    throw new NotImplementedException($"GetColumns not implemented for {grid.GetType()}");
   }
 
+  private static IEnumerable<object> GetRows(SfGridBase grid)
+  {
+    if (grid is SfDataGrid dataGrid)
+      return dataGrid.View.Records.Select(record => record.Data);
+    if (grid is SfTreeGrid treeGrid)
+      return treeGrid.View.Nodes.Select(node => node.Item);
+    throw new NotImplementedException($"GetRows not implemented for {grid.GetType()}");
+  }
 
   /// <summary>
-  /// Gets the cell value for a specific column from a grid record.
+  /// Gets the header background and foreground colors from the grid's visual tree.
   /// </summary>
-  /// <param name="column">The grid column.</param>
-  /// <param name="record">The record object containing the data.</param>
-  /// <returns>The formatted cell value as a string.</returns>
-  public static string GetCellValue(GridColumn column, object record)
+  /// <param name="grid">The SfDataGrid instance.</param>
+  /// <returns>A tuple containing the background and foreground colors as HTML color strings.</returns>
+  public static (string background, string foreground) GetHeaderColors(FrameworkElement grid)
   {
-    if (record is RecordEntry recordEntry)
+    try
     {
-      var data = recordEntry.Data;
-      if (data == null)
-        return string.Empty;
-
-      var mappingName = column.MappingName;
-      if (string.IsNullOrEmpty(mappingName))
-        return string.Empty;
-
-      // Get the property value using reflection
-      var propertyInfo = data.GetType().GetProperty(mappingName);
-      if (propertyInfo == null)
-        return string.Empty;
-
-      var value = propertyInfo.GetValue(data);
-      if (value == null)
-        return string.Empty;
-
-      // Format numeric values according to column settings
-      if (column is GridNumericColumn numericColumn && value is IFormattable formattable)
+      // Try to find the header cell visual in the grid's visual tree
+      var headerCell = FindVisualChild<GridHeaderCellControl>(grid);
+      if (headerCell != null)
       {
-        var format = $"F{numericColumn.NumberDecimalDigits}";
-        return formattable.ToString(format, System.Globalization.CultureInfo.CurrentCulture);
+        var background = headerCell.Background;
+        var foreground = headerCell.Foreground;
+
+        if (background is SolidColorBrush bgBrush)
+        {
+          string bgColor = ColorToHex(bgBrush.Color);
+          string fgColor = "#404040"; // Default foreground
+
+          if (foreground is SolidColorBrush fgBrush)
+          {
+            fgColor = ColorToHex(fgBrush.Color);
+          }
+
+          return (bgColor, fgColor);
+        }
       }
 
-      return value.ToString() ?? string.Empty;
+      // Fallback: try to get from application resources
+      if (Application.Current.TryFindResource(typeof(GridHeaderCellControl)) is Style headerStyle)
+      {
+        string bgColor = "#C0C0C0"; // Default Silver
+        string fgColor = "#404040";  // Default dark gray
+
+        foreach (var setter in headerStyle.Setters.OfType<Setter>())
+        {
+          if (setter.Property == Control.BackgroundProperty && setter.Value is SolidColorBrush bgBrush)
+          {
+            bgColor = ColorToHex(bgBrush.Color);
+          }
+          else if (setter.Property == Control.ForegroundProperty && setter.Value is SolidColorBrush fgBrush)
+          {
+            fgColor = ColorToHex(fgBrush.Color);
+          }
+        }
+
+        return (bgColor, fgColor);
+      }
+    }
+    catch (Exception ex)
+    {
+      Debug.WriteLine($"Error getting header colors: {ex.Message}");
     }
 
-    return string.Empty;
+    // Default colors matching SfTreeGridTools.xaml style
+    return ("#C0C0C0", "#404040");
   }
 
   /// <summary>
   /// Gets the inline CSS style for a row based on its background color.
   /// </summary>
-  /// <param name="record">The record object containing the data.</param>
+  /// <param name="viewModel">The record object view model</param>
   /// <returns>CSS style string with background and foreground colors, or null if no color is defined.</returns>
-  public static string? GetRowStyle(object record)
+  public static string? GetRowStyle(IQualityNodeVM viewModel)
   {
-    if (record is RecordEntry recordEntry)
+    if (!string.IsNullOrEmpty(viewModel.BackgroundColor))
     {
-      var data = recordEntry.Data;
-      if (data is IQualityNodeVM node && !string.IsNullOrEmpty(node.BackgroundColor))
+      string backgroundColor = viewModel.BackgroundColor;
+
+      // Parse the color to determine if it's dark or light
+      try
       {
-        string backgroundColor = node.BackgroundColor;
+        var mediaColor = (Color)ColorConverter.ConvertFromString(backgroundColor);
+        string foregroundColor = IsColorDark(mediaColor) ? "#FFFFFF" : "#000000";
 
-        // Parse the color to determine if it's dark or light
-        try
-        {
-          var mediaColor = (Color)ColorConverter.ConvertFromString(backgroundColor);
-          string foregroundColor = IsColorDark(mediaColor) ? "#FFFFFF" : "#000000";
-
-          return $"background-color: {backgroundColor}; color: {foregroundColor};";
-        }
-        catch
-        {
-          // If color parsing fails, return null
-          return null;
-        }
+        return $"background-color: {backgroundColor}; color: {foregroundColor};";
+      }
+      catch
+      {
+        // If color parsing fails, return null
+        return null;
       }
     }
     return null;
@@ -254,9 +240,9 @@ public static class SfDataGridHelper
   /// <summary>
   /// Gets the header background and foreground colors from the grid's visual tree.
   /// </summary>
-  /// <param name="grid">The SfDataGrid instance.</param>
+  /// <param name="grid">The SfTreeGrid instance.</param>
   /// <returns>A tuple containing the background and foreground colors as HTML color strings.</returns>
-  public static (string background, string foreground) GetHeaderColors(SfDataGrid grid)
+  public static (string background, string foreground) GetHeaderColors(SfTreeGrid grid)
   {
     try
     {
@@ -347,4 +333,74 @@ public static class SfDataGridHelper
     return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
   }
 
+  /// <summary>
+  /// Gets the cell value for a specific column from a tree grid node.
+  /// </summary>
+  /// <param name="column">The grid column.</param>
+  /// <param name="data">Row data object.</param>
+  /// <returns>The formatted cell value as a string.</returns>
+  public static string GetCellValue(GridColumnBase column, object? data)
+  {
+    if (data == null)
+      return string.Empty;
+
+    var mappingName = GetMappingName(column, data);
+
+    if (string.IsNullOrEmpty(mappingName))
+      return string.Empty;
+
+    // Get the property value using reflection
+    var propertyInfo = data.GetType().GetProperty(mappingName);
+    if (propertyInfo == null)
+      return string.Empty;
+
+    var value = propertyInfo.GetValue(data);
+    if (value == null)
+      return string.Empty;
+
+    // Format numeric values according to column settings
+    var format = GetNumericColumnFormat(column);
+    if (format!=null && value is double doubleValue)
+      return doubleValue.ToString("F2", System.Globalization.CultureInfo.CurrentCulture);
+
+    return value.ToString() ?? string.Empty;
+  }
+
+  /// <summary>
+  /// Checks whether a column is a numeric column.
+  /// </summary>
+  /// <param name="column"></param>
+  /// <returns></returns>
+  private static bool IsNumericColumn(GridColumnBase column)
+  {
+    return (column is GridNumericColumn) || (column is TreeGridNumericColumn) || column.MappingName == "Value";
+  }
+
+  /// <summary>
+  /// Returns numeric column format or null;
+  /// </summary>
+  /// <param name="column"></param>
+  /// <returns></returns>
+  private static string? GetNumericColumnFormat(GridColumnBase column)
+  {
+    if (column is GridNumericColumn numericColumn1)
+      return $"F{numericColumn1.NumberDecimalDigits}";
+    if (column is TreeGridNumericColumn numericColumn2)
+      return $"F{numericColumn2.NumberDecimalDigits}";
+    if (column.MappingName == "Value")
+      return "F2";
+    return null;
+  }
+  /// <summary>
+  /// Gets the mapping name for a GridColumnBase.
+  /// </summary>
+  /// <param name="column"></param>
+  /// <param name="dataItem"></param>
+  /// <returns></returns>
+  private static string? GetMappingName(GridColumnBase column, object dataItem)
+  {
+    if (column.CellTemplateSelector is not null)
+      return column.CellTemplateSelector.GetMappingName(dataItem, column);
+    return column.MappingName;
+  }
 }
