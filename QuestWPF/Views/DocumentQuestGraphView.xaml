@@ -10,6 +10,7 @@
 
   xmlns:helpers="clr-namespace:QuestWPF.Helpers"
   xmlns:converters="clr-namespace:Qhta.WPF.Converters;assembly=Qhta.WPF.Converters"
+  xmlns:views="clr-namespace:QuestWPF.Views"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
   d:DesignHeight="450" d:DesignWidth="810"
@@ -24,9 +25,12 @@
   <Border x:Name="FocusBorder" BorderThickness="2" BorderBrush="Gray">
     <Grid 
         d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
-      <chart:SfChart x:Name="columnChart" ColorModel="{StaticResource CustomPalette}" 
+      <chart:SfChart x:Name="DocumentQuestColumnChart" 
+                     ColorModel="{StaticResource CustomPalette}" 
                      Palette="Custom" Margin="5,5,5,5"
-                     GotFocus="OnGotFocus">
+                     GotFocus="OnGotFocus"
+                     BorderBrush="Transparent"
+                     BorderThickness="0">
 
         <chart:SfChart.PrimaryAxis>
           <chart:CategoryAxis ShowGridLines="False" LabelPlacement="OnTicks" 
@@ -61,6 +65,7 @@
           </chart:ColumnSeries.AdornmentsInfo>
         </chart:ColumnSeries>
       </chart:SfChart>
+      <views:CopyButton/>
     </Grid>
   </Border>
 </UserControl>

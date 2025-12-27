@@ -100,22 +100,7 @@
           </syncfusion:TreeGridTextColumn>
         </syncfusion:SfTreeGrid.Columns>
       </syncfusion:SfTreeGrid>
-      <Button 
-      x:Name="CopyButton"
-      HorizontalAlignment="Right"
-      VerticalAlignment="Top"
-      Width="24"
-      Height="24"
-      Margin="0,0,20,0"
-      Padding="2"
-      ToolTip="{x:Static questRsx:Strings.CopyToClipboard}"
-      Background="Transparent"
-      BorderThickness="0"
-      Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:DocumentQuestView}}, Path=MainWindow.Commander.ViewCopyCommand}"
-      CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:DocumentQuestView}}, BindsDirectlyToSource=True}"
-      >
-        <Image Source="pack://application:,,,/Assets/Copy.png" Stretch="Uniform"/>
-      </Button>
+      <views:CopyButton Margin="0,0,20,0"/> 
     </Grid>
   </Border>
 </UserControl>

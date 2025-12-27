@@ -1,13 +1,4 @@
-﻿using Quest;
-
-using QuestWPF.Helpers;
-using QuestWPF.Views;
-
-using Syncfusion.Data;
-using Syncfusion.UI.Xaml.Grid;
-
-using ColorConverter = System.Windows.Media.ColorConverter;
-using GridColumn = Syncfusion.UI.Xaml.Grid.GridColumn;
+﻿using QuestWPF.Helpers;
 
 namespace QuestWPF;
 
@@ -27,6 +18,8 @@ public class ViewCopyCommand : Command
     if (parameter is DocumentQuestView)
       return true;
     if (parameter is DocumentQuestResultsView)
+      return true; 
+    if (parameter is DocumentQuestGraphView)
       return true;
 
     if (parameter is QuestView questView)
@@ -49,13 +42,11 @@ public class ViewCopyCommand : Command
     try
     {
       if (parameter is DocumentQuestView documentQuestView)
-      {
         CopyDocumentQuestView(documentQuestView);
-      }
       else if (parameter is DocumentQuestResultsView documentQuestResultsView)
-      {
-        CopyDocumentQualityResultsView(documentQuestResultsView);
-      }
+        CopyDocumentQuestResultsView(documentQuestResultsView);
+      else if (parameter is DocumentQuestGraphView documentQuestGraphView)
+        CopyDocumentQuestGraphView(documentQuestGraphView);
       else if (parameter is QuestView questView)
       {
         if (questView.DataContext is ProjectQualityVM projectQualityVM)
@@ -109,7 +100,7 @@ public class ViewCopyCommand : Command
 
 
   /// <summary>
-  /// Copies the current DocumentQuestView to clipboard as XML text.
+  /// Copies the current DocumentQuestView to clipboard as text and HTML.
   /// </summary>
   /// <returns></returns>
   public void CopyDocumentQuestView(DocumentQuestView documentQuestView)
@@ -122,16 +113,44 @@ public class ViewCopyCommand : Command
   }
 
   /// <summary>
-  /// Copies the current DocumentQuestView to clipboard as XML text.
+  /// Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
   /// </summary>
   /// <returns></returns>
-  public void CopyDocumentQualityResultsView(DocumentQuestResultsView documentQuestResultsView)
+  public void CopyDocumentQuestResultsView(DocumentQuestResultsView documentQuestResultsView)
   {
     var grid = documentQuestResultsView.DocumentQuestResultsGrid;
     DataObject dataObject = new();
     GetFrameworkElementAsImage(grid, dataObject);
     DataGridReflectorHelper.GetGridAsText(grid, dataObject);
     DataGridReflectorHelper.GetGridAsHtml(grid, dataObject);
+    Clipboard.SetDataObject(dataObject, true);
+  }
+
+  /// <summary>
+  /// Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
+  /// </summary>
+  /// <returns></returns>
+  public void CopyDocumentQuestGraphView(DocumentQuestGraphView documentQuestGraphView)
+  {
+    // Get the chart directly, which doesn't include the FocusBorder
+    var chart = documentQuestGraphView.DocumentQuestColumnChart;
+
+    DataObject dataObject = new();
+
+    // Temporarily remove any margins for clean rendering
+    var originalMargin = chart.Margin;
+    chart.Margin = new Thickness(0);
+
+    try
+    {
+      GetFrameworkElementAsImage(chart, dataObject);
+    }
+    finally
+    {
+      // Restore original margin
+      chart.Margin = originalMargin;
+    }
+
     Clipboard.SetDataObject(dataObject, true);
   }
 
@@ -181,14 +200,46 @@ public class ViewCopyCommand : Command
   {
     double width = element.ActualWidth;
     double height = element.ActualHeight;
-    RenderTargetBitmap bmpCopied = new RenderTargetBitmap((int)Math.Round(width), (int)Math.Round(height), 96, 96, PixelFormats.Default);
+
+    // Subtract any margin to get the actual content size
+    width -= element.Margin.Left + element.Margin.Right;
+    height -= element.Margin.Top + element.Margin.Bottom;
+
+    // Use floor instead of ceiling to avoid extra pixels
+    int pixelWidth = (int)Math.Floor(width);
+    int pixelHeight = (int)Math.Floor(height);
+
+    RenderTargetBitmap bmpCopied = new RenderTargetBitmap(
+      pixelWidth,
+      pixelHeight,
+      96,
+      96,
+      PixelFormats.Default);
+
     DrawingVisual dv = new DrawingVisual();
     using (DrawingContext dc = dv.RenderOpen())
     {
-      dc.DrawRectangle(Brushes.White, null, new Rect(new Point(), new Size(width, height)));
-      var vb = new VisualBrush(element);
-      dc.DrawRectangle(vb, null, new Rect(new Point(), new Size(width, height)));
+      // Draw white background
+      dc.DrawRectangle(Brushes.White, null, new Rect(0, 0, width, height));
+
+      // Create visual brush from element
+      VisualBrush vb = new VisualBrush(element)
+      {
+        Stretch = Stretch.None,
+        AlignmentX = AlignmentX.Left,
+        AlignmentY = AlignmentY.Top,
+        ViewboxUnits = BrushMappingMode.Absolute,
+        Viewbox = new Rect(
+          element.Margin.Left,
+          element.Margin.Top,
+          width,
+          height)
+      };
+
+      // Draw the element
+      dc.DrawRectangle(vb, null, new Rect(0, 0, width, height));
     }
+
     bmpCopied.Render(dv);
     data.SetImage(bmpCopied);
   }

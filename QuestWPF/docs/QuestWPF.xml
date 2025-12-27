@@ -167,13 +167,19 @@
         </member>
         <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuestView(QuestWPF.Views.DocumentQuestView)">
             <summary>
-            Copies the current DocumentQuestView to clipboard as XML text.
+            Copies the current DocumentQuestView to clipboard as text and HTML.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQualityResultsView(QuestWPF.Views.DocumentQuestResultsView)">
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuestResultsView(QuestWPF.Views.DocumentQuestResultsView)">
             <summary>
-            Copies the current DocumentQuestView to clipboard as XML text.
+            Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuestGraphView(QuestWPF.Views.DocumentQuestGraphView)">
+            <summary>
+            Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
             </summary>
             <returns></returns>
         </member>
@@ -566,6 +572,24 @@
             Collection of DockItems for managing dockable panels in the UI.
             </summary>
         </member>
+        <member name="T:QuestWPF.Views.CopyButton">
+            <summary>
+            Specialized copy to clipboard button.
+            </summary>
+            <summary>
+            CopyButton
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.CopyButton.#ctor">
+            <summary>
+            Initializing constructor
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Views.CopyButton.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:QuestWPF.Views.DocumentQualityView">
             <summary>
             View of the document quality.
@@ -616,11 +640,6 @@
             Initializing constructor
             </summary>
         </member>
-        <member name="P:QuestWPF.Views.DocumentQuestResultsView.MainWindow">
-            <summary>
-            Reference to the main window
-            </summary>
-        </member>
         <member name="M:QuestWPF.Views.DocumentQuestResultsView.InitializeComponent">
             <summary>
             InitializeComponent
@@ -637,11 +656,6 @@
         <member name="M:QuestWPF.Views.DocumentQuestView.#ctor">
             <summary>
             Initializing constructor
-            </summary>
-        </member>
-        <member name="P:QuestWPF.Views.DocumentQuestView.MainWindow">
-            <summary>
-            Reference to the main window
             </summary>
         </member>
         <member name="M:QuestWPF.Views.DocumentQuestView.InitializeComponent">

@@ -37,8 +37,4 @@ public partial class DocumentQuestResultsView : UserControl
     FocusBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 139)); // DarkBlue
   }
 
-  /// <summary>
-  /// Reference to the main window
-  /// </summary>
-  public MainWindow? MainWindow => Application.Current.MainWindow as MainWindow;
 }
