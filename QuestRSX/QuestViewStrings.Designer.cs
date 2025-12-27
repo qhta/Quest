@@ -19,7 +19,7 @@ namespace QuestRSX {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class QuestViewStrings {
@@ -102,6 +102,15 @@ namespace QuestRSX {
         public static string Metrics {
             get {
                 return ResourceManager.GetString("Metrics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rel..
+        /// </summary>
+        public static string Rel_ {
+            get {
+                return ResourceManager.GetString("Rel_", resourceCulture);
             }
         }
         

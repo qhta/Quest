@@ -138,6 +138,9 @@
   <data name="ReliabilityTooltip" xml:space="preserve">
     <value>Assessment reliability. Evaluated as reliable grades count times all required grades count.</value>
   </data>
+  <data name="Rel_" xml:space="preserve">
+    <value>Rel.</value>
+  </data>
   <data name="Scale" xml:space="preserve">
     <value>Scale</value>
   </data>

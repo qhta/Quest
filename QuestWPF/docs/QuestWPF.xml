@@ -165,62 +165,41 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQualityResults(QuestWPF.Views.DocumentQuestResultsView)">
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQuestView(QuestWPF.Views.DocumentQuestView)">
             <summary>
             Copies the current DocumentQuestView to clipboard as XML text.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.ConvertToHtmlClipboardFormat(System.String)">
+        <member name="M:QuestWPF.ViewCopyCommand.CopyDocumentQualityResultsView(QuestWPF.Views.DocumentQuestResultsView)">
             <summary>
-            Converts HTML content to the HTML Clipboard Format required by Microsoft Office applications.
+            Copies the current DocumentQuestView to clipboard as XML text.
             </summary>
-            <param name="html">The HTML content to convert.</param>
-            <returns>HTML content with proper clipboard format headers.</returns>
+            <returns></returns>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.GetCellValue(Syncfusion.UI.Xaml.Grid.GridColumn,System.Object)">
+        <member name="M:QuestWPF.ViewCopyCommand.GetProjectQualityData(Quest.ProjectQuality,System.Windows.DataObject)">
             <summary>
-            Gets the cell value for a specific column from a grid record.
+            Gets the ProjectQuality data in serializable and XML text formats.
+            Fills the provided DataObject with the data.
             </summary>
-            <param name="column">The grid column.</param>
-            <param name="record">The record object containing the data.</param>
-            <returns>The formatted cell value as a string.</returns>
+            <param name="model"></param>
+            <param name="data"></param>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.GetRowStyle(System.Object)">
+        <member name="M:QuestWPF.ViewCopyCommand.GetDocumentQualityData(Quest.DocumentQuality,System.Windows.DataObject)">
             <summary>
-            Gets the inline CSS style for a row based on its background color.
+            Gets the DocumentQuality data in serializable and XML text formats.
+            Fills the provided DataObject with the data.
             </summary>
-            <param name="record">The record object containing the data.</param>
-            <returns>CSS style string with background and foreground colors, or null if no color is defined.</returns>
+            <param name="model"></param>
+            <param name="data"></param>
         </member>
-        <member name="M:QuestWPF.ViewCopyCommand.IsColorDark(System.Windows.Media.Color)">
+        <member name="M:QuestWPF.ViewCopyCommand.GetFrameworkElementAsImage(System.Windows.FrameworkElement,System.Windows.DataObject)">
             <summary>
-            Determines if a color is dark based on its luminance.
+            Gets the image representation of a FrameworkElement.
+            Fills the provided DataObject with the image data.
             </summary>
-            <param name="color">The color to check.</param>
-            <returns>True if the color is dark, false otherwise.</returns>
-        </member>
-        <member name="M:QuestWPF.ViewCopyCommand.GetHeaderColors(Syncfusion.UI.Xaml.Grid.SfDataGrid)">
-            <summary>
-            Gets the header background and foreground colors from the grid's visual tree.
-            </summary>
-            <param name="grid">The SfDataGrid instance.</param>
-            <returns>A tuple containing the background and foreground colors as HTML color strings.</returns>
-        </member>
-        <member name="M:QuestWPF.ViewCopyCommand.FindVisualChild``1(System.Windows.DependencyObject)">
-            <summary>
-            Finds a child visual element of the specified type in the visual tree.
-            </summary>
-            <typeparam name="T">The type of visual element to find.</typeparam>
-            <param name="parent">The parent element to start the search from.</param>
-            <returns>The first child element of the specified type, or null if not found.</returns>
-        </member>
-        <member name="M:QuestWPF.ViewCopyCommand.ColorToHex(System.Windows.Media.Color)">
-            <summary>
-            Converts a Color to a hex string format (#RRGGBB).
-            </summary>
-            <param name="color">The color to convert.</param>
-            <returns>A hex color string.</returns>
+            <param name="element"></param>
+            <param name="data"></param>
         </member>
         <member name="T:QuestWPF.ViewCopyData">
             <summary>
@@ -387,6 +366,150 @@
             <summary>
             Template for displaying document quality details.
             </summary>
+        </member>
+        <member name="T:QuestWPF.Helpers.SfDataGridHelper">
+            <summary>
+            Helper methods for SfDataGrid.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.GetDataGridAsText(Syncfusion.UI.Xaml.Grid.SfDataGrid,System.Windows.DataObject)">
+            <summary>
+            Gets the text representation of a SfDataGrid.
+            Fills the provided DataObject with the text data.
+            </summary>
+            <param name="grid"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.GetDataGridAsHtml(Syncfusion.UI.Xaml.Grid.SfDataGrid,System.Windows.DataObject)">
+            <summary>
+            Gets the HTML representation of a SfDataGrid.
+            Fills the provided DataObject with the HTML data.
+            </summary>
+            <param name="grid"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.ConvertToHtmlClipboardFormat(System.String)">
+            <summary>
+            Converts HTML content to the HTML Clipboard Format required by Microsoft Office applications.
+            </summary>
+            <param name="html">The HTML content to convert.</param>
+            <returns>HTML content with proper clipboard format headers.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.GetCellValue(Syncfusion.UI.Xaml.Grid.GridColumn,System.Object)">
+            <summary>
+            Gets the cell value for a specific column from a grid record.
+            </summary>
+            <param name="column">The grid column.</param>
+            <param name="record">The record object containing the data.</param>
+            <returns>The formatted cell value as a string.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.GetRowStyle(System.Object)">
+            <summary>
+            Gets the inline CSS style for a row based on its background color.
+            </summary>
+            <param name="record">The record object containing the data.</param>
+            <returns>CSS style string with background and foreground colors, or null if no color is defined.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.IsColorDark(System.Windows.Media.Color)">
+            <summary>
+            Determines if a color is dark based on its luminance.
+            </summary>
+            <param name="color">The color to check.</param>
+            <returns>True if the color is dark, false otherwise.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.GetHeaderColors(Syncfusion.UI.Xaml.Grid.SfDataGrid)">
+            <summary>
+            Gets the header background and foreground colors from the grid's visual tree.
+            </summary>
+            <param name="grid">The SfDataGrid instance.</param>
+            <returns>A tuple containing the background and foreground colors as HTML color strings.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.FindVisualChild``1(System.Windows.DependencyObject)">
+            <summary>
+            Finds a child visual element of the specified type in the visual tree.
+            </summary>
+            <typeparam name="T">The type of visual element to find.</typeparam>
+            <param name="parent">The parent element to start the search from.</param>
+            <returns>The first child element of the specified type, or null if not found.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfDataGridHelper.ColorToHex(System.Windows.Media.Color)">
+            <summary>
+            Converts a Color to a hex string format (#RRGGBB).
+            </summary>
+            <param name="color">The color to convert.</param>
+            <returns>A hex color string.</returns>
+        </member>
+        <member name="T:QuestWPF.Helpers.SfTreeGridHelper">
+            <summary>
+            Helper methods for SfTreeGrid.
+            </summary>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.GetTreeGridAsText(Syncfusion.UI.Xaml.TreeGrid.SfTreeGrid,System.Windows.DataObject)">
+            <summary>
+            Gets the text representation of a SfTreeGrid.
+            Fills the provided DataObject with the text data.
+            </summary>
+            <param name="grid"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.GetTreeGridAsHtml(Syncfusion.UI.Xaml.TreeGrid.SfTreeGrid,System.Windows.DataObject)">
+            <summary>
+            Gets the HTML representation of a SfTreeGrid.
+            Fills the provided DataObject with the HTML data.
+            </summary>
+            <param name="grid"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.ConvertToHtmlClipboardFormat(System.String)">
+            <summary>
+            Converts HTML content to the HTML Clipboard Format required by Microsoft Office applications.
+            </summary>
+            <param name="html">The HTML content to convert.</param>
+            <returns>HTML content with proper clipboard format headers.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.GetCellValue(Syncfusion.UI.Xaml.TreeGrid.TreeGridColumn,System.Object)">
+            <summary>
+            Gets the cell value for a specific column from a tree grid node.
+            </summary>
+            <param name="column">The grid column.</param>
+            <param name="node">The node object containing the data.</param>
+            <returns>The formatted cell value as a string.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.GetRowStyle(System.Object)">
+            <summary>
+            Gets the inline CSS style for a row based on its background color.
+            </summary>
+            <param name="record">The record object containing the data.</param>
+            <returns>CSS style string with background and foreground colors, or null if no color is defined.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.IsColorDark(System.Windows.Media.Color)">
+            <summary>
+            Determines if a color is dark based on its luminance.
+            </summary>
+            <param name="color">The color to check.</param>
+            <returns>True if the color is dark, false otherwise.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.GetHeaderColors(Syncfusion.UI.Xaml.TreeGrid.SfTreeGrid)">
+            <summary>
+            Gets the header background and foreground colors from the grid's visual tree.
+            </summary>
+            <param name="grid">The SfTreeGrid instance.</param>
+            <returns>A tuple containing the background and foreground colors as HTML color strings.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.FindVisualChild``1(System.Windows.DependencyObject)">
+            <summary>
+            Finds a child visual element of the specified type in the visual tree.
+            </summary>
+            <typeparam name="T">The type of visual element to find.</typeparam>
+            <param name="parent">The parent element to start the search from.</param>
+            <returns>The first child element of the specified type, or null if not found.</returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.SfTreeGridHelper.ColorToHex(System.Windows.Media.Color)">
+            <summary>
+            Converts a Color to a hex string format (#RRGGBB).
+            </summary>
+            <param name="color">The color to convert.</param>
+            <returns>A hex color string.</returns>
         </member>
         <member name="T:QuestWPF.MainWindow">
             <summary>
@@ -784,36 +907,6 @@
             empty.</param>
             <returns>A filter string in the format "Description (*.ext1;*.ext2)|*.ext1;*.ext2" that can be used with file dialog
             filters.</returns>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
-            </summary>
         </member>
     </members>
 </doc>

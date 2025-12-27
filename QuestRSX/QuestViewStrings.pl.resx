@@ -138,6 +138,9 @@
   <data name="ReliabilityTooltip" xml:space="preserve">
     <value>Wiarygodność oceny. Liczona jako liczba ocen wiarygodnych dzielona przez liczbę wymaganych ocen.</value>
   </data>
+  <data name="Rel_" xml:space="preserve">
+    <value>Wgn.</value>
+  </data>
   <data name="Scale" xml:space="preserve">
     <value>Skala</value>
   </data>

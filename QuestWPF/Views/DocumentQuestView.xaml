@@ -48,6 +48,7 @@
     <Grid 
         d:DataContext="{d:DesignInstance quest:DocumentQualityVM}">
       <syncfusion:SfTreeGrid
+        x:Name="DocumentQuestGrid"
         ChildPropertyName="Children"
         AutoExpandMode="AllNodesExpanded"
         ItemsSource="{Binding Factors}"
@@ -79,7 +80,7 @@
             CellTemplateSelector="{StaticResource QualityNodeValueTemplateSelector}"
           />
           <syncfusion:TreeGridNumericColumn
-            HeaderText="{x:Static questRsx:QuestViewStrings.Reliability}"
+            HeaderText="{x:Static questRsx:QuestViewStrings.Rel_}"
             MappingName="Reliability"
             NumberDecimalDigits="2"
             AllowEditing="False"
