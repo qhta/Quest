@@ -64,6 +64,7 @@ public static class DataGridReflectorHelper
     html.AppendLine("td { padding: 5px; border: 1px solid #808080; }");
     html.AppendLine("tr:nth-child(even) { background-color: #F0F0F0; }");
     html.AppendLine(".numeric { text-align: right; }");
+    html.AppendLine(".boolean { text-align: center; }");
     html.AppendLine("</style>");
     html.AppendLine("</head>");
     html.AppendLine("<body>");
@@ -97,9 +98,19 @@ public static class DataGridReflectorHelper
       foreach (var column in GetColumns(grid))
       {
         var cellValue = GetCellValue(column, row);
-        var isNumeric = IsNumericColumn(column);
+        if (IsNumericColumn(column))
+          html.Append("<td class=\"numeric\">");
+        else if (IsBooleanColumn(column))
+        {
+          html.Append("<td class=\"boolean\">");
+          if (bool.TryParse(cellValue, out bool boolValue))
+          {
+            cellValue = BooleanValueToString(boolValue);
+          }
+        }
+        else
+          html.Append("<td>");
 
-        html.Append(isNumeric ? "<td class=\"numeric\">" : "<td>");
         html.Append(System.Net.WebUtility.HtmlEncode(cellValue));
         html.AppendLine("</td>");
       }
@@ -391,6 +402,27 @@ public static class DataGridReflectorHelper
       return "F2";
     return null;
   }
+
+  /// <summary>
+  /// Checks whether a column is a boolean column.
+  /// </summary>
+  /// <param name="column"></param>
+  /// <returns></returns>
+  private static bool IsBooleanColumn(GridColumnBase column)
+  {
+    return (column is GridCheckBoxColumn) || (column is TreeGridTemplateColumn);
+  }
+
+  /// <summary>
+  /// Converts a boolean value to a string representation using Unicode characters.
+  /// </summary>
+  /// <param name="value"></param>
+  /// <returns></returns>
+  public static string? BooleanValueToString(bool value)
+  {
+    return value ? "\u2611" : "\u2610";
+  }
+
   /// <summary>
   /// Gets the mapping name for a GridColumnBase.
   /// </summary>

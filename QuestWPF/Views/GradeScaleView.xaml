@@ -7,6 +7,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:quest="clr-namespace:Quest;assembly=QuestENG"
   xmlns:questRsx="clr-namespace:QuestRSX;assembly=QuestRSX"
+  xmlns:views="clr-namespace:QuestWPF.Views"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance quest:QuestItemViewModel}"
   d:DesignHeight="450" d:DesignWidth="410">
@@ -19,6 +20,7 @@
       <TextBlock Text="{Binding Header}" FontWeight="Bold" Margin="5"/>
     </Border>
     <syncfusion:SfDataGrid
+      x:Name="GradeScaleGrid"
       Grid.Row="1"
       ItemsSource="{Binding Content}"
       AutoGenerateColumns="False"
@@ -44,5 +46,6 @@
         />
       </syncfusion:SfDataGrid.Columns>
     </syncfusion:SfDataGrid>
+    <views:CopyButton Grid.Row="0"/>
   </Grid>
 </UserControl>

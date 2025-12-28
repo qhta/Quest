@@ -21,7 +21,8 @@ public class ViewCopyCommand : Command
       return true; 
     if (parameter is DocumentQuestGraphView)
       return true;
-
+    if (parameter is GradeScaleView)
+      return true;
     if (parameter is QuestView questView)
     {
       var projectQualityVM = questView.DataContext as ProjectQualityVM;
@@ -47,6 +48,8 @@ public class ViewCopyCommand : Command
         CopyDocumentQuestResultsView(documentQuestResultsView);
       else if (parameter is DocumentQuestGraphView documentQuestGraphView)
         CopyDocumentQuestGraphView(documentQuestGraphView);
+      else if (parameter is GradeScaleView gradeScaleView)
+        CopyGradeScaleView(gradeScaleView);
       else if (parameter is QuestView questView)
       {
         if (questView.DataContext is ProjectQualityVM projectQualityVM)
@@ -126,6 +129,7 @@ public class ViewCopyCommand : Command
     Clipboard.SetDataObject(dataObject, true);
   }
 
+
   /// <summary>
   /// Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
   /// </summary>
@@ -151,6 +155,20 @@ public class ViewCopyCommand : Command
       chart.Margin = originalMargin;
     }
 
+    Clipboard.SetDataObject(dataObject, true);
+  }
+
+  /// <summary>
+  /// Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
+  /// </summary>
+  /// <returns></returns>
+  public void CopyGradeScaleView(GradeScaleView gradeScaleView)
+  {
+    var grid = gradeScaleView.GradeScaleGrid;
+    DataObject dataObject = new();
+    GetFrameworkElementAsImage(grid, dataObject);
+    DataGridReflectorHelper.GetGridAsText(grid, dataObject);
+    DataGridReflectorHelper.GetGridAsHtml(grid, dataObject);
     Clipboard.SetDataObject(dataObject, true);
   }
 

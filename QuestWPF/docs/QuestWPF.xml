@@ -183,6 +183,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:QuestWPF.ViewCopyCommand.CopyGradeScaleView(QuestWPF.Views.GradeScaleView)">
+            <summary>
+            Copies the current DocumentQuestResultView to clipboard as text and HTML and bitmap.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:QuestWPF.ViewCopyCommand.GetProjectQualityData(Quest.ProjectQuality,System.Windows.DataObject)">
             <summary>
             Gets the ProjectQuality data in serializable and XML text formats.
@@ -378,6 +384,20 @@
             Returns numeric column format or null;
             </summary>
             <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.DataGridReflectorHelper.IsBooleanColumn(Syncfusion.UI.Xaml.Grid.GridColumnBase)">
+            <summary>
+            Checks whether a column is a boolean column.
+            </summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuestWPF.Helpers.DataGridReflectorHelper.BooleanValueToString(System.Boolean)">
+            <summary>
+            Converts a boolean value to a string representation using Unicode characters.
+            </summary>
+            <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:QuestWPF.Helpers.DataGridReflectorHelper.GetMappingName(Syncfusion.UI.Xaml.Grid.GridColumnBase,System.Object)">
